@@ -1,0 +1,96 @@
+{% include '@app/header.twig' %}
+
+<div class="col-xs-12 contact-us-block clearfix">
+    <div class="row">
+        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+            <h1>{% helper seo.seo_tags('header_text') %}</h1>
+            <div class="contact-us-form mb20">
+                <p class="mb10">
+                    {% helper lang.l('text_contact_form_edit', 'contact_us') %}
+                </p>
+                <div class="row">
+                    <form action="" method="post">
+                        {% if reasons %}
+                            <div class="form-group">
+                                <label for="email"  class="col-xs-12 tali">
+                                    {% helper lang.l('field_reason', 'contact_us') %}:
+                                </label>
+                                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                                    <select name="id_reason" class="form-control">
+                                        {% for item in reasons %}
+                                            <option value="{{ item.id }}" {% if data.id_reason == item.id %}selected{% endif %}>
+                                                {{ item.name }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                    <span class="pginfo msg reason"></span>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        <div class="form-group">
+                            <label for="email"  class="col-xs-12 tali">
+                                {% helper lang.l('field_user_name', 'contact_us') %}:
+                            </label>
+                            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                                <input type="text" name="user_name" value="{{ data.user_name|e }}" class="form-control">
+                                <span class="pginfo msg user_name"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"  class="col-xs-12 tali">
+                                {% helper lang.l('field_user_email', 'contact_us') %}:
+                            </label>
+                            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                                <input type="text" name="user_email" value="{{ data.user_email|e }}" class="form-control">
+                                <span class="pginfo msg user_email"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"  class="col-xs-12 tali">
+                                {% helper lang.l('field_subject', 'contact_us') %}:
+                            </label>
+                            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                                <input type="text" name="subject" value="{{ data.subject|e }}" class="form-control">
+                                <span class="pginfo msg subject"></span>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label for="email"  class="col-xs-12 tali">
+                                {% helper lang.l('field_message', 'contact_us') %}:
+                            </label>
+                            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                                <textarea name="message" class="form-control">{{ data.message }}</textarea>
+                                <span class="pginfo msg message"></span>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                                {% helper start.captcha({'input_name': 'captcha_code'}) %}
+                            </div>
+                        </div> 
+                        <div class="clearfix">
+                            <div class="col-xs-12 col-sm-12">
+                                <input data-pjax="0" type="submit" class="btn btn-primary contact_us-btn" name="btn_save" value="{% helper lang.l('btn_send', 'start', '', 'button') %}">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% helper banners.show_banner_place('banner-980x90') %}
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+            {% helper banners.show_banner_place('banner-320x250') %}
+            {% helper banners.show_banner_place('banner-320x75') %}
+            {% helper banners.show_banner_place('banner-185x155') %}
+            {% helper banners.show_banner_place('banner-185x75') %}
+        </div>
+    </div>
+</div>
+<div class="social-buttons-block mt10">
+{% helper social_networking.show_social_networks_head() %}
+{% helper social_networking.show_social_networks_like() %}
+{% helper social_networking.show_social_networks_share() %}
+{% helper social_networking.show_social_networks_comments() %}
+</div>
+{% include '@app/footer.twig' %}

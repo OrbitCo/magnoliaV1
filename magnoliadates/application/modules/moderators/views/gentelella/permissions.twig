@@ -1,0 +1,189 @@
+<a href="javascript:;" id="permissions">
+    {% helper lang.l('no_permissions', 'moderators') %}
+</a>
+<div id="permissions-value">
+    {% for key, module_group in methods %}
+
+        {% for index,item in module_group.methods %}
+            {% if item.checked %}
+                <input type="hidden" name="permission_data[{{ item.module }}][{{ item.method }}]" value="1">
+            {% endif %}
+        {% endfor %}
+
+    {% endfor %}
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        var permissions = {};
+        var permissionsCopy = {};
+        var permissionsNames = {};
+
+        var windowObj = new loadingContent({
+            loadBlockSize: 'big',
+            closeBtnID: 'edit_permissions_close',
+            closeBtnLabel: '{% helper lang.l('btn_done','start', '', 'js') %}'
+        });
+
+        {% for key, module_group in methods %}
+                permissionsNames['{{ key }}'] = {};
+                permissions['{{ key }}'] = {};
+                var mg_methods_checked = 0;
+                var mg_methods_cnt = 0;
+            {% for index,item in module_group.methods %}
+                if (typeof permissions['{{ key }}']['{{ item.module }}'] == "undefined") {
+                    permissions['{{ key }}']['{{ item.module }}'] = {};
+                    permissionsNames['{{ key }}']['{{ item.module }}'] = {};
+                }
+                mg_methods_cnt++;
+                {% if item.checked %}mg_methods_checked++;{% endif %}
+
+                permissions['{{ key }}']['{{ item.module }}']['{{ item.method }}'] = {% if item.checked %}true{% else %}false{% endif %};
+                permissionsNames['{{ key }}']['{{ item.module }}']['{{ item.method }}'] = '{{ item.name }}';
+            {% endfor %}
+
+            if (mg_methods_cnt === mg_methods_checked) {
+                permissions['{{ key }}']['{{ module.main.method }}'] = true;
+            }
+        {% endfor %}
+
+        $('#permissions').on('click', function() {
+            permissionsCopy = permissions;
+            windowObj.show_load_block(
+                '<form id="permissions-form">' +
+                '   <div class="content-block load_content">' +
+                '       <h1>{% helper lang.l('field_permissions', 'moderators') %}</h1>' +
+                '       <div class="container">' +
+                '           <div class="row">' +
+            {% for key, module_group in methods %}
+                '               <div class="col-md-4 col-sm-6 col-xs-12 permissions">' +
+                '                   <input type="checkbox" name="permission_data[{{ key }}][{{ module_group.main.method }}]"' +
+                '                       value=1' + (permissions['{{ key }}']['{{ module_group.main.method }}'] ? ' checked' : '') + ' id="pd_{{ key }}" class="flat js-permissions-group" data-key="{{ key }}" data-method="{{ module_group.main.method }}" data-main="">' +
+                '                   <label for="pd_{{ key }}"><b>{{ module_group.module.module_name }}</b></label><br>' +
+                '                   <ul class="permissions_edit">' +
+                {% for index,item in module_group.methods %}
+                    {% if strval(index) != 'main' %}
+                '                       <li>' +
+                '                           <input type="checkbox" name="permission_data[{{ item.module }}][{{ item.method }}]"' +
+                '                               value=1' + (permissions['{{ key }}']['{{ item.module }}']['{{ item.method }}'] ? ' checked' : '') + ' id="pd_{{ key }}_{{ item.module }}_{{ item.method }}" class="flat"' +
+                '                               data-key="{{ key }}" data-module="{{ item.module }}" data-method="{{ item.method }}" data-main="method_group_{{ key }}">' +
+                '                           <label for="pd_{{ item.module }}_{{ item.method }}">{{ item.name }}</label>' +
+                '                       </li>' +
+                    {% endif %}
+                {% endfor %}
+                '                   </ul>' +
+                '                </div>' +
+                {% endfor %}
+                '           </div>' +
+                '       </div>' +
+
+                '       <!-- div class="ln_solid"></div>' +
+
+                '       <div class="model-footer">' +
+                '           <button type="button" class="btn btn-default" data-dismiss="modal" id="edit_permissions_close">' +
+                '               {% helper lang.l('btn_done','start', '', 'js') %}' +
+                '           </button>' +
+                '       </div -->' +
+                '   </div>' +
+                '</form>'
+            );
+
+            $('input.flat').iCheck({
+                checkboxClass: 'icheckbox_flat-green',
+                radioClass: 'iradio_flat-green'
+            }).on('ifClicked', function(event) {
+                $(this).trigger('click');
+            }).on('ifChanged', function(event) {
+                $(this).trigger('change');
+            }).on('ifChecked', function() {
+                $(this).attr('checked', 'checked');
+            }).on('ifUnchecked', function() {
+                $(this).removeAttr('checked');
+            });
+        });
+
+        $(document).off('change', '.permissions input[type=checkbox]').on('change', '.permissions input[type=checkbox]', function() {
+            var item = $(this);
+            if (item.hasClass('js-permissions-group')) {
+                if (item.is(':checked')) {
+                    $('.permissions').find('[data-main=method_group_' + item.data('key') + ']').each(function(index, item) {
+                        var item = $(item);
+                        item.iCheck('check');
+                        permissionsCopy[item.data('key')][item.data('module')][item.data('method')] = item.prop('checked');
+                    });
+                } else {
+                    $('.permissions').find('[data-main=method_group_' + item.data('key') + ']').each(function(index, item) {
+                        var item = $(item);
+                        item.iCheck('uncheck');
+                        permissionsCopy[item.data('key')][item.data('module')][item.data('method')] = item.prop('checked');
+                    });
+                }
+            } else {
+                permissionsCopy[item.data('key')][item.data('module')][item.data('method')] = item.prop('checked');
+
+                var checked_cnt = 0;
+                var unchecked_cnt = 0;
+                var methods_cnt = 0;
+                $('.permissions').find('[data-main=method_group_' + item.data('key') + ']').each(function(index, method) {
+                    var method = $(method);
+                    if (method.prop('checked')) {
+                        checked_cnt++;
+                    } else {
+                        unchecked_cnt++;
+                    }
+                    methods_cnt++;
+                });
+                if (methods_cnt == checked_cnt) {
+                    $('#pd_' + item.data('key')).iCheck('check');
+                }
+                if (methods_cnt == unchecked_cnt) {
+                    $('#pd_' + item.data('key')).iCheck('uncheck');
+                }
+            }
+        });
+
+        $(document).off('click', '#edit_permissions_close').on('click', '#edit_permissions_close', function() {
+            permissions = permissionsCopy;
+
+            var names = [];
+            var values = '';
+            for (var key in permissions) {
+                for (var module in permissions[key]) {
+                    for (var method in permissions[key][module]) {
+                        if (permissions[key][module][method]) {
+                            names.push(permissionsNames[key][module][method]);
+                            values += '<input type="hidden" name="permission_data[' + module + '][' + method + ']" value="1">';
+                        }
+                    }
+                }
+            }
+
+            if (names.length > 0) {
+                $('#permissions').html(names.join('; '));
+            } else {
+                $('#permissions').html('{% helper lang.l('no_permissions', 'moderators', '', 'js') %}');
+            }
+
+            $('#permissions-value').html(values);
+
+            windowObj.hide_load_block();
+        });
+
+        var names = [];
+        for (var key in permissions) {
+            for (var module in permissions[key]) {
+                for (var method in permissions[key][module]) {
+                    if (permissions[key][module][method]) {
+                        names.push(permissionsNames[key][module][method]);
+                    }
+                }
+            }
+        }
+
+        if (names.length > 0) {
+            $('#permissions').html(names.join('; '));
+        } else {
+            $('#permissions').html('{% helper lang.l('no_permissions', 'moderators', '', 'js') %}');
+        }
+    });
+</script>

@@ -1,0 +1,29 @@
+<li class="pg-dl-icons {% if virtual_params.is_main_menu_actions == 1 %}{% else %}menu-actions{% endif %} fleft">
+    <span class="user-menu-item" id="link-virtual_gift-{{ virtual_gifts_button_rand }}">
+        <a id="btn-virtual_gift-{{ virtual_gifts_button_rand }}" class="link-r-margin"
+           title="{% helper lang.l('user_send_gift_alt', 'virtual_gifts', '', 'button') %}"
+           href="javascript:void(0);"><i class="fa fa-gift"></i>
+            {% helper lang.l('user_send_gift_alt', 'virtual_gifts', '', 'button') %}
+        </a>
+    </span>
+</li>            
+<script>
+    $(function () {
+        loadScripts(
+                "{% helper utils.jscript('virtual_gifts', 'send_gift.js', 'path') %}",
+                function () {
+                    virtual_gifts = new SendGift({
+                        siteUrl: site_url,
+                        use_form: true,
+                        btnForm: 'link-virtual_gift-{{ virtual_gifts_button_rand }}',
+                        urlGetForm: 'virtual_gifts/ajax_get_gifts_form/{{ user_id }}',
+                        urlSendForm: 'virtual_gifts/ajax_set_gifts/{{ user_id }}',
+                        dataType: 'html'
+                    });
+                },
+                ['virtual_gifts'],
+                {async: false}
+        );
+
+    });
+</script>

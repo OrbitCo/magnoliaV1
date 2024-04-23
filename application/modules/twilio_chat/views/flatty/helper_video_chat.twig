@@ -1,0 +1,152 @@
+{# video popup tpl #}
+<script type="text/template" id="twilioRoomContainer">
+    <div class="twilio-room_container" style="display:none">
+        <div class="modal-body twilio-room">
+            <div class="twilio_partner"></div>
+            <div class="local-media-tw"></div>
+            <div class="twilio_user_info_top">
+                <div class="twilio-room_user_info"></div>
+            </div>
+            <div class="connect-tw" ></div>
+            <div class="twilio-room_user">
+                {#TODO#}
+                <div class="twilio-room_user_time hide">
+                    <span class="twilio-room_user_time-text">{% helper lang.l('time_of_call','twilio_chat')%}</span>
+                    <span class="twilio-room_user_time-counter"></span>
+                </div>
+            </div>
+            <div class="twilio-room_control">
+                <div class="twilio-camera-switcher">
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <!-- Generator: Adobe Illustrator 23.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                        <path d="M90,46c-0.1-0.9-0.8-1.5-1.7-1.4c-0.9,0.1-1.5,0.8-1.4,1.7c0.1,1,0.1,2,0.1,3C87,67.4,72.4,82,54.5,82
+                            c-8.7,0-16.8-3.4-23-9.6c-0.6-0.6-1.6-0.6-2.2,0c-0.6,0.6-0.6,1.6,0,2.2c6.7,6.8,15.7,10.5,25.2,10.5c19.6,0,35.6-16,35.6-35.7
+                            C90.1,48.3,90.1,47.1,90,46z"/>
+                        <path d="M35.2,45.1c-0.6-0.6-1.6-0.6-2.2,0L22.2,55.5c-0.3-1.9-0.5-3.9-0.5-5.8c0-17.9,14.6-32.5,32.5-32.5c8.7,0,16.8,3.4,23,9.5
+                            c0.6,0.6,1.6,0.6,2.2,0c0.6-0.6,0.6-1.6,0-2.2C72.6,17.7,63.6,14,54.1,14c-19.6,0-35.6,16-35.6,35.6c0,1.6,0.1,3.1,0.3,4.7
+                            l-9.6-9.2c-0.6-0.6-1.6-0.6-2.2,0c-0.6,0.6-0.6,1.6,0,2.2l13,12.5c0.3,0.3,0.7,0.4,1.1,0.4s0.8-0.1,1.1-0.4l13-12.5
+                            C35.8,46.7,35.8,45.7,35.2,45.1z"/>
+                    </svg>
+
+                </div>
+                <div class="twilio_close">
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <!-- Generator: Adobe Illustrator 23.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+
+                        <path d="M25,31.8c-4.2,2.4-7.4,5.3-9.5,8.6c-1.7,2.8-2.6,5.8-2.6,9L13,61c0,0.4,0.2,0.8,0.5,1.1c0.3,0.3,0.7,0.5,1.1,0.5l16.5,0
+                            c0.4,0,0.8-0.2,1.1-0.5c0.3-0.3,0.5-0.7,0.5-1.1l0-11.8c0-1.8,0.8-3.7,2.1-5.1c1.4-1.4,3.2-2.2,4.9-2.2l21.8,0
+                            c3.8,0,6.8,3.1,6.8,6.8c0,0,0,0,0,0l0,12.3c0,0.9,0.7,1.6,1.6,1.6l16.5,0c0.9,0,1.6-0.7,1.6-1.6l0-12.3
+                            c0-13.7-14.1-23.2-37.4-23.2C40,25.5,32.2,27.7,25,31.8z M84.8,48.8l0,10.7l-13.3,0l0-10.7c0,0,0,0,0,0c0-5.5-4.5-10-10-10
+                            l-21.8,0c-2.6,0-5.3,1.2-7.2,3.2c-1.9,2-3,4.6-3,7.3l0,10.2l-13.3,0l0-10.1c0-7.4,5.7-12.1,10.4-14.7c6.7-3.7,13.9-5.8,24-5.8
+                            C72,28.7,84.8,37,84.8,48.8z"/>
+
+                        <path d="M49.3,74.4c0.3,0.3,0.7,0.5,1.1,0.5c0.4,0,0.8-0.2,1.1-0.5l7-7c0.6-0.6,0.6-1.6,0-2.3c-0.6-0.6-1.6-0.6-2.3,0l-4.3,4.3
+                                v-14c0-0.9-0.7-1.6-1.6-1.6c-0.9,0-1.6,0.7-1.6,1.6v14l-4.2-4.2c-0.6-0.6-1.6-0.6-2.3,0c-0.6,0.6-0.6,1.6,0,2.3L49.3,74.4z"/>
+
+                </svg>
+                </div>
+                <div class="twilio-room_control_left">
+                    <div class="twilio-camera-off">
+                        <?xml version="1.0" encoding="utf-8"?>
+                        <!-- Generator: Adobe Illustrator 23.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                <path d="M9.4,59.8h7v7.7c0,0.8,0.6,1.4,1.4,1.4h53.3c0.8,0,1.4-0.6,1.4-1.4v-12L90,63c0.4,0.2,1,0.2,1.4-0.1
+                                    c0.4-0.3,0.6-0.7,0.6-1.2V38.2c0-0.5-0.2-0.9-0.6-1.2c-0.2-0.2-0.5-0.2-0.8-0.2c-0.2,0-0.4,0-0.6,0.1l-17.3,7.6v-12
+                                    c0-0.8-0.6-1.4-1.4-1.4H17.9c-0.8,0-1.4,0.6-1.4,1.4v7.7h-7c-0.8,0-1.4,0.6-1.4,1.4v16.8C8,59.1,8.6,59.8,9.4,59.8z M72.7,47.6
+                                    l16.4-7.2v19.1l-16.4-7.2c0,0,0,0-0.1,0L72.7,47.6C72.7,47.6,72.7,47.6,72.7,47.6z M19.3,33.8h50.5V66H19.3v-7.7V41.5V33.8z
+                                     M10.9,43h5.6v13.9h-5.6V43z"/>
+                            <line class="line-off" x1="30%" y1="75%" x2="70%" y2="22%" stroke="red" style="stroke-width: 4px;stroke-width: 4px;stroke:#f9f9f9;fill: none; display: none"></line>
+                            </svg>
+                    </div>
+                    <div class="twilio-mute-switcher">
+                        <?xml version="1.0" encoding="utf-8"?>
+                        <!-- Generator: Adobe Illustrator 23.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                        <path d="M49.7,62.8c7.5,0,13.7-6.1,13.7-13.7V34.5c0-7.5-6.1-13.7-13.7-13.7S36,26.9,36,34.5v14.6C36,56.6,42.1,62.8,49.7,62.8z
+                            M38.9,34.5c0-5.9,4.8-10.8,10.8-10.8s10.8,4.8,10.8,10.8v14.6c0,5.9-4.8,10.8-10.8,10.8S38.9,55,38.9,49.1V34.5z"/>
+                        <path d="M69.5,55.4v-7c0-0.8-0.6-1.4-1.4-1.4s-1.4,0.6-1.4,1.4v7c0,10.2-13.2,12.5-16.9,12.5s-16.9-2.3-16.9-12.5v-7
+                            c0-0.8-0.6-1.4-1.4-1.4s-1.4,0.6-1.4,1.4v7c0,11.3,11.6,14.7,18.4,15.3V76H30.8c-0.8,0-1.4,0.6-1.4,1.4c0,0.8,0.6,1.4,1.4,1.4
+                            h37.8c0.8,0,1.4-0.6,1.4-1.4c0-0.8-0.6-1.4-1.4-1.4H51.1v-5.3C57.9,70.1,69.5,66.7,69.5,55.4z"/>
+                            <line class="line-off" x1="33%" y1="70%" x2="70%" y2="20%" stroke="red" style="stroke-width: 4px;stroke-width: 4px;stroke:#f9f9f9;fill: none; display: none"></line>
+                    </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+{#индекатор звонка #}
+
+<script type="text/template" id="callingIndicator">
+    <div class="menu-video-item menu-item no-notifications" data-toggle="tooltip" data-placement="bottom" data-original-title="{% helper lang.l('incoming_call','twilio_chat')%}">
+        <a id="menu-video-more" href="" class="uam-top menu-video-more" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" data-pjax="0">
+            <i class="fas fa-video fa-lg item"><div class="pulsar-icon"></div></i>
+            <span class="badge sum"></span>
+            </a>
+        <div class="menu-video-more dropdown-menu" role="menu" aria-labelledby="menu-video-more">
+            <div class="menu-alerts-more-triangle"></div>
+            <div class="summand new_video"></div>
+            <div class="menu-alerts-more-items"></div>
+            <div class="menu-alerts-more-item menu-video-view-all clearfix tac"></div>
+        </div>
+    </div>
+</script>
+
+{# calling to partner TPL#}
+<script type="text/template" id="callingToPartner">
+    <div>
+        <div class="message-top">
+            <a href="#" id="messageImage">
+                <img id="partnerthumbs" style="margin-bottom: 10px;" src="">
+            </a>
+            <div class="message-top-text">
+                <span class="partner_name"></span>
+                <div class="partner_year"> <span class="partner_year_numb"></span>&nbsp;{% helper lang.l('years_old','twilio_chat')%}</div>
+            </div>
+        </div>
+        <div class="message-body">
+            <div class="alert-twilio-btn-box">
+                <svg class="accept-chat" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                        <path d="M52.2,83.8c4.7,1.3,9,1.5,12.7,0.6c3.2-0.7,5.9-2.3,8.2-4.5l8.3-8.3c0.3-0.3,0.5-0.7,0.5-1.1c0-0.4-0.2-0.8-0.5-1.1
+                            L69.8,57.7c-0.3-0.3-0.7-0.5-1.1-0.5c-0.4,0-0.8,0.2-1.1,0.5l-8.4,8.4c-1.3,1.3-3.1,2-5.1,2.1c-2,0-3.8-0.7-5-1.9L33.6,50.8
+                            c-2.7-2.7-2.7-7,0-9.7c0,0,0,0,0,0l8.7-8.7c0.6-0.6,0.6-1.6,0-2.3L30.6,18.6C30,18,29,18,28.4,18.6l-8.7,8.7
+                            c-9.7,9.7-6.4,26.4,10,42.8C37.2,77.6,44.3,81.5,52.2,83.8z M22,29.5l7.5-7.5l9.4,9.4l-7.5,7.5c0,0,0,0,0,0
+                            c-3.9,3.9-3.9,10.2,0,14.2l15.4,15.4c1.9,1.9,4.5,2.9,7.4,2.9c2.8,0,5.4-1.1,7.3-3l7.2-7.2l9.4,9.4l-7.2,7.2
+                            c-5.2,5.2-12.6,4.6-17.8,3.1C45.6,78.6,39.1,75,32,67.8C16.9,52.7,13.6,37.8,22,29.5z"/>
+
+                                    <path d="M64.8,42.9c-0.1-4.9-3.9-8.7-8.8-8.9c-2.3-0.1-2.3,3.5,0,3.6c3,0.1,5.2,2.4,5.3,5.3C61.3,45.1,64.9,45.1,64.8,42.9
+                            L64.8,42.9z"/>
+                                    <path d="M75.9,43.3c-0.3-11.3-9-20-20.3-20.3c-2.3-0.1-2.3,3.5,0,3.6c9.3,0.3,16.5,7.5,16.7,16.8C72.4,45.6,75.9,45.6,75.9,43.3
+                            L75.9,43.3z"/>
+                                    <path d="M84.7,41.5c-0.4-15.2-12.1-27-27.3-27.5c-2.3-0.1-2.3,3.5,0,3.6C70.6,18,80.8,28.2,81.2,41.5
+                            C81.2,43.8,84.8,43.8,84.7,41.5L84.7,41.5z"/>
+                </svg>
+                <?xml version="1.0" encoding="utf-8"?>
+                <svg class="decline-chat" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+
+                        <path d="M25,31.8c-4.2,2.4-7.4,5.3-9.5,8.6c-1.7,2.8-2.6,5.8-2.6,9L13,61c0,0.4,0.2,0.8,0.5,1.1c0.3,0.3,0.7,0.5,1.1,0.5l16.5,0
+                            c0.4,0,0.8-0.2,1.1-0.5c0.3-0.3,0.5-0.7,0.5-1.1l0-11.8c0-1.8,0.8-3.7,2.1-5.1c1.4-1.4,3.2-2.2,4.9-2.2l21.8,0
+                            c3.8,0,6.8,3.1,6.8,6.8c0,0,0,0,0,0l0,12.3c0,0.9,0.7,1.6,1.6,1.6l16.5,0c0.9,0,1.6-0.7,1.6-1.6l0-12.3
+                            c0-13.7-14.1-23.2-37.4-23.2C40,25.5,32.2,27.7,25,31.8z M84.8,48.8l0,10.7l-13.3,0l0-10.7c0,0,0,0,0,0c0-5.5-4.5-10-10-10
+                            l-21.8,0c-2.6,0-5.3,1.2-7.2,3.2c-1.9,2-3,4.6-3,7.3l0,10.2l-13.3,0l0-10.1c0-7.4,5.7-12.1,10.4-14.7c6.7-3.7,13.9-5.8,24-5.8
+                            C72,28.7,84.8,37,84.8,48.8z"/>
+
+                    <path d="M49.3,74.4c0.3,0.3,0.7,0.5,1.1,0.5c0.4,0,0.8-0.2,1.1-0.5l7-7c0.6-0.6,0.6-1.6,0-2.3c-0.6-0.6-1.6-0.6-2.3,0l-4.3,4.3
+                                v-14c0-0.9-0.7-1.6-1.6-1.6c-0.9,0-1.6,0.7-1.6,1.6v14l-4.2-4.2c-0.6-0.6-1.6-0.6-2.3,0c-0.6,0.6-0.6,1.6,0,2.3L49.3,74.4z"/>
+
+                </svg>
+
+            </div>
+        </div>
+    </div>
+</script>
+
+<script src="//sdk.twilio.com/js/video/releases/2.21.0/twilio-video.min.js"></script>

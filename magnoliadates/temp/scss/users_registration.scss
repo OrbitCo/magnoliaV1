@@ -1,0 +1,361 @@
+/*--------------------------------------------------------
+*   REGISTRATION
+--------------------------------------------------------*/
+
+.datepicker-dropdown-template {
+    display: flex;
+    margin-left: -5px;
+    margin-right: -5px;
+
+    &-item {
+        flex-grow: 1;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .btn-group {
+        .caret {
+            color: #aaa;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    div{
+        display: inline-block;
+
+    }
+    ul {
+        overflow-y: scroll;
+        max-height: 300px;
+    }
+    li {
+        a {
+            line-height: 1.5em !important;
+            cursor: pointer;
+        }
+    }
+    .btn{
+        padding: 10px 6px;
+        text-align: left;
+    }
+}
+
+.registration-block {
+    .main-block-pages {
+        background: rgba(0, 0, 0, 0.75);
+        height: 100%;
+        width: 100%;
+        z-index: 1000;
+        bottom: 0;
+        position: fixed;
+        overflow: hidden;
+        #{$right}: 0;
+        top: 0;
+
+        .pages-wraper {
+            bottom: 0;
+            #{$left}: 0;
+            top: 0;
+            #{$right}: 0;
+            box-sizing: content-box;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            & > div {
+                margin-top: 50px;
+            }
+        }
+        .sign_in-block {
+            text-align: center;
+        }
+    }
+    .user_types-block,
+    .continue-block {
+        padding-#{$left}: 0;
+        .btn-group {
+            width: 100%;
+        }
+    }
+    .user_types-block {
+        .btn-group {
+            position: relative;
+            width: 100%;
+        }
+        button{
+            padding-#{$left}: 10px;
+            padding-#{$right}: 10px;
+            text-align: $left;
+        }
+        .caret {
+            color: #aaa;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        &.form-control {
+            height: 40px;
+        }
+    }
+
+    .dropdown-toggle {
+        text-transform: none;
+    }
+    .dropdown-menu {
+        width: 100%;
+
+        li a{
+            line-height: 2.5em;
+        }
+    }
+
+    .sign_in-block {
+        color: $font_color;
+        font-size: 13px;
+        line-height: 28px;
+    }
+    .g-flatty-block {
+        border-radius: 5px;
+        color: $font_color;
+        font-size: 18px;
+        padding: 15px 15px 50px;
+        margin: 0 auto;
+
+        h3 {
+            text-align: center;
+            padding: 10px 0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .first-block {
+            padding-#{$left}: 0;
+            border-#{$right}: 1px solid #ddd;
+        }
+        .second-block {
+            padding-#{$right}: 0;
+            padding-top: 100px;
+        }
+    }
+    .paginator {
+        color: $descr_color;
+        margin-bottom: 20px;
+        text-align: center;
+
+        i {
+            color: #fff;
+            cursor: pointer;
+            margin-#{$left}: 10px;
+            font-size: 14px;
+
+            &.active {
+                color: $input_color;
+            }
+        }
+
+    }
+    .captcha-block {
+        .input-group {
+            padding: 0;
+        }
+    }
+    .g-recaptcha {
+        transform:scale(0.93) !important;
+        -webkit-transform:scale(0.93) !important;
+        transform-origin:0 0 !important;
+        -webkit-transform-origin:0 0 !important;
+    }
+    .photo-block {
+        width: 200px;
+        height: 200px;
+        display: block;
+        border-radius: 100px;
+        text-align: center;
+        background: #fff;
+        margin: 0 auto;
+        color: $input_color;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .description-block {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 16px;
+        padding: 0 60px;
+    }
+    .user-info {
+        margin-bottom: 30px;
+        div {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+
+    .registration-photo {
+        max-width: 350px;
+        margin: 0 auto;
+    }
+    .skip {
+        margin-top: 40px;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 20px;
+        color: #fff;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    h3 {
+        font-size: 34px;
+    }
+    .form-group {
+        font-size: 18px;
+    }
+    .photo-block {
+        img {
+            position: absolute;
+            border: 3px solid $input_color;
+            max-height: 200px;
+            max-width: 200px;
+        }
+        div {
+            position: absolute;
+            width: 100px;
+            margin: 80px 50px;
+        }
+    }
+    .has-error {
+        position: relative;
+        .tooltip {
+            background-color: $alert_error_bg;
+            border-radius: 6px;
+            bottom: 125%;
+            color: $alert_error_color;
+            margin-#{$right}: 15px;
+            margin-#{$left}: 15px;
+            opacity: 1;
+            padding: 15px;
+            position: absolute;
+            #{$right}: 0;
+            text-align: center;
+            visibility: visible;
+            z-index: 2;
+            &:after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                #{$left}: 50%;
+                margin-#{$left}: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: $alert_error_bg transparent transparent transparent;
+            }
+        }
+    }
+    [data-block='pages'] {
+        height: 100%;
+    }
+}
+
+@media (max-width: 350px) {
+    .registration-block {
+        .user_types-block,
+        .continue-block {
+            padding-#{$right}: 0;
+        }
+        #second-registration-page,
+        #third-registration-page {
+            margin-top: 0 !important;
+            &>div {
+                padding: 0 !important;
+            }
+        }
+        #fourth-registration-page {
+            .skip {
+                border: 1px solid transparent;
+                color: $input_color;
+                background: none;
+            }
+        }
+        .g-flatty-block {
+            border: 0 !important;
+            border-radius: 0 !important;
+            padding: 0 !important;
+        }
+        .main-block-pages {
+            background: #fff !important;
+            .pages-wraper {
+                position: relative !important;
+            }
+        }
+        .paginator {
+            color: $descr_color;
+
+            i {
+                color: inherit;
+            }
+        }
+    }
+
+    .registration-block .main-block-pages {
+        background: #fff !important;
+    }
+    .registration-block .main-block-pages .pages-wraper {
+        position: relative !important;
+    }
+    .registration-block .user_types-block,
+    .registration-block .continue-block {
+        padding-#{$right}: 0;
+    }
+    .registration-block #second-registration-page,
+    .registration-block #third-registration-page {
+        margin-top: 0 !important;
+    }
+    .registration-block #second-registration-page>div,
+    .registration-block #third-registration-page>div {
+        padding: 0 !important;
+    }
+    .registration-block .g-flatty-block {
+        border: 0 !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+@media (min-width: 351px) {
+    .registration-block {
+        .sign_in-block {
+            color: #fff;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .blur-it {
+        -ms-filter: blur(10px);
+        -webkit-filter: blur(10px);
+        filter: url("data:image/svg+xml;utf9,<svg%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'><filter%20id='blur'><feGaussianBlur%20stdDeviation='10'%20/></filter></svg>#blur");
+        filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='10');
+        filter:blur(10px);
+        pointer-events: none;
+    }
+}
+.index-pleasure {
+    .load-block {
+        .sign_in-block {
+            text-align: center;
+        }
+    }
+}
+/*--------------------------------------------------------
+*   END REGISTRATION
+--------------------------------------------------------*/

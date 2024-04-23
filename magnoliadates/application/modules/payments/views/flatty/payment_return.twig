@@ -1,0 +1,65 @@
+{% include '@app/header.twig' %}
+
+<div class="col-xs-12">
+    <h1>
+        {% helper lang.l('header_payment_return', 'payments') %}
+    </h1>
+</div>
+<div class="col-xs-12">
+    <div class="content-block">
+        <div class="row">
+            <div class="col-lg-1 col-md-3 col-xs-6">
+                {% helper users.formatAvatar({'user': payment.user, 'size': 'middle'}) %}
+            </div>
+            <div class="col-lg-2 col-md-3 col-xs-6">
+                <div class="pl20">
+                    <strong>{{ payment.user.fname }} {{ payment.user.sname }}</strong>
+                </div>
+                <div class="pl20">
+                    <a href="{% helper seo.seolink('users', 'profile') %}">
+                        {{ payment.user.nickname }}
+                    </a>
+                </div>
+                <div class="pl20">
+                    <strong>{% helper start.currency_format_output({'value': payment.amount}) %}</strong>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <h2>
+                    {% helper lang.l('header_payment_return', 'payments') %}
+                </h2>
+                <div>
+                    <strong>{% helper lang.l('field_amount', 'payments') %}:</strong>
+                    {% helper start.currency_format_output({'value': payment.amount}) %}
+                </div>
+                <div>
+                    <strong>{% helper lang.l('field_payment_type', 'payments') %}:</strong>
+                    {{ payment.payment_data.name }}
+                </div>
+                <div>
+                    <strong>{% helper lang.l('field_billing_type', 'payments') %}:</strong>
+                    {{ payment.system_gid }}
+                </div>
+                <div>
+                    <strong>{% helper lang.l('field_status', 'payments') %}:</strong>
+                    {% if payment.status == '1' %}
+                        {% helper lang.l('payment_status_approved', 'payments') %}
+                    {% elseif payment.status == '-1' %}
+                        {% helper lang.l('payment_status_declined', 'payments') %}
+                    {% else %}
+                        {% helper lang.l('payment_status_wait', 'payments') %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="mt20">
+                    <a href="{% helper seo.seolink('users', 'account', {'action': 'payments_history'}) %}">
+                        {% helper lang.l('link_back_payments_history', 'payments', '', 'button') %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include '@app/footer.twig' %}

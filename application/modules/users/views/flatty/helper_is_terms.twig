@@ -1,0 +1,34 @@
+<script>
+    $(function () {
+        var termBlock = new loadingContent({
+            otherClass: 'col-md-5 col-md-offset-4 col-lg-5 col-lg-offset-4'
+        });
+        var htmlObj = "<div>";
+            htmlObj += "<h3>{% helper lang.l('welcome', 'users') %}</h3>";
+            htmlObj += "<div class='form-group'>{{ data_terms }}</div>";
+            htmlObj += "<div><div><button type='button' class='btn btn-primary' id='i_agree'>{% helper lang.l('btn_i_agree', 'users') %}</button></div></div>";
+            htmlObj += "</div>";
+
+        termBlock.show_load_block(htmlObj);
+      
+        $('#i_agree').click(function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            var data = '&agree=' + 1;
+            $.ajax({
+                url: site_url + 'users/i_agree_terms',
+                dataType: 'json',
+                type: 'post',
+                data: data,
+                cache: false,
+                success: function (data) {
+                    console.log(data);
+                    if (typeof data.success !== 'undefined') {
+                        termBlock.hide_load_block();
+                        error_object.show_error_block(data.success, 'success');
+                    }
+                }
+            });
+        });
+    });
+</script>

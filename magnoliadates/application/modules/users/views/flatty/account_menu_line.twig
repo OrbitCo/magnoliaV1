@@ -1,0 +1,79 @@
+{% helper is_module_installed = utils.depends('banners',
+                                              'memberships',
+                                              'access_permissions',
+                                              'users_payments',
+                                              'payments') %}
+{% if is_module_installed.users_payments  or is_module_installed.payments %}
+{% if is_module_installed.access_permissions %}
+    {% set is_one_group %}{% helper access_permissions.isMoreThanOneActiveGroup() %}{% endset %}
+{% endif %}
+<div class="col-xs-12">
+    <div class="contrasting-block account-block-menu">
+        <div class="center">
+            {% if is_module_installed.access_permissions %}
+            <div class="menu-text-right col-xs-12 col-md-6">
+                <span class="user-description">{% helper lang.l('field_your_group', 'access_permissions') %}:</span>
+                <span class="user-description">[
+                {% if is_one_group|length > 0 %}
+                    <a href="{% helper seo.seolink('access_permissions', 'index') %}" class="membership-link">
+                {% else %}
+                    <span class="membership-title">
+                {% endif %}
+                {% helper access_permissions.getUserGroup({'id_user':user_id}) %}
+                {% if is_one_group|length > 0 %}
+                    </a>
+                {% else %}
+                    </span>
+                {% endif %}
+                ]</span>
+                {% if is_one_group|length > 0 %}
+                <span class="hidden-xs ml10 mr10">
+                    <a href="{% helper seo.seolink('access_permissions', 'index') %}" class="link">
+                        {% helper lang.l('link_change', 'access_permissions') %}
+                    </a>
+                </span>
+                {% endif %}
+            </div>
+            <div class="menu-text-left col-xs-12 col-md-6">
+            {% else  %}
+             <div class="col-xs-12">
+             {% endif %}
+                <span class="user-description">
+                    {% helper lang.l('field_on_account', 'users_payments') %}:
+                    <span class="on-account">{% helper users.onUserAccount({'output_type': 'long'}) %}</span>
+                </span>
+                {% if is_module_installed.users_payments %}
+                    <span data-action="set-payment-system" class="link hidden-xs ml10 mr10">
+                        {% helper lang.l('add_funds', 'users_payments') %}
+                    </span>
+                    <span data-action="set-payment-system" class="hidden-sm hidden-md hidden-lg hidden-xl pl5 pr5">
+                        <button onclick="{% helper start.setAnalytics('user_account', 'add_funds') %}" class="btn btn-default btn-xs"><i class="fa fa-plus"></i></button>
+                    </span>
+                {% endif %}
+                {% if is_module_installed.payments %}
+                    <span class="user-description">
+                        <a href="{% helper seo.seolink('users', 'account', 'payments_history') %}" class="history">
+                            {% helper lang.l('header_payments_history', 'users') %}
+                        </a>
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+{% endif %}
+<script>
+    $(function () {
+        loadScripts(
+            ["{% helper utils.jscript('users_payments', 'UsersPayments.js', 'path') %}"],
+            function () {
+                users_payments = new UsersPayments({
+                    siteUrl: site_url
+                });
+            },
+            ['users_payments'],
+            {async: true}
+        );
+    });
+</script>

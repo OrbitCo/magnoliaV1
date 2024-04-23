@@ -1,0 +1,37 @@
+{% if captcha.captcha_type == 'default' %}
+    <label for="captcha">
+        {% helper lang.l('field_captcha', 'users') %}:
+    </label>
+    <div class="input-group">
+        <span class="input-group-addon">
+            {{ captcha.captcha_image }}
+        </span>
+            <input id="g-recaptcha-response" type="text" name="{{ captcha.input_name }}" class="captcha form-control input-lg" value="" maxlength="{{ captcha.captcha_word_length }}" />
+    </div>
+{% elseif captcha.captcha_type == 'google' %}
+    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+    <script src="https://www.google.com/recaptcha/api.js?render={{ captcha.site_key }}"></script>
+    <script>
+        window.addEventListener("load", function () {
+            grecaptcha.ready(function() {
+                let errorObj = new Errors();
+                try {
+                    grecaptcha.ready(function() {
+                        $(".grecaptcha-badge").css({display :'none'});
+                        try {
+                            grecaptcha.execute("{{ captcha.site_key }}", {action: 'homepage'}).then(function(token) {
+                                document.getElementById('g-recaptcha-response').value = token;
+                            });
+                        }catch (e){
+                            errorObj.show_error_block("{% helper lang.l('error_recaptcha', 'start') %}", 'error');
+                            console.error(e.message);
+                        }
+                    });
+                }catch (e){
+                    errorObj.show_error_block("{% helper lang.l('error_recaptcha', 'start') %}",'error');
+                    console.error(e.message);
+                }
+            });
+        });
+    </script>
+{% endif %}

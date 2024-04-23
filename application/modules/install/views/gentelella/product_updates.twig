@@ -1,0 +1,91 @@
+{% include '@app/header.twig' %}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_content">
+            {% if updates.errors %}
+                {{ updates.errors }}
+            {% elseif updates.info %}
+                {{ updates.info }}
+            {% elseif updates.data %}
+                <table id="users" class="table table-striped responsive-utilities jambo_table">
+                    <thead>
+                    <tr class="headings">
+                        <th class="column-title">Name</th>
+                        <th class="column-title">Description</th>
+                        <th class="column-title">&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-tags"></i> {{ updates.data.name }}</td>
+                            <td>
+                                {% if updates.data.description %}
+                                    {{ updates.data.description }}
+                                {% else %}
+                                    {% helper lang.l('field_update_description_data', 'start') %}
+                                {% endif %}
+                            </td>
+                            <td class="icons">
+                                <div class="btn-group">
+                                    <a href="{{ site_url }}admin/install/product_update_download/{{ updates.data.version }}" class="btn btn-primary">
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="{{ site_url }}admin/install/product_update_download/{{ updates.data.version }}">
+                                                <i class="fas fa-download"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            {% else %}
+                <table id="users" class="table table-striped responsive-utilities jambo_table">
+                    <thead>
+                    <tr class="headings">
+                        <th class="column-title">File</th>
+                        <th class="column-title">Name</th>
+                        <th class="column-title">Description</th>
+                        <th class="column-title">&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for key, item in updates %}
+                        <tr>
+                            <td class="first"><b>{{ key }}</b></td>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.description }}</td>
+                            <td class="icons">
+                                <div class="btn-group">
+                                    <a href="{{ site_url }}admin/install/product_update/{{ item.name }}" class="btn btn-primary">Install</a>
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="{{ site_url }}admin/install/product_update/{{ item.name }}">Install</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% include '@app/footer.twig' %}

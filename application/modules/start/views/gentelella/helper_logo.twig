@@ -1,0 +1,8 @@
+{% if data_logo.text_logo %}
+    <h4 class="textlogo" id="logo">{{ data_logo.text_logo }}</h4>
+{% else %}
+    <img src="{{ site_root }}{{ data_logo.logo_settings.path }}" border="0" alt="logo"
+                                width="{{ data_logo.logo_settings.width }}" height="{{ data_logo.logo_settings.height }}" class="site-logo">
+    <img src="{{ site_root }}{{ data_logo.mini_logo_settings.path }}" border="0" alt="logo"
+                                    width="{{ data_logo.mini_logo_settings.width }}" height="{{ data_logo.mini_logo_settings.height }}" class="site-mini-logo">
+{% endif %}

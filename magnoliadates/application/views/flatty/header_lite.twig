@@ -1,0 +1,114 @@
+{% if not is_pjax %}
+<!DOCTYPE html>
+<html dir="{{ _LANG.rtl }}" lang="{{ _LANG.code }}">
+<head>
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-33LW1GP9FR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-33LW1GP9FR');
+</script>
+
+
+<script type="text/javascript">
+!function () {
+const config = {
+customDomain: "magnoliadates.com",
+cookieName: "skro-click-id",
+clickIdParameterName: "skroClickId",
+httpProtocol: "https",
+cookieExpTime: 30 * 24 * 60 * 60 * 1000
+};
+let skroCookie = getCookie(config.cookieName);
+let URLParams = new URLSearchParams(window.location.search);
+let skroClickId = URLParams.get(config.clickIdParameterName);
+if (skroClickId !== null) {
+  
+if (skroCookie === null || skroCookie === undefined || skroCookie === 'undefined') {
+
+setCookie(config, skroClickId);
+}
+return false;
+}
+
+function setCookie(config, clickId) {
+let expirationTime = config.cookieExpTime, date = new Date(), dateTimeNow = date.getTime();
+date.setTime(dateTimeNow + expirationTime);
+document.cookie = config.cookieName + "=" + clickId + "; expires=" + date.toUTCString() + "; path=/; domain=." + location.hostname.replace(/^www\./i, "");
+}
+
+function getCookie(name) {
+let value = "; " + document.cookie;
+let parts = value.split("; " + name + "=");
+if (parts.length === 2) return parts.pop().split(";").shift();
+}
+}();
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/93390561" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="expires" content="0">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="revisit-after" content="3 days">
+  {% helper seo.seo_tags('robots') %}
+  {% helper start.favicon({'type': 'user'}) %}
+  {% endif %}
+
+  {% helper seo.seo_tags("title") %}
+  {% helper seo.seo_tags("description|keyword|canonical|og_title|og_type|og_url|og_image|og_site_name|og_description") %}
+
+  <script>
+    var site_rtl_settings = '{{ _LANG.rtl }}'
+    var is_pjax = parseInt('{{ is_pjax }}')
+    var js_events = {{ js_events|json_encode() }};
+    var id_user = {% if user_session_data.user_id %}{{ user_session_data.user_id }}{% else %}0{% endif %};
+    var auth_type = {% if user_session_data.auth_type %}'{{ user_session_data.auth_type }}'
+    {% else %}'guest'{% endif %};
+    var is_webpack = true
+  </script>
+
+  {% if not is_pjax %}
+  <link rel="stylesheet" href="{{ site_root }}application/views/flatty/css/bootstrap-{{ _LANG.rtl }}.css">
+  {% helper theme.include_css('style', 'screen') %}
+  {% helper theme.css(load_type) %}
+
+  <script>
+    var site_url = '{{ site_url }}'
+    var base_url = '{{ base_url }}'
+    var site_root = '{{ site_root }}'
+    var theme = '{{ theme }}'
+    var img_folder = '{{ img_folder }}'
+    var site_error_position = 'center'
+    var use_pjax = parseInt('{{ use_pjax }}')
+    var pjax_container = '#pjaxcontainer'
+  </script>
+
+  {% helper themes.load({'name': 'main', 'ext': 'js'}) %}
+
+  {% helper seo_advanced.seo_traker('top') %}
+  {% helper start.analytics() %}
+</head>
+<body class="{% block bodyclass %}{% endblock bodyclass %}">
+    
+    
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NHWF4RKJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+  {% include '@app/preloader.twig' %}
+  {% helper start.demo_panel({type: 'user', place: 'top'}) %}
+  <div id="pjaxcontainer" class="pjaxcontainer">
+  {% block container %}{% endblock container %}
+  {% endif %}

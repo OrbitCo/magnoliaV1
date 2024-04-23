@@ -1,0 +1,34 @@
+<div class="content-block event-view horizontal">
+  <h1>{% helper lang.l('header_add_contact', 'chatbox') %}</h1>
+  <div class="user-search">
+    <div class="search-param-button mb10"><a>{% helper lang.l('search_params_button', 'users') %}</a></div>
+    <div class="search-form">
+      {% helper utils.startSearchForm({
+        'type': 'advanced',
+        'show_data': '0',
+        'object': 'user',
+        'params_data': {
+          'view': 'default',
+          'hide_popup': 1,
+          'search_url': 'chatbox/ajax_search_users/'
+        }
+      }) %}
+    </div>
+    <div class="search-result" id="main_users_results">
+      {{ users_block }}
+    </div>
+  </div>
+</div>
+<style type="text/css">
+  .dropdown_location {
+    z-index: 99999 !important;
+  }
+</style>
+
+<script>
+  $(function () {
+    $('.search-param-button').click(function () {
+      $('.user-search .search-form').toggle()
+    })
+  })
+</script>

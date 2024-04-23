@@ -1,0 +1,92 @@
+{% if mobile_settings.use_notifications %}
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-messaging.js"></script>
+    <script>
+        // Initialize Firebase
+        let config = {
+            apiKey: "{{ mobile_settings.firebase_api_key }}",
+            authDomain: "{{ mobile_settings.firebase_auth_domain }}",
+            databaseURL: "{{ mobile_settings.firebase_database_url }}",
+            projectId: "{{ mobile_settings.firebase_project_id }}",
+            storageBucket: "{{ mobile_settings.firebase_storage_bucket }}",
+            messagingSenderId: "{{ mobile_settings.firebase_messaging_sender_id }}",
+            appId: "{{ mobile_settings.firebase_app_id }}"
+        };
+        firebase.initializeApp(config);
+
+
+        const messaging = firebase.messaging();
+        messaging.usePublicVapidKey("{{ mobile_settings.firebase_public_vapid_key }}");
+
+        if ('serviceWorker' in navigator) { 
+            navigator.serviceWorker.register(site_url + 'firebase-messaging-sw.js?{{ random(11111, 99999) }}').then(function(registration) {
+                registration.update();
+                if (messaging) {
+                    messaging.useServiceWorker(registration);
+                    messaging.requestPermission().then(function () {
+                        setFcmToken();
+                    }).catch(function (err) {
+                        console.log('Unable to get permission to notify.', err);
+                    });
+                }  
+          }); 
+        }
+
+        messaging.onTokenRefresh(function() {
+            setFcmToken();
+        });
+
+        messaging.onMessage(function(payload) {
+            if (typeof(notifications) != 'undefined') {
+                let options = {
+                    image: site_root + 'application/views/flatty/img/favicon/favicon-32x32.png',
+                    title: payload.data.title,
+                    text: payload.data.message || '',
+                    time: 15000,
+                    more: payload.data.link,
+                };
+                notifications.show(options);
+            }
+        });
+
+        function setFcmToken() {
+            messaging.getToken().then(function(token) {
+                if (token) {
+                    sendTokenToServer(token);
+                } else {
+                    sendTokenToServer(false);
+                }
+            }).catch(function(err) {
+                sendTokenToServer(false);
+            });
+        }
+
+        function sendTokenToServer(token) {
+            let deviceId = '';
+
+            if (typeof window.localStorage != 'undefined') {
+                deviceId = window.localStorage.getItem('device_id');
+                let old = window.localStorage.getItem('fcm_token');
+                if (old) {
+                    if (old == token) {
+                        $.post(site_url + 'mobile/setFcmRegistrationToken', {registration_id: token, device_id: deviceId});
+                        return;
+                    } else {
+                        $.post(site_url + 'mobile/deleteFcmRegistrationToken', {registration_id: token, device_id: deviceId});
+                    }
+                }
+                if (!deviceId) {
+                    deviceId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                        let r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                        return v.toString(16);
+                    });
+                }
+                window.localStorage.setItem('device_id', deviceId);
+                window.localStorage.setItem('fcm_token', token);
+            }
+            if (token) {
+                $.post(site_url + 'mobile/setFcmRegistrationToken', {registration_id: token, device_id: deviceId});
+            }
+        }
+    </script>
+{% endif %}

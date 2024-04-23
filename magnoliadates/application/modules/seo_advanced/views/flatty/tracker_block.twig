@@ -1,0 +1,45 @@
+{% if ga_default_account_id %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ga_default_account_id}}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{ga_default_account_id}}');
+    </script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', '{{ ga_default_account_id }}', 'auto', {'allowLinker': true});
+
+        ga('require', 'displayfeatures');
+        ga('require', 'linker');
+        ga('linker:autoLink', ['payproglobal.com', 'datingsoftware.ru', 'demo.datingpro.com', 'dpdynamicpages.tilda.ws', 'datingpro.tilda.ws']);
+        ga('require', 'GTM-P8PCWKG');
+
+        ga(function (tracker) {
+            var clientId = tracker.get('clientId') // получаем clientId из Google Analytics
+            document.cookie = "_ga_cid=" + clientId + "; path=/"; // сохраняем cookie в _ga_cid
+            ga('set', 'dimension3', clientId); // записываем clientId пользователя в параметр
+        });
+
+        ga('send', 'pageview');
+        {% if user_session_data.user_id %}
+            ga('set', 'userId', {{ user_session_data.user_id }});
+        {% endif %}
+    </script>
+{% endif %}
+
+{% if tracker_code %}
+    {{ tracker_code }}
+{% endif %}

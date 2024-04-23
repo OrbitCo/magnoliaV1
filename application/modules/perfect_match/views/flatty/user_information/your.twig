@@ -1,0 +1,14 @@
+<div class="content-page">
+    <div class="ui-title">{% helper lang.l('header_main', 'perfect_match') %}</div>
+    <div class="ui-descr">
+        {% helper lang.l('field_usr_inf_description', 'perfect_match') %}
+    </div>
+</div>
+{% for item in your %}
+    <div class="col-xs-12 content-page">
+        <div class="ui-title bb">{% helper lang.l('push_match', 'perfect_match') %}</div>
+        <div>
+            {{ item.output_name }}
+        </div>
+    </div>
+{% endfor %}

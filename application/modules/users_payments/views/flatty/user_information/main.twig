@@ -1,0 +1,15 @@
+<div class="content-page">
+    <div class="ui-title">{% helper lang.l('header_main', 'users_payments') %}</div>
+    <div>
+        {% helper lang.l('field_usr_inf_description', 'users_payments') %}
+    </div>
+    {% for link, name in pages %}
+        <div><a href="{{ link }}">{{ name }}</a></div>
+    {% else %}
+        {% if is_not_archive %}
+            <input type="checkbox" name="ui_users_payments" data-module="users_payments" value="1" class="ui_checkbox" data-action="ui_change" checked>
+        {% else %}
+            <div><i>{% helper lang.l('list_empty', 'users_payments') %}</i></div>
+        {% endif %}
+    {% endfor %}
+</div>

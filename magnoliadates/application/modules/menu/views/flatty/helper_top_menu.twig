@@ -1,0 +1,27 @@
+{% if menu %}
+    {% for menu_item in menu %} 
+        <div class="menu-alerts-item menu-item" id="menu_{{ menu_item.gid }}_alerts" data-action="event_menu" data-gid="{{ menu_item.gid }}">
+        {% if menu_item.sub %}     
+            <div id="menu-{{ menu_item.gid }}-more" class="top-menu-item-list"
+               data-toggle="dropdown" aria-haspopup="true" role="button"
+               aria-expanded="false" data-pjax="0">
+                {{ menu_item.value }}
+                <span class="caret"></span>
+                <span class="badge sum"></span>
+            </div>
+            <div class="menu-{{ menu_item.gid }}-more dropdown-menu" role="menu">
+                <div class="menu-alerts-more-triangle"></div>
+                {% for item in menu_item.sub %}
+                    <div class="menu-alerts-more-item clearfix">
+                        {% helper menu.getMenuItem(item.gid, template ~'_item') %}
+                    </div> 
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="menu-alerts-item menu-item top-menu-item-list no-notifications">
+                {% helper menu.getMenuItem(menu_item.gid, template ~'_item') %}
+            </div>
+        {% endif %} 
+        </div>
+    {% endfor %}
+{% endif %}

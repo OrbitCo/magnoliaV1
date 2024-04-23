@@ -1,0 +1,136 @@
+{% include '@app/header.twig' with {load_type : 'ui'} %}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_content">
+            <form method="post" enctype="multipart/form-data" data-parsley-validate
+                  class="form-horizontal form-label-left" name="save_form"
+                  action="{{ data.action }}">
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                      {% helper lang.l('field_is_active', 'landings') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="checkbox" id="landing_is_active" name="landing_is_active" value="1"
+                          {% if landing.is_active %}checked{% endif %} class="flat">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                      {% helper lang.l('field_default_land', 'landings') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="checkbox" id="landing_is_default" name="landing_is_default" value="1"
+                          {% if landing.is_default_land %}checked{% endif %} class="flat">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                      {% helper lang.l('field_name', 'landings') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" id="landing_name" name="landing_name" value="{{ landing.name|escape }}" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                      {% helper lang.l('field_link', 'landings') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <span style="display: inline-block;">{{ site_url }}</span>
+                        <input style="width: 50%; display: inline-block;" type="text" id="landing_link" name="landing_link" value="{{ landing.link|escape }}" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                    <input type="radio" class="flat" 
+                            value="0" id="url_land" {% if not landing.upload_file or landing.url_page %} checked {% endif %}>    
+                    {% helper lang.l('field_upload_to_url', 'landings') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" id="landing_file_to_url" value="{{ landing.url_page }}" name="landing_page_url" class="form-control" {% if landing.upload_file and not landing.url_page %} disabled {% endif %}>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                    <input type="radio" class="flat" 
+                            value="1" id="file_land" {% if landing.upload_file and not landing.url_page %} checked {% endif %}>
+                    {% helper lang.l('field_upload', 'landings') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="file" id="landing_file" name="landing_file" class="form-control" {% if not landing.upload_file or landing.url_page %} disabled {% endif %}>
+                    </div>
+                </div>
+		        {% if landing.upload_file %}
+                <div class="form-group delete-file {% if landing.url_page %} hide {% endif %}">
+                    <label class="control-label col-sm-3 col-xs-12">
+                      {% helper lang.l('field_landing_path', 'landings') %}: </label>
+                    <div class="control-label col-sm-9 col-xs-12">
+                        {{ land_index }}
+                    </div>
+                </div>    
+                <div class="form-group delete-file {% if landing.url_page %} hide {% endif %}">
+                    <label class="control-label col-sm-3 col-xs-12">
+                      {% helper lang.l('field_landing_upload_delete', 'landings') %}: </label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="checkbox" name="landing_upload_delete" class="upload-preview flat"
+                          id="landing_upload_delete" value="1" >
+                    </div>
+                </div>
+		        {% endif %}
+                <div class="form-group">
+                    <div class="col-sm-9 col-xs-12 col-sm-offset-3">
+                        {{ landings_manager_text }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9 col-xs-12 col-sm-offset-3">
+                        <input type="submit" name="btn_save" value="{% helper lang.l('btn_save', 'start', '', 'button') %}" class="btn btn-success">
+                        {% if landing.is_active and (landing.upload_file or landing.url_page) %}
+                        <a class="btn btn-primary" href="{{ site_url }}{{ landing.link }}" class="upload-preview" target="_blank">
+                          {% helper lang.l('upload_preview', 'landings') %}</a>
+                        {% endif %}
+                        <a class="btn btn-default" href="{{ site_url }}admin/landings/index/{{ landings_settings.order }}/{{ landings_settings.order_direction }}/{{ landings_settings.page }}">
+                            {% helper lang.l('btn_cancel', 'start') %}
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        loadScripts(
+            "{% helper utils.jscript('landings', 'landings.js', 'path') %}",
+            function(){
+                landings = new Landings();
+            },
+            ['landings'],
+            {async: false}
+        );
+
+        $('#file_land').click(function(){
+            $('.iradio_flat-green').removeClass('checked');
+            $('#url_land').attr('checked', false);
+            $('#landing_file').attr('disabled', false);
+            $('#landing_file_to_url').attr('disabled', true);  
+            $('#landing_file_to_url').val(null);
+            if ($('.delete-file').length > 0) {
+                $('.delete-file').removeClass('hide');
+            }
+        });
+
+        $('#url_land').click(function(){
+            $('.iradio_flat-green').removeClass('checked');
+            $('#file_land').attr('checked', false);
+            $('#landing_file').attr('disabled', true);
+            $('#landing_file_to_url').attr('disabled', false);
+            var url_dump = $('#landing_file_to_url').attr('value');
+            if (url_dump.length > 0) {
+                $('#landing_file_to_url').val(url_dump);
+            }
+             if ($('.delete-file').length > 0) {
+                $('.delete-file').addClass('hide');
+            }
+        });
+
+    });
+</script>
+
+{% include '@app/footer.twig' %}

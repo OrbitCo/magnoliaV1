@@ -1,0 +1,248 @@
+{% include '@app/header.twig' %}
+
+{% helper is_module_installed = utils.depends('geomap') %}
+<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 clearfix">
+    <div class="page-header">
+        <h1>
+            {% helper seo.seo_tags('header_text') %}
+        </h1>
+    </div>
+
+    <p class="header-comment">
+        {% helper lang.l('text_register', 'users') %}
+    </p>
+
+    <form action="{{ page_data.form_action }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="" class="col-xs-12 tali">
+                {% helper lang.l('field_user_type', 'users') %}:
+            </label>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <select name="user_type" class="form-control">
+                    {% for key, item in user_types.option %}
+                        <option value="{{ key }}" {% if key == data.user_type %}selected{% endif %}>
+                            {{ item }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        {% if editable_fields.looking_user_type %}
+        <div class="form-group">
+            <label for="" class="col-xs-12 tali">
+                {% helper lang.l('field_looking_user_type', 'users') %}:
+            </label>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <select name="looking_user_type" class="form-control">
+                    {% for key, item in user_types.option %}
+                        <option value="{{ key }}" {% if key == data.looking_user_type %}selected{% endif %}>
+                            {{ item }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        {% endif %}
+        <div class="form-group">
+            <label for="" class="col-xs-12 tali">
+                {% helper lang.l('field_email', 'users') %}:
+            </label>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <input type="email" name="email" value="{{ data.email|e }}" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-xs-12 tali">
+                {% helper lang.l('field_nickname', 'users') %}:
+            </label>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <input type="text" name="nickname" value="{{ data.nickname|e }}" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-xs-12 tali">
+                {% helper lang.l('field_password', 'users') %}:
+            </label>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <input type="password" name="password" value="{{ data.password }}"  class="form-control">
+            </div>
+        </div>
+
+        {% if use_repassword is not empty %}
+            <div class="form-group">
+                <label for="" class="col-xs-12 tali">
+                    {% helper lang.l('field_repassword', 'users') %}:
+                </label>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <input type="password" name="repassword" class="form-control">
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="form-group">
+            <label for="" class="col-xs-12 tali">
+                {% helper lang.l('birth_date', 'users') %}:
+            </label>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div id="datepicker" class="hidden"></div>
+                <input type="text" name="birth_date" value="{{ data.birth_date|e }}" maxlength="10"  class="form-control hidden">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-xs-12 tali">
+                {% helper lang.l('field_location', 'users') %}:
+            </label>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                {% helper countries.location_select({
+                    'module': 'countries',
+                    'select_type': 'city',
+                    'id_country': data.id_country ,
+                    'id_region': data.id_region,
+                    'id_city': data.id_city,
+                    'var_country_name': 'id_country',
+                    'var_region_name': 'id_region',
+                    'var_city_name': 'id_city',
+                    'auto_detect': 1
+                }) %}
+            </div>
+            <input type="hidden" name="lat" value="{{ data.lat|e }}" id="lat">
+            <input type="hidden" name="lon" value="{{ data.lon|e }}" id="lon">
+        </div>
+
+        {% helper referral_links.referral_get_code() %}
+
+        {% if is_module_installed.geomap %}
+            {% helper geomap.geomap_load_geocoder() %}
+        {% endif %}
+
+        <script>
+            $(function () {
+                loadScripts(
+                        ["{% helper utils.jscript('users', 'users-map.js', 'path') %}"],
+                        function () {
+                            users_map = new usersMap({
+                                siteUrl: site_url,
+                            });
+                        },
+                        ['users_map'],
+                        {async: true}
+                );
+            });
+        </script>
+
+        {% helper subscriptions.get_user_subscriptions_form('register') %}
+
+        <div class="form-group captcha">
+            <label for="captcha" class="col-xs-12 tali">
+                {% helper lang.l('field_captcha', 'users') %}:
+            </label>
+            <div>
+                <div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 captcha-img">
+                    {{ data.captcha_image }}
+                </div>
+                <div class="col-xs-6 col-sm-9 col-md-4 col-lg-4">
+                    <input type="text" name="captcha_confirmation" class="captcha form-control" value="" maxlength="{{ data.captcha_word_length }}" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="col-xs-12 tali">
+                <input id="confirmation" type="checkbox" value="1" name="confirmation" {% if data.confirmation %}checked{% endif %} />
+                {% helper legal_terms_link = content.get_page_link({'page_gid': 'legal-terms'}) %}
+                {% helper privacy_link = content.get_page_link({'page_gid': 'privacy-and-security'}) %}
+                {% helper lang.l('field_confirmation', 'users') %}
+
+                {% if legal_terms_link is not empty %}
+                    <a href="javascript:void(0);" data-href="{{ legal_terms_link }}" id="terms_and_conditions" data-gid="legal-terms">
+                        {% helper lang.l('terms_and_conditions', 'users') %}
+                    </a>
+                {% endif %}
+                {% if privacy_link is not empty %}
+                     {% helper lang.l('field_and_the', 'users') %}
+                    <a href="javascript:void(0);" data-href="{{ privacy_link }}" id="privacy_and_security" data-gid="privacy-and-security">
+                        {% helper lang.l('privacy_and_security', 'users') %}
+                    </a>
+                {% endif %}
+                <div class="pginfo msg confirmation"></div>
+            </label>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12 tali">
+                <input type="submit" name="btn_register" class="btn btn-primary" value="{% helper lang.l('btn_register', 'start') %}">
+            </div>
+        </div>
+    </form>
+
+    {% helper banners.show_banner_place('banner-980x90') %}
+
+    {% if is_module_installed.geomap %}
+        {% helper geomap.geomap_load_geocoder() %}
+    {% endif %}
+
+    <script>
+        var date_now = new Date();
+        var date_min = new Date(date_now.getFullYear() - {{ age_max }}, 0, 1);
+        var date_max = new Date(date_now.getFullYear() - {{ age_min }}, 0, 1);
+        var yr = (date_min.getFullYear()) + ':' + (date_max.getFullYear());
+        var user_date = '{{ data.birth_date}}';
+        if (!user_date) {
+            user_date = date_max;
+        }
+
+        $("#datepicker").datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeYear: true,
+            changeMonth: true,
+            yearRange: yr,
+            defaultDate: date_max
+        });
+        $(function () {
+          loadScripts(
+            [
+              "{% helper utils.jscript('users', 'UsersRegistration.js', 'path') %}",
+              "{% helper utils.jscript('', 'datepicker-select-template.js', 'path') %}"
+            ],
+            function () {
+              datepicker_select_template = new DatepickerSelectTemplate({
+                datepickerId: '#datepicker',
+                setDate: user_date,
+                inputName: 'birth_date',
+                defaultDayText: '{% helper lang.l('date_format_day', 'start') %}',
+                defaultMonthText: '{% helper lang.l('date_format_month', 'start') %}',
+                defaultYearText: '{% helper lang.l('date_format_year', 'start') %}',
+              });
+              users_registration = new UsersRegistration({
+                siteUrl: site_url,
+                pageBlock: 1,
+                simpleRegPage: true,
+                contentObj: new loadingContent({
+                  loadBlockWidth: '1000px',
+                  loadBlockLeftType: 'center',
+                  loadBlockTopType: 'top',
+                  loadBlockTopPoint: 100,
+                  closeBtnClass: 'ws',
+                  draggable: true
+                }),
+              });
+            },
+            ['datepicker_select_template', 'users_registration'],
+            {async: true}
+          );
+        })
+    </script>
+
+    {% helper incomplete_signup.incomplete_signup_script() %}
+    {% helper social_networking.show_social_networks_like() %}
+    {% helper social_networking.show_social_networks_share() %}
+    {% helper social_networking.show_social_networks_comments() %}
+</div>
+
+<div class="col-xs-12 col-sm-3">
+    {% helper banners.show_banner_place('banner-320x250') %}
+    {% helper banners.show_banner_place('banner-320x75') %}
+    {% helper banners.show_banner_place('banner-185x155') %}
+    {% helper banners.show_banner_place('banner-185x75') %}
+</div>
+
+{% include '@app/footer.twig' %}

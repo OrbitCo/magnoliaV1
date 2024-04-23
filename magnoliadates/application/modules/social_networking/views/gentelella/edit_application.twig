@@ -1,0 +1,123 @@
+{% include '@app/header.twig' %}
+{% helper utils.jscript('', 'easyTooltip.min.js') %}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title h4">
+            {% helper lang.l('admin_header_application_change', 'social_networking') %}
+        </div>
+        <div class="x_content">
+            <form method="post" action="{{ data.action|escape }}" name="save_form" enctype="multipart/form-data" class="form-horizontal">
+                <div class="row form-group">
+                    <label class="control-label col-md-3 col-xs-12 col-sm-3">
+                      OAuth URI: </label>
+                      <div class="col-xs-12 col-sm-1">
+                        <button class="btn btn-default well well-sm btn-block" type="button" data-action="copy" data-id="oauth_uri"><i class="fa fa-link" aria-hidden="true"></i></button>
+                      </div>
+                      <div class="col-xs-12 col-sm-8">
+                        <div class="well well-sm cursor-pointer" id="oauth_uri">{{ data.link.oauth_uri }}</div>
+                      </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-xs-12 col-sm-3">
+                      Admin OAuth URI: </label>
+                    <div class="col-xs-12 col-sm-1">
+                        <button class="btn btn-default well well-sm btn-block" type="button" data-action="copy" data-id="admin_oauth_uri"><i class="fa fa-link" aria-hidden="true"></i></button>
+                    </div>
+                    <div class="col-xs-12 col-sm-8">
+                        <div class="well well-sm cursor-pointer" id="admin_oauth_uri">{{ data.link.admin_oauth_uri }}</div>
+                    </div>
+                </div>
+              <div class="row form-group">
+                <label class="control-label col-xs-12 col-sm-3">
+                  {% helper lang.l('field_privacy_policy_url', 'social_networking') %}: </label>
+                <div class="col-xs-12 col-sm-1">
+                  <button class="btn btn-default well well-sm btn-block" type="button" data-action="copy" data-id="privacy_policy_url"><i class="fa fa-link" aria-hidden="true"></i></button>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                  <div class="well well-sm cursor-pointer" id="privacy_policy_url">{{ data.link.privacy_policy_url }}</div>
+                </div>
+              </div>
+              <div class="row form-group">
+                <label class="control-label col-xs-12 col-sm-3">
+                  {% helper lang.l('field_legal_terms_url', 'social_networking') %}: </label>
+                <div class="col-xs-12 col-sm-1">
+                  <button class="btn btn-default well well-sm btn-block" type="button" data-action="copy" data-id="legal_terms_url"><i class="fa fa-link" aria-hidden="true"></i></button>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                  <div class="well well-sm cursor-pointer" id="legal_terms_url">{{ data.link.legal_terms_url }}</div>
+                </div>
+              </div>
+              <div class="row form-group">
+                <label class="control-label col-xs-12 col-sm-3">
+                  {% helper lang.l('field_deleting_user_url', 'social_networking') %}: </label>
+                <div class="col-xs-12 col-sm-1">
+                  <button class="btn btn-default well well-sm btn-block" type="button" data-action="copy" data-id="deleting_user_url"><i class="fa fa-link" aria-hidden="true"></i></button>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                  <div class="well well-sm cursor-pointer" id="deleting_user_url">{{ data.link.deleting_user_url }}</div>
+                </div>
+              </div>
+                <div class="row form-group">
+                    <label class="control-label col-md-3 col-xs-12 col-sm-3">
+                      {% helper lang.l('field_app_key', 'social_networking') %}: </label>
+                    <div class="col-md-9 col-xs-12 col-sm-9">
+                      <input type="text" value="{{ data.app_key|escape }}" name="app_key" class="form-control">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="control-label col-md-3 col-xs-12 col-sm-3">
+                      {% helper lang.l('field_app_secret', 'social_networking') %}: </label>
+                    <div class="col-md-9 col-xs-12 col-sm-9">
+                      <input type="text" value="{{ data.app_secret|escape }}" name="app_secret" class="form-control"></div>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="row form-group">
+                    <div class="col-md-offset-3 col-md-9 col-sm-offset-3 col-sm-9">
+                        <input class="btn btn-success" type="submit" name="btn_save" value="{% helper lang.l('btn_save', 'start', '', 'button') %}">
+                        <a class="btn btn-default" href="{{ site_url }}admin/social_networking/services/">{% helper lang.l('btn_cancel', 'start') %}</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type='text/javascript'>
+    $(function(){
+        $(".tooltip").each(function(){
+            $(this).easyTooltip({
+                useElement: 'tt_'+$(this).attr('id')
+            });
+        });
+        $('[data-action="copy"]').click(function(){
+
+          const objId = $(this).data('id');
+          const element = document.getElementById(objId)
+          let range, selection;
+
+          if (document.body.createTextRange) {
+            range = document.body.createTextRange();
+            range.moveToElementText(element);
+            range.select();
+          } else if (window.getSelection) {
+            selection = window.getSelection();
+            range = document.createRange();
+            range.selectNodeContents(element);
+            selection.removeAllRanges();
+            selection.addRange(range);
+          }
+
+          try {
+            document.execCommand('copy');
+            error_object.show_error_block("{% helper lang.l('success_text_copy', 'social_networking') %}", 'success');
+          }
+          catch (err) {
+            error_object.show_error_block("!{% helper lang.l('success_text_copy', 'social_networking') %}", 'error');
+          }
+
+
+        });
+    });
+</script>
+
+{% include '@app/footer.twig' %}

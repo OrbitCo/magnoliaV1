@@ -1,0 +1,121 @@
+{% include '@app/header.twig' with {load_type : 'ui'} %}
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>{% helper lang.l('header_filters', 'start') %}</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <form method="post" enctype="multipart/form-data" data-parsley-validate
+                class="form-horizontal form-label-left">
+
+                <div class="form-group">
+                    <label class="col-md-3 col-sm-3 col-xs-12 control-label">
+                        ID:</label>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <input id="id" type="number" name="id" value="{{ id }}" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('user_type', 'users') %}:</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div id="gender" class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                <input type="radio" name="user_type" value="all"{% if user_type == 'all' %} checked{% endif %}>...
+                            </label>
+                            {% for key, item in user_types.option %}
+                            <label class="btn btn-default {% if user_type == key %} active{% endif %}" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                <input type="radio" name="user_type" value="{{ key }}"{% if user_type == key %} checked{% endif %}>{{ item }}
+                            </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 col-sm-3 col-xs-12 control-label">
+                        {% helper lang.l('field_age', 'users') %}:</label>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <input id="age_min" type="number" name="age_min" value="{{ age_min }}" class="form-control">
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-1 text-center">
+                        <label class="control-label">&nbsp;{% helper lang.l('to', 'users') %}&nbsp;</label>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <input id="age_max" type="number" name="age_max" value="{{ age_max }}" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 col-sm-3 col-xs-12 control-label">
+                        {% helper lang.l('latest_active', 'users') %}:</label>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        {% helper start.getCalendarInput('last_active_from', last_active_from, {id: 'last_active_from', noSetCurrentDate: true}) %}
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-1 text-center">
+                        <label class="control-label" for="last_active_to">&nbsp;{% helper lang.l('to', 'users') %}&nbsp;</label>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        {% helper start.getCalendarInput('last_active_to', last_active_to, {id: 'last_active_to', noSetCurrentDate: true}) %}
+                    </div>
+                </div>
+
+                <div class="ln_solid"></div>
+
+                <div class="form-group">
+                    <div class="col-md-3 col-sm-3 col-xs-12 col-sm-offset-3">
+                        <input type="submit" class="btn btn-primary" value="{% helper lang.l('header_user_find', 'users') %}" name="btn_search">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label class="control-label">Found users:&nbsp;{{ users_count }}</label>
+                    </div>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <label class="col-md-3 col-sm-3 col-xs-12 control-label">
+                        {% helper lang.l('text_pers_tag', 'mobile') %}:</label>
+                    <label id="tag" class="col-md-9 col-sm-9 col-xs-12 control-label">
+                        %username%
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 col-sm-3 col-xs-12 control-label">
+                        {% helper lang.l('message', 'mobile') %}:</label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <textarea maxlength="120" name="message" id="message"></textarea>
+                    </div>
+                </div>
+
+                <script>$('#tag').click(function(){
+                        var messageBox = document.getElementById('message');
+                        var startPosition = messageBox.selectionStart;
+                        var endPosition = messageBox.selectionEnd;
+
+                        // Check if you've selected text
+                        if(startPosition == endPosition){
+                            var text = (messageBox.value).substring(0, startPosition) + "%username%" + (messageBox.value).substring(startPosition, messageBox.value.length);
+                            messageBox.value = text;
+                        }else{
+                            var text = (messageBox.value).substring(0, startPosition) + "%username%" + (messageBox.value).substring(endPosition, messageBox.value.length);
+                            messageBox.value = text;
+                        }
+                    });
+                </script>
+
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="col-sm-9 col-xs-12 col-sm-offset-3">
+                        <input type="submit" name="btn_send" value="{% helper lang.l('btn_send', 'start', '', 'button') %}" class="btn btn-success">
+                        <a class="btn btn-default" href="{{ site_url }}admin/mobile/index">{% helper lang.l('btn_cancel', 'start') %}</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{% include '@app/footer.twig' %}

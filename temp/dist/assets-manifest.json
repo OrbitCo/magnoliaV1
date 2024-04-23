@@ -1,0 +1,29 @@
+{
+  "main": {
+    "assets": {
+      "js": [
+        "npm.jquery-ui.79ec3394cef066c40655.js",
+        "npm.fortawesome.d284712e875106153462.js",
+        "npm.bootstrap.c16f7ae20d8d1268966c.js",
+        "npm.jquery.4cde4a1a00abad7a0552.js",
+        "npm.jquery-pjax.2b2c2247330667d30510.js",
+        "607.e0855399552aa2071d44.js",
+        "main.3427616c95a28a854456.js"
+      ]
+    }
+  },
+  "modules": {
+    "assets": {
+      "js": [
+        "modules.34d29e66092cccd4e35b.js"
+      ]
+    }
+  },
+  "modules_multi_request": {
+    "assets": {
+      "js": [
+        "modules_multi_request.4516267e53d0091cf67d.js"
+      ]
+    }
+  }
+}

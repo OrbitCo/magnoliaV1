@@ -1,0 +1,227 @@
+{% set rand = random(9999) %}
+<div class="bottom-btns__item chatbox" id="chatbox_mini_btn">
+    <button type="button" class="btn btn-default btn-sm">
+            {% helper lang.l('btn_mini_chatbox', 'chatbox') %}<i data-flash="0" class="fas fa-comments"></i>
+    </button>
+</div>
+
+<div class="chatbox mini hide" id="chatbox">
+    <div class="chatbox-users col-xs-12">
+        <div class="chatbox-users__filter">
+            <i class="fas fa-times"></i>
+            <input class="form-control" type="text" placeholder="{% helper lang.l('search_placeholder', 'chatbox') %}" />
+            <span class="chatbox-users__search-icon"><i class="fas fa-search"></i></span>
+            <span class="chatbox-users__add-contact js-add-contact"><i class="fas fa-plus"></i></span>
+        </div>
+        <div class="chatbox-users__list">
+            <div class="chatbox-dialog__empty {% if contact_list|length > 1 %} hide {% endif %}">{% helper lang.l('empty_dialog', 'chatbox') %} <span class="chatbox-content__add-contant js-add-contact">{% helper lang.l('empty_dialog_add_link', 'chatbox') %}</span></div>
+            <div class="empty" {% if contact_list is not empty %}style="display:none;"{% endif %}>{% helper lang.l('empty_users', 'chatbox') %}</div>
+            <ul>
+                {% include 'users.twig' %}
+            </ul>
+        </div>
+    </div>
+    <div class="chatbox-content">
+        <div class="chatbox-content__inner">
+            <div class="chatbox-dialog" id="chb_dialog"></div>
+            <div class="chatbox-dialog__empty" >{% helper lang.l('empty_dialog', 'chatbox') %} <span class="chatbox-content__add-contant js-add-contact">{% helper lang.l('empty_dialog_add_link', 'chatbox') %}</span></div>
+        </div>
+    </div>
+    <div class="clr"></div>
+</div>
+<style type="text/css">
+    .chatbox.mini .chatbox-content {
+        min-height: unset;
+        width: 340px;
+        display: none;
+        border-left: none;
+    }
+    .bottom-btns__item.chatbox .fa-comment {
+        color: #00a11a;
+    }
+    .chatbox.mini .chatbox-dialog__h-user-name{
+        max-width: unset;
+    }
+    .chatbox.mini .chatbox-users__filter .fa-close {
+        position: absolute;
+        display: inline;
+        text-align: right;
+        top: -20px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        color: #fff;
+        padding-right: 10px;
+        line-height: 2;
+        right: 0px;
+        cursor: pointer;
+        width: 100%;
+        background: #ee2c55;
+        left: 0px;
+        float: right;
+    }
+    .chatbox.mini .chatbox-users__filter {
+        margin-top: 20px;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+        height: 55px;
+    }
+    .chatbox.mini .chatbox-users__add-contact {
+        position: absolute;
+        right: 4px;
+        top: 18px;
+        color: gray;
+        font-size: 16px;
+        border-radius: 4px;
+        padding: 2px 5px 0px 5px;
+        cursor: pointer;
+        border: 1px solid gray;
+    }
+    .g-users-gallery__item .g-pic-border img {
+
+    }
+    .lc-content-inner .content-block .search-result img {
+        max-width: 60px;
+        max-height: 60px;
+    }
+    .chatbox.mini.dialog-opened .chatbox-users {
+        display: none;
+    }
+    .chatbox.mini.dialog-opened .chatbox-content {
+        display: block;
+    }
+    .bottom-btns__item.chatbox button{
+        width: 145px;
+    }
+    .bottom-btns__item.chatbox {
+        margin: 0;
+    }
+    .chatbox.mini {
+        margin: 0;
+    }
+    .chatbox.mini .chatbox-dialog__footer-msgbox .btn.btn-primary {
+        width: 35px;
+        margin: 0px;
+        position: absolute;
+        bottom: 1px;
+        right: 5px;
+        transform: translateX(100%);
+        height: 48px;
+        padding: 0;
+        background: none;
+        border: none;
+    }
+    .chatbox.mini .chatbox-dialog__footer-msgbox .btn.btn-primary i.fa-paper-plane{
+        right: 0px;
+        left: 5px;
+        top: 7px;
+        bottom: 0;
+        padding: 0;
+    }
+</style>
+<script type="text/javascript">
+    $(function(){
+        $('#chatbox_mini_btn').click(function(){
+            $(this).hide();
+            $('#chatbox').show();
+        });
+        $('.chatbox.mini .chatbox-users__filter .fa-close').click(function(){
+            $('#chatbox_mini_btn').show();
+            $('#chatbox').hide();
+        });
+        let timerId = setInterval(function(){
+           if ($('.chatbox-users__user').length > 1) {
+            $('.chatbox-users__list .chatbox-dialog__empty').addClass('hide');
+           }
+            if ($('.chatbox-users__user').length == 1) {
+            $('.chatbox-users__list .chatbox-dialog__empty').removeClass('hide');
+           }
+        }, 100);
+    });
+    loadScripts(
+        [
+           /* "{% helper utils.jscript('', 'jquery-slimscroll.js', 'path') %}",*/
+            {#"{% helper utils.jscript('', 'emoji-picker/js/config.js', 'path') %}",#}
+            {#"{% helper utils.jscript('', 'emoji-picker/js/util.js', 'path') %}",#}
+            {#"{% helper utils.jscript('', 'emoji-picker/js/jquery.emojiarea.js', 'path') %}",#}
+            {#"{% helper utils.jscript('', 'emoji-picker/js/emoji-picker.js', 'path') %}",#}
+            "{% helper utils.jscript('chatbox', 'chatbox.js', 'path') %}",
+        ],
+        function() {
+          console.log(typeof new EmojiPicker());
+            window.chatbox = new Chatbox({
+                siteUrl: site_url,
+                l_time: '{{ l_time }}',
+                contactId: '{{ contact_id }}',
+                user_id: '{{ user_id }}',
+                mini: true,
+                image_lng: "{% helper lang.l('text_image', 'chatbox') %}",
+                btnOk: "{% helper lang.l('btn_ok', 'start') %}",
+                btnCancel: "{% helper lang.l('btn_cancel', 'start') %}",
+                langs: {
+                    text_your: "{% helper lang.l('text_your', 'chatbox') %}",
+                    notice_clear_history: "{% helper lang.l('notice_clear_history', 'chatbox') %}",
+                    notice_delete_message: "{% helper lang.l('notice_delete_message', 'chatbox') %}",
+                },
+                emojiPicker: new EmojiPicker({
+                    emojiable_selector: '[data-emojiable=true]',
+                    assetsPath : '{{ site_root }}application/js/emoji-picker/img',
+                    popupButtonClasses: 'fas fa-laugh-wink left',
+                    attachButtonClasses: 'fas fa-paperclip right',
+                    hasFocus: true,
+                    onClickAttachBtn: function() {
+                        $('#chb_attaches').stop().slideToggle(300, function() {
+                            if ($(this).is(':visible')) {
+                                $(this).css('display', 'inline-block');
+                                $(this).find('.upload-btn input').click();
+                            }
+                        });
+                    },
+                    emoji_menu_class : 'left',
+                    iconSize   : 20,
+                    norealTime : false,
+                    slimScroll : {
+                        on            : true,
+                        height        : '190px',
+                        railVisible   : true,
+                        alwaysVisible : true,
+                        size          : '5px'
+                    },
+                    hideAfterSelect   : false
+                })
+            });
+
+            let timerId_btn = setInterval(function(){
+                $('.chatbox-start-dialog-btn').off('click').click(function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (typeof window.chatbox != 'undefined') {
+                        if (!$('.chatbox.mini').is(':visible')) {
+                            $('#chatbox_mini_btn').click();
+                        }
+                        window.chatbox.startDialog($(this).data('user-id'), true);
+                    }
+                    return false;
+                });
+             }, 100);
+
+             $('.chatbox.mini').on('mousewheel DOMMouseScroll', function(e) {
+                var scrollTo = null;
+
+                if (e.type == 'mousewheel') {
+                    scrollTo = (e.originalEvent.wheelDelta * -1);
+                }
+                else if (e.type == 'DOMMouseScroll') {
+                    scrollTo = 40 * e.originalEvent.detail;
+                }
+
+                if (scrollTo) {
+                    e.preventDefault();
+                    $(this).scrollTop(scrollTo + $(this).scrollTop());
+                }
+            });
+        },
+        [],
+        {async: true}
+    );
+</script>

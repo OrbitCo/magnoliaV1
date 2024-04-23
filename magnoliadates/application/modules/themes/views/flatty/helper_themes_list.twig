@@ -1,0 +1,16 @@
+<div class="theme-image-block">
+{% for theme in themes_list %}
+    {% if theme.set_gid != 'honey' %}
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <img class="img-responsive img-rounded fist-opening__theme-img" src="{{ site_root }}application/views/flatty/img/demo/{{ theme.set_gid }}.png" data-action="sel-design" data-colorset="{{ theme.set_gid }}" data-set_id="{{ theme.id }}" data-theme_id="{{ theme_id }}">
+        </div>
+    {% endif %}
+{% endfor %}
+</div>
+<div class="clearfix"></div>
+<div class="fist-opening__btn">
+    <button class="btn btn-primary set-design" data-action="set-design">{% helper lang.l('field_fo_btn_apply', 'start') %}</button>
+    <a class="fist-opening__edit-theme" data-action="edit-colourset">
+        {% helper lang.l('field_fo_link_edit_color', 'start') %}
+    </a>
+</div>

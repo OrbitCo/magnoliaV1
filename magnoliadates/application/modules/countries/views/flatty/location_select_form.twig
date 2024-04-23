@@ -1,0 +1,72 @@
+<style>
+    #location_select_items .location-item {
+        cursor: pointer;
+        padding: 2px;
+    }
+    #location_select_items .location-item:hover {
+        background: #f5f5f5;
+    }
+    #location_select_items .location-item.active {
+        font-weight: bold;
+        background: #f5f5f5;
+    }
+</style>
+
+<div class="load_content_controller">
+    <div class="controller-actions">
+        <div id="city_page" class="fright"></div>
+        <div class="select-back">
+            {% if type == 'region' %}
+                <a href="javascript:;" id="country_select_back">
+                    <span><i class="fas fa-long-arrow-alt-left fa-lg edge"></i> {% helper lang.l('link_select_another_country', 'countries') %}</span>
+                </a>
+            {% elseif type == 'city' %}
+                <a href="javascript:;" id="region_select_back">
+                    <span><i class="fas fa-long-arrow-alt-left fa-lg edge"></i> {% helper lang.l('link_select_another_region', 'countries') %}</span>
+                </a>
+            {% endif %}
+        </div>
+    </div>    
+    <h1>
+        {% if type == 'region' %}
+            {{ data.country.name }}
+        {% elseif type == 'city' %}
+            {{ data.country.name }}, {{ data.region.name }}
+        {% endif %}
+    </h1>
+    <h3>
+        {% if type == 'country' %}
+            {% helper lang.l('header_country_select', 'countries') %}:
+        {% elseif type == 'region' %}
+            {% helper lang.l('header_region_select', 'countries') %}:
+        {% elseif type == 'city' %}
+            {% helper lang.l('header_city_select', 'countries') %}:
+        {% endif %}        
+    </h3>
+    <div class="inside">
+        {% if data.items %}
+        <ul class="controller-items" id="location_select_items">
+            {% for item in data.items %}
+                <li class="location-item" gid="{{ item.id }}" code="{{ item.code }}" lat="{{ item.latitude }}" lon="{{ item.longitude }}">{{ item.name }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            {% if type == 'city' %}
+            <div class="center">{% helper lang.l('no_cities', 'countries') %}</div>    
+            {% elseif type == 'region' %}
+            <div class="center">{% helper lang.l('no_regions', 'countries') %}</div>  
+            {% endif %}        
+        {% endif %}
+        <buttom class="btn btn-primary form-control mt20 {% if data.items %} hide {% endif %}" data-action="save-location">{% helper lang.l('btn_ok', 'start') %}</button>
+    </div>
+    {% if is_search == 1 and type != 'city' %}
+        <div class="mt20">
+            <button class="btn btn-primary" data-action="set-location">{% helper lang.l('link_select', 'countries') %}</button>
+            {% if type == 'country' %}
+                <buttom class="btn btn-primary hide"  data-action="next-region">{% helper lang.l('link_add_region', 'countries') %}</button>
+            {% else %}
+                <buttom class="btn btn-primary hide"  data-action="next-city">{% helper lang.l('link_add_city', 'countries') %}</button>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>

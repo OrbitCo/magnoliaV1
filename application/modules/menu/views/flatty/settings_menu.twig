@@ -1,0 +1,5 @@
+{% for item in menu %}
+    <div class="menu-more-item clearfix">
+        <a gid="{{ item.gid }}" onclick="{% helper start.setAnalytics('right_top_menu', item.gid) %}" href="{{ item.link }}">{{ item.value }}</a>
+    </div>
+{% endfor %}

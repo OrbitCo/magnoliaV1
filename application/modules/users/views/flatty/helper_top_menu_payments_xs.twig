@@ -1,0 +1,12 @@
+{% if auth_type == 'user' %}
+    <menu id="users-alerts-menu" class="menu-alerts xs-menu-payments">     
+        <div class="menu-account-item  menu-item-icon menu-item" id="menu_users_alerts" title="{% helper lang.l('field_alert_menu_service', 'menu') %}">
+            <div class="header-settings_menu mb10">
+               {% helper users.onUserAccount({'output_type': 'xs'}) %}
+            </div>
+            <div class="actions-settings_menu center">
+                {% helper users.actionsSettings({'template': 'helper_actions_settings_xs'}) %}
+            </div>
+        </div>    
+    </menu>
+{% endif %}            

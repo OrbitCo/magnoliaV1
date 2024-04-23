@@ -1,0 +1,14 @@
+<div class="content-page">
+    <div class="ui-title">{% helper lang.l('header_main', 'media') %}</div>
+    <div class="ui-descr">
+        {% helper lang.l('field_usr_inf_description', 'media') %}
+    </div>
+</div>
+{% for item in audio %}
+    <div class="col-xs-12 content-page">
+        <div class="ui-title bb">{{ user.output_name }} {% helper lang.l('uploads_new_audios', 'media') %}</div>
+        <div>
+            <a href="audio/{{ item.mediafile }}">{{ item.fname }}</a>
+        </div>
+    </div>
+{% endfor %}

@@ -1,0 +1,48 @@
+{% helper is_module_installed = utils.depends('banners',
+                                              'access_permissions',
+                                              'users_payments',
+                                              'payments',
+                                              'send_money',
+                                              'send_vip') %}
+<div class="services-list-block__tabs">
+    <ul class="b-tabs">
+        <li id="all_services_tab" class="b-tabs__item" onclick="changeServicesTab('all_services');"><span class="b-tabs__text">{% helper lang.l('header_services', 'users') %}</span></li>
+        {% if is_module_installed.banners %}
+            <li id="banners_tab" class="b-tabs__item" onclick="changeServicesTab('banners');"><span class="b-tabs__text">{% helper lang.l('header_my_banners', 'banners') %}</span></li>
+        {% endif %}
+        {% if is_module_installed.send_money or is_module_installed.send_vip %}
+            {#<li id="donate_tab" class="b-tabs__item" onclick="changeServicesTab('donate');"><span class="b-tabs__text">{% helper start.donate(action) %}</span></li>#}
+            <li id="donate_tab" class="b-tabs__item" onclick="changeServicesTab('donate');"><span class="b-tabs__text">{% helper lang.l('donate', 'start') %}</span></li>
+        {% endif %}
+    </ul>
+</div>
+<script>
+    $( document ).ready(function() {
+        var action = '{{ action }}';
+        if (action == 'services') {
+            action = 'all_services';
+        }
+        changeServicesTab(action);
+    });
+
+    function changeServicesTab(tab) {
+        $('.b-tabs__item').removeClass('active');
+        $('.b-tabs__block').hide();
+        $('#' + tab + '_tab').addClass('active');
+        $('#' + tab).show();
+    }
+
+    $('.expander').on('click', function () {
+        var target = $(this).parents('.expandable').find('.toggle');
+        var icon = $(this).find('.icon');
+        if (target.is(':hidden')) {
+            icon.removeClass('down');
+            icon.addClass('up');
+            target.slideDown();
+        } else {
+            icon.removeClass('up');
+            icon.addClass('down');
+            target.slideUp();
+        }
+    });
+</script>

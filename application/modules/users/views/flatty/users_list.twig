@@ -1,0 +1,142 @@
+{% include '@app/header.twig' %}
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '6897243193627173');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=6897243193627173&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<div class="search-header clearfix">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1 class="title">
+            {% if search_text %}
+                {% helper lang.l('search_results', 'users') %}:
+                '{{ search_text }}'
+            {% else %}
+                {% helper seo.seo_tags('header_text') %}
+            {% endif %}
+        </h1>
+        <div class="view-search-menu btn-group">
+            <a href="javascript:void(0);" class="btn btn-default  {% if page_data.view_type == 'list' %}active{% endif %}" onclick="changeViewType('list');" title="{% helper lang.l('btn_list_view', 'users', '', 'button') %}">
+                <i class="fa fa-bars"></i>&nbsp;{% helper lang.l('btn_list_view', 'users') %}
+            </a>
+            <a href="javascript:void(0);" class="btn btn-default  {% if page_data.view_type == 'gallery' %}active{% endif %}" onclick="changeViewType('gallery');" title="{% helper lang.l('btn_gallery_view', 'users') %}">
+                <i class="fa fa-th-large"></i>&nbsp;{% helper lang.l('btn_gallery_view', 'users') %}
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="content-block">
+    <div class="user-search">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="search-param-button mb10"><a>{% helper lang.l('search_params_button', 'users') %}</a></div>
+            <div class="search-form">
+              {% helper utils.startSearchForm({'type': 'advanced', 'show_data': '1', 'object': 'user', 'params_data': {'view': 'horizontal', 'hide_popup': 1, 'is_full_page': is_full_page }}) %}
+            </div>
+
+            <div class="users-sort {% if page_data.total_rows == 0 %} hide{% endif %}">
+                <span data-action="sort-by"  data-sort="date_created" class="active">{% helper lang.l('field_newest', 'users') %}</span>
+                <span data-action="sort-by" data-sort="date_last_activity">{% helper lang.l('field_latest_active', 'users') %}</span>
+            </div>
+
+            <div class="search-result">
+                {% if hl_data.service_highlight.status %}
+                    <div id="hl_service_container">
+                        <button class="btn btn-algnleft" onclick="highlight_in_search_available_view.check_available();">
+                            <img src="{{ site_root }}{{ img_folder}}icons/ic-light-bulb.svg" height="24px" alt=""><span>{{ hl_data.service_highlight.description }}</span>
+                        </button>
+                    </div>
+                    <script>
+                        $(function () {
+                            loadScripts(
+                                "{% helper utils.jscript('', 'available_view.js', 'path') %}",
+                                function () {
+                                    highlight_in_search_available_view = new available_view({
+                                        siteUrl: site_url,
+                                        checkAvailableAjaxUrl: 'users/ajax_available_highlight_in_search/',
+                                        buyAbilityAjaxUrl: 'users/ajax_activate_highlight_in_search/',
+                                        buyAbilityFormId: 'ability_form',
+                                        buyAbilitySubmitId: 'ability_form_submit',
+                                        formType: 'list',
+                                        success_request: function (message) {
+                                            error_object.show_error_block(message, 'success');
+                                            $('#hl_service_container').remove();
+                                        },
+                                        fail_request: function (message) {
+                                            error_object.show_error_block(message, 'error');
+                                        },
+                                    });
+                                },
+                                ['highlight_in_search_available_view'],
+                                {async: false}
+                            );
+                        });
+                    </script>
+                {% endif %}
+                <div id="main_users_results">{{ block }}</div>
+                <div class="scrolltop fixed" data-id="pjaxcontainer" data-action="scroll-to-top">
+                    <button class="btn btn-primary btn-large btn-block" title="{% helper lang.l('button_back_to_top', 'menu') %}">
+                        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+
+            <script>
+                $(function () {
+                    loadScripts(
+                            ["{% helper utils.jscript('users', 'users-list.js', 'path') %}"],
+                            function () {
+                                users_list = new usersList({
+                                    siteUrl: "{{ site_url }}",
+                                    viewUrl: "{% helper seo.seolink('users', '') %}",
+                                    viewAjaxUrl: "{{ site_url }}users/ajax_search/",
+                                    listBlockId: 'main_users_results',
+                                    tIds: ['pages_block_1', 'pages_block_2', 'sorter_block'],
+                                    formCallback : function () {
+                                        if (typeof users_search === 'object' && typeof users_search.reset === 'function') {
+                                            users_search.reset();
+                                            $(users_search.properties.dataAction.sortBy).removeClass('active');
+                                            $('[data-sort="date_created"]').addClass('active');
+                                        }
+                                    }
+                                });
+                            },
+                            ['users_list']
+                            );
+                });
+
+                function changeViewType(type) {
+                    var url = "{% helper seo.seolink('users', 'set_view_mode') %}/" + type;
+
+                    $.ajax({
+                        url: url,
+                        type: 'GET',
+                        cache: false,
+                        success: function (data) {
+                            locationHref('{% helper seo.seolink('users', 'search') %}');
+                        }
+                    });
+                }
+
+                $('.search-param-button').click(function () {
+                    $('.user-search .search-form').toggle();
+                });
+            </script>
+        </div>
+    </div>
+</div>
+{% include '@app/footer.twig' %}

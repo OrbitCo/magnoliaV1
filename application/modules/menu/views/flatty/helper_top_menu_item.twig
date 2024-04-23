@@ -1,0 +1,22 @@
+{% if item %}
+    <a id="activities_{{ item.gid }}" href="{{ item.link }}" onclick="{% helper start.setAnalytics('left_menu_user', item.gid) %}">
+        <span>        
+            {{ item.value }}
+        </span>
+        {% if item.indicator %}
+            <span class="badge summand {{ item.gid }}_count"></span>
+        {% endif %}
+    
+        {% if item.gid == 'friendlist_item' %}
+            {% helper friendlist.friend_requests({template: 'left'}) %}
+        {% elseif item.gid == 'visits_item' %}
+            {% helper users.visitors({template: 'left'}) %}
+        {% elseif item.gid == 'kisses_item' %}
+            {% helper kisses.new_kisses({template: 'left'}) %}
+        {% elseif item.gid == 'winks_item' %}
+            {% helper winks.winks_count({template: 'left'}) %}
+        {% elseif item.gid == 'questions_item' %}
+            {% helper questions.new_questions({ template: 'left' }) %}
+        {% endif %}
+    </a>
+{% endif %}

@@ -1,0 +1,19 @@
+<?php
+
+declare(strict_types=1);
+
+use $useClassName;
+
+/**
+ * Class $className
+ *
+ * @copyright   Copyright (c)
+ * @author  Pilot Group Ltd <http://www.pilotgroup.net/>
+ */
+final class $className extends $baseClassName
+{
+    public function change(): void
+    {
+        //
+    }
+}

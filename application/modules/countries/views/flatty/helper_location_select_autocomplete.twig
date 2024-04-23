@@ -1,0 +1,167 @@
+{% if country_helper_data.is_button %}
+    <div class="input-autocomplete input-autocomplete-{{ country_helper_data.rand }}" id="countries-input-block-{{ country_helper_data.rand }}">
+        <div class="input-group countries-input__input-group">
+            <input class="form-control" name="region_name" type="text" id="country_text_{{ country_helper_data.rand }}"
+                   value="{{ country_helper_data.location_text }}"
+                   autocomplete="off" placeholder="{% helper lang.l('field_autocomplete_placeholder', 'countries') %}">
+            <span class="input-group-btn">
+                <button class="btn btn-default" data-fieldaction="click" type="button">{% helper lang.l('btn_save', 'start', '', 'js') %}</button>
+            </span>
+        </div>
+    </div>
+{% else %}
+    <div class="input-autocomplete input-autocomplete-{{ country_helper_data.rand }}" id="countries-input-block-{{ country_helper_data.rand }}">
+    <div class="input-group countries-input__input-group">
+        <input class="form-control" name="region_name" type="text" id="country_text_{{ country_helper_data.rand }}"
+               value="{{ country_helper_data.location_text }}"
+               autocomplete="off" placeholder="{% helper lang.l('field_autocomplete_placeholder', 'countries') %}">
+        <span class="input-group-addon btn btn-default">
+            <i class="fas fa-globe"></i>
+        </span>
+    </div>
+</div>
+{% endif %}
+<span id="country_msg_{{ country_helper_data.rand }}" class="hide pginfo msg region_name">
+    {% helper lang.l('text_select_from_list', 'countries') %}
+</span>
+{% if country_helper_data.is_radius == 1 %}
+    <div class="radius-block {% if country_helper_data.city.longitude == '' and country_helper_data.city.latitude == '' %} hide{% endif %}">
+        <div class="f-title">
+            {% filter upper %}{% helper lang.l('field_search_by_radius', 'countries') %}{% endfilter %}
+        </div>
+        <div class="f-block">
+            <label>1{{ country_helper_data.radius_unit }}</label> &nbsp;
+            <span id="circle_radius_span_bottom" class="circle_radius_span"></span>
+            <div id="circle_radius_slider_bottom"></div>
+        </div>
+    </div>
+    <input name="{{ country_helper_data.var_radius_name }}" type="hidden"  id="radius_hidden_{{ country_helper_data.rand }}"  value="{{ country_helper_data.radius }}">
+{% endif %}
+<input name="{{ country_helper_data.var_country_name }}" type="hidden"
+       id="country_hidden_{{ country_helper_data.rand }}"
+       value="{{ country_helper_data.country.code }}">
+<input name="{{ country_helper_data.var_region_name }}" type="hidden"
+       id="region_hidden_{{ country_helper_data.rand }}"
+       value="{{ country_helper_data.region.id }}">
+<input name="{{ country_helper_data.var_city_name }}" type="hidden"
+       id="city_hidden_{{ country_helper_data.rand }}"
+       value="{{ country_helper_data.city.id }}">
+<input name="{{ country_helper_data.var_lat_name }}" type="hidden"
+       id="lat_hidden_{{ country_helper_data.rand }}"
+       value="{{ country_helper_data.city.latitude }}">
+<input name="{{ country_helper_data.var_lon_name }}" type="hidden"
+       id="lon_hidden_{{ country_helper_data.rand }}"
+       value="{{ country_helper_data.city.longitude }}">
+<script>
+    $(function () {
+        loadScripts(
+                [
+                    "{% helper utils.jscript('', 'jquery-slimscroll.js', 'path') %}",
+                    "{% helper utils.jscript('countries', 'location-autocomplete.js', 'path') %}"
+                ],
+                function () {
+                     autoloc_obj = new locationAutocomplete({
+                        siteUrl: '{{ site_url }}',
+                        rand: '{{ country_helper_data.rand }}',
+                        id_country: '{{ country_helper_data.country.code }}',
+                        id_region: '{{ country_helper_data.region.id }}',
+                        id_city: '{{ country_helper_data.city.id }}',
+                        lat: '{{ country_helper_data.city.latitude }}',
+                        lon: '{{ country_helper_data.city.longitude }}',
+                        searchIcon: 'fa-search',
+                        closeIcon: 'fa-times',
+                        id_bg: '{{ country_helper_data.id_bg }}',
+                        isChangeLocation: '{{ country_helper_data.is_change_location }}',
+                        getChangeLocationForm: 'users/getChangeLocationForm',
+                        isRadius: {{ country_helper_data.is_radius }},
+                        isAdmin: false,
+                        isSearch: {{ country_helper_data.is_search }},
+                    });
+
+    {% if country_helper_data.auto_detect and not country_helper_data.country.code %}
+                        if ($('#country_text_{{ country_helper_data.rand }}').is(':visible')) {
+                            if (navigator.geolocation) {
+                                navigator.geolocation.getCurrentPosition(function (position) {
+
+                                    var latitude = position.coords.latitude;
+                                    var longitude = position.coords.longitude;
+
+                                    if (typeof (Storage) !== "undefined") {
+                                        var userLocation = latitude + ";" + longitude;
+                                        if (localStorage.getItem("userLocation") != userLocation) {
+                                            localStorage.setItem("userLocation", userLocation);
+                                        }
+                                    }
+
+                                    autoloc_obj.identifyLocation();
+
+                                }, function (error) {
+                                    var geo_error;
+                                    switch (error.code) {
+                                        case error.PERMISSION_DENIED:
+                                            geo_error = "User denied the request for Geolocation."
+                                            break;
+                                        case error.POSITION_UNAVAILABLE:
+                                            geo_error = "Location information is unavailable."
+                                            break;
+                                        case error.TIMEOUT:
+                                            geo_error = "The request to get user location timed out."
+                                            break;
+                                        case error.UNKNOWN_ERROR:
+                                            geo_error = "An unknown error occurred."
+                                            break;
+                                    }
+                                });
+                            }
+                        }
+    {% endif %}
+                    },
+                    'region_{{ country_helper_data.rand }}'
+                    );
+              let radius = 0;
+              let radius_unit = '';
+              let max_radius = 0;
+            {% if country_helper_data.is_radius == 1 %}
+                   radius = 100;
+                    max_radius = 100;
+                   radius_unit = 'km';
+
+            {% if country_helper_data.radius %}
+                    radius = {{ country_helper_data.radius }}
+                    max_radius = {{ country_helper_data.max_radius }}
+                    radius_unit = "{{ country_helper_data.radius_unit }}"
+                    radius = (radius <= max_radius) ? radius : max_radius;
+            {% endif %}
+                let setRadius = (r) => {
+                    let setRadius = (r / 1000);
+                    let radius_width = $('#circle_radius_slider_bottom').width()-50;
+                    let left = $("#circle_radius_slider_bottom>a").css('left');
+                    left = (parseInt(left)<20) ? '10px' : (parseInt(left)>parseInt(radius_width)) ? radius_width : left;
+                    $("#circle_radius_span_bottom").css('padding-left', left).html(function(){
+                        return (setRadius === 0) ? '1 '+ radius_unit :  setRadius +" "+ radius_unit;
+                    });
+                    $("#circle_radius_slider").slider("option", "value", r);
+                    $('#radius_hidden_{{ country_helper_data.rand }}').val(r);
+
+                }
+
+                $("#circle_radius_slider_bottom").slider({
+                    range: 'min',
+                    value: radius,
+                    step: 100,
+                    min: 1000,
+                    max: max_radius,
+                    create: function(event, ui) {
+                        setRadius(radius);
+                    },
+                    slide: function( event, ui ) {
+                        setRadius(ui.value);
+                    },
+                    change: function(event, ui) {
+
+                    }
+                });
+
+            {% endif %}
+        });
+</script>

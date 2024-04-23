@@ -1,0 +1,72 @@
+<div class="content-block">
+    {% if user_account %}<p>{% helper lang.l('user_pay_account_amount', 'virtual_gifts') %}: {% helper start.currency_format_output({'value': user_account}) %}</p>{% endif %}
+    <div class="b-member-plan">
+        <div class="b-member-plan__title">{% helper lang.l('user_pay_for_gift', 'virtual_gifts') %}</div>
+        <ul class="b-member-plan__offers">
+            <li><img src="{{ gift_data.mediafile.thumbs.big }}"></li>
+        </ul>
+        <div class="b-member-plan__price">
+            {% helper start.currency_format_output({'value': gift_data.price}) %}
+        </div>
+    </div>
+    <form method="post" action="{{ site_url }}virtual_gifts/ajax_send_gift/{{ user_id }}/{{ gift_data.id }}">
+        <input id="comment-input" name="comment"
+               type="hidden" maxlength="130" value="{{ comment }}">
+        <input type="hidden" id="private-input" name="is_private" value="{{ is_private }}">
+
+        {% if pay_from_account is sameas(true) and is_payments_installed %}
+            <button type="submit" class="mtb10 btn btn-primary" name="btn_account"
+                value="{% helper lang.l('user_pay_from_account', 'virtual_gifts') %}"
+                onclick="sendAnalytics('send_virtual_gift', 'communication', 'user');">
+                {% helper lang.l('user_pay_from_account', 'virtual_gifts') %}
+            </button>
+        {% endif %}
+
+        {% if billing_systems is not empty %}
+            <h3>{% helper lang.l('user_pay_payment_system', 'virtual_gifts') %}</h3>
+            <input type="hidden" id="system_gid" name="system_gid" value="">
+            {% for item  in billing_systems %}
+                <input type="submit" name="btn_system" value="{{ item.name }}"
+                       onclick="$('#system_gid').val('{{ item.gid }}');sendAnalytics('send_virtual_gift', 'communication', 'user');" class="btn send-payment-btn">
+            {% endfor %}
+        {% endif %}
+        <p>{{ billing_system }}</p>
+    </form>
+</div>
+<div class="clr"></div>
+<script>
+    var maxLength = $('#comment-input').attr('maxlength');
+    $('#comment-input').keyup(function() {
+        var curLength = $('#comment-input').val().length;
+        $(this).val($(this).val().substr(0, maxLength));
+        var remaining = maxLength - curLength;
+        if (remaining < 0) remaining = 0;
+        $('#symbols').html(remaining);
+    });
+    /*$('.send-payment-btn').on('click', function() {
+        var btn_val = $(this).attr('name');
+        var comment = $('#comment-input').val();
+        var is_private = $('#private-input').val();
+        if (btn_val == 'btn_system') {
+            var system_gid = $(this).val();
+        } else {
+            var system_gid = 0;
+        }
+        var send_data = {
+            'comment': comment,
+            'is_private': is_private,
+            'system_gid': system_gid
+        };
+        send_data[btn_val] = '1';
+        $.ajax({
+            url: site_url + "virtual_gifts/ajax_send_gift/" + "{{ user_id }}/{{ gift_data.id }}",
+            method: "POST",
+            data: send_data,
+            success: function(data) {
+                if (data == 'ok') {
+                    window.location.replace(site_url + 'users/view/{{ user_id }}/wall');
+                }
+            }
+        });
+    });*/
+</script>

@@ -1,0 +1,50 @@
+<div class="content-page">
+    <div class="ui-title">{% helper lang.l('header_main', 'chatbox') %}</div>
+    <div class="ui-descr">
+        {% helper lang.l('field_usr_inf_description', 'chatbox') %}
+    </div>
+</div>
+<div class="col-xs-12 content-page">
+    <div class="ui-title">
+        {% set owner %}
+            {% if user.id == msgs.contact.id %}
+                ♡ {% helper lang.l('site_notification', 'chatbox') %}
+            {% else %}
+                {{ msgs.contact.output_name }}
+            {% endif %}
+        {% endset %} 
+        {{ owner }}   
+    </div>
+</div>
+{% for item in msgs.msg %}
+    {% if (user.id == msgs.contact.id and item.dir == 'o') or user.id != msgs.contact.id %}
+    <div class="col-xs-12 content-page">
+        <div class="ui-title bb" {% if item.dir == 'o' %} style="text-align: right;" {% endif %} >
+            {% if item.dir == 'o' %}
+                {{ owner }}
+            {% else %}
+                {{ msgs.contact.output_name }}
+            {% endif %}
+        </div>
+        <div style="word-wrap: break-word; {% if item.dir == 'o' %} text-align: right; {% endif %}">{{ item.message }}</div>
+        {% if item.attaches_count %}
+        <div {% if item.dir == 'o' %} style="text-align: right;" {% endif %}>
+        {% for key,attach in item.attaches %}
+            {% if attach.mime == "image/gif" %}
+                <img class="chatbox-messages__message-image pointer" src="{{ attach.format.file_url }}" gallery-src="{{ attach.format.file_url }}" style="max-width: 200px;"/>  
+            {% else %} 
+                <img class="chatbox-messages__message-image pointer" src="{{ attach.format.thumbs.middle }}" gallery-src="{{ attach.format.thumbs.grand }}" />
+            {% endif %}
+        {% endfor %}
+        </div>
+        {% endif %}
+        <div style="margin-top: 25px; {% if item.dir == 'o' %} text-align: right; {% endif %}">{{ item.date_added }}</div>
+    </div>
+    {% endif %}             
+{% else %}
+    <div class="col-xs-12 content-page">
+        <div>
+            {% helper lang.l('list_empty', 'chatbox') %}
+        </div>
+    </div>
+{% endfor %}

@@ -1,0 +1,10 @@
+<div class="magazine-profile__likemepanel likemecontrols">
+    <a href='{% if flipping_navigation.prev is empty %}javascript:;{% else %}{{ flipping_navigation.prev }}{% endif %}' 
+       class="profile_navigation likemecontrols__item {% if flipping_navigation.prev is empty %}inactive{% endif %}">
+        <span class="fa fa-chevron-left"></span>&nbsp;{% helper lang.l('magazine_navigation_prev', 'users') %}
+    </a>
+    <a href='{% if flipping_navigation.next is empty %}javascript:;{% else %}{{ flipping_navigation.next }}{% endif %}' 
+       class="profile_navigation likemecontrols__item {% if flipping_navigation.next is empty %}inactive{% endif %}">
+        {% helper lang.l('magazine_navigation_next', 'users') %}&nbsp;<span class="fa fa-chevron-right"></span>  
+    </a>                    
+</div>

@@ -1,0 +1,202 @@
+{% include '@app/header.twig' %}
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                {% helper menu.get_admin_level1_menu('admin_landings_menu') %}
+            </ul>
+        </div>
+        <div class="x_content">
+            <div id="actions" class="hide">
+              <div class="btn-group">
+                <a href="{{ site_url }}admin/landings/edit" class="btn btn-primary">
+                    {% helper lang.l('link_add_landing', 'landings') %}
+                </a>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="{{ site_url }}admin/landings/edit">
+                      {% helper lang.l('link_add_landing', 'landings') %}
+                    </a>
+                  </li>
+                  <li>
+                    <a id="landings_link_delete" href="javascript:void(0)">
+                      {% helper lang.l('link_del_landings', 'landings') %}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <table id="users" class="table table-striped responsive-utilities jambo_table">
+                <thead>
+                    <tr class="headings">
+                        <th class="column-group">
+                            <input type="checkbox" id="check-all" class="flat">
+                        </th>
+                        <th class="column-title">
+                            {% helper lang.l('field_name', 'landings') %}
+                        </th>
+                        <th class="column-title">
+                            {% helper lang.l('field_link', 'landings') %}
+                        </th>
+                        <th class="column-title">
+                            {% helper lang.l('field_date_created', 'landings') %}
+                        </th>
+                        <th class="column-title">
+                            {% helper lang.l('text_status', 'start') %}
+                        </th>
+                        <th class="column-title text-center">
+                            {% helper lang.l('field_default_land', 'landings') %}
+                        </th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in landings %}
+                    <tr>
+                        <td class="text-center">
+                          <input type="checkbox" class="flat grouping" value="{{ item.id }}" class="flat">
+                        </td>
+                  			<td>{{ item.name }}</td>
+                  			<td>{{ site_url }}{{ item.link }}</td>
+                  			<td>{% helper date_format.tpl_date_format(item.date_created, date_format_st.date_literal) %}</td>
+                        <td>
+                            {% if item.is_active %}
+                            {% helper lang.l('btn_tableicon_is_active','start') %}
+                            {% else %}
+                            {% helper lang.l('btn_tableicon_is_not_active','start') %}
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            {% if item.is_default_land %}
+                            {% helper lang.l('btn_tableicon_yes','start') %}
+                            {% else %}
+                            {% helper lang.l('btn_tableicon_no','start') %}
+                            {% endif %}
+                        </td>    
+                  		<td class="icons">
+                          <div class="btn-group">
+                            {% if item.is_active %}
+                                <button type="button" class="btn btn-primary"
+                                        title="{% helper lang.l('link_deactivate_landing','landings') %}"
+                                        onclick="document.location.href='{{ site_url }}admin/landings/activate/{{ item.id }}/0'">
+                                    {% helper lang.l('make_inactive','start') %}
+                                </button>
+                            {% else %}
+                                <button type="button" class="btn btn-primary"
+                                        title="{% helper lang.l('link_activate_landing','landings') %}"
+                                        onclick="document.location.href='{{ site_url }}admin/landings/activate/{{ item.id }}/1'">
+                                    {% helper lang.l('make_active','start') %}
+                                </button>
+                            {% endif %}
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                  {% if item.is_active %}
+                                    <li>
+                                      <a href="{{ site_url }}admin/landings/activate/{{ item.id }}/0">
+                                        {% helper lang.l('make_inactive','start') %}
+                                      </a>
+                                    </li>
+                                  {% else %}
+                                    <li>
+                                      <a href="{{ site_url }}admin/landings/activate/{{ item.id }}/1">
+                                        {% helper lang.l('make_active','start') %}
+                                      </a>
+                                    </li>
+                                  {% endif %}
+                                    <li>
+                                        <a href="{{ site_url }}admin/landings/edit/{{ item.id }}">
+                                            {% helper lang.l('btn_edit','start') %}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a onclick="javascript: if(!confirm('{% helper lang.l('note_delete_langing', 'landings', '', 'js') %}')) return false;"
+                                           href="{{ site_url }}admin/landings/delete/{{ item.id }}" >
+                                            {% helper lang.l('btn_delete','start') %}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                          </div>
+			            </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% include "@app/pagination.twig" %}
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        var lang_data = {btn_delete_confirm: "{% helper lang.l('note_delete_langing', 'landings', '', 'js') %}"};
+
+    loadScripts(
+        "{% helper utils.jscript('landings', 'landings.js', 'path') %}",
+        function(){
+            landings = new Landings({
+                siteUrl: site_url,
+                lang_data: lang_data,
+            });
+        },
+        ['landings'],
+        {async: false}
+    );
+        });
+</script>
+<!-- Datatables -->
+<script>
+    var asInitVals = new Array();
+    $(document).ready(function () {
+        var oTable = $('#users').dataTable({
+            "oLanguage": {
+                "sSearch": "{% helper lang.l('search_all_column','start') %}:",
+                "sEmptyTable": "{% helper lang.l('no_landings','landings') %}"
+            },
+            "aoColumnDefs": [
+                {
+                    'bSortable': false,
+                    'aTargets': [0,5,6]
+                } //disables sorting for column one
+            ],
+            'iDisplayLength': 10,
+            "bPaginate": false,
+            "bInfo": false,
+            "dom": 'T<"clear"><"actions">lfrtip',
+        });
+        $("tfoot input").keyup(function () {
+            /* Filter on the column based on the index of this element's parent <th> */
+            oTable.fnFilter(this.value, $("tfoot th").index($(this).parent()));
+        });
+        $("tfoot input").each(function (i) {
+            asInitVals[i] = this.value;
+        });
+        $("tfoot input").focus(function () {
+            if (this.className == "search_init") {
+                this.className = "";
+                this.value = "";
+            }
+        });
+        $("tfoot input").blur(function (i) {
+            if (this.value == "") {
+                this.className = "search_init";
+                this.value = asInitVals[$("tfoot input").index(this)];
+            }
+        });
+        var actions = $("#actions");
+        $('#users_wrapper').find('.actions').html(actions.html());
+        actions.remove();
+        $('.column-group').removeClass('sorting_asc');
+    });
+</script>
+
+{% include '@app/footer.twig' %}

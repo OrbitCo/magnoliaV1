@@ -1,0 +1,123 @@
+.instruction-block {
+    float: $left;
+    margin-#{$left}: 15px;
+
+    .instruction-block__button {
+        background-color: $input_main_btn;
+        border-radius: 50%;
+        line-height: 2em;
+        padding: 2px 12px;
+        cursor: pointer;
+        i {
+            font-size: 13px !important;
+        }
+        i {
+            color: #fff;
+            text-align: center;
+            width: 10px;
+        }
+    }
+
+    .popover {
+        max-width: 60%;
+    }
+
+    @media (max-width: 992px) {
+        .popover {
+            max-width: 80%;
+        }
+    }
+}
+.marketplace-button {
+    bottom: 0px;
+    background: #32b44a none repeat scroll 0 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    margin-#{$left}: -10px;
+    a{
+        color: #fff !important;
+        text-decoration: none;
+        display: block;
+        font-weight: bold;
+        line-height: 1.42857;
+        padding: 15px 0;
+        margin-#{$right}: 70px;
+    }
+}
+@media (min-width: 970px) {
+    .marketplace-button a {
+        margin-#{$right}: 230px;
+    }
+}
+.guide-modal {
+    max-width: 500px;
+    margin: auto;
+}
+.guide-modal .modal-body {
+    min-height: 200px;
+}
+#guide-btn i {
+    font-size:25px;
+    line-height: 0;
+    vertical-align: middle;
+}
+#guide-close {
+    display: none;
+}
+.upgrade-btn {
+    text-decoration: none !important;
+    font-size: 18px;
+    font-weight: bold;
+    margin-#{$left}: 20px;
+    margin-#{$right}: 10px;
+}
+.wrapper-info {
+    float:right;
+    .instruction-block__button {
+        padding: 6px 11px;
+    }
+}
+.demo-description {
+    font-size: 15px;
+    line-height: 1.8em;
+    .demo-link {
+        a {
+            margin-top: 30px;
+            border-radius: 0;
+            border: solid 2px #414141 !important;
+            color: #414141 !important;
+            padding: 6px 12px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    }
+}
+@media (max-width: 991px) {
+    .landing__form-content {
+        position: relative !important;
+        width: 100% !important;
+    }
+}
+.textlogo {
+    font-size: 22px;
+    text-transform: uppercase;
+    color: $link_color;
+}
+header {
+    .textlogo {
+        color: $main_bg;
+    }
+}
+
+.product-version-block {
+    &__checker_link {
+        text-decoration: none !important;
+        .badge {
+            padding: 3px !important;
+        }
+    }
+}

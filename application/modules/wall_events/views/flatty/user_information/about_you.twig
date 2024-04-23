@@ -1,0 +1,41 @@
+<div class="content-page">
+    <div class="ui-title">{% helper lang.l('header_main', 'wall_events') %}</div>
+    <div class="ui-descr">
+        {% helper lang.l('field_usr_inf_description', 'wall_events') %}
+    </div>
+</div>
+{% for item in about_you %}
+    <div class="col-xs-12 content-page">
+        <div class="ui-title bb">
+                {{ item.user.output_name }} {% helper lang.l('field_usr_inf_about_you_wall', 'wall_events') %}
+        </div>
+        {% for d in item.data %}
+            <div>{{ d.text }}</div>
+         {% endfor %}
+         {% for k, d in item.media %}
+            {% if d.img is not empty %}
+                <div class="col-xs-12">{% helper lang.l('image', 'wall_events') %}: </div>
+                {% for img in d.img %}
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="image/grand-{{ img.file_name }}">
+                            <img src="image/grand-{{ img.file_name }}"  class="img-rounded img-responsive">
+                        </a>
+                    </div>
+                {% endfor %}
+            {% elseif d.video is not empty %}
+                {% for i, video in d.video %}
+                    {% if video.file_name == 'embed' %}
+                        {% helper lang.l('videos', 'wall_events') %}: 
+                        {{ video.embed }}
+                    {% else %}
+                        <div class="col-xs-12">
+                            {% helper lang.l('videos', 'wall_events') %}: 
+                            <a href="video/{{ video.file_name }}">{{ video.file_name }}</a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        <div class="col-xs-12">{{ item.date_update }}</div>
+    </div>
+{% endfor %}

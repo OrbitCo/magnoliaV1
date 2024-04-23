@@ -1,0 +1,21 @@
+<div class="c-index-users">
+    <div class="c-profiles">
+        {% for user in h_data.users %}
+            <div class="c-profiles__item">
+                <div class="c-profiles__item_image" title="{{ user.output_name|e }}">
+                    <a href="{{ user.link }}">
+                        <img src="{{ user.media.user_logo.thumbs.great}}" alt="{{ user.output_name|e }}" class="img-responsive">
+                    </a>
+                </div>
+                <div class="c-profiles__item_caption">
+                    <div class="c-profiles__item_name">
+                        <a href="{{ user.link }}">{{ user.output_name }}</a>{% if user.age %}, {{ user.age }}{% endif %}
+                    </div>
+                    <div class="c-profiles__item_location" title="{{ user.location|e }}">
+                        {{ user.city }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

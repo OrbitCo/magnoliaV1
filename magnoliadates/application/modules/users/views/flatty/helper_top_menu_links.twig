@@ -1,0 +1,21 @@
+<menu id="users-alerts-menu_links" class="menu-alerts"> 
+    {% if auth_type == 'user' %}
+        {% helper menu.getMenu('user_top_menu', 'helper_top_menu') %}
+    {% endif %}
+</menu>
+<script type="text/javascript">
+$(function () {
+    loadScripts(
+        "{% helper theme.include_js('users', 'top-menu.js', 'path') %}",
+        function () {
+            top_menu = new topMenu({
+                siteUrl: site_url,
+                parent: '.menu-alerts-item',
+                summandsParent: '.menu-alerts-more-item'
+            });
+        },
+        ['top_menu'],
+        {async: false}
+    );
+});
+</script>

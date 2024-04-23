@@ -1,0 +1,33 @@
+
+{% set thumb_name = recent_thumb.name %}
+<div class="pointer">
+    <i class="fa fa-camera"></i>
+    <a href="{{ gallery_link }}">{{ user_media_count }}&nbsp;{% helper lang.l('header_user_photos', 'media') %}</a>
+</div>
+<div class="media-items clearfix">
+    {% for item in recent_photos_data.media %}
+        <div class="media-items_frame-img">
+            <span  class="a fleft  {% if no_acces_gallery %} no_access {% endif %}" data-click="view-media" data-user-id="{{ item.id_owner }}" data-id-media="{{ item.id }}">
+                {% if item.upload_gid == 'gallery_video' %}
+                    {% helper text_media_video = lang.l('text_media_video', 'media', '', 'button', item) %}
+                    <img class=" img-responsive" src="{{ item.video_content.thumbs[thumb_name] }}" width="{{ recent_thumb.width }}"  {% if not no_acces_gallery %} alt="{{ text_media_video }}" title="{{ text_media_video }}" {% endif %} />
+                {% else %}
+                    {% helper text_media_photo = lang.l('text_media_photo', 'media', '', 'button', item) %}
+                    <img class=" img-responsive" src="{{ item.media.mediafile.thumbs[thumb_name] }}" width="{{ recent_thumb.width }}"  {% if not no_acces_gallery %}  alt="{{ text_media_photo }}" title="{{ text_media_photo }}" {% endif %} />
+                {% endif %}
+            </span>
+        </div>
+    {% endfor %} 
+</div>
+
+{% if no_acces_gallery %} 
+<script type="text/javascript">
+    $(function(){
+        $('#user_recent_photos [data-click="view-media"]').click(function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            location.href = "{{ access_permissions_link }}";
+        });
+    });
+</script>
+{% endif %}

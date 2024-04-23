@@ -1,0 +1,15 @@
+{% if data.format is empty %}
+    {% if data.is_link %}
+        <a class="g-users-gallery__name" href="{% helper seo.seolink('users', 'view', data.user) %}">{{ data.first_user.name }} + {{ data.second_user.name }}</a>
+    {% else %}
+        {{ data.first_user.name }} + {{ data.second_user.name }}
+    {% endif %}
+{% elseif data.format == 'age' %}
+    {% if data.is_link %}
+        <a class="g-users-gallery__name" href="{% helper seo.seolink('users', 'view', data.user) %}">{{ data.first_user.name }}</a>, {{ data.first_user.age }} +
+        <a class="g-users-gallery__name" href="{% helper seo.seolink('users', 'view', data.user) %}">{{ data.second_user.name }}</a>, {{ data.second_user.age }}
+    {% else %}
+        {{ data.first_user.name }}, {{ data.first_user.age }} + {{ data.second_user.name }}, {{ data.second_user.age }}
+    {% endif %}
+{% endif %}
+    

@@ -1,0 +1,310 @@
+{
+    "ausers" : {
+        "login_buy_now" : "dp_admin_login_buy_now",
+        "login_ios_app" : "dp_admin_login_ios_app",
+        "login_android_app" : "dp_admin_login_android_app",
+        "login_free_trial" : "dp_admin_login_free_trial",
+        "login_other_reviews" : "dp_admin_login_Other_reviews",
+        "login_cases" : "dp_admin_login_cases"
+    },
+    "main" : {
+        "language_switch" : "dp_admin_language_switch",
+        "btn_info" : "dp_admin_btn_info",
+        "btn_package_start": "dp_admin_btn_package_start",
+        "btn_package_premium": "dp_admin_btn_package_premium",
+        "btn_package_business": "dp_admin_btn_package_business",
+        "fast_navigation_input" : "dp_admin_fast_navigation_input", 
+        "fast_navigation_clickthrough" : "dp_admin_fast_navigation_clickthrough",
+        "contact_support" : "dp_admin_contact_support",
+        "logoff" : "dp_admin_logoff",
+        "btn_visit_marketplace" : "dp_admin_btn_visit_marketplace"
+    },
+    "left_menu" : {
+        "admin-home-item" : "dp_admin_menu_home",
+        "ausers_item" : "dp_admin_menu_admins",
+        "users_menu_item" : "dp_admin_menu_users",
+        "tickets_menu_item" : "dp_admin_menu_comm",
+        "media_menu_item" : "dp_admin_menu_media",
+        "moderation_menu_item" : "dp_admin_menu_moder",
+        "payments_menu_item" : "dp_admin_menu_pmts",
+        "banners_menu_item" : "dp_admin_menu_banners",
+        "interface-items" : "dp_admin_menu_interface",
+        "content_items" : "dp_admin_menu_content",
+        "system-items" : "dp_admin_menu_system",
+        "intercom_menu_item" : "dp_admin_menu_intercom",
+        "add_ons_items" : "dp_admin_menu_modules"
+    },
+    "dashboard" : {
+        "guide" : "dp_admin_dashb_guide",
+        "users" : "dp_admin_dashb_q-users",
+        "spam" : "dp_admin_dashb_q-reports",
+        "media" : "dp_admin_dashb_q-uploads",
+        "comments" : "dp_admin_dashb_q-comments",
+        "banners" : "dp_admin_dashb_q-banners",
+        "tickets" : "dp_admin_dashb_q-tickets",
+        "subscriptions" : "dp_admin_dashb_q-newsl",
+        "payments" : "dp_admin_dashb_q-pmts",
+        "news" : "dp_admin_dashb_q-news",
+        "languages" : "dp_admin_dashb_q-texts",
+        "themes" : "dp_admin_dashb_q-design",
+        "start" : "dp_admin_dashb_q-settings",
+        "wall" : "dp_admin_dashb_moder-wall",
+        "site_visits_graph" : "dp_admin_ga_graph"
+    },
+    "users" : {
+        "btn_settings" : "dp_admin_users_btn_settings",
+        "btn_add_funds" : "dp_admin_users_btn_add_funds",
+        "btn_edit_user" : "dp_admin_users_btn_edit_user",
+        "btn_contact_user" : "dp_admin_users_btn_contact_user",
+        "settings_btn_save" : "dp_admin_users_settings_btn_save"
+    },
+    "moderation" : {
+        "btn_approve" : "dp_admin_moderation_btn_approve",
+        "btn_decline" : "dp_admin_moderation_btn_decline",
+        "btn_delete" : "dp_admin_moderation_btn_delete",
+        "btn_mark_as_adult" : "dp_admin_moderation_btn_mark_as_adult",
+        "btn_settings_save" : "dp_admin_moderation_btn_settings_save",
+        "btn_badwords_save" : "dp_admin_moderation_btn_badwords_save"
+    },
+    "menu_list" : {
+        "systems_list_item" : "dp_admin_payments_billing_systems",
+        "payments_list_item" : "dp_admin_payments_payments",
+        "settings_list_item" : "dp_admin_payments_settings",
+        "services_menu_item" : "dp_admin_payments_services",
+        "packages_menu_item" : "dp_admin_payments_packages",
+        "memberships_menu_item" : "dp_admin_payments_memberships",
+        "access_permissions_menu_item" : "dp_admin_payments_memberships",
+        
+        "geomap_menu_item" : "dp_admin_interface_geo_maps",
+        "themes_menu_item" : "dp_admin_interface_themes",
+        "admin-menus-item" : "dp_admin_interface_menus",
+        
+        "countries_menu_item" : "dp_admin_content_countries",
+        "languages_menu_item" : "dp_admin_content_languages",
+        "properties_items" : "dp_admin_content_user_types",
+        "content_menu_item" : "dp_admin_content_info_pages",
+        "notifications_menu_item" : "dp_admin_content_mail_alerts",
+        "news_menu_item" : "dp_admin_content_news",
+        "horoscope_menu_item" : "dp_admin_content_horoscope",
+        "contactus_menu_item" : "dp_admin_content_contact_us",
+        "mail_list_menu_item" : "dp_admin_content_mailing_lists",
+        
+        "cronjob_menu_item" : "dp_admin_system_cronjobs",
+        "social_networking_menu_item" : "dp_admin_system_social_networks",
+        "uploads_menu_item" : "dp_admin_system_uploads",
+        "comments_menu_item" : "dp_admin_system_comments",
+        "file_uploads_menu_item" : "dp_admin_system_file_uploads",
+        "field_editor_menu_item" : "dp_admin_system_field_editor",
+        "video_menu_item" : "dp_admin_system_video_settings",
+        "seo_menu_item" : "dp_admin_system_seo_settings",
+        "audio_menu_item" : "dp_admin_system_audio_settings",
+        "geomap_sys_menu_item" : "dp_admin_system_geo_maps",
+        "ratings_sett_menu_item" : "dp_admin_system_ratings",
+        "system-numerics-item" : "dp_admin_system_misc_settings",
+        "spam_sett_menu_item" : "dp_admin_system_reports",
+        "network_menu_item" : "dp_admin_system_network",
+        
+        "seo_advanced_list_item" : "dp_admin_seo_advanced_tab_modules",
+        "seo_advanced_tracker" : "dp_admin_seo_advanced_tab_tracker",
+        "seo_advanced_robots" : "dp_admin_seo_advanced_tab_robots",
+        "seo_advanced_site_map" : "dp_admin_seo_advanced_tab_sitemap",
+        
+        "admin-modules-item" : "dp_admin_modules_modules_mgt",
+        "referral_links_menu_item" : "dp_admin_modules_referrals",
+        "questions_menu_item" : "dp_admin_modules_questions",
+        "send_money_menu_item" : "dp_admin_modules_money_gifts",
+        "send_vip_menu_item" : "dp_admin_modules_gifts_of_membership",
+        "polls_menu_item" : "dp_admin_modules_polls",
+        "store_menu_item" : "dp_admin_modules_gift_store",
+        "chats_menu_item" : "dp_admin_modules_video_chats",
+        "im_menu_item" : "dp_admin_modules_im",
+        "wall_events_menu_item" : "dp_admin_modules_wall_events",
+        "widgets_menu_item" : "dp_admin_modules_widgets",
+        "shoutbox_menu_item" : "dp_admin_modules_shoutbox",
+        "aviary_menu_item" : "dp_admin_modules_aviary",
+        "kisses_menu_item" : "dp_admin_modules_kisses",
+        "mobile_menu_item" : "dp_admin_modules_mobile",
+        "like_me_menu_item" : "dp_admin_modules_likeme",
+        "incomplete_signup_menu_item" : "dp_admin_modules_incomplete_signup",
+        "landings_menu_item" : "dp_admin_modules_landings",
+        "nearest_users_menu_item" : "dp_admin_modules_nearest_users",
+        "associations_menu_item" : "dp_admin_modules_associations",
+        "bonuses_menu_item" : "dp_admin_modules_bonuses",
+        "events_menu_item" : "dp_admin_modules_events",
+        "special_offers_menu_item" : "dp_admin_modules_special_offers",
+        "virtual_gifts_menu_item" : "dp_admin_modules_virtual_gifts",
+        "birthdays_menu_item" : "dp_admin_modules_birthdays",
+        "companions_menu_item" : "dp_admin_modules_companions",
+        
+        "products_menu_item" : "dp_admin_store_items",
+        "product_categories_menu_item" : "dp_admin_store_item_categories",
+        "options_menu_item" : "dp_admin_store_parameters",
+        "shipping_menu_item" : "dp_admin_store_shipping",
+        "orders_menu_item" : "dp_admin_store_orders",
+        "bestsellers_menu_item" : "dp_admin_store_bestsellers",
+        "settings_menu_item" : "dp_admin_store_settings"
+    },
+    "payments" : {
+        "payments_btn_approve" : "dp_admin_payments_payments_btn_approve",
+        "payments_btn_decline" : "dp_admin_payments_payments_btn_decline"
+    },
+    "payments_systems" : {
+        "systems_btn_activate" : "dp_admin_payments_systems_btn_activate",
+        "systems_btn_deactivate" : "dp_admin_payments_systems_btn_deactivate",
+        "systems_btn_edit" : "dp_admin_payments_systems_btn_edit",
+        "systems_btn_install" : "dp_admin_payments_systems_btn_install"
+    },
+    "payments_settings" : {
+        "btn_add_currency" : "dp_admin_payments_settings_btn_add_currency",
+        "btn_use_by_default" : "dp_admin_payments_settings_btn_use_by_default",
+        "btn_edit_currency" : "dp_admin_payments_settings_btn_edit_currency"
+    },
+    "payments_services" : {
+        "btn_activate_user_activate_in_search" : "dp_admin_payments_services_btn_activate_search",
+        "btn_deactivate_user_activate_in_search" : "dp_admin_payments_services_btn_deactivate_search",
+        "btn_edit_user_activate_in_search" : "dp_admin_payments_services_btn_edit_service_search",
+        "btn_activate_admin_approve" : "dp_admin_payments_services_btn_activate_approval",
+        "btn_deactivate_admin_approve" : "dp_admin_payments_services_btn_deactivate_approval",
+        "btn_edit_admin_approve" : "dp_admin_payments_services_btn_edit_service_approval",
+        "btn_activate_users_featured" : "dp_admin_payments_services_btn_activate_featured",
+        "btn_deactivate_users_featured" : "dp_admin_payments_services_btn_deactivate_featured",
+        "btn_edit_users_featured" : "dp_admin_payments_services_btn_edit_service_featured",
+        "btn_activate_highlight_in_search" : "dp_admin_payments_services_btn_activate_highlight",
+        "btn_deactivate_highlight_in_search" : "dp_admin_payments_services_btn_deactivate_highlight",
+        "btn_edit_highlight_in_search" : "dp_admin_payments_services_btn_edit_service_highlight",
+        "btn_activate_im" : "dp_admin_payments_services_btn_activate_im",
+        "btn_deactivate_im" : "dp_admin_payments_services_btn_deactivate_im",
+        "btn_edit_im" : "dp_admin_payments_services_btn_edit_service_im",
+        "btn_activate_up_in_search" : "dp_admin_payments_services_btn_activate_liftup",
+        "btn_deactivate_up_in_search" : "dp_admin_payments_services_btn_deactivate_liftup",
+        "btn_edit_up_in_search" : "dp_admin_payments_services_btn_edit_service_liftup",
+        "btn_activate_ability_delete" : "dp_admin_payments_services_btn_activate_delete",
+        "btn_deactivate_ability_delete" : "dp_admin_payments_services_btn_deactivate_delete",
+        "btn_edit_ability_delete" : "dp_admin_payments_services_btn_edit_service_delete",
+        "btn_activate_read_message_service" : "dp_admin_payments_services_btn_activate_read",
+        "btn_deactivate_read_message_service" : "dp_admin_payments_services_btn_deactivate_read",
+        "btn_edit_read_message_service" : "dp_admin_payments_services_btn_edit_service_read",
+        "btn_activate_send_message_service" : "dp_admin_payments_services_btn_activate_send",
+        "btn_deactivate_send_message_service" : "dp_admin_payments_services_btn_deactivate_send",
+        "btn_edit_send_message_service" : "dp_admin_payments_services_btn_edit_service_send",
+        "btn_activate_hide_on_site" : "dp_admin_payments_services_btn_activate_stealth",
+        "btn_deactivate_hide_on_site" : "dp_admin_payments_services_btn_deactivate_stealth",
+        "btn_edit_hide_on_site" : "dp_admin_payments_services_btn_edit_service_stealth"
+    },
+    "payments_packages" : {
+        "btn_add_package" : "dp_admin_payments_packages_btn_add_package",
+        "btn_services" : "dp_admin_payments_packages_btn_services",
+        "btn_edit" : "dp_admin_payments_packages_btn_edit",
+        "btn_delete" : "dp_admin_payments_packages_btn_delete",
+        "services_btn_save" : "dp_admin_payments_packages_services_btn_save"
+    },
+    "payments_memberships" : {
+        "memberships_btn_add" : "dp_admin_payments_memberships_btn_add",
+        "memberships_btn_edit" : "dp_admin_payments_memberships_btn_edit",
+        "memberships_btn_remove" : "dp_admin_payments_memberships_btn_remove"
+    },
+    "themes" : {
+        "btn_activate" : "dp_admin_themes_btn_activate",
+        "btn_preview" : "dp_admin_themes_btn_preview",
+        "btn_edit" : "dp_admin_themes_btn_edit",
+        "btn_color_schemes" : "dp_admin_themes_btn_color_schemes",
+        "btn_save" : "dp_admin_themes_btn_save",
+        "sets_btn_add" : "dp_admin_themes_sets_btn_add",
+        "sets_btn_edit" : "dp_admin_themes_sets_btn_edit",
+        "sets_btn_regenerate_css" : "dp_admin_themes_sets_btn_regenerate_css",
+        "sets_btn_activate" : "dp_admin_themes_sets_btn_activate",
+        "sets_btn_save" : "dp_admin_themes_sets_btn_save",
+        "edit_colorscheme" : "success-colorscheme",
+        "edit_text_logo" : "success-brand-name"
+    },
+    "services" : {
+        "edit_service" : "success-service"
+    },
+    "countries" : {
+        "btn_install_selected" : "dp_admin_countries_btn_install_selected",
+        "btn_install" : "dp_admin_countries_btn_install"
+    },
+    "languages" : {
+        "btn_add_language" : "dp_admin_languages_btn_add_language",
+        "btn_set_as_default" : "dp_admin_languages_btn_set_as_default",
+        "btn_save" : "dp_admin_languages_btn_save"
+    },
+    "properties" : {
+        "btn_add_option" : "dp_admin_properties_btn_add_option",
+        "btn_edit" : "dp_admin_properties_btn_edit",
+        "btn_delete" : "dp_admin_properties_btn_delete",
+        "btn_save" : "dp_admin_properties_btn_save"
+    },
+    "social" : {
+        "btn_login_no" : "dp_admin_social_btn_login_no",
+        "btn_login_yes" : "dp_admin_social_btn_login_yes",
+        "btn_widgets_no" : "dp_admin_social_btn_widgets_no",
+        "btn_widgets_yes" : "dp_admin_social_btn_widgets_yes",
+        "btn_application" : "dp_admin_social_btn_application"
+    },
+    "seo" : {
+        "btn_edit_user" : "dp_admin_seo_btn_edit_user",
+        "btn_edit_user_save" : "dp_admin_seo_btn_edit_user_save",
+        "btn_edit_user_cancel" : "dp_admin_seo_btn_edit_user_cancel",
+        "btn_edit_admin" : "dp_admin_seo_btn_edit_admin",
+        "btn_edit_admin_save" : "dp_admin_seo_btn_edit_admin_save",
+        "btn_edit_admin_cancel" : "dp_admin_seo_btn_edit_admin_cancel"
+    },
+    "network" : {
+        "btn_get_access" : "dp_admin_network_btn_get_access",
+        "btn_save" : "dp_admin_network_btn_save",
+        "btn_connection_start" : "dp_admin_network_btn_connection_start",
+        "btn_connection_stop" : "dp_admin_network_btn_connection_stop"
+    },
+    "intercom" : {
+        "btn_intercom" : "dp_admin_intercom",
+        "get_started_free" : "dp_admin_intercom_get_started_free",
+        "get_started_free_middle" : "dp_admin_intercom_get_started_free_middle",
+        "get_started_free_bottom" : "dp_admin_intercom_get_started_free_bottom",
+        "early_stage" : "dp_admin_intercom_early_stage",
+        "deep_dive" : "dp_admin_intercom_deep_dive",
+        "integrate" : "dp_admin_intercom_integrate",
+        "build" : "dp_admin_intercom_build",
+        "video" : "dp_admin_intercom_video" 
+    },
+    "google_analytics" : {
+        "btn_google_analytics" : "dp_admin_ga"
+    },
+    "mod_login" : {
+        "btn_login" : "dp_admin_mod_login_btn_login"
+    },
+    "chats" : {
+        "btn_install_chat" : "dp_admin_chats_btn_install_chat",
+        "btn_settings" : "dp_admin_chats_btn_settings",
+        "pgchat_radio_free" : "dp_admin_chats_pgchat_radio_free",
+        "pgchat_radio_paid" : "dp_admin_chats_pgchat_radio_paid"
+    },
+    "guide" : {
+        "learning_next" : "dp_admin_learning_next",
+        "learning_close" : "dp_admin_learning_close",
+        "learning_hat" : "dp_admin_learning_hat"
+    },
+    "module_guide" : {
+        "learning_close_companions" : "dp_admin_companions_end_tutorial",
+        "learning_close_events" : "dp_admin_events_end_tutorial",
+        "learning_close_nearest_users" : "dp_admin_nearest_users_end_tutorial",
+        "learning_close_store" : "dp_admin_store_end_tutorial",
+        "learning_close_virtual_gifts" : "dp_admin_virtual_gifts_end_tutorial"
+    },
+    "access_permissions" : {
+        "btn_add_group" : "dp_admin_payments_access_permissions_btn_add_group",
+        "btn_add_period" : "dp_admin_payments_access_permissions_btn_add_period",
+        "radio_all_users" : "dp_admin_payments_access_permissions_radio_general",
+        "radio_user_types" : "dp_admin_payments_access_permissions_radio_gender",
+        "edit_period" : "success-price-period",
+        "create_subscription" : "success-create-mmbship",
+        "edit_permission" : "success-permission"
+    },
+    "secret_gifts" : {
+        "btn_upload_img" : "dp_admin_secret_gifts_btn_upload_img",
+        "btn_save_settings" : "dp_admin_secret_gifts_btn_save_settings"
+    },
+    "tutorial": {
+        "admin_end_tutorial": "dp_admin_end_tutorial"
+    }
+}

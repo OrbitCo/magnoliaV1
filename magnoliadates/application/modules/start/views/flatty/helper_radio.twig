@@ -1,0 +1,24 @@
+<div class="radio" id="{{ sb_id }}" iname="{{ sb_input }}">
+    {% if sb_default_value != '' %}
+        <div class="input">
+            <div class="box fa {% if sb_selected == 0 %}checked{% endif %}" gid="0"></div>
+            <div class="label" gid="0">{{ sb_default_value }}</div>
+            {% if sb_selected == 0 %}
+                <input type="hidden" name="{{ sb_input }}" value="0" />
+            {% endif %}
+        </div>
+    {% endif %}
+    {% for key, item in sb_value %}
+        <div class="input">
+            <div class="box fa {% if sb_selected == key %}checked{% endif %}" gid="{{ key }}"></div>
+            <div class="label" gid="{{ key }}">{{ item }}</div>
+
+            {% if sb_selected == key %}
+                <input type="hidden" name="{{ sb_input }}" value="{{ key }}" />
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+<script>
+    radios.push('{{ sb_id }}');
+</script>

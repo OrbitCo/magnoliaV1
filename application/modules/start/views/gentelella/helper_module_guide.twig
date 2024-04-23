@@ -1,0 +1,43 @@
+<div class="instruction-block">
+    <div href="javascript:;" id="module_guide-btn" class="instruction-block__button">
+        <i class="fa fa-info"></i>
+    </div>
+</div>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(function() {
+        loadScripts(
+            "{% helper utils.jscript_by_theme('start', 'guide.js', 'path', 'gentelella') %}",
+            function() {
+                moduleGuideObj = new guide({
+                    guide: {{ module_guide }},
+                    step: {{ module_step }},
+                    autoshow: {% if module_autoshow %}true{% else %}false{% endif %},
+                    labelOf: '{% helper lang.l('text_of', 'start') %}',
+                    labelSkip: '{% helper lang.l('btn_skip', 'start') %}',
+                    labelNext: '{% helper lang.l('btn_next', 'start') %}',
+                    labelBuy: '{% helper lang.l('btn_buy', 'start') %}',
+                    isModuleInstructions: true,
+                    module: '{{ module }}_',
+                    id: {
+                        btnGuide: '#module_guide-btn',
+                        nextGuide: '#module_guide-next',
+                        skipGuide: '#module_guide-skip'
+                    },
+                     btn: {
+                        btnGuide: 'module_guide-btn',
+                        nextGuide: 'module_guide-next',
+                        skipGuide: 'module_guide-skip'
+                    },
+                    callbackShow: function() {
+                        $('#module_guide-skip').on('click', function() {
+                            {% helper start.setAnalytics('module_guide', 'learning_close'~module) %}
+                        });
+                    }
+                });
+            },
+            ['moduleGuideObj'],
+            {async: false}
+        );
+    });
+</script>

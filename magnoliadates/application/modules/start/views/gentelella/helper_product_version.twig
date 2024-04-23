@@ -1,0 +1,14 @@
+<span class="product-version-block">
+    {% helper lang.l('system_version', 'start') %}:
+    <span>
+        {# {% if update_data.is_new_update %}
+            <a href="{{ site_url }}admin/start/mod_login/" class="product-version-block__checker_link" data-toggle="tooltip" data-placement="bottom" title="{% helper lang.l('tooltip_new_update', 'start') %}">
+                <span class="badge bg-green">
+                    <i class="fas fa-download"></i>
+                </span>
+            </a>
+        {% endif %} #}
+        {{ update_data.current_version_name }}
+    </span> {{ update_data.package|capitalize }}
+</span>
+

@@ -1,0 +1,406 @@
+	369	Ystalyfera	51.7671600	-3.7808200	GB	WLS	0	0	Ystalyfera
+	369	Wrexham	53.0466400	-2.9913200	GB	WLS	0	0	Wrexham
+	369	Wick	51.4394400	-3.5494400	GB	WLS	0	0	Wick
+	369	Whitland	51.8188900	-4.6152800	GB	WLS	0	0	Whitland
+	369	Wenvoe	51.4477600	-3.2636900	GB	WLS	0	0	Wenvoe
+	369	Welshpool	52.6597300	-3.1471000	GB	WLS	0	0	Welshpool
+	369	Victoria	51.7500000	-3.2000000	GB	WLS	0	0	Victoria
+	369	Valley	53.2849000	-4.5664400	GB	WLS	0	0	Valley
+	369	Usk	51.7034700	-2.9033200	GB	WLS	0	0	Usk
+	369	Undy	51.5752600	-2.8145300	GB	WLS	0	0	Undy
+	369	Tycroes	51.7780600	-4.0200000	GB	WLS	0	0	Tycroes
+	369	Treuddyn	53.1148000	-3.1200300	GB	WLS	0	0	Treuddyn
+	369	Treorchy	51.6595800	-3.5058700	GB	WLS	0	0	Treorchy
+	369	Treharris	51.6645700	-3.3072500	GB	WLS	0	0	Treharris
+	369	Tregynon	52.5791300	-3.3326700	GB	WLS	0	0	Tregynon
+	369	Tregarth	53.1901200	-4.0878000	GB	WLS	0	0	Tregarth
+	369	Tregaron	52.2195000	-3.9329500	GB	WLS	0	0	Tregaron
+	369	Trefriw	53.1513800	-3.8257300	GB	WLS	0	0	Trefriw
+	369	Trefnant	53.2252600	-3.4203000	GB	WLS	0	0	Trefnant
+	369	Tredegar	51.7725100	-3.2467900	GB	WLS	0	0	Tredegar
+	369	Trawsfynydd	52.9021200	-3.9228900	GB	WLS	0	0	Trawsfynydd
+	369	Tonyrefail	51.5840200	-3.4304100	GB	WLS	0	0	Tonyrefail
+	369	Threapwood	53.0000000	-2.8333300	GB	WLS	0	0	Threapwood
+	369	Tenby	51.6727900	-4.7044700	GB	WLS	0	0	Tenby
+	369	Templeton	51.7719400	-4.7377800	GB	WLS	0	0	Templeton
+	369	Tavernspite	51.7819400	-4.6411100	GB	WLS	0	0	Tavernspite
+	369	Talgarth	51.9958800	-3.2320500	GB	WLS	0	0	Talgarth
+	369	Talacre	53.3494200	-3.3247400	GB	WLS	0	0	Talacre
+	369	Taibach	51.5833300	-3.7666700	GB	WLS	0	0	Taibach
+	369	Swansea	51.6207900	-3.9432300	GB	WLS	0	0	Swansea
+	369	Stepaside	51.7348400	-4.6936700	GB	WLS	0	0	Stepaside
+	369	Spittal	51.8688900	-4.9425000	GB	WLS	0	0	Spittal
+	369	South Cornelly	51.5111300	-3.7035200	GB	WLS	0	0	South Cornelly
+	369	Solva	51.8740400	-5.1968300	GB	WLS	0	0	Solva
+	369	Seven Sisters	51.7666700	-3.7166700	GB	WLS	0	0	Seven Sisters
+	369	Sennybridge	51.9474800	-3.5681700	GB	WLS	0	0	Sennybridge
+	369	Saundersfoot	51.7094500	-4.7021500	GB	WLS	0	0	Saundersfoot
+	369	Saint Davids	51.8809400	-5.2655400	GB	WLS	0	0	Saint Davids
+	369	Saint Clears	51.8198900	-4.4978300	GB	WLS	0	0	Saint Clears
+	369	Saint Asaph	53.2581500	-3.4452400	GB	WLS	0	0	Saint Asaph
+	369	Ruthin	53.1136800	-3.3178200	GB	WLS	0	0	Ruthin
+	369	Ruabon	52.9878000	-3.0388300	GB	WLS	0	0	Ruabon
+	369	Rossett	53.1092100	-2.9447800	GB	WLS	0	0	Rossett
+	369	Rosemarket	51.7371700	-4.9666400	GB	WLS	0	0	Rosemarket
+	369	Roch	51.8469400	-5.0866700	GB	WLS	0	0	Roch
+	369	Risca	51.6079900	-3.1008100	GB	WLS	0	0	Risca
+	369	Rhymney	51.7599800	-3.2855300	GB	WLS	0	0	Rhymney
+	369	Rhyl	53.3192900	-3.4922800	GB	WLS	0	0	Rhyl
+	369	Rhydymwyn	53.1926100	-3.1895700	GB	WLS	0	0	Rhydymwyn
+	369	Rhuddlan	53.2920300	-3.4699600	GB	WLS	0	0	Rhuddlan
+	369	Rhossili	51.5695000	-4.2849200	GB	WLS	0	0	Rhossili
+	369	Rhosneigr	53.2318600	-4.5148000	GB	WLS	0	0	Rhosneigr
+	369	Rhosllanerchrugog	53.0097400	-3.0581400	GB	WLS	0	0	Rhosllanerchrugog
+	369	Rhoose	51.3881800	-3.3543000	GB	WLS	0	0	Rhoose
+	369	Rhondda	51.6589600	-3.4488500	GB	WLS	0	0	Rhondda
+	369	Rhayader	52.3015400	-3.5114600	GB	WLS	0	0	Rhayader
+	369	Reynoldston	51.5893200	-4.1936700	GB	WLS	0	0	Reynoldston
+	369	Resolven	51.7119300	-3.6974500	GB	WLS	0	0	Resolven
+	369	Raglan	51.7650000	-2.8533100	GB	WLS	0	0	Raglan
+	369	Radyr	51.5186400	-3.2582900	GB	WLS	0	0	Radyr
+	369	Pyle	51.5166700	-3.7000000	GB	WLS	0	0	Pyle
+	369	Pwllheli	52.8899000	-4.4145100	GB	WLS	0	0	Pwllheli
+	369	Presteigne	52.2718300	-3.0057900	GB	WLS	0	0	Presteigne
+	369	Prestatyn	53.3374800	-3.4077600	GB	WLS	0	0	Prestatyn
+	369	Porthmadog	52.9292400	-4.1313700	GB	WLS	0	0	Porthmadog
+	369	Porthcawl	51.4790300	-3.7036200	GB	WLS	0	0	Porthcawl
+	369	Port-Eynon	51.5469400	-4.2136100	GB	WLS	0	0	Port-Eynon
+	369	Pontypridd	51.6021000	-3.3421100	GB	WLS	0	0	Pontypridd
+	369	Pontypool	51.7011100	-3.0444400	GB	WLS	0	0	Pontypool
+	369	Pontycymer	51.6111800	-3.5842100	GB	WLS	0	0	Pontycymer
+	369	Pontyberem	51.7782600	-4.1689000	GB	WLS	0	0	Pontyberem
+	369	Pontyates	51.7518200	-4.2171800	GB	WLS	0	0	Pontyates
+	369	Pontrhydyfen	51.6343500	-3.7446900	GB	WLS	0	0	Pontrhydyfen
+	369	Pontrhydfendigaid	52.2825800	-3.8630000	GB	WLS	0	0	Pontrhydfendigaid
+	369	Pontneddfechan	51.7575100	-3.5883100	GB	WLS	0	0	Pontneddfechan
+	369	Pontarddulais	51.7142300	-4.0385900	GB	WLS	0	0	Pontarddulais
+	369	Penygroes	53.0550200	-4.2853500	GB	WLS	0	0	Penygroes
+	369	Pentyrch	51.5288900	-3.2950000	GB	WLS	0	0	Pentyrch
+	369	Pentraeth	53.2837400	-4.2178400	GB	WLS	0	0	Pentraeth
+	369	Penrhyndeudraeth	52.9333300	-4.0666700	GB	WLS	0	0	Penrhyndeudraeth
+	369	Penmaenmawr	53.2666700	-3.9333300	GB	WLS	0	0	Penmaenmawr
+	369	Penley	52.9533800	-2.8702700	GB	WLS	0	0	Penley
+	369	Pendine	51.7425300	-4.5594700	GB	WLS	0	0	Pendine
+	369	Pencoed	51.5237100	-3.5001600	GB	WLS	0	0	Pencoed
+	369	Pen-clawdd	51.6402800	-4.0991700	GB	WLS	0	0	Pen-clawdd
+	369	Pencader	52.0008000	-4.2657500	GB	WLS	0	0	Pencader
+	369	Penarth	51.4386000	-3.1734200	GB	WLS	0	0	Penarth
+	369	Penally	51.6598600	-4.7239900	GB	WLS	0	0	Penally
+	369	Pembroke Dock	51.6916100	-4.9403600	GB	WLS	0	0	Pembroke Dock
+	369	Pembroke	51.6746400	-4.9128600	GB	WLS	0	0	Pembroke
+	369	Overton	52.9666700	-2.9333300	GB	WLS	0	0	Overton
+	369	Norton	52.2984000	-3.0220600	GB	WLS	0	0	Norton
+	369	Northop	53.2069200	-3.1327700	GB	WLS	0	0	Northop
+	369	Neyland	51.7101400	-4.9515500	GB	WLS	0	0	Neyland
+	369	New Tredegar	51.7205100	-3.2413000	GB	WLS	0	0	New Tredegar
+	369	Newtown	52.5166700	-3.3000000	GB	WLS	0	0	Newtown
+	369	New Quay	52.2151500	-4.3588700	GB	WLS	0	0	New Quay
+	369	Newport	52.0166700	-4.8333300	GB	WLS	0	0	Newport
+	369	Newport	51.5877400	-2.9983500	GB	WLS	0	0	Newport
+	369	Newcastle Emlyn	52.0405600	-4.4667000	GB	WLS	0	0	Newcastle Emlyn
+	369	Newbridge on Wye	52.2136300	-3.4411000	GB	WLS	0	0	Newbridge on Wye
+	369	Newbridge	51.6666700	-3.1333300	GB	WLS	0	0	Newbridge
+	369	Nefyn	52.9353800	-4.5225000	GB	WLS	0	0	Nefyn
+	369	Nelson	51.6533300	-3.2844400	GB	WLS	0	0	Nelson
+	369	Neath	51.6631700	-3.8044300	GB	WLS	0	0	Neath
+	369	Narberth	51.7978400	-4.7427500	GB	WLS	0	0	Narberth
+	369	Nantgaredig	51.8710400	-4.1894300	GB	WLS	0	0	Nantgaredig
+	369	Meidrim	51.8606400	-4.4858200	GB	WLS	0	0	Meidrim
+	369	Mountain Ash	51.6836100	-3.3800800	GB	WLS	0	0	Mountain Ash
+	369	Mostyn	53.3127100	-3.2676500	GB	WLS	0	0	Mostyn
+	369	Morfa Nefyn	52.9328900	-4.5494300	GB	WLS	0	0	Morfa Nefyn
+	369	Montgomery	52.5613300	-3.1461200	GB	WLS	0	0	Montgomery
+	369	Monmouth	51.8126500	-2.7136300	GB	WLS	0	0	Monmouth
+	369	Mold	53.1667400	-3.1414300	GB	WLS	0	0	Mold
+	369	Moelfre	53.3522800	-4.2373400	GB	WLS	0	0	Moelfre
+	369	Milford Haven	51.7127800	-5.0341000	GB	WLS	0	0	Milford Haven
+	369	Merthyr Tydfil	51.7479400	-3.3777900	GB	WLS	0	0	Merthyr Tydfil
+	369	Menai Bridge	53.2277500	-4.1692600	GB	WLS	0	0	Menai Bridge
+	369	Meifod	52.7105500	-3.2530900	GB	WLS	0	0	Meifod
+	369	Marshfield	51.5338900	-3.0730600	GB	WLS	0	0	Marshfield
+	369	Marchwiel	53.0239000	-2.9610600	GB	WLS	0	0	Marchwiel
+	369	Magor	51.5794400	-2.8313900	GB	WLS	0	0	Magor
+	369	Maesteg	51.6092600	-3.6582300	GB	WLS	0	0	Maesteg
+	369	Maenclochog	51.9118300	-4.7875400	GB	WLS	0	0	Maenclochog
+	369	Machynlleth	52.5909700	-3.8505100	GB	WLS	0	0	Machynlleth
+	369	Machen	51.5959900	-3.1419000	GB	WLS	0	0	Machen
+	369	Llwynypia	51.6333300	-3.4500000	GB	WLS	0	0	Llwynypia
+	369	Llwyngwril	52.6676500	-4.0841700	GB	WLS	0	0	Llwyngwril
+	369	Llechryd	52.0677400	-4.6080700	GB	WLS	0	0	Llechryd
+	369	Llanyre	52.2539600	-3.4017700	GB	WLS	0	0	Llanyre
+	369	Llanymynech	52.7808600	-3.0887500	GB	WLS	0	0	Llanymynech
+	369	Llanwrtyd Wells	52.1065900	-3.6392400	GB	WLS	0	0	Llanwrtyd Wells
+	369	Llanwrda	51.9679200	-3.8747800	GB	WLS	0	0	Llanwrda
+	369	Llantwit Major	51.4107000	-3.4863200	GB	WLS	0	0	Llantwit Major
+	369	Llantwit Fardre	51.5546000	-3.3324100	GB	WLS	0	0	Llantwit Fardre
+	369	Llantrisant	51.5402800	-3.3738900	GB	WLS	0	0	Llantrisant
+	369	Llansteffan	51.7722200	-4.3913900	GB	WLS	0	0	Llansteffan
+	369	Llansantffraid-ym-Mechain	52.7741600	-3.1585700	GB	WLS	0	0	Llansantffraid-ym-Mechain
+	369	Llansantffraid Glan Conwy	53.2666700	-3.8000000	GB	WLS	0	0	Llansantffraid Glan Conwy
+	369	Llanrwst	53.1402100	-3.7952700	GB	WLS	0	0	Llanrwst
+	369	Llanrug	53.1478800	-4.1959600	GB	WLS	0	0	Llanrug
+	369	Llanrhystud	52.3058900	-4.1447000	GB	WLS	0	0	Llanrhystud
+	369	Llanrhidian	51.6064100	-4.1698400	GB	WLS	0	0	Llanrhidian
+	369	Llan-non	52.2815000	-4.1772100	GB	WLS	0	0	Llan-non
+	369	Llannon	51.7551900	-4.1175200	GB	WLS	0	0	Llannon
+	369	Llanmadoc	51.6169400	-4.2525000	GB	WLS	0	0	Llanmadoc
+	369	Llanilar	52.3565700	-4.0257400	GB	WLS	0	0	Llanilar
+	369	Llanidloes	52.4497700	-3.5399700	GB	WLS	0	0	Llanidloes
+	369	Llanharry	51.5142200	-3.4324000	GB	WLS	0	0	Llanharry
+	369	Llanharan	51.5380500	-3.4390600	GB	WLS	0	0	Llanharan
+	369	Llangynidr	51.8673000	-3.2276200	GB	WLS	0	0	Llangynidr
+	369	Llangristiolus	53.2341200	-4.3522500	GB	WLS	0	0	Llangristiolus
+	369	Llangollen	52.9682900	-3.1712700	GB	WLS	0	0	Llangollen
+	369	Llangoed	53.2942000	-4.0877200	GB	WLS	0	0	Llangoed
+	369	Llangybi	51.6658300	-2.9080600	GB	WLS	0	0	Llangybi
+	369	Llangeinor	51.5755900	-3.5689700	GB	WLS	0	0	Llangeinor
+	369	Llangefni	53.2556100	-4.3106300	GB	WLS	0	0	Llangefni
+	369	Llangattock	51.8518400	-3.1477800	GB	WLS	0	0	Llangattock
+	369	Llanfyllin	52.7657000	-3.2718700	GB	WLS	0	0	Llanfyllin
+	369	Llanfechell	53.3919300	-4.4560500	GB	WLS	0	0	Llanfechell
+	369	Llanfairpwllgwyngyll	53.2214100	-4.2032900	GB	WLS	0	0	Llanfairpwllgwyngyll
+	369	Llanfairfechan	53.2577900	-3.9742300	GB	WLS	0	0	Llanfairfechan
+	369	Llanfair Caereinion	52.6479000	-3.3266800	GB	WLS	0	0	Llanfair Caereinion
+	369	Llanerchymedd	53.3305500	-4.3770000	GB	WLS	0	0	Llanerchymedd
+	369	Llanelli	51.6819500	-4.1619100	GB	WLS	0	0	Llanelli
+	369	Llanellen	51.7930200	-3.0123100	GB	WLS	0	0	Llanellen
+	369	Llandysul	52.0416600	-4.3090900	GB	WLS	0	0	Llandysul
+	369	Llandyrnog	53.1750500	-3.3364600	GB	WLS	0	0	Llandyrnog
+	369	Llandybie	51.8204400	-4.0071000	GB	WLS	0	0	Llandybie
+	369	Llandudno	53.3249800	-3.8314800	GB	WLS	0	0	Llandudno
+	369	Llandrindod Wells	52.2416400	-3.3786800	GB	WLS	0	0	Llandrindod Wells
+	369	Llandovery	51.9941500	-3.7963700	GB	WLS	0	0	Llandovery
+	369	Llandogo	51.7342200	-2.6890800	GB	WLS	0	0	Llandogo
+	369	Llandissilio	51.8583200	-4.7290000	GB	WLS	0	0	Llandissilio
+	369	Llandinam	52.4849600	-3.4369000	GB	WLS	0	0	Llandinam
+	369	Llandeilo	51.8845900	-3.9915400	GB	WLS	0	0	Llandeilo
+	369	Llanddona	53.2925900	-4.1365400	GB	WLS	0	0	Llanddona
+	369	Llanbradach	51.6063900	-3.2302800	GB	WLS	0	0	Llanbradach
+	369	Llanberis	53.1180900	-4.1292300	GB	WLS	0	0	Llanberis
+	369	Llanbedrog	52.8579600	-4.4865800	GB	WLS	0	0	Llanbedrog
+	369	Llanbedr	52.8166700	-4.1000000	GB	WLS	0	0	Llanbedr
+	369	Llanarth	52.1942400	-4.3081100	GB	WLS	0	0	Llanarth
+	369	Llanbedr-Dyffryn-Clwyd	53.1245300	-3.2736200	GB	WLS	0	0	Llanbedr-Dyffryn-Clwyd
+	369	Letterston	51.9275700	-4.9914100	GB	WLS	0	0	Letterston
+	369	Leeswood	53.1334700	-3.0946600	GB	WLS	0	0	Leeswood
+	369	Laugharne	51.7714000	-4.4625300	GB	WLS	0	0	Laugharne
+	369	Llangwm	51.7483300	-4.9136100	GB	WLS	0	0	Llangwm
+	369	Lamphey	51.6664000	-4.8720500	GB	WLS	0	0	Lamphey
+	369	Lampeter	52.1128500	-4.0803900	GB	WLS	0	0	Lampeter
+	369	Knighton	52.3425100	-3.0470800	GB	WLS	0	0	Knighton
+	369	Kilgetty	51.7320300	-4.7198300	GB	WLS	0	0	Kilgetty
+	369	Kidwelly	51.7363900	-4.3033300	GB	WLS	0	0	Kidwelly
+	369	Kerry	52.5015600	-3.2586200	GB	WLS	0	0	Kerry
+	369	Johnston	51.7555600	-4.9966700	GB	WLS	0	0	Johnston
+	369	Hope	53.1166700	-3.0333300	GB	WLS	0	0	Hope
+	369	Holywell	53.2746600	-3.2289500	GB	WLS	0	0	Holywell
+	369	Holyhead	53.3062100	-4.6321100	GB	WLS	0	0	Holyhead
+	369	Hirwaun	51.7391700	-3.5102800	GB	WLS	0	0	Hirwaun
+	369	Henllan	53.2000000	-3.4666700	GB	WLS	0	0	Henllan
+	369	Hengoed	51.6508300	-3.2316700	GB	WLS	0	0	Hengoed
+	369	Henfynyw Upper	52.2242800	-4.2716900	GB	WLS	0	0	Henfynyw Upper
+	369	Hawarden	53.1847800	-3.0257800	GB	WLS	0	0	Hawarden
+	369	Haverfordwest	51.8016900	-4.9691400	GB	WLS	0	0	Haverfordwest
+	369	Harlech	52.8594100	-4.1083100	GB	WLS	0	0	Harlech
+	369	Gwalchmai	53.2591600	-4.4174700	GB	WLS	0	0	Gwalchmai
+	369	Guilsfield	52.6963400	-3.1571200	GB	WLS	0	0	Guilsfield
+	369	Groeslon	53.0787100	-4.2806100	GB	WLS	0	0	Groeslon
+	369	Gresford	53.0853900	-2.9706200	GB	WLS	0	0	Gresford
+	369	Greenfield	53.2833300	-3.2166700	GB	WLS	0	0	Greenfield
+	369	Govilon	51.8192800	-3.0629500	GB	WLS	0	0	Govilon
+	369	Gorseinon	51.6693100	-4.0416300	GB	WLS	0	0	Gorseinon
+	369	Goodwick	52.0049100	-4.9951100	GB	WLS	0	0	Goodwick
+	369	Glyn-neath	51.7475000	-3.6183300	GB	WLS	0	0	Glyn-neath
+	369	Glyncorrwg	51.6794400	-3.6280600	GB	WLS	0	0	Glyncorrwg
+	369	Glanamman	51.8000000	-3.9333300	GB	WLS	0	0	Glanamman
+	369	Gilwern	51.8247500	-3.0935500	GB	WLS	0	0	Gilwern
+	369	Gilfach Goch	51.5921300	-3.4729600	GB	WLS	0	0	Gilfach Goch
+	369	Gelligaer	51.6644400	-3.2561100	GB	WLS	0	0	Gelligaer
+	369	Gaerwen	53.2211200	-4.2736200	GB	WLS	0	0	Gaerwen
+	369	Four Crosses	52.7594100	-3.0810600	GB	WLS	0	0	Four Crosses
+	369	Forden	52.6150200	-3.1232400	GB	WLS	0	0	Forden
+	369	Fochriw	51.7400300	-3.2986100	GB	WLS	0	0	Fochriw
+	369	Flint	53.2448800	-3.1323100	GB	WLS	0	0	Flint
+	369	Fishguard	51.9937600	-4.9763100	GB	WLS	0	0	Fishguard
+	369	Ferryside	51.7678400	-4.3690000	GB	WLS	0	0	Ferryside
+	369	Ferndale	51.6605600	-3.4475000	GB	WLS	0	0	Ferndale
+	369	Ewenny	51.4818300	-3.5736700	GB	WLS	0	0	Ewenny
+	369	Ebbw Vale	51.7771400	-3.2079200	GB	WLS	0	0	Ebbw Vale
+	369	Dyserth	53.3003200	-3.4126200	GB	WLS	0	0	Dyserth
+	369	Dolgellau	52.7422200	-3.8861100	GB	WLS	0	0	Dolgellau
+	369	Dolgarrog	53.1895900	-3.8434100	GB	WLS	0	0	Dolgarrog
+	369	Dinas Powys	51.4348600	-3.2139800	GB	WLS	0	0	Dinas Powys
+	369	Deri	51.7081200	-3.2631200	GB	WLS	0	0	Deri
+	369	Denbigh	53.1833300	-3.4166700	GB	WLS	0	0	Denbigh
+	369	Deganwy	53.3044600	-3.8273500	GB	WLS	0	0	Deganwy
+	369	Cynwyd	52.9594000	-3.4065100	GB	WLS	0	0	Cynwyd
+	369	Cwmbran	51.6544600	-3.0228100	GB	WLS	0	0	Cwmbran
+	369	Cwmafan	51.6167100	-3.7620500	GB	WLS	0	0	Cwmafan
+	369	Cwmann	52.1026200	-4.0634100	GB	WLS	0	0	Cwmann
+	369	Cwm	51.7400000	-3.1802800	GB	WLS	0	0	Cwm
+	369	Crynant	51.7288900	-3.7480600	GB	WLS	0	0	Crynant
+	369	Crymych	51.9736100	-4.6472200	GB	WLS	0	0	Crymych
+	369	Crumlin	51.6777800	-3.1352800	GB	WLS	0	0	Crumlin
+	369	Cross Hands	51.7930600	-4.0875000	GB	WLS	0	0	Cross Hands
+	369	Crickhowell	51.8599200	-3.1377100	GB	WLS	0	0	Crickhowell
+	369	Criccieth	52.9205300	-4.2346000	GB	WLS	0	0	Criccieth
+	369	Cowbridge	51.4602800	-3.4416700	GB	WLS	0	0	Cowbridge
+	369	Cosheston	51.6965300	-4.8888200	GB	WLS	0	0	Cosheston
+	369	Corwen	52.9800500	-3.3773600	GB	WLS	0	0	Corwen
+	369	Conwy	53.2807700	-3.8303900	GB	WLS	0	0	Conwy
+	369	Colwyn Bay	53.2948300	-3.7267400	GB	WLS	0	0	Colwyn Bay
+	369	Coity	51.5220000	-3.5553100	GB	WLS	0	0	Coity
+	369	Coelbren	51.7918100	-3.6701400	GB	WLS	0	0	Coelbren
+	369	Coedpoeth	53.0539100	-3.0623400	GB	WLS	0	0	Coedpoeth
+	369	Clyro	52.0852700	-3.1491800	GB	WLS	0	0	Clyro
+	369	Clunderwen	51.8405600	-4.7316700	GB	WLS	0	0	Clunderwen
+	369	Clydach	51.8102000	-3.1210900	GB	WLS	0	0	Clydach
+	369	Clydach	51.6833300	-3.9000000	GB	WLS	0	0	Clydach
+	369	Clarbeston Road	51.8513900	-4.8805600	GB	WLS	0	0	Clarbeston Road
+	369	Cilgerran	52.0551300	-4.6324500	GB	WLS	0	0	Cilgerran
+	369	Chwilog	52.9199200	-4.3319000	GB	WLS	0	0	Chwilog
+	369	Chirk	52.9358600	-3.0573800	GB	WLS	0	0	Chirk
+	369	Chepstow	51.6408700	-2.6768300	GB	WLS	0	0	Chepstow
+	369	Cerrigydrudion	53.0238700	-3.5643300	GB	WLS	0	0	Cerrigydrudion
+	369	Cemaes Bay	53.4121100	-4.4519000	GB	WLS	0	0	Cemaes Bay
+	369	Carno	52.5599000	-3.5354500	GB	WLS	0	0	Carno
+	369	Carmarthen	51.8555200	-4.3053500	GB	WLS	0	0	Carmarthen
+	369	Cardigan	52.0837300	-4.6622800	GB	WLS	0	0	Cardigan
+	369	Cardiff	51.4800000	-3.1800000	GB	WLS	0	0	Cardiff
+	369	Capel Bangor	52.4030800	-3.9703700	GB	WLS	0	0	Capel Bangor
+	369	Caldicot	51.5866100	-2.7573600	GB	WLS	0	0	Caldicot
+	369	Caerwys	53.2465100	-3.3074500	GB	WLS	0	0	Caerwys
+	369	Caerwent	51.6112000	-2.7686500	GB	WLS	0	0	Caerwent
+	369	Caersws	52.5163400	-3.4294800	GB	WLS	0	0	Caersws
+	369	Caerphilly	51.5745200	-3.2180000	GB	WLS	0	0	Caerphilly
+	369	Caernarfon	53.1412600	-4.2701600	GB	WLS	0	0	Caernarfon
+	369	Caerleon	51.6095200	-2.9537800	GB	WLS	0	0	Caerleon
+	369	Caergwrle	53.1095300	-3.0380800	GB	WLS	0	0	Caergwrle
+	369	Burry Port	51.6843500	-4.2468700	GB	WLS	0	0	Burry Port
+	369	Builth Wells	52.1494000	-3.4046900	GB	WLS	0	0	Builth Wells
+	369	Buckley	53.1666700	-3.0833300	GB	WLS	0	0	Buckley
+	369	Brynmawr	51.8000000	-3.1833300	GB	WLS	0	0	Brynmawr
+	369	Bryngwran	53.2702300	-4.4807900	GB	WLS	0	0	Bryngwran
+	369	Brynamman	51.8000000	-3.8666700	GB	WLS	0	0	Brynamman
+	369	Bryn	51.6163900	-3.7116700	GB	WLS	0	0	Bryn
+	369	Brymbo	53.0666700	-3.0666700	GB	WLS	0	0	Brymbo
+	369	Broughton	53.1630300	-2.9930900	GB	WLS	0	0	Broughton
+	369	Bronllys	52.0058400	-3.2504900	GB	WLS	0	0	Bronllys
+	369	Broad Haven	51.7802500	-5.1025800	GB	WLS	0	0	Broad Haven
+	369	Briton Ferry	51.6310600	-3.8189800	GB	WLS	0	0	Briton Ferry
+	369	Bridgend	51.5058300	-3.5772200	GB	WLS	0	0	Bridgend
+	369	Brecon	51.9461200	-3.3888700	GB	WLS	0	0	Brecon
+	369	Brawdy	51.8799600	-5.1272000	GB	WLS	0	0	Brawdy
+	369	Bow Street	52.4421300	-4.0278300	GB	WLS	0	0	Bow Street
+	369	Borth	52.4888700	-4.0503900	GB	WLS	0	0	Borth
+	369	Bonvilston	51.4578300	-3.3435700	GB	WLS	0	0	Bonvilston
+	369	Bodelwyddan	53.2682700	-3.5007800	GB	WLS	0	0	Bodelwyddan
+	369	Bodedern	53.2923200	-4.5030300	GB	WLS	0	0	Bodedern
+	369	Blaenavon	51.7740200	-3.0853700	GB	WLS	0	0	Blaenavon
+	369	Blaenau-Ffestiniog	52.9946400	-3.9369700	GB	WLS	0	0	Blaenau-Ffestiniog
+	369	Blackmill	51.5684300	-3.5393200	GB	WLS	0	0	Blackmill
+	369	Bishopston	51.5775000	-4.0480600	GB	WLS	0	0	Bishopston
+	369	Betws-y-Coed	53.0938200	-3.8066800	GB	WLS	0	0	Betws-y-Coed
+	369	Betws	51.5691700	-3.5883300	GB	WLS	0	0	Betws
+	369	Bethesda	53.1815000	-4.0582800	GB	WLS	0	0	Bethesda
+	369	Berriew	52.5991500	-3.2020700	GB	WLS	0	0	Berriew
+	369	Bedwas	51.5918300	-3.1988600	GB	WLS	0	0	Bedwas
+	369	Beaumaris	53.2631500	-4.0923300	GB	WLS	0	0	Beaumaris
+	369	Barry	51.3997900	-3.2838000	GB	WLS	0	0	Barry
+	369	Barmouth	52.7237700	-4.0574800	GB	WLS	0	0	Barmouth
+	369	Bargoed	51.6833300	-3.2333300	GB	WLS	0	0	Bargoed
+	369	Bangor	53.2275200	-4.1293600	GB	WLS	0	0	Bangor
+	369	Bala	52.9111100	-3.5972200	GB	WLS	0	0	Bala
+	369	Bagillt	53.2654000	-3.1655100	GB	WLS	0	0	Bagillt
+	369	Arddleen	52.7333300	-3.1000000	GB	WLS	0	0	Arddleen
+	369	Ammanford	51.7927900	-3.9883300	GB	WLS	0	0	Ammanford
+	369	Amlwch	53.4098600	-4.3471200	GB	WLS	0	0	Amlwch
+	369	Aberystwyth	52.4154800	-4.0829200	GB	WLS	0	0	Aberystwyth
+	369	Abertillery	51.7298100	-3.1343200	GB	WLS	0	0	Abertillery
+	369	Abersoch	52.8243700	-4.5058400	GB	WLS	0	0	Abersoch
+	369	Aberporth	52.1324800	-4.5417300	GB	WLS	0	0	Aberporth
+	369	Abermule	52.5433900	-3.2372300	GB	WLS	0	0	Abermule
+	369	Aberkenfig	51.5400000	-3.5955600	GB	WLS	0	0	Aberkenfig
+	369	Abergwili	51.8659300	-4.2696900	GB	WLS	0	0	Abergwili
+	369	Abergele	53.2843600	-3.5822000	GB	WLS	0	0	Abergele
+	369	Abergavenny	51.8209800	-3.0174300	GB	WLS	0	0	Abergavenny
+	369	Aberfan	51.6889200	-3.3417800	GB	WLS	0	0	Aberfan
+	369	Aberdyfi	52.5440000	-4.0460600	GB	WLS	0	0	Aberdyfi
+	369	Aberdare	51.7143800	-3.4491800	GB	WLS	0	0	Aberdare
+	369	Abercynon	51.6454800	-3.3272700	GB	WLS	0	0	Abercynon
+	369	Abercarn	51.6473300	-3.1347600	GB	WLS	0	0	Abercarn
+	369	Abercanaid	51.7236100	-3.3661100	GB	WLS	0	0	Abercanaid
+	369	Aberaeron	52.2424700	-4.2587100	GB	WLS	0	0	Aberaeron
+	369	Benllech	53.3204400	-4.2260700	GB	WLS	0	0	Benllech
+	369	Keeston	51.8339200	-5.0483400	GB	WLS	0	0	Keeston
+	369	Steynton	51.7291700	-5.0172200	GB	WLS	0	0	Steynton
+	369	Hundleton	51.6669400	-4.9491700	GB	WLS	0	0	Hundleton
+	369	Hill Mountain	51.7366700	-4.9313900	GB	WLS	0	0	Hill Mountain
+	369	Freshwater East	51.6473500	-4.8687200	GB	WLS	0	0	Freshwater East
+	369	Jameston	51.6564200	-4.8130400	GB	WLS	0	0	Jameston
+	369	Glandwr	51.9283300	-4.6333300	GB	WLS	0	0	Glandwr
+	369	Pont Henri	51.7611100	-4.2077800	GB	WLS	0	0	Pont Henri
+	369	Trimsaran	51.7198800	-4.2416800	GB	WLS	0	0	Trimsaran
+	369	Carway	51.7366900	-4.2283200	GB	WLS	0	0	Carway
+	369	Tumble	51.7836100	-4.1097200	GB	WLS	0	0	Tumble
+	369	Crofty	51.6344800	-4.1293700	GB	WLS	0	0	Crofty
+	369	Southgate	51.5694400	-4.0897200	GB	WLS	0	0	Southgate
+	369	Three Crosses	51.6286500	-4.0626300	GB	WLS	0	0	Three Crosses
+	369	Grovesend	51.6847200	-4.0383300	GB	WLS	0	0	Grovesend
+	369	Pontlliw	51.6913900	-4.0105600	GB	WLS	0	0	Pontlliw
+	369	Waterston	51.7126400	-4.9877500	GB	WLS	0	0	Waterston
+	369	Hook	51.7650000	-4.9316700	GB	WLS	0	0	Hook
+	369	Crundale	51.8241700	-4.9480600	GB	WLS	0	0	Crundale
+	369	Croeserw	51.6447200	-3.6402800	GB	WLS	0	0	Croeserw
+	369	Pont Rhyd-y-cyff	51.5869400	-3.6363900	GB	WLS	0	0	Pont Rhyd-y-cyff
+	369	Price Town	51.6183200	-3.5366200	GB	WLS	0	0	Price Town
+	369	Ogmore Vale	51.6023000	-3.5421700	GB	WLS	0	0	Ogmore Vale
+	369	Tonypandy	51.6220200	-3.4554400	GB	WLS	0	0	Tonypandy
+	369	Heol-y-Cyw	51.5474300	-3.5224300	GB	WLS	0	0	Heol-y-Cyw
+	369	Cefn Cribwr	51.5316700	-3.6527800	GB	WLS	0	0	Cefn Cribwr
+	369	Ogmore-by-Sea	51.4605600	-3.6302800	GB	WLS	0	0	Ogmore-by-Sea
+	369	Brynna	51.5384500	-3.4637800	GB	WLS	0	0	Brynna
+	369	Abertridwr	51.5958300	-3.2683300	GB	WLS	0	0	Abertridwr
+	369	Beddau	51.5539800	-3.3581400	GB	WLS	0	0	Beddau
+	369	Blackwood	51.6677800	-3.2075000	GB	WLS	0	0	Blackwood
+	369	Cwmbach	51.7055600	-3.4094400	GB	WLS	0	0	Cwmbach
+	369	Blaengwynfi	51.6562300	-3.6037100	GB	WLS	0	0	Blaengwynfi
+	369	Rhigos	51.7423100	-3.5618500	GB	WLS	0	0	Rhigos
+	369	Rogiet	51.5885400	-2.7786800	GB	WLS	0	0	Rogiet
+	369	Parc Seymour	51.6219400	-2.8575000	GB	WLS	0	0	Parc Seymour
+	369	Tywyn	52.5857800	-4.0927600	GB	WLS	0	0	Tywyn
+	369	Tintern	51.6967700	-2.6814200	GB	WLS	0	0	Tintern
+	369	Fairbourne	52.6968000	-4.0561000	GB	WLS	0	0	Fairbourne
+	369	Penparcau	52.4033300	-4.0741700	GB	WLS	0	0	Penparcau
+	369	Y Felinheli	53.1873700	-4.2047600	GB	WLS	0	0	Y Felinheli
+	369	Llanrhaeadr-ym-Mochnant	52.8250700	-3.3022500	GB	WLS	0	0	Llanrhaeadr-ym-Mochnant
+	369	Upper Corris	52.6613400	-3.8565400	GB	WLS	0	0	Upper Corris
+	369	Llan Ffestiniog	52.9575200	-3.9303500	GB	WLS	0	0	Llan Ffestiniog
+	369	Bedlinog	51.7043200	-3.3130600	GB	WLS	0	0	Bedlinog
+	369	Bontnewydd	53.1162300	-4.2682700	GB	WLS	0	0	Bontnewydd
+	369	Pontyclun	51.5216200	-3.3914500	GB	WLS	0	0	Pontyclun
+	369	Pentre	51.6542900	-3.4913300	GB	WLS	0	0	Pentre
+	369	Deeside	53.2005300	-3.0384100	GB	WLS	0	0	Deeside
+	369	Llangadog	51.9380700	-3.8828900	GB	WLS	0	0	Llangadog
+	369	Ty Croes	53.2227100	-4.4757700	GB	WLS	0	0	Ty Croes
+	369	Tyn-y-Gongl	53.3220000	-4.2324000	GB	WLS	0	0	Tyn-y-Gongl
+	369	Dyffryn Ardudwy	52.7774800	-4.0646800	GB	WLS	0	0	Dyffryn Ardudwy
+	369	Garndolbenmaen	52.9736600	-4.2402100	GB	WLS	0	0	Garndolbenmaen
+	369	Penysarn	53.3897800	-4.3169800	GB	WLS	0	0	Penysarn
+	369	Rhosgoch	53.3769300	-4.3909300	GB	WLS	0	0	Rhosgoch
+	369	Brynteg	53.3189800	-4.2607200	GB	WLS	0	0	Brynteg
+	369	Dulas	53.3866000	-4.2539800	GB	WLS	0	0	Dulas
+	369	Marianglas	53.3358700	-4.2462600	GB	WLS	0	0	Marianglas
+	369	Glogue	51.9677500	-4.5982900	GB	WLS	0	0	Glogue
+	369	Llanbedrgoch	53.3002600	-4.2364300	GB	WLS	0	0	Llanbedrgoch
+	369	Dwyran	53.1672300	-4.3218800	GB	WLS	0	0	Dwyran
+	369	Penyffordd	53.1482900	-3.0458400	GB	WLS	0	0	Penyffordd
+	369	Mynytho	52.8512000	-4.5165800	GB	WLS	0	0	Mynytho
+	369	Penparc	52.1018400	-4.6125400	GB	WLS	0	0	Penparc
+	369	Deiniolen	53.1481900	-4.1318500	GB	WLS	0	0	Deiniolen
+	369	Ynysybwl	51.6392200	-3.3603600	GB	WLS	0	0	Ynysybwl
+	369	Sudbrook	51.5849400	-2.7180000	GB	WLS	0	0	Sudbrook
+	369	Talysarn	53.0536500	-4.2576700	GB	WLS	0	0	Talysarn
+	369	Malltraeth	53.1924300	-4.3850900	GB	WLS	0	0	Malltraeth
+	369	Gronant	53.3366900	-3.3603100	GB	WLS	0	0	Gronant
+	369	Tal-y-bont	52.7747100	-4.0922400	GB	WLS	0	0	Tal-y-bont

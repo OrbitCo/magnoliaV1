@@ -1,0 +1,84 @@
+.app-top-banner-js {
+    /*position: fixed;*/
+    position: relative;
+    width: 100%;
+    height: 97px;
+    padding-top: 10px;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: $html_bg;
+    color: $contrast_color; 
+    z-index: 1;
+    a {
+        display: block;
+    }
+    &__close {
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAQAAABIkb+zAAABZUlEQVR4Ae2agWYDQRRFBxCxHxEAFsY8CwsW+r9pAdWgAvmdCttVmJJiIEzFO55wz/zAOWRj5s0kIYQQQgghhBBC/I9xsPc8JYA8lY9xSCy2t4vVcs0ToH+1ahfbs/pnq1Z9E5r+bZ2xhMPuT78lAPq3hMMO0S8nq1a9E5p+W+UEJNjRalstwVW/rWPyJi9l80/I8z39suUlNfCE+XF9W7v6fIKtecb1+QRcn0/A9fkEXJ9PwPXjE/JyT99WQB8Q6Yc7AH6IqD6fgOrzCag+n4Dq8wmYPp/gsAmMTsgvDtvwyAT7idR3OJzw+sxsgdfnE3h9PoHS5xMA/fgA+6IC9BMCPmL9jQL6fAKgXzb7jkxwmHF2ZqraTutAwx8pdaiPH6tosBU/WtRwN368rguO2CsmXfLFX7Pqott3xhmQUN589TsJr8/03GbuP7fRg6foJ2d69NcYh/IZ/+xSCCGEEEIIIYQQvw2UKo1mqKrvAAAAAElFTkSuQmCC);
+        cursor: pointer;
+        margin: 25px 0 0 -5px;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    &__banner {
+        img {
+            height: 40px;
+            width: auto;
+        }
+    }
+    &__description {
+        padding: 10px 0 0 0;
+    }
+    &__title {
+        color: $font_color;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    &__subtitle {
+        color: $descr_color;
+        font-size: 12px;
+        line-height: 1.2;
+    }
+    &__view {
+        line-height: 80px;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 12px;
+    }
+    &__link {
+        padding: 10px;
+        margin: 10px 10px 0 0;
+        border-radius: 5px;
+        background-color: #fff;
+        float: $left;
+    }
+    .first-col {
+        padding-right: 5px;
+        padding-left: 10px;
+    }
+    .second-col {
+        padding-right: 0;
+    }
+    .third-col {
+        padding-right: 10px;
+        padding-left: 0;
+    }
+}
+@media (min-width: 350px) {
+    .app-top-banner-js {
+        &__subtitle {
+            line-height: inherit;
+        }
+    }    
+}    
+@media (min-width: 375px) {
+    .app-top-banner-js {
+        .first-col, .second-col, .third-col {
+            padding-right: 15px;
+            padding-left: 15px;
+        }    
+    }   
+}    

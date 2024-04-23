@@ -1,0 +1,111 @@
+{% include '@app/header.twig' with {load_type : 'ui'} %}
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                <li{% if section == 'settings' %} class="active"{% endif %}>
+                    <a href="{{ site_url }}admin/mobile/push_notifications_settings">
+                        {% helper lang.l('tab_settings_push_notifications', 'mobile') %}</a>
+                </li>
+                <li{% if section == 'list' %} class="active"{% endif %}>
+                    <a href="{{ site_url }}admin/mobile/push_notifications_list">
+                        {% helper lang.l('tab_list_push_notifications', 'mobile') %}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="x_title">
+            <h2>
+                {% helper lang.l('tab_settings_push_notifications', 'mobile') %}
+            </h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <form method="post" enctype="multipart/form-data" data-parsley-validate
+                  class="form-horizontal form-label-left" name="save_form"
+                  action="{{ data.action }}">
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                        {% helper lang.l('firebase_app_id', 'mobile') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="firebase_app_id" value="{{ mobile_settings.firebase_app_id|e }}" class="form-control" id="firebase_app_id">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                        {% helper lang.l('firebase_api_key', 'mobile') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="firebase_api_key" value="{{ mobile_settings.firebase_api_key|e }}" class="form-control" id="firebase_api_key">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                        {% helper lang.l('firebase_auth_domain', 'mobile') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="firebase_auth_domain" value="{{ mobile_settings.firebase_auth_domain|e }}" class="form-control" id="firebase_auth_domain">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                        {% helper lang.l('firebase_database_url', 'mobile') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="firebase_database_url" value="{{ mobile_settings.firebase_database_url|e }}" class="form-control" id="firebase_database_url">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                        {% helper lang.l('firebase_project_id', 'mobile') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="firebase_project_id" value="{{ mobile_settings.firebase_project_id|e }}" class="form-control" id="firebase_project_id">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                        {% helper lang.l('firebase_storage_bucket', 'mobile') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="firebase_storage_bucket" value="{{ mobile_settings.firebase_storage_bucket|e }}" class="form-control" id="firebase_storage_bucket">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                        {% helper lang.l('firebase_messaging_sender_id', 'mobile') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="firebase_messaging_sender_id" value="{{ mobile_settings.firebase_messaging_sender_id|e }}" class="form-control" id="firebase_messaging_sender_id">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                        {% helper lang.l('firebase_public_vapid_key', 'mobile') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="firebase_public_vapid_key" value="{{ mobile_settings.firebase_public_vapid_key|e }}" class="form-control" id="firebase_public_vapid_key">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                        {% helper lang.l('firebase_service_key', 'mobile') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <textarea name="firebase_service_key" rows="10" cols="80" class="form-control">{{ mobile_settings.firebase_service_key|e }}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                        {% helper lang.l('use_notifications', 'mobile') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="hidden" name="use_notifications" value="">
+                        <input type="checkbox" name="use_notifications" value="true" {% if mobile_settings.use_notifications %}checked{% endif %} id="use_notifications" class="flat">
+                    </div>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="col-sm-9 col-xs-12 col-sm-offset-3">
+                        <input type="submit" name="btn_save" value="{% helper lang.l('btn_save', 'start', '', 'button') %}" class="btn btn-success">
+                        <a class="btn btn-default" href="{{ site_url }}admin/mobile/index">{% helper lang.l('btn_cancel', 'start') %}</a>
+{#                        TODO: (nsavanaev) полностью убрать или переделать форму поиска send_push_notifications, иначе выходит ошибка DPC-11303 #}
+{#                        <a href="{{ site_url }}admin/mobile/send_push_notifications" class="btn btn-primary">{% helper lang.l('send_notification', 'mobile') %}</a>#}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% include '@app/footer.twig' %}

@@ -1,0 +1,49 @@
+<div id="deficit-funds">
+    <h1>{% helper lang.l('add_funds', 'users_payments') %}?</h1>
+    <div class="mtb20"> {% helper lang.l('error_account_less_then_service_price', 'services') %} {% helper start.currency_format_output({'value': payment_data.deficit}) %}</div>
+    {#<div class="btn-group">
+        <button type="button" class="btn btn-primary" data-toggle="dropdown"  data-action="payment-list">
+            {% helper lang.l('add_funds', 'users_payments') %}
+        </button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"  data-action="payment-list">
+            <span class="caret"></span>
+            <span class="sr-only"></span>
+        </button>
+        <ul class="dropdown-menu hide" role="menu" id="payment-list">
+            {% for  system in billing_systems %}
+                <li class="pointer">
+                    <a data-action="set-payment-system"   data-gid="{{ system.gid }}" data-price="{{ payment_data.deficit }}">
+                        <img src="{{ system.logo_url }}" class="h50">
+                        {{ system.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <button class="btn btn-close" data-action="close">{% helper lang.l('btn_close', 'start') %}</button>#}
+    <div class="col-xs-12 b-billing-systems">
+        {% for  system in billing_systems %}
+            <div class="col-xs-4 com-sm-4 col-md-3 col-lg-3 b-billing-systems__item pointer">
+                <a data-action="set-payment-system"   data-gid="{{ system.gid }}" data-price="{{ payment_data.deficit }}"  class="b-billing-systems__link">
+                    <img src="{{ system.logo_url }}" class="img-responsive">
+                    <span class="pay_sys-name">{{ system.name }}</span>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="clearfix"></div>
+    <script>
+        $(function() {
+            loadScripts(
+                ["{% helper utils.jscript('users_payments', 'UsersPayments.js', 'path') %}"],
+                function () {
+                    users_payments = new UsersPayments({
+                        siteUrl: site_url
+                    });
+                },
+                ['users_payments'],
+                {async: true}
+            );
+        });
+    </script>
+</div>

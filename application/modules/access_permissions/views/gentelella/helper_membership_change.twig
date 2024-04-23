@@ -1,0 +1,24 @@
+{% if user_data.type == 'btn' %}
+    <a data-action="membership-change" 
+             data-id_user="{{ user_data.id_user }}" 
+             data-groups="{{ user_data.group.group_gid }}" data-days="{{ user_data.group.left_str }}"
+             {% if user_data.user_type %}data-user_type="{{ user_data.user_type }}"{% endif %}
+             id="user_membership_str-{{ user_data.id_user }}" 
+             class="group_change_btn">Membership</a>
+{% elseif user_data.type == 'choise' %}
+    <a data-groups='' data-id_user="" data-action="membership-change"  
+             id="user_membership_choise" class="cursor-pointer">Membership</a>
+{% else %}
+    <div data-action="membership-change" 
+             data-id_user="{{ user_data.id_user }}" 
+             data-groups="{{ user_data.group.group_gid }}" data-days="{{ user_data.group.left_str }}"
+             {% if user_data.user_type %}data-user_type="{{ user_data.user_type }}"{% endif %}
+             id="user_membership_str-{{ user_data.id_user }}" 
+             class="group_change_btn">
+        {{ user_data.group_str }}
+        {% if user_data.group.date_expired %}
+            <div class="date-expires">{% helper lang.l('field_expires', 'access_permissions') %} <div>{{ user_data.group.date_expired }}</div></div>
+         {% endif %}
+    </div>
+             
+{% endif %}

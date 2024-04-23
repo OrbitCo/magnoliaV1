@@ -1,0 +1,136 @@
+{% extends '@app/header_lite.twig' %}
+ {% block bodyclass %}index-pleasure{% endblock bodyclass %}
+
+ {% block container %}
+     <div class="video-chat">
+         <header>
+             <menu class="right-link-video">
+                 <ul>
+                     <li id="start-chat-link">
+                         <i class="far fa-comments"></i>{% helper lang.l('link_write_message', 'chats') %}
+                     </li>
+                     <li title="{% helper lang.l('link_chat_complete', 'chats') %}" id="completeChat">
+                         <i class="fas fa-sign-in-alt"></i>
+                     </li>
+                 </ul>
+             </menu>
+         </header>
+         <div class="col-chat" id="col-chat">
+             <div class="col-chat-item">
+                 <video autoplay id="its_me" style="height: 80%; width: 100%;" muted="muted"></video>
+                 <div id="my_info_block" class="info_block hide">
+                     <div style="padding:10px; font-size:20px">
+                         {% helper lang.l('text_my_infotext_1', 'chats') %}
+                     </div>
+                     <div style="padding:10px;">
+                         {% helper lang.l('text_my_infotext_2', 'chats') %}
+                     </div>
+                 </div>
+                 <div class="clr"></div>
+                 <div class="chat-control">
+                     <div class="chat-control-video">
+					<span class="text">
+                        <i class="camera fas fa-video hide" id="pauseVideo"></i>
+                    </span>
+                         <span class="text">
+                        <i class="microphone fas fa-microphone hide" id="pauseAudio"></i>
+                    </span>
+                     </div>
+                     <div class="chat-control-pause">
+					<span class="text">
+						<i class="pause fas fa-pause hide" id="pauseChat"></i>
+                        <i class="pause fa fa-play hide" id="resumeChat"></i>
+					</span>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-chat-item">
+                 <video autoplay id="its_him" style="height: 80%; width: 100%;"></video>
+                 <div id="his_info_block" class="info_block hide">
+                     <div style="padding:10px; font-size:20px" id="his_info_block_text"></div>
+                 </div>
+                 <div class="clr"></div>
+                 <div class="chat-control">
+                     <div class="chat-control-pause">
+                         {% if last_chat.is_invited %}
+                             {% helper blacklist.blacklist_button({id_user: last_chat.invited_user_id, type_button: 'for_videochat'}) %}
+                         {% else %}
+                             {% helper blacklist.blacklist_button({id_user: last_chat.invite_user_id, type_button: 'for_videochat'}) %}
+                         {% endif %}
+                     </div>
+                 </div>
+                 <div class="block-user" id="chat_user_block">
+                     {% if last_chat.is_invited %}
+                         <a href="{{ last_chat.invite.link }}" target="_blank">
+                             <img src="{{ last_chat.invite.media.user_logo.thumbs.middle }}" />
+                         </a>
+                     {% else %}
+                         <a href="{{ last_chat.invited.link }}" target="_blank">
+                             <img src="{{ last_chat.invited.media.user_logo.thumbs.middle }}" />
+                         </a>
+                     {% endif %}
+                 </div>
+             </div>
+         </div>
+         <div class="start-chat-block" id="start-chat-block">
+             <i class="fas fa-times close-chat" id="close-chat"></i>
+             <div class="message-scroller">
+                 <div id="messagesChat"></div>
+             </div>
+             <div class="msg-box">
+                 <input type="text" placeholder="{% helper lang.l('link_write_something', 'chats') %}"
+                        class="input-chat" id="videochatMessage">
+                 <i class="fab fa-telegram-plane btn-send-msg"></i>
+             </div>
+         </div>
+         <script type="text/javascript">
+             $(function () {
+                 loadScripts(
+                     [
+                         "{% helper utils.jscript('chats', 'peer.js', 'path') %}",
+                         "{% helper utils.jscript('chats', 'pg_videochat.js', 'path') %}"
+                     ],
+                     function () {
+                         var chat_data = {{ chat_json_data }};
+                         var settings_data = {{ settings_json_data }};
+                         pg_videochat = new PG_videochat({
+                             site_url: site_url,
+                             settings: settings_data,
+                             id_chat: chat_data.id,
+                             id_inviter_user: chat_data.invite_user_id,
+                             id_invited_user: chat_data.invited_user_id,
+                             is_inviter: chat_data.is_inviter,
+                             inviter_peer_id: chat_data.inviter_peer_id,
+                             invited_peer_id: chat_data.invited_peer_id,
+                             inviter_photo: chat_data.invite.media.user_logo.thumbs.small,
+                             invited_photo: chat_data.invited.media.user_logo.thumbs.small,
+                             waiting_lang: '{% helper lang.l('text_waiting_lang', 'chats', '', 'js') %}',
+                             pause_lang: '{% helper lang.l('text_pause_lang', 'chats', '', 'js') %}',
+                             close_alert_text: '{% helper lang.l('text_close_alert', 'chats', '', 'js') %}',
+                             error_support: '{% helper lang.l('text_error_support', 'chats', '', 'js') %}',
+                             connect_now: '{% helper lang.l('text_connect_now', 'chats', '', 'js') %}',
+                             complete_lang: '{{ complete_lang }}',
+                             start_chat_id: 'start-chat-link',
+                             close_chat_id: 'close-chat',
+                             chat_block: 'start-chat-block',
+                         });
+                     },
+                     'pg_videochat',
+                     { async: true }
+                 );
+             });
+         </script>
+
+     </div>
+     {# TODO перенести в сборщик webpack (flatty/js/main.js) #}
+     {% helper utils.jscript('', 'twigjs/twig.js') %}
+     {% helper themes.load({'name': 'modules', 'ext': 'js'}) %}
+     {% helper themes.load({'name': 'modules_multi_request', 'ext': 'js'}) %}
+
+
+     {% helper cookie_policy.cookie_policy_block() %}
+     {% helper languages.lang_editor() %}
+     {% helper seo_advanced.seo_traker('footer') %}
+     </body>
+     </html>
+ {% endblock container %}

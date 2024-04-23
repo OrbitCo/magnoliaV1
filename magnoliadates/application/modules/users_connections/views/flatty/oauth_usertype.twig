@@ -1,0 +1,113 @@
+{% include '@app/header.twig' %}
+<div class="col-xs-12">
+    {% if service_name %}
+        <h1>
+            {% helper lang.l('first_connect_via', 'users_connections') %} {{service_name}}!
+        </h1>
+    {% endif %}
+</div>
+{% if data.error is not defined %}
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <form action="{{ site_url }}users_connections/oauth_register/" method="POST">
+            <input type="hidden" name="service_id" value="{{ service_id }}" />
+            <input type="hidden" name="application_id" value="{{ application_id }}" />
+            <input type="hidden" name="access_token" value="{{ access_token }}" />
+            <input type="hidden" name="access_token_secret" value="{{ access_token_secret }}" />
+            <input type="hidden" name="date_end" value="{{ date_end }}" />
+            <input type="hidden" name="service_user_id" value="{{ service_user_id }}" />
+            <input type="hidden" name="service_user_fname" value="{{ service_user_fname }}" />
+            <input type="hidden" name="service_user_sname" value="{{ service_user_sname }}" />
+            <input type="hidden" name="service_user_email" value="{{ service_user_email }}" />
+            <div class="form-group row mb10">
+                <label for="" class="col-xs-12 tali">
+                    {% helper lang.l('select_usertype', 'users_connections') %}
+                </label>
+                <div class="col-xs-12">
+                    <select name="user_type" class="form-control mb10">
+                        {% for key, item in user_type.option %}
+                            <option value="{{ key }}" {% if data.user_type == key %}selected{% endif %}>{{ item }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row mb10">
+                <label for="" class="col-xs-12 tali">
+                    {% helper lang.l('select_looking_for', 'users_connections') %}
+                </label>
+                <div class="col-xs-12">
+                    <select name="looking_user_type" class="form-control mb10">
+                        {% for key, item in looking_user_type.option %}
+                            <option value="{{ key }}" {% if data.user_type != key %}selected{% endif %}>{{ item }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+
+            {% if service_user_fname is empty %}
+                <div class="form-group row mb10">
+                    <label for="" class="col-xs-12 tali">
+                        {% helper lang.l('field_fname', 'users') %}:
+                    </label>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <input type="text" name="service_user_fname" value="" id="fname" class="form-control">
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if service_user_sname is empty %}
+                <div class="form-group row mb10">
+                    <label for="" class="col-xs-12 tali">
+                        {% helper lang.l('field_sname', 'users') %}:
+                    </label>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <input type="text" name="service_user_sname" value="" id="sname" class="form-control">
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="form-group row mb10">
+                <label for="" class="col-xs-12 tali">
+                    {% helper lang.l('birth_date', 'users') %}:
+                </label>
+                <div class="col-xs-12">
+                    <div id="datepicker" class="hidden"></div>
+                    <input type="text" name="birth_date" value="{{ data.birth_date|e }}" maxlength="10"  class="form-control hidden">
+                </div>
+            </div>
+            <input type="submit" name="btn_register" value="{% helper lang.l('btn_ok', 'start', '', 'button') %}" class="btn btn-primary"/>
+        </form>
+        <script type="text/javascript">
+            $(function () {
+                var now = new Date();
+                var yr = (new Date(now.getFullYear() - {{ age_max }}, 0, 1).getFullYear()) + ':' +
+                        (new Date(now.getFullYear() - {{ age_min }}, 0, 1).getFullYear());
+
+                $("#datepicker").datepicker({
+                    dateFormat: 'yy-mm-dd',
+                    changeYear: true,
+                    changeMonth: true,
+                    yearRange: yr,
+                });
+
+                loadScripts(
+                        ["{% helper utils.jscript('', 'datepicker-dropdown-template.js', 'path') %}"],
+                        function () {
+                            new DatepickerDropdownTemplate({
+                                datepickerId: '#datepicker',
+                                setDate: '{{ data.birth_date }}',
+                                dateFormat: '{{ date_format_ui.date_literal }}',
+                                inputName: 'birth_date',
+                                defaultDayText: '{% helper lang.l('date_format_day', 'start') %}',
+                                defaultMonthText: '{% helper lang.l('date_format_month', 'start') %}',
+                                defaultYearText: '{% helper lang.l('date_format_year', 'start') %}',
+                            });
+                        }
+                );
+            });
+        </script>
+    </div>
+{% else %}
+    <div class="col-xs-8">{{ data.error }}</div>
+{% endif %}
+{% include '@app/footer.twig' %}

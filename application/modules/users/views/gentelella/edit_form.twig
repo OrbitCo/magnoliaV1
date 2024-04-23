@@ -1,0 +1,485 @@
+{% include '@app/header.twig' %}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+
+    {% if data.id %}
+        {% set user_menu %}{% spaceless %}
+            {% if sections %}
+                {% for key, item in sections %}
+                <li{% if item.gid == section %} class="active"{% endif %}>
+                    <a href="{{ site_url }}admin/users/edit/{{ item.gid }}/{{ data.id }}">
+                        {{ item.name }}
+                    </a>
+                </li>
+                {% endfor %}
+            {% endif %}
+            {% helper is_module_installed = utils.depends('seo_advanced', 'media') %}
+            {% if is_module_installed.seo_advanced %}
+                <li{% if section == 'seo' %} class="active"{% endif %}>
+                    <a href="{{ site_url }}admin/users/edit/seo/{{ data.id }}">
+                        {% helper lang.l('filter_section_seo', 'seo') %}
+                    </a>
+                </li>
+            {% endif %}
+            {% if is_module_installed.media %}
+                <li>
+                    <a href="{{ site_url }}admin/media/user_media/{{ data.id }}">
+                        {% helper lang.l('filter_section_uploads', 'media') %}
+                    </a>
+                </li>
+            {% endif %}
+        {% endspaceless %}{% endset %}
+        {% if user_menu %}
+        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                <li{% if section == 'personal' %} class="active"{% endif %}>
+                    <a href="{{ site_url }}admin/users/edit/personal/{{ data.id }}">
+                        {% helper lang.l('table_header_personal', 'users') %}
+                    </a>
+                </li>
+                {{ user_menu }}
+            </ul>
+            &nbsp;
+        </div>
+        {% endif %}
+    {% endif %}
+        <div class="x_content">
+    {% if section == 'personal' %}
+        <form action="{{ data.action }}" method="post" enctype="multipart/form-data" name="save_form"
+            data-parsley-validate class="form-horizontal form-label-left">
+                {#% if not data.id %#}
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('field_user_type', 'users') %}:</label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div id="gender" class="btn-group" data-toggle="buttons">
+                            {% for key, item in user_types.option %}
+                            <label class="btn btn-default{% if key == data.user_type %} active{% endif %}"
+                                data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                <input type="radio" name="user_type" value="{{ key }}"{% if key == data.user_type %} checked{% endif %}>{{ item }}
+                            </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {#% endif %#}
+
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('field_looking_user_type', 'users') %}:</label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div id="gender" class="btn-group" data-toggle="buttons">
+                            {% for key, item in user_types.option %}
+                            <label class="btn btn-default{% if key == data.looking_user_type %} active{% endif %}"
+                                data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                <input type="radio" name="looking_user_type" value="{{ key }}"{% if key == data.looking_user_type %} checked{% endif %}>{{ item }}
+                            </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('field_partner_age', 'users') %}:</label>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <select class="form-control" name="age_min">
+                            {% for age in age_range %}
+                            <option value="{{ age }}"{% if age == data.age_min %} selected{% endif %}>
+                                {{ age }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-12 text-center">
+                        <span class="form-control-box">{% helper lang.l('to', 'users') %}</span>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <select class="form-control" name="age_max">
+                            {% for age in age_range %}
+                            <option value="{{ age }}"{% if age == data.age_max %} selected{% endif %}>
+                                {{ age }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('field_email', 'users') %}: </label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input type="email" name="email" value="{{ data.email|e }}" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('field_nickname', 'users') %}: </label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input type="text" value="{{ data.nickname|e }}" name="nickname" class="form-control">
+                    </div>
+                </div>
+                {% if data.id %}
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('field_change_password', 'users') %}: </label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input type="checkbox" value="1" name="update_password" id="pass_change_field" class="flat">
+                    </div>
+                </div>
+                {% endif %}
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('field_password', 'users') %}: </label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input type="password" value="" name="password" id="pass_field"{% if data.id %}disabled{% endif %} class="form-control">
+                    </div>
+                </div>
+                {% if not empty(use_repassword) %}
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('field_repassword', 'users') %}: </label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input type="password" value="" name="repassword" id="repass_field"{% if data.id %}disabled{% endif %} class="form-control">
+                    </div>
+                </div>
+                {% endif %}
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('field_fname', 'users') %}: </label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input type="text" value="{{ data.fname|e }}" name="fname" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('field_sname', 'users') %}: </label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input type="text" value="{{ data.sname|e }}" name="sname" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('field_icon', 'users') %}: </label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input type="file" value="{{ data.sname|e }}" name="user_icon" class="btn btn-default">
+                        {% if data.user_logo or data.user_logo_moderation %}
+                            <br><input type="checkbox" name="user_icon_delete" value="1" id="uichb" class="flat">
+                            <label for="uichb">{% helper lang.l('field_icon_delete', 'users') %}</label><br>
+                            {% if data.user_logo_moderation %}
+                                <img src="{{ data.media.user_logo_moderation.thumbs.middle }}" data-click="view-media"  data-id-media="{{data.id}}" data-user-id="{{data.id}}">
+                            {% else %}
+                                <img src="{{ data.media.user_logo.thumbs.middle }}" data-click="view-media"  data-id-media="{{data.id}}" data-user-id="{{data.id}}">
+                            {% endif %}
+                            <div>
+                                <a data-click="view-media" id="logo_{{ data.id }}"  data-id-media="{{data.id}}" data-user-id="{{data.id}}">
+                                    {% helper lang.l('edit_object','moderation') %}
+                                </a>
+                                <script>
+                                    $(function () {
+                                        loadScripts(
+                                                "{% helper utils.jscript('users', '../views/flatty/js/users-avatar.js', 'path') %}",
+                                                function () {
+                                                    user_avatar_{{ data.id }} = new UsersAvatar({
+                                                        site_url: site_url,
+                                                        load_avatar_url: 'admin/users/ajax_load_avatar/',
+                                                        recrop_url: 'admin/users/ajax_recrop_avatar/',
+                                                        rotateUrl: 'admin/users/photoRotate/',
+                                                        id_user: '{{ data.id }}',
+                                                        saveAfterSelect: false,
+                                                        haveAvatar: false,
+                                                        userType: 'admin',
+                                                        photo_id: 'logo_{{ data.id }}'
+                                                    });
+                                                },
+                                                'user_avatar_{{ data.id }}',
+                                                {async: false}
+                                        );
+                                    });
+                                </script>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('birth_date', 'users') %}: </label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        {% if data.birth_date_hidden %}
+                            {% set birth_date_hidden = data.birth_date_hidden %}
+                        {% else %}
+                             {% set birth_date_hidden = min_date %}
+                        {% endif %}
+                        {% helper start.getCalendarInput('birth_date', birth_date_hidden, {id: 'birth_date', year_range: {min: -80, max: -18}}) %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('field_region', 'users') %}: </label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        {% helper countries.locationSelect({
+                            select_type: 'city',
+                            id_country: data.id_country,
+                            id_region: data.id_region,
+                            id_city: data.id_city,
+                            lat: data.lat,
+                            lon: data.lon,
+                            var_country_name: 'id_country',
+                            var_region_name: 'id_region',
+                            var_city_name: 'id_city',
+                            var_lat_name: 'lat',
+                            var_lon_name: 'lon'
+                        }) %}
+                    </div>
+                </div>
+                {% helper is_module_installed = utils.depends('geomap') %}
+                {% if is_module_installed.geomap %}
+                    {% helper geomap.geomap_load_geocoder() %}
+                {% endif %}
+                <script type="text/javascript">
+                    $(function() {
+                        loadScripts(
+                            ["{% helper utils.jscript('users', 'users-map.js', 'path') %}"],
+                            function() {
+                                users_map = new usersMap({
+                                    siteUrl: site_url,
+                                });
+                            },
+                            ['users_map'],
+                            {async: true}
+                        );
+                    });
+                </script>
+                {% if data.id %}
+                    {% if data.confirm %}
+                        <input type="hidden" name="confirm" value="1">
+                    {% else %}
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                {% helper lang.l('field_confirm', 'users') %}: </label>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="checkbox" value="1" name="confirm" class="flat">
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                <div class="ln_solid"></div>
+
+                <div class="form-group">
+                    <div class="col-md-9 col-sm-9 col-xs-12 col-sm-offset-3">
+                        <button type="submit" name="btn_save" class="btn btn-success" value="1">
+                            {% helper lang.l('btn_save', 'start', '', 'button') %}</button>
+                        <a class="btn btn-default" href="{{ site_url }}admin/users">
+                            {% helper lang.l('btn_cancel', 'start' )%}</a>
+
+                        {% helper users.delete_select_block({id_user: data.id, deleted: 0, class: "btn btn-primary"}) %}
+
+                    </div>
+                </div>
+            </form>
+            <div class="clearfix"></div>
+    {% elseif section == 'seo' %}
+            {% helper is_module_installed = utils.depends('seo_advanced') %}
+            {% if is_module_installed.seo_advanced %}
+                {% for key, section in seo_fields %}
+                    <form method="post" action="{{ data.action|e }}" name="seo_{{ section.gid }}_form"
+                        data-parsley-validate class="form-horizontal form-label-left">
+                        <br>
+                        <h3>{{ section.name }}</h3>
+
+                        {% if section.tooltip %}
+                            <p>{{ section.tooltip }}</p>
+                        {% endif %}
+
+                        {% for field in section.fields %}
+                            <div class="form-group">
+
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    {{ field.name }}: </label>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {% set field_gid = field.gid %}
+                                    {% if field.type == 'checkbox' %}
+                                        <input type="hidden" name="{{ section.gid }}[{{ field_gid }}]" value="0">
+                                        <input type="checkbox" name="{{ section.gid }}[{{ field_gid }}]" value="1"
+                                            class="flat" {% if attribute(seo_settings, field_gid) %}checked{% endif %}>
+                                    {% elseif field.type == 'text' %}
+                                        {% for lang_id, lang_item in languages %}
+                                            {% if lang_id == current_lang_id %}
+                                                {% set section_gid = section.gid ~ '_' ~ lang_id %}
+                                                <input type="text" name="{{ section.gid }}[{{ field_gid }}][{{ lang_id }}]"
+                                                    value="{{ attribute(attribute(seo_settings, section_gid), field_gid|e ) }}"
+                                                    class="form-control">
+                                            {% endif %}
+                                        {% endfor %}
+                                </div>
+
+
+                                <div class="accordion col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3" id="accordion-input-{{ field_gid }}" role="tablist" aria-multiselectable="true">
+                                    <div class="panel">
+                                        <a class="panel-heading" role="tab" id="headingOne-input-{{ field_gid }}" data-toggle="collapse" data-parent="#accordion-input-{{ field_gid }}" href="#collapseOne-input-{{ field_gid }}" aria-expanded="false" aria-controls="collapseOne-input-{{ field_gid }}">
+                                            <h4 class="panel-title">{% helper lang.l('others_languages', 'start') %}</h4>
+                                        </a>
+                                        <div id="collapseOne-input-{{ field_gid }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne-input-{{ field_gid }}">
+                                            <div class="panel-body">
+                                                {% for lang_id, item in languages %}
+                                                    {% if lang_id != current_lang_id %}
+                                                        {% set section_gid = section.gid ~ '_' ~ lang_id %}
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-2 col-sm-2 col-xs-12">{{ item.name }}</label>
+                                                            <div class="col-md-10 col-sm-10 col-xs-12">
+                                                                <input name="{{ section.gid }}[{{ field_gid }}][{{ lang_id }}]" class="form-control" value="{{ attribute(attribute(seo_settings, section_gid), field_gid)|e }}" />
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+
+                                        {% elseif field.type == 'textarea' %}
+                                            {% for lang_id, lang_item in languages %}
+                                                {% if lang_id == current_lang_id %}
+                                                    {% set section_gid = section.gid ~ '_' ~ lang_id %}
+                                                    <textarea name="{{ section.gid }}[{{ field_gid }}][{{ lang_id }}]" rows="5" cols="80"
+                                                        class="form-control">{{ attribute(attribute(seo_settings, section_gid), field_gid)|e }}</textarea>
+                                                {% endif %}
+                                            {% endfor %}
+
+                                </div>
+
+
+                                <div class="accordion col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3" id="accordion-textarea-{{ field_gid }}" role="tablist" aria-multiselectable="true">
+                                    <div class="panel">
+                                        <a class="panel-heading" role="tab" id="headingOne-textarea-{{ field_gid }}" data-toggle="collapse" data-parent="#accordion" href="#collapseOne-textarea-{{ field_gid }}" aria-expanded="false" aria-controls="collapseOne-textarea-{{ field_gid }}">
+                                            <h4 class="panel-title">{% helper lang.l('others_languages', 'start') %}</h4>
+                                        </a>
+                                        <div id="collapseOne-textarea-{{ field_gid }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne-textarea-{{ field_gid }}">
+                                            <div class="panel-body">
+                                                {% for lang_id, item in languages %}
+                                                    {% if lang_id != current_lang_id %}
+                                                        {% set section_gid = section.gid ~ '_' ~ lang_id %}
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-2 col-sm-2 col-xs-12">{{ item.name }}</label>
+                                                            <div class="col-md-10 col-sm-10 col-xs-12">
+                                                                <textarea name="{{ section.gid }}[{{ field_gid }}][{{ lang_id }}]" rows="5" cols="80" class="form-control">{{ attribute(attribute(seo_settings, section_gid), field_gid)|e }}</textarea>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+
+                                        {% endif %}<br>{{ field.tooltip }}
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        <div class="ln_solid"></div>
+
+                    <!-- Buttons -->
+                        <button type="submit" name="btn_save_{{ section.gid }}" class="btn btn-success"  value="1">
+                            {% helper lang.l('btn_save', 'start') %}</button>
+                        <a class="cancel" href="{{ back_url }}">
+                            {% helper lang.l('btn_cancel', 'start') %}</a>
+
+                        <input type="hidden" name="btn_save" value="1">
+                    </form>
+                    <div class="clearfix"></div>
+                {% endfor %}
+            {% endif %}
+    {% else %}
+            <form action="{{ data.action }}" method="post" enctype="multipart/form-data" name="save_form"
+                  data-parsley-validate class="form-horizontal form-label-left">
+
+                {% include 'custom_form_fields.twig' %}
+
+                <div class="ln_solid"></div>
+
+            <!-- Buttons -->
+                <div class="form-group">
+                    <div class="col-md-9 col-sm-9 col-xs-12 col-sm-offset-3">
+                        {% helper save_text = lang.l('btn_save', 'start', '', 'button') %}
+                        <button type="submit" name="btn_save" class="btn btn-success" value="1">
+                            {{ save_text }}</button>
+                        <a class="btn btn-default" href="{{ site_url }}admin/users">
+                            {% helper lang.l('btn_cancel', 'start') %}</a>
+                            {% helper users.delete_select_block({id_user: data.id, deleted: 0, class: "btn btn-primary"}) %}
+                    </div>
+                </div>
+            </form>
+            <div class="clearfix"></div>
+    {% endif %}
+        </div>
+    </div>
+</div>
+{% helper utils.jscript('', 'jquery-ui.custom.min.js') %}
+<link href="{{ site_root }}{{ js_folder }}jquery-ui/jquery-ui.custom.css" rel="stylesheet" type="text/css" media="screen" />
+
+<script type="text/javascript">
+    $(function(){
+        $(document).off('ifChanged', 'input[name="update_password"]').on('ifChanged', 'input[name="update_password"]', function() {
+            if($('#pass_change_field:checked').val()){
+                $("#pass_field").prop('disabled', false);
+                $("#repass_field").prop('disabled', false);
+            }else{
+                $("#pass_field").prop('disabled', true);
+                $("#repass_field").prop('disabled', true);
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    var reload_link = '{{ site_url }}admin/users/index/';
+    var filter = '{{ filter|e('js') }}';
+    var order = '{{ order|e('js') }}';
+    var loading_content;
+    var order_direction = '{{ order_direction|e('js') }}';
+
+    $(function(){
+        loadScripts("{% helper utils.jscript('', 'jquery.imgareaselect/jquery.imgareaselect.js', 'path') %}", function () {}, '', {async: false});
+
+        delete_select_block = new loadingContent({
+            closeBtnPadding: '15',
+            closeBtnClass: 'close',
+            loadBlockSize: 'big',
+            loadBlockTitle: '{% helper lang.l('admin_header_delete_user', 'users') %}',
+            footerButtons: '<input type="submit" id="full_delete" class="btn btn-primary" name="btn_confirm_del" value="{% helper lang.l('btn_confirm_del', 'users', '', 'js') %}" disabled form="delete_user">'
+        });
+        $(document).off('click', '#users_link_delete').on('click', '#users_link_delete', function() {
+            var data = new Array();
+            $('.grouping:checked').each(function(i){
+                data[i] = $(this).val();
+            });
+            if(data.length > 0){
+                $.ajax({
+                    url: site_url + 'admin/users/ajax_delete_select/',
+                    data: {user_ids: data},
+                    type: "POST",
+                    cache: false,
+                    dataType: 'json',
+                    success: function(data){
+                        if (typeof (data.error) !== 'undefined' && data.error.length > 0) {
+                            error_object.show_error_block(data.error, 'error');
+                        } else {
+                            delete_select_block.show_load_block(data.content);
+                        }
+                    }
+                });
+            }else{
+                error_object.show_error_block('{% helper lang.l('error_no_users_to_change_group', 'users', '', 'js') %}', 'error');
+            }
+        });
+    });
+
+    function reload_this_page(value){
+        var link = reload_link + filter + '/' + value + '/' + order + '/' + order_direction;
+        location.href=link;
+    }
+</script>
+
+{% include '@app/footer.twig' %}

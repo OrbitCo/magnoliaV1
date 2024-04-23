@@ -1,0 +1,41 @@
+{% if auth_type == 'user' %}
+  {% if not is_mobile %}
+    <div class="user_quick_menu hidden-xs">
+      <a id="users_link_profile" href="javascript:void(0);" class="user-link-profile"
+         data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button"
+         aria-expanded="false"
+         onclick="{% helper start.setAnalytics('right_top_menu', 'my-profile-item') %}">
+        {% helper users.formatAvatar({'user': {'media': user_session_data.logo}, 'size': 'small', 'class': 'img-rounded'}) %}
+        <span class="badge sidebar-sum hide-always"></span>
+      </a>
+      <div class="dropdown-menu settings_menu-top_menu" role="menu" aria-labelledby="users_link_profile">
+        <div class="menu-more-triangle"></div>
+        {% helper menu.get_menu('settings_menu', 'settings_menu') %}
+      </div>
+    </div>
+  {% endif %}
+  <div class="user_quick_menu visible-xs-block">
+    <a href="{{ site_url }}users/view/{{ user_session_data.user_id }}/profile"
+       onclick="{% helper start.setAnalytics('right_top_menu', 'my-profile-item') %}">
+      {% helper users.formatAvatar({'user': {'media': user_session_data.logo}, 'size': 'small', 'class': 'img-rounded'}) %}
+    </a>
+  </div>
+{% else %}
+  <a href="javascript:void(0);" id="ajax_login_link" class="top-menu-item">
+    {% helper lang.l('header_login', 'users') %}
+  </a>
+  <script>
+    $(function () {
+      loadScripts(
+        ["{% helper utils.jscript('users', 'users-auth.js', 'path') %}"],
+        function () {
+          usersAuth = new UsersAuth({
+            siteUrl: site_url
+          });
+        },
+        ['usersAuth'],
+        {async: true}
+      );
+    });
+  </script>
+{% endif %}

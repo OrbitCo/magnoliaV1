@@ -1,0 +1,112 @@
+<div class="user-profile-view">
+    {% include 'my_profile_left_block.twig' with {is_owner: true} %}
+    {% if action == '' or action == 'view' %}
+        <div class="col-xs-12 col-sm-9 col-md-6 col-lg-6">
+            {% if data.approved and data.confirm and not data.is_activated 
+                   and not data.available_activation.status  and data.services_status.user_activate_in_search.service.status %}
+                <div class="contrasting-block" data-block="activate-profile">
+                    <div class="title-block">{% helper lang.l('header_services', 'users') %}</div>
+                    <div class="mtb20">
+                        {% helper lang.l('text_activate_profile', 'users') %}
+                    </div>
+                    <input data-action="profile_available" type="button" class="btn btn-primary btn-large btn-block" data-service="user_activate_in_search" value="{% helper lang.l('link_activate_profile', 'users') %}" />
+                </div>
+            {% endif %}
+
+            <div class="description">
+                {% include 'profile_menu.twig' %}
+                <div class="view-user">
+                    <div class="view-user__descr">
+                        {% include 'view_my_profile.twig' with {is_owner: true} %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-9 col-md-3 col-lg-3 pull-right">
+            <div id="active_users" class="clearfix mb10">
+                {% helper users.last_registered({'count': '12'}) %}
+            </div>
+            <div id="bonuses" class="clearfix mb10">
+                {% helper bonuses.bonuses_form() %}   
+            </div>  
+        </div>
+    {% elseif action == 'wall' %}
+        <div class="col-xs-12 col-sm-9 col-md-6 col-lg-6">
+            {% if data.approved and data.confirm and not data.is_activated 
+                   and data.available_activation.status %}
+                <div class="contrasting-block" data-block="activate-profile">
+                    <div class="title-block">{% helper lang.l('header_services', 'users') %}</div>
+                    <div class="mtb20">
+                        {% helper lang.l('text_activate_profile', 'users') %}
+                    </div>
+                    <input data-action="profile_available" type="button" class="btn btn-primary btn-large btn-block" data-service="user_activate_in_search" value="{% helper lang.l('link_activate_profile', 'users') %}" />
+                </div>
+            {% endif %}
+
+            <div class="description">
+                {% include 'profile_menu.twig' %}
+                <div class="view-user">
+                    <div class="view-user__wall">
+                        {% helper wall_events.wall_block({'place': 'myprofile', 'id_wall': user_id}) %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-9 col-md-3 col-lg-3 pull-right">
+            <div id="active_users" class="clearfix mb10">
+                {% helper users.last_registered({'count': '12'}) %}
+            </div>
+            <div id="bonuses" class="clearfix mb10">
+                {% helper bonuses.bonuses_form() %}   
+            </div>
+        </div>
+    {% elseif action == 'gallery' %}
+        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+            {% if data.approved and data.confirm and not data.is_activated 
+                   and data.available_activation.status %}
+                <div class="contrasting-block" data-block="activate-profile">
+                    <div class="title-block">{% helper lang.l('header_services', 'users') %}</div>
+                    <div class="mtb20">
+                        {% helper lang.l('text_activate_profile', 'users') %}
+                    </div>
+                    <input data-action="profile_available" type="button" class="btn btn-primary btn-large btn-block" data-service="user_activate_in_search" value="{% helper lang.l('link_activate_profile', 'users') %}" />
+                </div>
+            {% endif %}
+
+            <div class="description">
+                {% include 'profile_menu.twig' %}
+                <div class="view-user">
+                    <div class="view-user__media">
+                        {% helper media.media_block({
+                            'param': subsection,
+                            'page': '1',
+                            'location_base_url': location_base_url
+                        }) %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 pull-right">
+            <div id="active_users" class="clearfix mb10">
+                {% helper users.last_registered({'count': '12'}) %}
+            </div>   
+        </div>
+    {% endif %}
+</div>
+
+<script type="text/javascript">
+        $(function () {
+                loadScripts(
+                        "{% helper utils.jscript('', 'available_view.js', 'path') %}",
+                        function(){
+                                users_profile_available_view = new available_view({
+                                        siteUrl: site_url
+                                });
+                        },
+                        'users_profile_available_view',
+                        {async: false}
+                );
+        });
+</script>
+
+<div class="edit_block" id="profile_tab_sections"></div>

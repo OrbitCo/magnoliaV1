@@ -1,0 +1,43 @@
+<div class="card-form">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label>{% helper lang.l('field_card_number', 'payments') %}</label>
+                        <div class="input-group">
+                            <input name="card[cardnumber]" type="tel" class="form-control" placeholder="{% helper lang.l('placeholder_card_number', 'payments') %}"/>
+                            <span class="input-group-addon"><span class="far fa-credit-card"></span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-7 col-md-7">
+                    <div class="form-group">
+                        <label><span class="hidden-xs">{% helper lang.l('field_card_expiration', 'payments') %}</span><span class="visible-xs-inline">{% helper lang.l('field_card_exp', 'payments') %}</span>
+                            {% helper lang.l('field_card_date', 'payments') %}</label>
+                        <input name="card[expirationdate]" type="tel" class="form-control" placeholder="{% helper lang.l('placeholder_card_expiration', 'payments') %}"/>
+                    </div>
+                </div>
+                <div class="col-xs-5 col-md-5 pull-right">
+                    <div class="form-group">
+                        <label>{% helper lang.l('field_card_cvc', 'payments') %}</label>
+                        <input name="card[securitycode]" type="tel" class="form-control" placeholder="{% helper lang.l('placeholder_card_cvc', 'payments') %}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label>{% helper lang.l('field_card_owner', 'payments') %}</label>
+                        <div class="input-group">
+                            <input name="card[name]" type="text" class="form-control" placeholder="{% helper lang.l('placeholder_card_owner', 'payments') %}"/>
+                            <span class="input-group-addon"><span class="fa fa-user"></span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

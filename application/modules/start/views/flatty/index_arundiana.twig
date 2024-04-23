@@ -1,0 +1,244 @@
+{% extends '@app/header_lite.twig' %}
+ {% block bodyclass %}index-pleasure{% endblock bodyclass %}
+
+ {% block container %}
+  <div id="error_block" class="hide">{% for item in _PREDEFINED.error %}{% if item.text %}{{ item.text }}
+      <br>{% endif %}{% endfor %}</div>
+  <div id="info_block" class="hide">{% for item in _PREDEFINED.info %}{% if item.text %}{{ item.text }}
+      <br>{% endif %}{% endfor %}</div>
+  <div id="success_block" class="hide">{% for item in _PREDEFINED.success %}{% if item.text %}{{ item.text }}
+      <br>{% endif %}{% endfor %}</div>
+
+  <div id="header">
+    <section id="bg-white">
+      <section class="container">
+        <section class="noPaddings">
+
+          <nav class="navbar navbar-default" id="navbarId">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                      data-target="#bs-example-navbar-collapse-1">
+              </button>
+
+              <div class="b-header__logo">
+                <a href="{{ site_url }}">
+                  {% helper start.logo({type: 'user', settings: logo_settings}) %}
+                </a>
+              </div>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li id="join">
+                  {% helper reglang = lang.l('join_now', 'start') %}
+                  {% helper users.usersRegistration({'is_link': 1, 'page': 1, 'lang': reglang}) %}
+                </li>
+                <li id="about">
+                  <a href="{{ site_root }}content/view/about-us">{% helper lang.l('about_us', 'start') %}</a>
+                </li>
+                <li id="contacts">
+                  <a href="{{ site_root }}contact_us">{% helper lang.l('contacts', 'start') %}</a>
+                </li>
+                <li id="login">
+                  <a onclick="{% helper start.setAnalytics('index', 'btn_sign_in') %}"
+                     href="{% helper seo.seolink('users', 'login_form') %}">
+                    {% helper lang.l('btn_login', 'start') %}</a>
+                </li>
+                <li class="topnav__lang">{% helper users.users_lang_select({type: 'menu', template: 'dropdown'}) %}</li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </nav>
+        </section>
+        <section class="col-md-1 noPaddings">
+        </section>
+      </section>
+    </section>
+  </div>
+
+  <main>
+    <div class="margin0 bg-block">
+      <div id="b-teaser" class="clearfix">
+        <div class="sm-no-margin b-teaser_flex">
+          <div class="b-teaser__features th-set__index_promo_text_main">
+            <div class="li-search th-set__main_bg" id="orangeSearch">
+              <div class="col-md-offset-3 col-sm-offset-2 col-xs-offset-1">
+                <i class="fa fa-search icon-big"></i>
+                <h1 class="title-block th-set__index_promo_text_main">{% helper lang.l('f_search', 'start') %}</h1>
+                <p class="text-block th-set__index_promo_text_on_bg">{% helper lang.l('f_search_txt', 'start') %}</p>
+              </div>
+            </div>
+
+            <div class="li-winks-and-kisse th-set__header_bg" id="blueWinksAndKisses">
+              <div class="col-md-offset-3 col-sm-offset-2 col-xs-offset-1">
+                <i class="fa fa-venus-mars icon-big"></i>
+                <h1 class="title-block th-set__index_promo_text_main">{% helper lang.l('f_winkskisses', 'start') %}</h1>
+                <p
+                  class="text-block th-set__index_promo_text_on_bg">{% helper lang.l('f_winkskisses_txt', 'start') %}</p>
+              </div>
+            </div>
+
+            <div class="li-one-one-chat th-set__status_color_bg" id="blueChat">
+              <div class="col-md-offset-3 col-sm-offset-2 col-xs-offset-1">
+                <i class="far fa-comments icon-big"></i>
+                <h1 class="title-block th-set__index_promo_text_main">{% helper lang.l('f_chat', 'start') %}</h1>
+                <p class="text-block th-set__index_promo_text_on_bg">{% helper lang.l('f_chat_txt', 'start') %}</p>
+              </div>
+            </div>
+          </div>
+          <div class="b-teaser clearfix"></div>
+          <!-- b-features, col-md-6 -->
+        </div>
+      </div><!-- b-teaser -->
+    </div>
+
+    <section class="container findYourMatch" id="findYourMatch">
+      <div class="row">
+        <div class="col-md-3" id="pageHeader">
+          <div class="page-header">
+            <h1 class="title-block">{% helper lang.l('find_match', 'start') %}</h1>
+          </div>
+        </div>
+        <div class="col-md-4" id="findYourMatchText">{% helper lang.l('find_match_txt', 'start') %}</div>
+        <aside class="col-md-3 th-set__header_bg" id="userOnline">
+          <h2 class="title-block">1 562 431</h2>
+          <p>{% helper lang.l('users_online', 'start') %}</p>
+          {% helper users.usersRegistration({'is_link': 1, 'page': 1, 'lang': reglang}) %}
+        </aside>
+      </div>
+    </section>
+
+
+    <div class="android" id="android">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="page-header">
+              <h1 class="title-block th-set__status_color">{% helper lang.l('mobile_app_title_v2', 'start') %}</h1>
+            </div>
+            <p class="mobile-text">{% helper lang.l('mobile_app_txt_v2', 'start') %}</p>
+            {% helper mobile.mobileAppLinks({'viewtype': 'btnsBlack'}) %}
+          </div>
+          <aside class="col-md-6 noPaddings">
+            <img src="{{ site_root }}uploads/themes-fixed/arundiana/images/iphone.png" alt="" class="img-responsive">
+          </aside>
+        </div>
+      </div>
+    </div>
+
+
+    <section class="container aboutDating" id="aboutDating">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="page-header">
+            <h3>{% helper lang.l('about', 'start') %}</h3>
+          </div>
+          <p>{% helper lang.l('about_txt1', 'start') %}</p>
+          <p>{% helper lang.l('about_txt2', 'start') %}</p>
+          <p>{% helper lang.l('about_txt3', 'start') %}</p>
+        </div>
+        <div class="col-md-7">
+          <!-- users block -->
+          <div id="users">
+            {% helper users.lastRegistered({'count':'8', 'template':'arundiana'}) %}
+          </div>
+          <!-- users block -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <section class="container th-set__index_footer_bg" id="footerId">
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <p>{% helper lang.l('help', 'start') %}</p>
+          <a href="{{ site_url }}contact_us">{% helper lang.l('contact_us', 'start') %}</a><br>
+          <a href="{{ site_url }}site_map">{% helper lang.l('sitemap', 'start') %}</a><br>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <p>{% helper lang.l('about_us', 'start') %}</p>
+          <a href="{{ site_url }}content/view/about-us">{% helper lang.l('about_us', 'start') %}</a><br>
+          <a href="{{ site_url }}news/index">{% helper lang.l('header_news', 'news') %}</a><br>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <p>{% helper lang.l('privacy', 'start') %}</p>
+          <a href="{{ site_url }}content/view/privacy-and-security">{% helper lang.l('privacy', 'start') %}</a><br>
+          <a href="{{ site_url }}content/view/legal-terms">{% helper lang.l('terms', 'start') %}</a><br>
+        </div>
+
+      </div>
+    </section>
+    <section class="container copyright th-set__index_footer_bg" id="copyright">
+      <div class="row">
+        <div class="col-md-12">{% helper start.getCopyright('index_page') %}</div>
+      </div>
+    </section>
+  </footer>
+</div>
+{% if not is_pjax %}
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=cyrillic" rel="stylesheet">
+  <link rel="stylesheet" href="{{ site_root }}uploads/themes-fixed/arundiana/styles/bootstrap-{{ _LANG.rtl }}.css"
+        type="text/css"/>
+  <link rel="stylesheet" href="{{ site_root }}uploads/themes-fixed/arundiana/styles/font-awesome.css" type="text/css"/>
+  <link rel="stylesheet" href="{{ site_root }}application/views/flatty/css/fontawesome/css/fontawesome-all.min.css"
+        type="text/css"/>
+  {% helper theme.include_css('style', 'screen') %}
+  {% helper theme.css(load_type) %}
+  <link rel="stylesheet" href="{{ site_root }}uploads/themes-fixed/arundiana/styles/style-{{ _LANG.rtl }}.css"
+        type="text/css"/>
+{% endif %}
+   <script>
+     $(document).ready(function () {
+       let headerImg = {{ header_style|json_encode() }};
+       if (headerImg !== null) {
+         $(window).on('resize', setHeartImage)
+         let container = $('#b-header')
+         let imgContainer = $('.custom-header')
+
+         function setHeartImage () {
+           let widthW = document.body.clientWidth
+           let mobileWidth = 768
+           if (widthW > mobileWidth) {
+             if (typeof headerImg.image_url !== 'undefined') {
+               container.addClass('custom-header_without_img')
+               container.css({ 'background-image': 'url(' + headerImg.base_path + '/' + headerImg.image_url + ')' })
+             } else {
+               container.removeClass('custom-header_without_img')
+             }
+           } else if (widthW < mobileWidth) {
+             if (typeof headerImg.image_mobile_url !== 'undefined') {
+               container.addClass('custom-header_without_img')
+               container.css({ 'background-image': 'url(' + headerImg.base_path + '/' + headerImg.image_mobile_url + ')' })
+             } else {
+               container.removeClass('custom-header_without_img')
+             }
+           }
+         }
+
+         setHeartImage()
+       }
+     })
+   </script>
+
+   <script src="{{ site_root }}uploads/themes-fixed/pleasure/js/controls.js"></script>
+
+   {# TODO перенести в сборщик webpack (flatty/js/main.js) #}
+   {% helper utils.jscript('', 'twigjs/twig.js') %}
+   {% helper themes.load({'name': 'modules', 'ext': 'js'}) %}
+   {% helper themes.load({'name': 'modules_multi_request', 'ext': 'js'}) %}
+
+
+   {% helper cookie_policy.cookie_policy_block() %}
+   {% helper languages.lang_editor() %}
+   {% helper seo_advanced.seo_traker('footer') %}
+
+   <script>
+     $(function () {
+       $.datepicker.setDefaults($.datepicker.regional["{{ _LANG.code }}"])
+     })
+   </script>
+</body>
+</html>
+ {% endblock container %}

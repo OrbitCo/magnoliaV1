@@ -1,0 +1,33 @@
+.quick-stats {
+    &__main {
+
+    }
+    &__other {
+        position: relative;
+        &:after {
+            content: "";
+            position: absolute;
+            top: -50px;
+            #{$left}: -30%;
+            height: 300px;
+            width: 300px;
+            background-image: url('#{$image_path}plants-for-admin.svg');
+            background-repeat: no-repeat;
+            background-position: top center;
+          }
+    }
+}
+.quick-stats-js {
+    &.open {
+        .quick-stats__other {
+            &:after {
+                #{$right}: -50%;
+            }
+        }
+    }
+}
+@media (max-width: 992px) {
+  .quick-stats__other:after{
+    display: none;
+  }
+}

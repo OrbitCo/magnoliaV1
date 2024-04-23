@@ -1,0 +1,66 @@
+{% set thumb_name = recent_thumb.name %}
+<div class="mag-recent-media">
+    {% if user_session_data.user_id == id_user %}
+        <div class="mag-recent-media__item mag-recent-media__item_upload" onclick="{% helper start.setAnalytics('my_profile', 'upload_photo') %}">
+            <a href="javascript:void(0);" data-media="add_photo">{% helper lang.l('add_photo', 'media') %}</a>
+        </div>
+    {% endif %}
+    {% for item in recent_photos_data.media %}
+        <div class="mag-recent-media__item {% if loop.index == 3 %}mag-recent-media__item_hidden{% endif %}" data-click="view-media" data-user-id="{{ item.id_owner }}" data-id-media="{{ item.id }}"   {# <custom_R> #}
+              data-is-private="{% if item.permissions == 5 %}1{% else %}0{% endif %}"
+              style="position: relative;">
+            {% if item.upload_gid == 'gallery_video' %}
+                {% helper text_media_video = lang.l('text_media_video', 'media', '', 'button', item) %}
+                {% helper media.load_picture({
+                    'thumbs': item.video_content.thumbs,
+                    'size': 'middle',
+                    'alt': text_media_video,
+                    'class': 'middle img-responsive'
+                }) %}
+{#                <img class="middle img-responsive" src="{{ item.video_content.thumbs[thumb_name] }}" width="{{ recent_thumb.width }}" alt="{{ text_media_video }}" #}
+{#                     title="{% if item.description %}{{ htmlspecialchars(item.description) }}{% else %}{{ text_media_photo }}{% endif %}" />#}
+            {% else %}
+                {% helper text_media_photo = lang.l('text_media_photo', 'media', '', 'button', item) %}
+                {% helper media.load_picture({
+                    'thumbs': item.media.mediafile.thumbs,
+                    'size': 'middle',
+                    'alt': text_media_photo,
+                    'class': 'middle img-responsive'
+                }) %}
+
+{#                <img class="middle img-responsive" src="{{ item.media.mediafile.thumbs[thumb_name] }}" width="{{ recent_thumb.width }}" alt="{{ text_media_photo }}" #}
+{#                     title="{% if item.description %}{{ htmlspecialchars(item.description) }}{% else %}{{ text_media_photo }}{% endif %}" />#}
+            {% endif %}
+        </div>
+    {% endfor %} 
+    {% if gallery_link %}
+        <div class="mag-recent-media__item"><a href="{{ gallery_link }}/all">{% helper lang.l('view_gallery', 'media') %}</a></div>
+    {% endif %}
+</div>
+
+<script>
+    $(function(){
+        loadScripts(
+            "{% helper utils.jscript('media', '../views/flatty/js/media.js', 'path') %}",
+            function(){
+                mediagallery = new media({
+                    siteUrl: site_url,
+                    galleryContentPage: '1',
+                    btnOk: "{% helper lang.l('btn_ok', 'start') %}",
+                    btnCancel: "{% helper lang.l('btn_cancel', 'start') %}",
+                    galleryContentParam: 'all',
+                    idUser: {{ id_user }},
+                    all_loaded: {% if content.have_more %}0{% else %}1{% endif %},
+                    lang_delete_confirm: '{% helper lang.l('delete_confirm', 'media', '', 'js') %}',
+                    lang_delete_confirm_album: '{% helper lang.l('delete_confirm_albums',  'media', '', 'js') %}',
+                    recentTemplate: 'magazine',
+                    mSendDisabled: "{% helper lang.l('error_send_disabled', 'users', '', 'js') %}",
+                    mRequestExists: "{% helper lang.l('error_request_exists', 'users', '', 'js') %}",
+                    mViewDisabled: "{% helper lang.l('error_view_disabled', 'users', '', 'js') %}"
+                });
+            },
+            ['mediagallery'],
+            {async: true}
+        );
+    });
+</script>

@@ -1,0 +1,110 @@
+{% include '@app/header.twig' %}
+
+<div class="search-header clearfix">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h1 class="title">
+            {% if search_text %}
+                {% helper lang.l('search_results', 'users') %}:
+                '{{ search_text }}'
+            {% else %}
+                {% helper seo.seo_tags('header_text') %}
+            {% endif %}
+        </h1>
+        <div class="view-search-menu btn-group">
+            <a href="javascript:void(0);" class="btn btn-default {% if page_data.view_type == 'list' %} active {% endif %} " onclick="changeViewType('list');" title="{% helper lang.l('btn_list_view', 'users') %}">
+                <i class="fa fa-bars"></i>&nbsp;{% helper lang.l('btn_list_view', 'users') %}</a>
+            <a href="javascript:void(0);" class="btn btn-default  {% if page_data.view_type == 'gallery' %} active {% endif %}" onclick="changeViewType('gallery');" title="{% helper lang.l('btn_gallery_view', 'users') %}">
+                <i class="fa fa-th-large"></i>&nbsp;{% helper lang.l('btn_gallery_view', 'users') %}</a>
+        </div>
+    </div>
+</div>
+
+<div class="content-block">
+    <div class="user-search">
+                <div class="col-xs-12 {% if form_settings.view == 'horizontal' %}col-md-12{% else %}col-md-3{% endif %}">
+                    <div class="search-param-button mb10"><a>{% helper lang.l('search_params_button', 'users') %}</a></div>
+                    <div class="search-form">
+                        <script>
+                            selects = [];
+                            checkboxes = [];
+                            hlboxes = [];
+                            selectbox = [];
+                            radios = [];
+                            multiselects = [];
+                        </script>
+                        {{ perfect_match_form }}
+                        <script>
+                            $(function(){
+                                loadScripts(
+                                    [
+                                        "{% helper utils.jscript('start', 'search.js', 'path') %}",
+                                        "{% helper utils.jscript('start', 'checkbox.js', 'path') %}",
+                                        "{% helper utils.jscript('start', 'selectbox.js', 'path') %}",
+                                        "{% helper utils.jscript('start', 'hlbox.js', 'path') %}",
+                                        "{% helper utils.jscript('start', 'radio.js', 'path') %}",
+                                        "{% helper utils.jscript('start', 'multiselect.js', 'path') %}"
+                                    ],
+                                    function() {
+                                        window.{{ form_settings.object }}_{{ form_settings.type }} = new search({
+                                            siteUrl: '{{ site_url }}',
+                                            currentForm: '{{ form_settings.object }}',
+                                            currentFormType: '{{ form_settings.type }}',
+                                            hide_popup: false,
+                                            popup_autoposition: false,
+                                            userFormUrl: '{{ form_settings.form_url }}',
+                                            userSearchUrl: '{{ form_settings.search_url }}',
+                                            userCountUrl: '{{ form_settings.count_url }}'
+                                        });
+                                    },
+                                    ['{{ form_settings.object }}_{{ form_settings.type }}'],
+                                    {async: false}
+                                );
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class="col-xs-12 {% if form_settings.view == 'horizontal' %}col-md-12{% else %}col-md-9{% endif %}">
+                    <div class="g-flatty-block" id="main_users_results">
+                        {{ block }}
+                    </div>
+                    <script>
+                        $(function(){
+                            loadScripts(
+                                "{% helper utils.jscript('users', 'users-list.js', 'path') %}",
+                                function() {
+                                    users_list = new usersList({
+                                        siteUrl: "{{ site_url }}",
+                                        viewUrl: "{% helper seo.seolink('perfect_match', '') %}",
+                                        viewAjaxUrl: "{{ site_url }}perfect_match/ajaxSearch/",
+                                        listBlockId: 'main_users_results',
+                                        tIds: ['pages_block_1', 'pages_block_2', 'sorter_block']
+                                    });
+                                },
+                                'users_list'
+                            );
+                        });
+
+                        function changeViewType(type) {
+                            var url = '{% helper seo.seolink('perfect_match', 'set_view_mode') %}/' + type;
+                            $.ajax({
+                                url: url,
+                                type: 'GET',
+                                cache: false,
+                                success: function(data) {
+                                    locationHref('{% helper seo.seolink('perfect_match', 'search') %}');
+                                }
+                            });
+                        }
+
+                        $('.search-param-button').click(function(){
+                            $('.user-search .search-form').toggle();
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+{% include '@app/footer.twig' %}

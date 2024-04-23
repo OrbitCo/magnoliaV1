@@ -1,0 +1,33 @@
+<li>
+    <a href="javascript:;" id="guide-btn" onclick="{% helper start.setAnalytics('guide', 'learning_hat') %}">
+        <i class="fa fa-graduation-cap"></i>
+    </a>
+</li>
+<script>
+    $(function() {
+        loadScripts(
+            "{% helper utils.jscript_by_theme('start', 'guide.js', 'path', 'gentelella') %}",
+            function() {
+                guideObj = new guide({
+                    guide: {{ guide }},
+                    step: {{ step }},
+                    autoshow: {% if autoshow %}true{% else %}false{% endif %},
+                    labelOf: '{% helper lang.l('text_of', 'start') %}',
+                    labelSkip: '{% helper lang.l('btn_skip', 'start') %}',
+                    labelNext: '{% helper lang.l('btn_next', 'start') %}',
+                    labelBuy: '{% helper lang.l('btn_buy', 'start') %}',
+                    callbackShow: function() {
+                        $('#guide-skip').on('click', function() {
+                            {% helper start.setAnalytics('guide', 'learning_close') %}
+                        });
+                        $('#guide-next').on('click', function() {
+                            {% helper start.setAnalytics('guide', 'learning_next') %}
+                        });
+                    }
+                });
+            },
+            ['guideObj'],
+            {async: false}
+        );
+    });
+</script>

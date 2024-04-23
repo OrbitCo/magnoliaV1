@@ -1,0 +1,82 @@
+{% if gifts is not empty %}
+    {% for gift in gifts %}
+        <li class="fleft">
+            <div class="gift-thumb-wall-block" id="gift_thumb-{{ gift.id }}">
+                <img class="img-responsive" src="{{ gift.img_thumb }}" width="60">
+            </div>
+        </li>
+        <div id="gift-sender-block-{{ gift.id }}" class="b-vg-info user_gift_info_">
+            {% if not gift.is_private or is_mine %}
+                <div class="b-vg-info__top clearfix">
+                    <a class="b-vg-info__name" href="{{ site_url }}users/view/{{gift.fk_sender_id}}/wall">
+                        <div class="b-vg-info__photo g-pic-border g-rounded-small">
+                            <img class="img-responsive" src="{{ gift.sender.logo }}" style="">
+                        </div>
+                    </a>
+                    <div class="b-vg-info__right">
+                        <div><a class="b-vg-info__name" href="{{ site_url }}users/view/{{gift.fk_sender_id}}/wall">
+                                {{gift.sender.name}}
+                            </a></div>
+                        <div class="b-vg-info__location">{{gift.sender.city}}{{gift.is_mine}}</div>
+                    </div>
+                </div>
+
+                {% if gift.comment %}
+                    <div class="b-vg-info__txt" data-text="{{gift.comment|nl2br}}">{{gift.comment|nl2br}}</div>
+                {% endif %}
+            {% else %}
+                <div class="b-vg-info__private">
+                    {% helper lang.l('private_gift', 'virtual_gifts') %}
+                </div>
+            {% endif %}
+        </div>
+
+        <script type="text/javascript">
+        $(function(){
+            $('.b-vg-info__txt').each(function(i, elem) {
+                $(elem).html(twemoji.parse(unescape($(elem).data('text'))));
+            });
+        });
+        $(function(){
+            $('.user_gift_info_').hide();
+            $('#gift_thumb-{{gift.id}}').off().on('mouseenter',function(e) {
+                $('div[id*=gift-sender-block-]').hide();
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                $('#gift-sender-block-{{gift.id}}').show().css({
+                    'top': mouseY + 15,
+                    'left': mouseX + 15
+                });
+            }).on('mouseleave', function(e){
+                var delayHide = setTimeout(function(){$('#gift-sender-block-{{gift.id}}').fadeOut()}, 500);
+                $('#gift-sender-block-{{gift.id}}').hover(function(){clearTimeout(delayHide)}, function(){
+                    $('#gift-sender-block-{{gift.id}}').delay(200).fadeOut();
+                });
+            });
+        });
+        </script>
+    {% endfor %}
+
+    <script>
+      $(function() {
+        var all_user_gifts_block = new loadingContent({
+          loadBlockWidth: '50%',
+          closeBtnClass: 'w',
+          scroll: true,
+          closeBtnPadding: 5,
+          blockBody: true,
+          showAfterImagesLoad: false
+        });
+        $('#get_all_user_gifts').on('click', function () {
+          $.ajax({
+            url: site_url + "virtual_gifts/ajax_get_user_gifts",
+            method: "POST",
+            data: {"user_id": "{{ user_id }}"},
+            success: function (data) {
+              all_user_gifts_block.show_load_block(data);
+            }
+          });
+        });
+      });
+    </script>
+{% endif %}

@@ -1,0 +1,24 @@
+<div id="menu_{{ menu_items.gid }}_alerts" data-gid="{{ menu_items.gid }}">
+    <div class="xs-menu-title">{{ menu_items.value }}</div>
+    {% for item in menu_items.sub %}
+        <div class="menu-alerts-item menu-item menu-alerts-more-item">
+            <a id="activities_{{ menu_items.gid }}_{{ item.gid }}" href="{{ item.link }}" onclick="{% helper start.setAnalytics('left_menu_user', item.gid) %}">
+                {{ item.value }}
+                {% if item.indicator %}
+                    <span class="badge summand {{ item.gid }}_count">{{ item.indicator }}</span>
+                {% endif %}
+                {% if item.gid == 'friendlist_item' %}
+                    {% helper friendlist.friend_requests({template: 'left'}) %}
+                {% elseif item.gid == 'visits_item' %}
+                    {% helper users.visitors({template: 'left'}) %}
+                {% elseif item.gid == 'kisses_item' %}
+                    {% helper kisses.new_kisses({template: 'left'}) %}
+                {% elseif item.gid == 'winks_item' %}
+                    {% helper winks.winks_count({template: 'left'}) %}
+                {% elseif item.gid == 'questions_item' %}
+                    {% helper questions.new_questions({ template: 'left' }) %}
+                {% endif %}
+            </a>
+        </div>
+    {% endfor %}
+</div>

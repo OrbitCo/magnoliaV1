@@ -1,0 +1,40 @@
+{% if services|length > 0 %}
+<div class="oauth-links mb10">
+    <div class="mr5 mb10">
+        {% helper lang.l('sign_in_with', 'users_connections') %}:
+    </div>
+    <ins>
+        {% for item in services %}
+        {% if TRIAL_MODE %}
+        <a href="javascript:void(0);" class="btn btn-primary {{ item.gid }}" data-html="true" title="Social networks login does not work in demo version" data-toggle="tooltip">
+            {% else %}
+            <a href="{{ site_url }}users_connections/oauth_login/{{ item.id }}" class="btn btn-primary {{ item.gid }}" data-pjax="0" title="{{ item.name|e }}">
+                {% endif %}
+                {% if item.gid == 'facebook' %}
+                <i class="fab fa-facebook-f"></i>
+                {% elseif item.gid == 'vkontakte' %}
+                <i class="fab fa-vk"></i>
+                {% elseif item.gid == 'google' %}
+                <i class="fab fa-google"></i>
+                {% elseif item.gid == 'linkedin' %}
+                <i class="fab fa-linkedin-in"></i>
+                {% elseif item.gid == 'twitter' %}
+                <i class="fab fa-twitter"></i>
+                {% endif %}
+            </a>
+            {% endfor %}
+    </ins>
+</div>
+<script>
+$(function() {
+    if (typeof tooltip == 'function') {
+        $('.oauth-links [data-toggle="tooltip"]').tooltip({ placement: 'bottom' });
+    }
+});
+</script>
+<style>
+.oauth-links .tooltip {
+    text-transform: initial;
+}
+</style>
+{% endif %}

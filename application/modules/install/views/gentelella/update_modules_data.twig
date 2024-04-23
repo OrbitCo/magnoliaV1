@@ -1,0 +1,35 @@
+{% include '@app/header.twig' %}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_content">
+            <form action="" method="post" enctype="multipart/form-data">
+                <table id="users" class="table table-striped responsive-utilities jambo_table">
+                    <thead>
+                    <tr class="headings">
+                        <th class="column-title">Module gid</th>
+                        <th class="column-title">Module name</th>
+                        <th class="column-title">Version</th>
+                        <th class="column-title">New version</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for key, item in modules_data %}
+                    <tr>
+                        <td class="first"><b>{{ item.module_gid }}</b></td>
+                        <td class="first"><b>{{ item.module_name }}</b></td>
+                        <td>{{ item.version }}</td>
+                        <td>
+                            <input type="text" value="{{ item.version + 0.01 }}" name="modules_data[{{ item.module_gid }}]" class="form-control">
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <button type="submit" name="save_data" class="btn btn-primary" value="1">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% include '@app/footer.twig' %}

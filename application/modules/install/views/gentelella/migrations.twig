@@ -1,0 +1,101 @@
+{% include '@app/header.twig' %}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="x_panel">
+      <div class="x_content">
+          <table id="users" class="table table-striped responsive-utilities jambo_table">
+              <thead>
+              <tr class="headings">
+                  <th class="column-title text-center">Status</th>
+                  <th class="column-title text-center">[Migration ID]</th>
+                  <th class="column-title text-center">Started</th>
+                  <th class="column-title text-center">Finished</th>
+                  <th class="column-title text-center">Migration Name</th>
+                  <th></th>
+              </tr>
+              </thead>
+              <tbody>
+                  {% for up in migrate_modules.up %}
+                      <tr>
+                          <td class="text-center">
+                              <span class="label label-success">{{ up.status }}</span>
+                          </td>
+                          <td class="text-center">{{ up.migration_id }}</td>
+                          <td class="text-center">{{ up.started }}</td>
+                          <td class="text-center">{{ up.finished }}</td>
+                          <td class="text-center">{{ up.migration_name }}</td>
+                          <td>
+                              <span class="label label-success">
+                                <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                              </span>
+                          </td>
+                      </tr>
+                  {% endfor %}
+                  {% for down in migrate_modules.down %}
+                      <tr class="cursor-pointer">
+                          <td class="text-center">
+                              <span class="label label-danger">{{ down.status }}</span>
+                          </td>
+                          <td class="text-center">{{ down.migration_id }}</td>
+                          <td class="text-center">
+                              <button
+                                  data-action="install-module-migrate"
+                                  data-migration_id="{{ down.migration_id }}"
+                                  data-migration_name="{{ down.migration_name }}"
+                                  class="btn btn-default btn-sm">Install {{ down.migration_name }}</button>
+                          </td>
+                          <td class="text-center"></td>
+                          <td class="text-center">{{ down.migration_name }}</td>
+                          <td>
+                              <span class="label label-danger">
+                                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                              </span>
+                          </td>
+                      </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+          {% if migrate_modules.down %}
+            <buttom class="btn btn-primary" data-action="install-all-migrations">Install all migrations</buttom>
+          {% endif %}
+          <div class="panel panel-success hide" id="output">
+              <div class="panel-heading">Output</div>
+              <div class="panel-body"></div>
+          </div>
+      </div>
+  </div>
+</div>
+<script>
+    $(function() {
+        $(document)
+            .off('click', '[data-action="install-all-migrations"]')
+            .on('click', '[data-action="install-all-migrations"]', function () {
+                installMigrations('install_all_migrates', this);
+        }).off('click', '[data-action="install-module-migrate"]')
+            .on('click', '[data-action="install-module-migrate"]', function () {
+                installMigrations('install_module_migrate', this);
+        });
+
+        function installMigrations(gid, obj) {
+            let postData = {};
+            if (gid === 'install_module_migrate') {
+                postData['migration_id'] = $(obj).data('migration_id');
+            }
+            postData[gid] = 1;
+            $.ajax({
+                url: site_url + 'admin/install/migrations',
+                type: 'POST',
+                data: postData,
+                dataType: 'html',
+                cache: false,
+                success: function (data) {
+                    if (gid === 'install_module_migrate') {
+                        $(obj).closest('tr').remove();
+                        $('#output').removeClass('hide').find('.panel-body').html(data);
+                    }
+                }
+            });
+        }
+    })
+</script>
+{% include '@app/footer.twig' %}

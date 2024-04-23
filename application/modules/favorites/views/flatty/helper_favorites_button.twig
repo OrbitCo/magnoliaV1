@@ -1,0 +1,25 @@
+<span id="fav_{{ id_dest_user }}">
+    <button  class="add_to_fav {% if class is empty %}btn btn-primary form-control{% else %}{{ class }}{% endif %}
+        {% if action == 'remove' %}hide{% endif %}"
+        data-userId="{{ id_dest_user }}" data-pjax="0" onclick="event.preventDefault();">
+        {% helper lang.l('action_add', 'favorites') %}
+    </button>
+    <button class="remove_from_fav {% if class is empty %}btn btn-primary form-control{% else %}{{ class }}{% endif %}
+        {% if action == 'add' %}hide{% endif %}"
+        data-userId="{{ id_dest_user }}" data-pjax="0" onclick="event.preventDefault();">
+        {% helper lang.l('action_remove', 'favorites') %}
+    </button>
+</span>
+<script>
+    $(function() {
+		loadScripts(
+            ["{% helper utils.jscript('favorites', 'favorites.js', 'path') %}"],
+            function() {
+                favoritesObj = new favorites({
+                    siteUrl: site_url
+                });
+            },
+            'favoritesObj'
+        );
+	});
+</script>

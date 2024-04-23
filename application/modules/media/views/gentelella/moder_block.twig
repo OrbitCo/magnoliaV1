@@ -1,0 +1,45 @@
+{% spaceless %}
+    {% set rand = random(111111, 999999) %}
+    <div class="form-group">
+        {% if data.upload_gid == 'gallery_audio' %}
+            <audio src="{{ data.media.mediafile.file_url }}" controls style="max-width: 100%;"></audio>
+        {% elseif data.media %}
+            <a href="{{ data.media.mediafile.file_url }}?{{rand}}" target="_blank">
+                {% helper media.load_picture({
+                    'thumbs': data.media.mediafile.thumbs,
+                     'size': 'big',
+                     'class': 'img-responsive pointer'
+                }) %}
+            </a>
+        {% elseif data.video_content %}
+            <span id="video{{ data.id }}">
+                {% helper media.load_picture({
+                    'thumbs': data.video_content.thumbs,
+                     'size': 'big',
+                     'class': 'img-responsive pointer'
+                }) %}
+            </span>
+            <div id="video{{ data.id}}-content" class="hide">
+                {{ data.video_content.embed }}
+            </div>
+            <script>
+                            $(function () {
+                                $('#video{{ data.id }}').on('click', function (e) {
+                                    e.preventDefault();
+                                    var vpreview = new loadingContent({'closeBtnClass': 'w'});
+                                    vpreview.show_load_block($('#video{{ data.id }}-content').html());
+                                })
+                            });
+            </script>
+        {% endif %}
+        <br>
+        <label>{% helper lang.l('field_name', 'media') %}:</label> {{ data.fname }}<br>
+        <label>{% helper lang.l('media_owner', 'media') %}:</label>&nbsp;
+        <a href="{{ site_url }}admin/users/edit/personal/{{ data.owner_info.id }}" target="_blank" >{{ data.owner_info.output_name }}</a><br>
+    </div>
+    <div class="form-group {% if template == 'dashboard' %}hide{% endif %}">
+        <b>{% helper lang.l('field_permitted_for', 'media') %}</b>:
+        {% helper lang.ld_option('permissions', 'media', data.permissions) %}
+    </div>
+
+{% endspaceless %}

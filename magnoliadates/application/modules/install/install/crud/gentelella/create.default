@@ -1,0 +1,30 @@
+{% include '@app/header.twig' %}
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    {% helper lang.l('admin_header_create', '%module_name_replace%') %}
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <form method="post" action="{{ data.action }}" name="save_form"
+                      class="form-horizontal form-label-left">
+                    %form_fields_replace%
+                    <div class="form-group">
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-sm-offset-3">
+                            {% helper save_text = lang.l('btn_save', 'start') %}
+                            <input type="submit" class="btn btn-success" value="{{ save_text|e }}" name="btn_save">
+                            {% if is_add_available %}
+                                <a class="btn btn-default" href="{{ site_url }}admin/%module_name_replace%">
+                                    {% helper lang.l('btn_cancel', 'start') %}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% include '@app/footer.twig' %}

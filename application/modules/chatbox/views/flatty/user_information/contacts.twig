@@ -1,0 +1,19 @@
+<div class="content-page">
+    <div class="ui-title">{% helper lang.l('header_main', 'chatbox') %}</div>
+    <div class="ui-descr">
+        {% helper lang.l('field_usr_inf_description', 'chatbox') %}
+    </div>
+</div>
+{% for item in contacts %}
+    <div class="col-xs-12 content-page">
+        <div class="ui-title">
+        	<a href="{{ item.file_path }}">
+        		{% if user.id == item.contact.id %}
+        			♡ {% helper lang.l('site_notification', 'chatbox') %}
+        		{% else %}
+        			{{ item.contact.output_name }}
+        		{% endif %}
+        	</a>
+        </div>
+    </div>
+{% endfor %}

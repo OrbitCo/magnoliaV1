@@ -1,0 +1,20 @@
+<div class="content-page">
+    <div class="ui-title">{% helper lang.l('header_main', 'virtual_gifts') %}</div>
+    <div class="ui-descr">
+        {% helper lang.l('field_usr_inf_description', 'virtual_gifts') %}
+    </div>
+</div>
+{% for item in your %}
+    <div class="col-xs-12 content-page">
+        <div class="ui-title bb">
+            {{ user.output_name }} 
+        </div>
+        <div>{{ item.user.output_name }} </div>
+        {% if item.comment %}
+            <div>
+                {% helper lang.l('gift_comment_field_label', 'virtual_gifts') %}: {{ item.comment }}
+            </div>
+        {% endif %}
+        <div>{{ item.receipt_date }}</div>
+    </div>
+{% endfor %}

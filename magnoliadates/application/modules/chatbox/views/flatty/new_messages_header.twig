@@ -1,0 +1,13 @@
+{% for message in messages %}
+    <div onclick="{% helper start.setAnalytics('h', 'notify_envelope') %}" class="menu-alerts-more-item clearfix">
+        <a href="{% helper seo.rewrite_link('chatbox', 'chat', message.contact_id) %}" class="chatbox-start-dialog-btn" data-user-id="{{message.contact_id}}">
+            <div class="message-image">
+                <img src="{{ message.contact.media.user_logo.thumbs.small }}">
+            </div>
+            <div class="message-body">
+                <div class="name">{{ message.contact.output_name }}</div>
+                <div class="text">{{ message.short_message }}</div>
+            </div>
+        </a>
+    </div>
+{% endfor %}

@@ -1,0 +1,15 @@
+{% include '@app/header.twig' %}
+<div class="col-xs-12">
+    <h1>{% helper seo.seo_tags('header_text') %}</h1>
+</div>
+<div class="content-block">
+    {% if action == 'view' or action == 'wall' or action == 'gallery' %}
+        {% include 'user_profile.twig' %}
+    {% else %}
+        {% include 'user_form.twig' %}
+    {% endif %}
+</div>
+<div class="clr"></div>
+{% helper utils.jscript('', 'datepicker-dropdown-template.js') %}
+
+{% include '@app/footer.twig' %}

@@ -1,0 +1,54 @@
+.dashboard-visibility-btn {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #e6e9ed;
+    font-size: 18px;
+    font-weight: 400;
+    #{$right}: 349px;
+    top: 57px;
+    z-index: 200;
+    cursor: pointer;
+    position: absolute;
+    &:hover,
+    &:focus {
+        background: $html_bg;
+    }
+    .dashboard-minimized-js {
+        display: none;
+        padding: 13px 20px;
+        text-align: center;
+        div {
+            &:first-child {
+                text-align:center;
+                white-space:nowrap;
+                -webkit-transform: rotate(-90deg);
+                -moz-transform: rotate(-90deg);
+                -ms-transform: rotate(-90deg);
+                -o-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+                @if ($dir == 'ltr') {
+                    transform: rotate(-90deg);
+                }
+                @if ($dir == 'rtl') {
+                    transform: rotate(90deg);
+                }
+                width: 20px;
+            }
+        }
+    }
+}
+.dashboard-deployed-js{
+  background: #fff none repeat scroll 0 0;
+  border: 1px solid #e6e9ed;
+  font-size: 18px;
+  font-weight: 400;
+  #{$right}: 349px;
+  top: 16px;
+  z-index: 200;
+  cursor: pointer;
+  position: absolute;
+  padding: 13px 20px;
+  &:hover,
+  &:focus {
+    background: $html_bg;
+  }
+}

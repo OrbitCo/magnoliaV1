@@ -1,0 +1,28 @@
+<span class="user-menu-item">
+    <span id="fav_{{ id_dest_user }}">
+        <a class="add_to_fav {% if action == 'remove' %}hide{% endif %} link-r-margin"
+            data-user_id="{{ id_dest_user }}" href="{% helper seo.seolink('favorites', 'add', id_dest_user) %}"
+            data-pjax="0" onclick="event.preventDefault();" title="{% helper lang.l('action_add', 'favorites') %}">
+            {% helper lang.l('action_add', 'favorites') %}
+        </a>
+        <a class="remove_from_fav {% if action == 'add' %}hide{% endif %} link-r-margin"
+            data-user_id="{{ id_dest_user }}" href="{% helper seo.seolink('favorites', 'remove', id_dest_user) %}"
+            data-pjax="0" onclick="event.preventDefault();" title="{% helper lang.l('action_remove', 'favorites') %}">
+            {% helper lang.l('action_remove', 'favorites') %}
+        </a>
+    </span>
+</span>
+<script>
+	$(function() {
+		loadScripts(
+            ["{% helper utils.jscript('favorites', 'favorites.js', 'path') %}"],
+            function() {
+                favoritesObj = new favorites({
+                    siteUrl: site_url,
+
+                });
+            },
+            'favoritesObj'
+        );
+	});
+</script>

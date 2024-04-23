@@ -1,0 +1,41 @@
+<div class="view-user">
+    <div>{% spaceless %}
+        {% if  data.user_name and not data.id_user %}    
+            <label style="text-transform: capitalize">{% helper lang.l('field_sender', 'mailbox') %} {% helper lang.l('guest', 'users') %}:</label> {{ data.user_name }}
+            <br/>
+        {% else %}
+            {% if data.user_info.fname or data.user_info.sname %}
+                <label>{% helper lang.l('field_sender', 'mailbox') %}:</label>
+                <a href="{{ site_url }}admin/users/edit/personal/{{ data.user_info.id }}" target="_blank">
+                    {{ data.user_info.fname }} {{ data.user_info.sname }}
+                </a>
+                <br/>           
+            {% elseif data.user_info.nickname %}
+                <label>{% helper lang.l('field_sender', 'mailbox') %}:</label>
+                <a href="{{ site_url }}admin/users/edit/personal/{{ data.user_info.id }}" target="_blank">
+                    {{ data.user_info.nickname }}
+                </a>
+                <br/>
+            {% endif %}
+        {% endif %}
+        {% if  data.receiver %}
+            {% if data.receiver.fname or data.receiver.sname %}
+                <label>{% helper lang.l('field_recipient', 'mailbox') %}:</label>
+                <a href="{{ site_url }}admin/users/edit/personal/{{ data.receiver.id }}" target="_blank">
+                    {{ data.receiver.fname }} {{ data.receiver.sname }}
+                </a>
+                <br/>           
+            {% elseif data.receiver.nickname %}
+                <label>{% helper lang.l('field_recipient', 'mailbox') %}:</label>
+                <a href="{{ site_url }}admin/users/edit/personal/{{ data.receiver.id }}" target="_blank">
+                    {{ data.receiver.nickname }}
+                </a>
+                <br/>
+            {% endif %}
+        {% endif %}    
+        <div class="mb20">
+            <label>{% helper lang.l('field_g_comment', 'users') %}:</label>
+            {{ data.text|nl2br }}
+        </div>
+        {% endspaceless %}</div>
+    </div>

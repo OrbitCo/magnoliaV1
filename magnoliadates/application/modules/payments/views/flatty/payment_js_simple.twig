@@ -1,0 +1,32 @@
+{% include '@app/header.twig' %}
+
+{% if need_redirect %}
+    <script>
+        locationHref('{{ site_url }}payments/js/{{ data.id }}/1');
+    </script>
+{% else %}
+    {{ data.js }}
+    <div class="col-lg-12">
+        <h1>
+            {% helper lang.l('header_payment_form', 'payments') %}  {{ data.system.name }}
+        </h1>
+        <div class="content-value">
+            <div class="edit_block">
+                <div>{{ data.payment_data.name }}</div>
+                {% if data.payment_data.is_recurring %}
+                    <div>{% helper lang.l('recurring_payment', 'payments') %}</div>
+                {% endif %}
+                {%  if data.status == '1' %}
+                <div>{% helper lang.l('field_amount', 'payments') %}:  {% helper start.currency_format_output({'value': data.amount, 'cur_gid': data.currency_gid}) %}</div>
+                <div>{% helper lang.l('field_status', 'payments') %}: {% helper lang.l('payment_status_approved', 'payments') %} </div>
+                {% else %}
+                <div class="b outside">
+                    {{ js }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% include '@app/footer.twig' %}

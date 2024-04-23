@@ -1,0 +1,43 @@
+.countries_install {
+  &__item {
+    border: 1px solid #EAEAEA;
+    padding: 5px 6px;
+    border-radius: 5px;
+    height: 100px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  &__setup {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    &:hover {
+      color: #32b44a;
+    }
+    .fa-check {
+      color: #32b44a;
+    }
+  }
+  &__name {
+    position: absolute;
+    bottom: 5px;
+    padding: 0 5px;
+  }
+}
+
+.regions_install {
+  &__setup:hover {
+    color: #32b44a;
+  }
+  &__name {
+    padding: 5px 0;
+    cursor: pointer;
+    .fa {
+      &.lg {
+        font-size: 18px;
+      }
+    }
+  }
+}

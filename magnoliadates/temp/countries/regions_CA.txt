@@ -1,0 +1,7 @@
+	286	Carcross	60.1660900	-134.7036700	CA	12	0	0	Carcross	Carcross
+	286	Haines Junction	60.7521600	-137.5108200	CA	12	0	0	Haines Junction	Haines Junction
+	286	Mayo	63.5927400	-135.8998400	CA	12	0	0	Mayo	Mayo
+	286	Upper Liard	60.0495800	-128.9061300	CA	12	0	0	Upper Liard	Upper Liard
+	286	Watson Lake	60.0634900	-128.7089300	CA	12	0	0	Watson Lake	Watson Lake
+	286	Whitehorse	60.7161100	-135.0537500	CA	12	0	0	Whitehorse	Уайтхорс
+	286	Dawson City	64.0601300	-139.4332800	CA	12	0	0	Dawson City	Доусон

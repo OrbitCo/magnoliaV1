@@ -1,0 +1,42 @@
+{% for dialog in contact_list %}
+    <li class="chatbox-users__user" data-contact-id="{{ dialog.contact.id }}" id="chb_user_{{ dialog.contact.id }}" data-udate="{{ dialog.date_update }}" data-id="{{ dialog.id }}">
+        <div class="chatbox-users__photo {% if dialog.contact.id == user_id %}sitelogo{% endif %}">
+            {% if dialog.contact.id == user_id %}
+            <img src="{{ site_root }}{{ mini_logo_settings.path }}?{{random()}}" border="0"
+                alt="{% helper seo.seo_tags_default('header_text') %}"
+                width="{{ mini_logo_settings.width }}"
+                height="{{ mini_logo_settings.height }}" id="logo">
+            {% else %}
+            <img src="{{ dialog.contact.media.user_logo.thumbs.small }}" />
+            {% endif %}
+        </div>
+        <div class="chatbox-users__content">
+            <div class="chatbox-users__cinner">
+                <span class="chatbox-users__date">{% helper date_format.tpl_date_format(dialog.last_message.date_added, date_format_st.date_time_literal) %}</span>
+                <div class="chatbox-users__new_msg" title="{% helper lang.l('new_messages', 'chatbox') %}" data-placement="left" data-toggle="tooltip">{% if dialog.count_new > 0 %}<span>{{ dialog.count_new }}</span>{% endif %}</div>
+                <div class="chatbox-users__username">
+                    {% if dialog.contact.id != user_id %}
+                        {% if dialog.contact.online_status %}<span class="chatbox-users__online"></span>{% endif %}
+                        {{ dialog.contact.output_name }}
+                    {% else %}
+                        ♡ {% helper lang.l('site_notification', 'chatbox') %}
+                    {% endif %}
+                </div>
+                <div class="chatbox-users__message {% if dialog.last_message.dir == 'o' and dialog.contact.id != user_id and dialog.last_message.is_read_mess %} is_read {% endif %}">
+                    {% if dialog.last_message.dir == 'o' and dialog.contact.id != user_id %}<span class="chatbox-users__your">{% helper lang.l('text_your', 'chatbox') %}: </span>{% endif %}
+                    {{ dialog.last_message.message }}
+                    {% if dialog.last_message.dir == 'o' and dialog.contact.id != user_id %}
+                        <i class="fas fa-check"></i><i class="fas fa-check two"></i>
+                    {% endif %}
+                </div>
+                <i data-contact-id="{{ dialog.contact_id }}" title="{% helper lang.l('link_delete_dialog', 'chatbox') %}" class="fas fa-times chatbox-users__delele" data-placement="left" data-toggle="tooltip"></i>
+            </div>
+        </div>
+    </li>
+{% endfor %}
+
+<script type="text/javascript">
+    $(function(){
+        $('.chatbox [data-toggle="tooltip"]').tooltip();
+    });
+</script>

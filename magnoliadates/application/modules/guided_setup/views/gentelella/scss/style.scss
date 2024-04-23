@@ -1,0 +1,200 @@
+.guide_link {
+    text-align: center;
+    padding: 15px 0px;
+    border: 2px solid #E6E9ED;
+    border-top: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+.guided_btn {
+    border-top:2px solid #e6e9ed;
+    background: #fff;
+}
+.guided-popup {
+    .modal-body {
+        padding: 0;
+        .left-block {
+            padding: 0;
+        }
+        .right-block {
+            padding: 0;
+            background-color: $html_bg;
+        }
+        .nav-buttons {
+            padding: 15px 0;
+            background-color: #fff;
+            border-top: 1px solid #e6e9ed;
+            a {
+                margin-bottom: 0 !important;
+            }
+        }
+        .guided-popup-title {
+            background-color: #fff;
+            border-bottom: 1px solid #e6e9ed;
+            .dropdown-menu {
+                height: 300px;
+                overflow-y: scroll;
+            }
+            .dropdown-toggle a {
+                color: $link_color;
+            }
+            .fa-question-circle {
+                color: $input_main_btn;
+                cursor: pointer;
+            }
+        }
+        #mobile_guided_nav {
+            top: -18px;
+            .guided-current-page {
+                background-color: #f5f5f5;
+                color: #262626;
+            }
+        }
+        .iframe-block {
+            height: 444px;
+        }
+        #guided_content {
+            height: 100%;
+            overflow-y: auto;
+        }
+        #guided_loading_block {
+            position: absolute;
+            z-index: 1500;
+            #{$right}: 50%;
+            top: 50%;
+        }
+    }
+
+    .modal-footer {
+        display: none;
+    }
+
+    #guided-navigation {
+        background-color: $popup_bg;
+        margin-bottom: 0;
+        overflow-y: auto;
+        height: 540px;
+
+        li {
+            padding: 15px;
+            border-bottom: 1px solid #213242;
+            cursor: pointer;
+            color: $contrast_color !important;
+            font-weight: 500;
+            position: relative;
+            padding-left: 26px;
+
+          .page-configured{
+            position: absolute;
+            left: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+        }
+
+        .guided-current-page {
+            border-#{$right}: 5px solid $input_main_btn;
+            background: rgba(255, 255, 255, 0.05) none repeat scroll 0 0;
+        }
+
+        .fa-check {
+            color: $input_main_btn;
+        }
+    }
+
+    .popover-footer {
+        padding: 9px 14px;
+
+        #hide_guided_popover {
+            text-decoration: underline;
+            cursor: pointer;
+            line-height: 32px;
+        }
+    }
+
+    .guided-indicator-block {
+        background-color: $popup_bg;;
+        padding: 15px;
+        border-bottom: 1px solid #213242;
+        cursor: pointer;
+        color: $contrast_color !important;
+        font-weight: 500;
+        opacity: 0.8;
+    }
+
+    .ui-widget-header {
+        background-color: $input_main_btn;
+        border-color: $input_main_btn;
+        background-image: none;
+    }
+
+    .ui-widget-content {
+        background-image: none;
+        background-color: unset;
+    }
+
+    .ui-progressbar {
+        height: 0.7em;
+
+        .ui-progressbar-value {
+            margin: 0;
+        }
+    }
+
+  .close_window{
+    color: #e64d4d;
+    font-size: 18px;;
+    &:hover{
+      color: #ff0000;
+    }
+  }
+}
+
+.customscrollbar, .customscrollbar body{
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: rgba(246, 246, 246, 0.2);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #32b44a;
+    border-radius: 7px;
+  }
+}
+
+.popover_info .popover{
+  position: absolute;
+  left: 0!important;
+  right: 0!important;
+  width: 100%;
+  max-width: 83% !important;
+  margin: auto;
+  top: 42px!important;
+  border: 1px solid black;
+}
+.popover_info .popover .arrow{
+  display: none;
+}
+
+.popover_info .popover .popover-content{
+  overflow-y: auto;
+  max-height: 350px;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: rgba(246, 246, 246, 0.2);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #bebebe;
+    border-radius: 7px;
+  }
+}
+

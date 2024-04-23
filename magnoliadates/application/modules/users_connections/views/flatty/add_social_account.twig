@@ -1,0 +1,41 @@
+{% include '@app/header.twig' %}
+
+<div class="col-xs-12">
+    <h1>
+        {% helper lang.l('link_account', 'users_connections') %}:
+    </h1>
+    <div class="col-xs-12 mtb20">
+        <div class="oauth-links">
+            <ins>
+                {% for connect in connections %}
+                    {% if connect.is_disabled %}
+                        <a href="#"
+                           class="btn btn-primary {{ connect.gid }} disabled"
+                           data-pjax="0" title="{{ connect.name|e }}">
+                    {% else %}
+                        <a href="{{ site_url }}users_connections/joinAccount/{{ connect.id }}"
+                           class="btn btn-primary {{ connect.gid }}"
+                           data-pjax="0" title="{{ connect.name|e }}">
+                    {% endif %}
+                        {% if connect.gid == 'facebook' %}
+                            <i class="fab fa-facebook-f"></i>
+                        {% elseif connect.gid == 'vkontakte' %}
+                            <i class="fab fa-vk"></i>
+                        {% elseif connect.gid == 'google' %}
+                            <i class="fab fa-google"></i>
+                        {% elseif connect.gid == 'linkedin' %}
+                            <i class="fab fa-linkedin"></i>
+                        {% elseif connect.gid == 'twitter' %}
+                            <i class="fab fa-twitter"></i>
+                        {% endif %}
+                    </a>
+                {% endfor %}
+            </ins>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <a class="btn btn btn-primary" href="{{ site_url }}users/search">{% helper lang.l('btn_pay', 'users') %}</a>
+    </div>
+</div>
+
+{% include '@app/footer.twig' %}

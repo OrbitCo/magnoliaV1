@@ -1,0 +1,3 @@
+<a {% if new_tab %}target="_blank"{% endif %} href="{{ site_url }}chatbox/chat/{{ user_id }}" class="link-r-margin chatbox-start-dialog-btn"  data-user-id="{{ user_id }}" title="{% helper lang.l('link_message_send', 'chatbox', '', 'button') %}">
+    {% helper lang.l('link_message_send', 'chatbox', '', 'button') %}
+</a>

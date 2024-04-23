@@ -1,0 +1,16 @@
+<li{% if section == 'settings' %} class="active"{% endif %}>
+    <a href="{{ site_url }}admin/mobile/billingSettings">
+        {% helper lang.l('sett_billing', 'mobile') %}</a>
+</li>
+<li{% if section == 'product_list' %} class="active"{% endif %}>
+    <a href="{{ site_url }}admin/mobile/productList">
+        {% helper lang.l('sett_purchases', 'mobile') %}</a>
+</li>
+<li{% if section == 'subscription_list' %} class="active"{% endif %}>
+    <a href="{{ site_url }}admin/mobile/subscription_list">
+        Subscriptions</a>
+</li>
+<li{% if section == 'service_list' %} class="active"{% endif %}>
+    <a href="{{ site_url }}admin/mobile/service_list">
+        Services</a>
+</li>

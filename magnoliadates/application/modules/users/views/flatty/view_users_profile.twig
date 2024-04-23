@@ -1,0 +1,85 @@
+<h2 class="section-header">
+    <span class="upper">
+        {% helper lang.l('table_header_personal', 'users') %}
+    </span>
+</h2>
+<div class="view-section">
+    {% helper no_info_str = lang.l('no_information', 'users') %}
+    <div class="field-block clearfix">
+        <div class="field-name {% if body_class is empty %}col-xs-4{% endif %}">
+            {% helper lang.l('field_user_type', 'users') %}:
+        </div>
+        <div class="field-info {% if body_class is empty %}col-xs-8{% endif %}">
+            {{ data.user_type_str }}
+        </div>
+    </div>
+
+    {% if data.looking_user_type_str %}
+        <div class="field-block clearfix">
+            <div class="field-name {% if body_class is empty %}col-xs-4{% endif %}">
+                {% helper lang.l('field_looking_user_type', 'users') %}:
+            </div>
+            <div class="field-info {% if body_class is empty %}col-xs-8{% endif %}">
+                {{ data.looking_user_type_str }}, {% helper lang.l('field_aged', 'users') %}
+                {% if data.age_min %}{{ data.age_min }}{% endif %}
+                {% if data.age_min and data.age_max %} - {% endif %}
+                {% if data.age_max %}{{ data.age_max }}{% endif %}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="field-block clearfix">
+        <div class="field-name {% if body_class is empty %}col-xs-4{% endif %}">
+            {% helper lang.l('field_nickname', 'users') %}:
+        </div>
+        <div class="field-info {% if body_class is empty %}col-xs-8{% endif %}">
+            {{ data.nickname }}
+        </div>
+    </div>
+    {% if data.fname %}
+        <div class="field-block clearfix">
+            <div class="field-name {% if body_class is empty %}col-xs-4{% endif %}">
+                {% helper lang.l('field_fname', 'users') %}:
+            </div>
+            <div class="field-info {% if body_class is empty %}col-xs-8{% endif %}">
+                {{ data.fname }} {% if data.sname %}{{ data.sname }}{% endif %}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="field-block clearfix">
+        <div class="field-name {% if body_class is empty %}col-xs-4{% endif %}">
+            {% helper lang.l('birth_date', 'users') %}:
+        </div>
+        <div class="field-info {% if body_class is empty %}col-xs-8{% endif %}">
+            {{ data.birth_date }}
+        </div>
+    </div>
+
+    {% if data.location %}
+        <div class="field-block clearfix">
+            <div class="field-name {% if body_class is empty %}col-xs-4{% endif %}">
+                {% helper lang.l('field_region', 'users') %}:
+            </div>
+            <div class="field-info {% if body_class is empty %}col-xs-8{% endif %}">
+                {{ data.location }}
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+{% for item in sections %}
+    {% set view_fields %}
+        {% include 'custom_view_fields.twig' with {'fields_data': item.fields} %}
+    {% endset %}
+    {% if view_fields|trim %}
+        <h2 class="section-header">
+            <span class="upper">
+                {{ item.name }}
+            </span>
+        </h2>
+        <div class="view-section">
+            {{ view_fields }}
+        </div>
+    {% endif %}
+{% endfor %}

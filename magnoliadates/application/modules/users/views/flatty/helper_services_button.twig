@@ -1,0 +1,45 @@
+<div class="services-owner-menu {% if ervices_data.count_services != 1 %}short{% else %}long{% endif %}">
+    {% helper user_group = access_permissions.getUserGroupInfo({'id_user': user_session_data.user_id, 'is_default_excluded':1}) %}    
+    {% if services_data.is_long and services_data.count_services > 0 %}
+        <span class="col-xs-10 col-sm-9">
+            <a class="btn btn-primary btn-block" href="{% helper seo.seolink('access_permissions', 'index') %}">
+                <i class="fa fa-rocket"></i>
+
+                {% if user_group.left_str|length > 0 %}
+                    {% helper lang.l('btn_prolong_membership', 'access_permissions') %}
+                {% else %}
+                    {% helper lang.l('link_get_premium', 'users') %}
+                {% endif %}
+            </a>
+        </span>
+        <span class="col-xs-2 col-sm-3">
+            <button id="services-menu" type="button" class="btn btn-default btn-block" onclick="sendAnalytics('dp_user_view_profile_btn_services_menu', 'user_profile', 'btn_services_menu');" >
+                <i class="fa fa-ellipsis-h"></i>
+            </button>
+        </span>
+     {% elseif services_data.is_long and services_data.count_services == 0 %}
+        <a class="btn btn-primary btn-block" href="{% helper seo.seolink('access_permissions', 'index') %}">
+            <i class="fa fa-rocket"></i>
+            {% if user_group.left_str|length > 0 %}
+                {% helper lang.l('btn_prolong_membership', 'access_permissions') %}
+            {% else %}
+                {% helper lang.l('link_get_premium', 'users') %}
+            {% endif %}
+        </a>
+    {% elseif services_data.count_services > 1 %}
+        <span class="col-xs-10 col-sm-9">
+            <a class="btn btn-primary btn-block" onclick="{{ services_data.current_service.gid }}_available_view.check_available();">
+                {{ services_data.current_service.name }}
+            </a>
+        </span>
+        <span class="col-xs-2 col-sm-3">
+            <button id="services-menu" type="button" class="btn btn-default btn-block" onclick="sendAnalytics('dp_user_view_profile_btn_services_menu', 'user_profile', 'btn_services_menu');" data-toggle="popover">
+                <i class="fa fa-ellipsis-h"></i>
+            </button>
+        </span>
+    {% elseif services_data.count_services == 1 %}
+        <button type="button" class="btn btn-primary btn-block" onclick="{{ services_data.current_service.gid }}_available_view.check_available();">
+            {{ services_data.current_service.name }}
+        </button>
+    {% endif %}
+</div>

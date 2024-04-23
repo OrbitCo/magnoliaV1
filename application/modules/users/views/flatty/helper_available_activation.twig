@@ -1,0 +1,29 @@
+<script type="text/javascript">
+    $(function () {
+        loadScripts(
+                ["{% helper utils.jscript('users', 'users-settings.js', 'path') %}",
+                    "{% helper utils.jscript('users', '../views/flatty/js/users-avatar.js', 'path') %}"],
+                function () {
+                    user_avatar = new UsersAvatar({
+                        site_url: site_url,
+                        id_user: id_user,
+                        haveAvatar: false,
+                        callback: function () {
+                            (new usersSettings({siteUrl: site_url})).rebuild('user_logo');
+                        }
+                    });
+                    av_activation = new usersSettings({
+                        siteUrl: site_url,
+                        avatarObj: user_avatar,
+                        errorObj: new Errors({
+                            expires: 3600,
+                            path: '{{ site_root }}',
+                            domain: '{{ site_url }}'
+                        })
+                    }).availableActivation();
+                },
+                ['av_activation' ,'user_avatar'],
+                {async: false}
+        );
+    });
+</script>

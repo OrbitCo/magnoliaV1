@@ -1,0 +1,76 @@
+{% include '@app/header.twig' %}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                {% include 'billing_settings_menu.twig' %}
+            </ul>
+        </div>
+        
+        {% if section == "settings" %}
+        <div class="x_title">
+            <h2>{% helper lang.l('sett_billing', 'mobile') %}</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <form method="post" enctype="multipart/form-data" data-parsley-validate
+                  class="form-horizontal form-label-left" name="save_form"
+                  action="{{ data.action }}">
+            
+                <div class="form-group">
+                    <div class="col-md-12 col-sm-12 col-xs-12 row">
+                        <label class="col-sm-3 col-xs-12">
+                            {% helper lang.l('refresh_tokens_link', 'mobile') %}:</label>
+                        <div class="data-label col-md-9 col-sm-9 col-xs-12">
+                            {% if refresh_link %}
+                                <a href="{{ refresh_link }}">{% helper lang.l('text_follow_link', 'mobile') %}</a><br>                                
+                            {% else %}
+                                {% helper lang.l('text_define_client_id', 'mobile') %}<br>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 row">
+                        <label class="control-label col-sm-3 col-xs-12">
+                            {% helper lang.l('sett_api_key', 'mobile') %}:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="text" name="settings[api_key]" value="{{ api_key|e }}" class="form-control"><br>                        
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 row">
+                        <label class="control-label col-sm-3 col-xs-12">
+                            {% helper lang.l('sett_client_id', 'mobile') %}:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="text" name="settings[client_id]" value="{{ client_id|e }}" class="form-control"><br>                        
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 row">
+                        <label class="control-label col-sm-3 col-xs-12">
+                            {% helper lang.l('sett_client_secret', 'mobile') %}:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="text" name="settings[client_secret]" value="{{ client_secret|e }}" class="form-control"><br>                        
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3 col-sm-offset-3">
+                        <input type="submit" name="btn_save" value="{% helper lang.l('btn_save', 'start', '', 'button') %}" class="btn btn-success">
+                        <a class="btn btn-default" href="{{ site_url }}admin/mobile/index">{% helper lang.l('btn_cancel', 'start') %}</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% elseif section == "product_list" %}
+            {% include 'product_list.twig' %}        
+        {% elseif section == "subscription_list" %}
+            {% include 'subscription_list.twig' %}
+        {% elseif section == "service_list" %}
+            {% include 'service_list.twig' %}
+        {% endif %}
+    </div>
+</div>
+<div class="clearfix"></div>
+
+{% include '@app/footer.twig' %}

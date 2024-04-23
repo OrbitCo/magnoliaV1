@@ -1,0 +1,115 @@
+<div class="registration-block">
+  {% if data.is_link == 1 %}
+    <div class="continue-block">
+      <button data-action="show-registration-block" {% if data.gotoform == 1 %}data-gotoform="1"{% endif %}
+              class="btn btn-primary btn-lg btn-block btn-regshow{% if data.class %} {{ data.class }}{% endif %}">{{ data.reglang }}</button>
+    </div>
+  {% endif %}
+  {% if data.is_load_form == 0 %}
+    <form method="post" enctype="multipart/form-data" action="{{ data.form_action }}" autocomplete="off">
+      {% if data.is_auth == 0 %}
+        {% if data.is_link == 0 and data.is_registration == 0 %}
+          {% include 'registration/first_page.twig' with {'is_link': 0} %}
+        {% endif %}
+      {% endif %}
+      <div class="main-block-pages hide">
+        <div class="pages-wraper">
+          {% if data.is_auth == 0 %}
+            {% if data.is_link == 1 or data.is_registration == 1 %}
+              {% include 'registration/first_page.twig' with {'is_link': 1} %}
+            {% endif %}
+            {% include 'registration/second_page.twig' %}
+            {% helper users.registrationThirdPage({'user_data': user_data, 'data': data}) %}
+          {% endif %}
+          {% include 'registration/fourth_page.twig' %}
+        </div>
+      </div>
+    </form>
+  {% endif %}
+</div>
+{% if data.is_load_form == 0 %}
+  {% helper incomplete_signup.incomplete_signup_script() %}
+  <script>
+    $(function () {
+      new UsersRegistration({
+        siteUrl: site_url,
+        pageBlock:{{ data.page }},
+        isAuth:{{ data.is_auth }},
+        isLink:{{ data.is_link }},
+        isRegistration: {% if is_registration %}1{% else %}0{% endif %},
+        langs: {
+          defaultDay: '{% helper lang.l('date_format_day', 'start', '', 'js') %}',
+          defaultMonth: '{% helper lang.l('date_format_month', 'start', '', 'js') %}',
+          defaultYear: '{% helper lang.l('date_format_year', 'start', '', 'js') %}'
+        },
+        user: {
+          age_min: '{{ data.age.min }}',
+          age_max: '{{ data.age.max }}',
+          birth_date: '{{ user_data.birth_date_raw }}',
+          dateFormat: '{{ date_format_ui.date_literal }}',
+          isAuth: '{{ data.is_auth }}',
+          setDate: {% if user_data.birth_date is not empty %}'{{ user_data.birth_date }}'
+          {% else %}'{{ data.min_date|e }}'{% endif %}
+        },
+        errors: {{ errors_data|json_encode() }},
+        usersFieldsValidation: new UsersFieldsValidation({
+          siteUrl: site_url,
+          objBtnDisabled: '[data-page="3"]',
+          ages: {
+            age_min: '{{ data.age.min }}',
+            age_max: '{{ data.age.max }}'
+          },
+          fields: {
+      {% for field, rule in data.rules %}
+      {{ field }}:
+      false,
+        {% endfor %}
+        confirmation
+    :
+      false
+    },
+      langs: {
+        errors: {
+          {% for field, rule in data.rules %}
+          {{ field }}:
+          "{% helper lang.l('error_'~field~'_incorrect', 'users', '', 'js') %}",
+            {% endfor %}
+            confirmation
+        :
+          "{% helper lang.l('error_no_confirmation', 'users', '', 'js') %}"
+        }
+      ,
+      }
+    ,
+      rules: {
+        {% for field, rule in data.rules %}
+        {{ field }}:{{ rule }},
+        {% endfor %}
+        confirmation: /[1]{1,1}$/
+      }
+    })
+    })
+
+    })
+  </script>
+  {% if data.is_auth != 0 %}
+    <script>
+      $(function () {
+
+        function UsersAvatarRegistration() {
+          user_avatar = new UsersAvatar({
+            site_url: site_url,
+            id_user:{{ data.user.id }},
+            saveAfterSelect: false,
+            haveAvatar: '{{ data.have_avatar }}',
+            mobileWidth: 0,
+            callback: function () {
+              $('#user_photo>div').hide();
+            }
+          });
+        }
+        UsersAvatarRegistration();
+      })
+    </script>
+  {% endif %}
+{% endif %}

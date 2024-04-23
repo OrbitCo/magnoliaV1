@@ -1,0 +1,43 @@
+{% if template_data.price_type == 1 %}
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+            {% helper lang.l('field_price', 'services') %}
+            ({% helper start.currency_output() %}):</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          {% if can_free %}
+            <div class="input-group">
+                <input type="text" value="{{ price }}" name="price" id="service-price" class="form-control">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-primary" onclick="$('#service-price').val(0);">
+                    {% helper lang.l('make_free', 'services') %}</button>
+                </span>
+            </div>
+          {% else %}
+            <input type="text" value="{{ price }}" name="price" id="service-price" class="form-control">
+          {% endif %}
+        </div>
+    </div>
+{% endif %}
+{% for item in template_data.data_admin_array %}
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+            {{ item.name }}
+            {% if item.type == 'price' %}
+                ({% helper start.currency_format_output() %})
+            {% endif %}:
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+        {% if item.type == 'string' %}
+            <input type="text" value="{{ item.value|e }}" name="data_admin[{{ item.gid }}]" class="form-control">
+        {% elseif item.type == 'int' %}
+            <input type="text" value="{{ item.value|e }}" name="data_admin[{{ item.gid }}]" class="form-control">
+        {% elseif item.type == 'price' %}
+            <input type="text" value="{{ item.value|e }}" name="data_admin[{{ item.gid }}]" class="form-control">
+        {% elseif item.type == 'text' %}
+            <textarea name="data_admin[{{ item.gid }}]" class="form-control">{{ item.value|e }}</textarea>
+        {% elseif item.type == 'checkbox' %}
+            <input type="checkbox" value="1" class="form-control" name="data_admin[{{ item.gid }}]" {% if item.value == '1' %}checked{% endif %}>
+        {% endif %}
+        </div>
+    </div>
+{% endfor %}

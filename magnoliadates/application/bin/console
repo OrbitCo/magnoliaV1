@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use Pg\Libraries\Commands\ClearTwigCacheCommand;
+use Pg\Libraries\Commands\GenerateModuleCommand;
+use Pg\Libraries\Commands\GenerateCRUDCommand;
+
+$app = new Application();
+$app->add(new ClearTwigCacheCommand());
+$app->add(new GenerateModuleCommand());
+$app->add(new GenerateCRUDCommand());
+$app->run();

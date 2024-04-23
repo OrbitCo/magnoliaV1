@@ -1,0 +1,193 @@
+{% extends '@app/header_lite.twig' %}
+ {% block bodyclass %}index-pleasure{% endblock bodyclass %}
+
+ {% block container %}
+  <div id="error_block" class="hide">{% for item in _PREDEFINED.error %}{% if item.text %}{{ item.text }}
+      <br>{% endif %}{% endfor %}</div>
+  <div id="info_block" class="hide">{% for item in _PREDEFINED.info %}{% if item.text %}{{ item.text }}
+      <br>{% endif %}{% endfor %}</div>
+  <div id="success_block" class="hide">{% for item in _PREDEFINED.success %}{% if item.text %}{{ item.text }}
+      <br>{% endif %}{% endfor %}</div>
+
+
+  <div class="b-header" id="b-header">
+    <div class="container">
+      <div class="row">
+        <div class="b-header__topline">
+          <div class="col-sm-6">
+            <div class="b-header__logo">
+              <a href="{{ site_url }}">
+                {% helper start.logo({type: 'user', settings: logo_settings}) %}
+              </a>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="b-header__topnav">
+              {% helper users.users_lang_select({type: 'menu', template: 'summer'}) %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row th-set__index_promo_text_main">
+        {% helper users.usersRegistration({'page': 1, 'is_registration': is_registration}) %}
+      </div>
+    </div>
+  </div><!-- b-header -->
+
+  <div class="b-afterheader th-set__index_promo_text_on_bg th-set__main_bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <p>{% helper lang.l('text_promo_description', 'start') %}</p>
+          <p class="b-afterheader__apps">
+            {% helper mobile.mobileAppLinks({'viewtype': 'ghostWhite'}) %}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div><!-- b-afterheader -->
+
+  <div class="b-features">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="b-features__item">
+            <div class="b-features__image"><img
+                src="{{ site_root }}uploads/themes-fixed/honey/images/b-features_likeme.png" alt=""></div>
+            <h3 class="b-features__title">{% helper lang.l('features_likeme', 'start') %}</h3>
+            <p>{% helper lang.l('features_likeme_txt', 'start') %}</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="b-features__item">
+            <div class="b-features__image"><img
+                src="{{ site_root }}uploads/themes-fixed/honey/images/b-features_nearest.png" alt=""></div>
+            <h3 class="b-features__title">{% helper lang.l('features_nearest', 'start') %}</h3>
+            <p>{% helper lang.l('features_nearest_txt', 'start') %}</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="b-features__item">
+            <div class="b-features__image"><img
+                src="{{ site_root }}uploads/themes-fixed/honey/images/b-features_chats.png" alt=""></div>
+            <h3 class="b-features__title">{% helper lang.l('features_chats', 'start') %}</h3>
+            <p>{% helper lang.l('features_chats_txt', 'start') %}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- b-features -->
+
+  <div class="b-mobile">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="b-mobile__img">
+            <img class="img-responsive" src="{{ site_root }}uploads/themes-fixed/honey/images/b-mobile.png" alt="">
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="b-mobile__text">
+            <h2>{% helper lang.l('mobile_app_title', 'start') %}</h2>
+            <p>{% helper lang.l('mobile_app_txt', 'start') %}</p>
+            <p class="b-afterheader__apps">
+              {% helper mobile.mobileAppLinks({'viewtype': 'ghostBlack'}) %}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- b-mobile -->
+
+  <!-- b-registration -->
+
+  <div class="b-footer th-set__index_footer_bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-9">
+          <div class="b-footer__copy">
+            {% helper start.getCopyright('index_page') %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- b-footer -->
+
+  {% helper users.users_lang_select({type: 'menu', template: 'sidebox'}) %}
+  <script src="{{ site_root }}uploads/themes-fixed/honey/js/controls.js"></script>
+</div>
+<!-- pjaxcontainer -->
+{% helper cookie_policy.cookie_policy_block() %}
+{% helper languages.lang_editor() %}
+{% helper seo_advanced.seo_traker('footer') %}
+{% helper start.intercom() %}
+{% helper start.amplitude() %}
+{% helper mobile.appTopBanner() %}
+
+{% if not is_pjax %}
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ site_root }}uploads/themes-fixed/honey/styles/font-awesome.css" type="text/css"/>
+  <link rel="stylesheet" href="{{ site_root }}application/views/flatty/css/fontawesome/css/fontawesome-all.min.css"
+        type="text/css"/>
+  <link rel="stylesheet" href="{{ site_root }}uploads/themes-fixed/honey/styles/bootstrap-{{ _LANG.rtl }}.css"
+        type="text/css"/>
+  <link rel="stylesheet" href="{{ site_root }}uploads/themes-fixed/honey/styles/style-{{ _LANG.rtl }}.css"
+        type="text/css"/>
+  {% helper theme.include_css('style', 'screen') %}
+  {% helper theme.css(load_type) %}
+{% endif %}
+   <script>
+     $(document).ready(function () {
+       let headerImg = {{ header_style|json_encode() }};
+       if (headerImg !== null) {
+         $(window).on('resize', setHeartImage)
+         let container = $('#b-header')
+         let imgContainer = $('.custom-header')
+
+         function setHeartImage () {
+           let widthW = document.body.clientWidth
+           let mobileWidth = 768
+           if (widthW > mobileWidth) {
+             if (typeof headerImg.image_url !== 'undefined') {
+               container.addClass('custom-header_without_img')
+               container.css({ 'background-image': 'url(' + headerImg.base_path + '/' + headerImg.image_url + ')' })
+             } else {
+               container.removeClass('custom-header_without_img')
+             }
+           } else if (widthW < mobileWidth) {
+             if (typeof headerImg.image_mobile_url !== 'undefined') {
+               container.addClass('custom-header_without_img')
+               container.css({ 'background-image': 'url(' + headerImg.base_path + '/' + headerImg.image_mobile_url + ')' })
+             } else {
+               container.removeClass('custom-header_without_img')
+             }
+           }
+         }
+
+         setHeartImage()
+       }
+     })
+   </script>
+
+   <script src="{{ site_root }}uploads/themes-fixed/pleasure/js/controls.js"></script>
+
+   {# TODO перенести в сборщик webpack (flatty/js/main.js) #}
+   {% helper utils.jscript('', 'twigjs/twig.js') %}
+   {% helper themes.load({'name': 'modules', 'ext': 'js'}) %}
+   {% helper themes.load({'name': 'modules_multi_request', 'ext': 'js'}) %}
+
+
+   {% helper cookie_policy.cookie_policy_block() %}
+   {% helper languages.lang_editor() %}
+   {% helper seo_advanced.seo_traker('footer') %}
+
+   <script>
+     $(function () {
+       $.datepicker.setDefaults($.datepicker.regional["{{ _LANG.code }}"])
+     })
+   </script>
+</body>
+</html>
+ {% endblock container %}

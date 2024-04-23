@@ -1,0 +1,329 @@
+
+{% set is_one_group %}{% helper access_permissions.isMoreThanOneActiveGroup() %}{% endset %}
+{% helper user_group = access_permissions.getUserGroupInfo({'id_user':user_id, 'is_default_excluded':1}) %}
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '6897243193627173');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=6897243193627173&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+<!-- Top.Mail.Ru counter -->
+<script type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "3385436", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = "https://top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "tmr-code");
+</script>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3385436;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+<!-- /Top.Mail.Ru counter -->
+
+
+<div class="magazine-profile">
+    {% if action == '' or action == 'view' or action == 'wall' %}
+        <div class="magazine-profile__media mag-portrait">
+            <div id="user_photo_bg" class="magazine-profile__avabg" style="background: url({{ data.media.user_logo.thumbs.middle }}) no-repeat center / cover;"></div>
+            <div class="magazine-profile__ava">
+                <div id="user_photo_block">
+                    {% if is_owner %}
+                        <div class="magazine-profile__ava-action_block" data-block="ava-action_block">
+                            {% if data.media.user_logo.is_default is empty %}
+                                <span data-action="remove-avatar" class="btn btn-primary-inverted hide" title="{% helper lang.l('field_icon_delete', 'users') %}">
+                                    <i class="fa fa-times"></i>
+                                </span>
+                            {% endif %}
+                            <span data-change="user-avatar" class="btn btn-primary hide">
+                                {% if data.media.user_logo.is_default %}
+                                    {% helper lang.l('btn_upload_photo', 'media') %}
+                                {% else %}
+                                    {% helper lang.l('btn_change_photo', 'media') %}
+                                {% endif %}
+                            </span>
+                        </div>
+                    {% endif %}
+                    <a id="user_photo">
+                        {% helper users.formatAvatar({'user': data, 'size': 'grand', 'get_original_file_url': 0, 'class': 'img-responsive'}) %}
+                    </a>
+                </div>
+                {% if is_owner %}
+                    <div class="change-photo-button photo-action-js owner-change-photo">
+                        {% helper lang.l('btn_change_photo', 'media') %}
+                    </div>
+                {% endif %}
+                <div class="view-photo-button photo-action-js">
+                    {% helper lang.l('btn_view_photo', 'media') %}
+                </div>
+                
+                <!--Affiliate-->
+                <script type="text/javascript">
+!function () {
+document.addEventListener("DOMContentLoaded", function () {
+let clickId = getCookie("skro-click-id");
+if (clickId === null || clickId === undefined || clickId === 'undefined') {
+
+return false;
+}
+let xhr = new XMLHttpRequest;
+xhr.open("GET", "https://skrotrack.com/postback?clickId=" + clickId);
+console.log('SKRO AFFILIATE');
+console.log(clickId);
+xhr.send();
+});
+
+function getCookie(e) {
+let t = ("; " + document.cookie).split("; " + e + "=");
+if (2 === t.length) return t.pop().split(";").shift()
+}
+}();
+</script>
+
+                <script>
+                    $(function () {
+                        loadScripts(
+                                ["{% helper utils.jscript('users', '../views/flatty/js/users-avatar.js', 'path') %}"],
+                                function () {
+                                    user_avatar = new UsersAvatar({
+                                        site_url: site_url,
+                                        id_user:{{ data.id }} ,
+                                        saveAfterSelect: false,
+                                        haveAvatar: '{{ data.have_avatar }}',
+                                        callback: function () {
+                                            (new usersSettings({siteUrl: site_url})).rebuild('user_logo');
+                                        }
+                                    });
+                                },
+                                ['user_avatar'],
+                                {async: false}
+                        );
+                    });
+                </script>
+            </div>
+            <div class="magazine-profile__status">
+                {% if data.online_status == 0 %}
+                    {% helper lang.l('field_last_seen', 'users') %} {% helper date_format.tpl_date_format(data.date_last_activity, date_format_st.date_time_literal) %}
+                {% else %}
+                    {{ data.statuses.online_status_lang }}
+                {% endif %}
+            </div>
+            <div class="magazine-profile__recentmedia">
+                {% helper media.user_media_block({'count': 3, 'user_id': user_id, 'media_size': 'middle', 'template': 'magazine'}) %}
+            </div>
+        </div>
+
+        <div class="magazine-profile__text">
+            <div class="magazine-profile__content">
+                {% if action == '' or action == 'view' %}
+                    <div class="magazine-profile__tabs">
+                        {% include 'profile_menu.twig' with {'template': 'magazine'} %}
+                    </div>
+
+                    {% include 'profile_top_magazine.twig' with {is_owner: is_owner} %}
+
+                    <div class="magazine-profile__base">
+                        {{ data.user_type_str }}
+                        {% helper is_module_installed = utils.depends('horoscope', 'perfect_match') %}
+                        {% if is_module_installed.horoscope %}
+                          {% helper sign_horoscope = horoscope.getSignHoroscope({'user': data, 'template': 'text'}) %}
+                          {% if sign_horoscope is not empty %}
+                            , {{ sign_horoscope }}
+                          {% endif %}
+                        {% endif %}
+                        {% if is_module_installed.perfect_match %}, <span>{% helper lang.l('field_looking_user_type_profile', 'users') %}
+                        {{ data.looking_user_type_str }}</span> {% helper lang.l('field_aged', 'users') %}
+                        {% if data.age_min %}{{ data.age_min }}{% endif %}{% if data.age_min and data.age_max %}-{% endif %}{% if data.age_max %}{{ data.age_max }}{% endif %}
+                        {% endif %}
+                    </div>
+
+                    <div class="magazine-profile__services mag-services">
+                        {% if is_one_group|length > 0 %}
+                            <div class="mag-services__item{% if user_group.left_str|length > 0 %} mag-services__item_active{% endif %}" data-action="access-permissions-page">
+                                <div class="mag-services__icon" data-toggle="tooltip" data-placement="top" title="{% helper lang.l('user_in_default_group_tooltip', 'access_permissions') %}">
+                                    <img class="mag-services__color" src="{{ base_url }}{{ img_folder }}icons/ic-rocket.png" alt="">
+                                    <img class="mag-services__gray" src="{{ base_url }}{{ img_folder }}icons/ic-rocket-gray.png" alt="">
+                                    <div class="mag-services__plus"><i class="fa fa-plus"></i></div>
+                                    <div class="mag-services__counter">{{ user_group.left_str }}{% if user_group.left_str > 0 %} {% helper lang.l('date_diff_left', 'services') %}{% endif %}</div>
+                                </div>
+                                <div class="mag-services__title">
+                                    {{ user_group.data.current_name }}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        <div class="mag-services__item{% if data.account %} mag-services__item_active{% endif %}" data-action="set-payment-system">
+                            <div class="mag-services__icon">
+                                <img class="mag-services__color" src="{{ base_url }}{{ img_folder }}icons/ic-account.png" alt="">
+                                <img class="mag-services__gray" src="{{ base_url }}{{ img_folder }}icons/ic-account-gray.png" alt="">
+                                <div class="mag-services__plus"><i class="fa fa-plus"></i></div>
+                                <div class="mag-services__counter on-account-amount">{% helper users.onUserAccount({'output_type': 'long'}) %}</div>
+                            </div>
+                            <div class="mag-services__title">
+                                {% helper lang.l('add_funds', 'users_payments') %}
+                            </div>
+                        </div>
+                        {% helper services.servicesBuyList({'tpl': 'magazine'}) %}
+                    </div>
+
+                    <div class="magazine-profile__params">
+                        <div class="description">
+                            <div class="view-user">
+                                <div class="view-user__descr">
+                                    <script type="text/javascript">
+                                        $(function () {
+                                            loadScripts(
+                                                [
+                                                    "{% helper utils.jscript('', 'available_view.js', 'path') %}",
+                                                ],
+                                                function(){
+                                                        users_profile_available_view = new available_view({
+                                                                siteUrl: site_url
+                                                        });
+                                                },
+                                                'users_profile_available_view',
+                                                {async: false}
+                                            );
+                                        });
+                                        $(function () {
+                                            loadScripts(
+                                                [
+                                                    "{% helper utils.jscript('access_permissions', 'AccessPermissions.js', 'path') %}",
+                                                ],
+                                                function(){
+                                                    user_access_permissions = new AccessPermissions({
+                                                        siteUrl: site_url
+                                                    });
+                                                },
+                                                ['user_access_permissions'],
+                                                {async: false}
+                                            );
+                                        });
+                                    </script>
+
+                                    {% include 'view_my_profile.twig' with {is_owner: true} %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="magazine-profile__gifts">
+                            {% helper virtual_gifts.user_gifts_block({'id_wall': data.id, 'is_mine': 'true', 'template': 'magazine', 'is_limit_cnt': false}) %}
+                        </div>
+                        <div id="bonuses" class="clearfix mb10">
+                            {% helper bonuses.bonuses_form() %}
+                        </div>
+                    </div>
+                {% elseif action == 'wall' %}
+                    <div class="magazine-profile__tabs">
+                        {% include 'profile_menu.twig' with {'template': 'magazine'} %}
+                    </div>
+
+                    {% include 'profile_top_magazine.twig' %}
+
+                    <div class="description">
+                        <div class="view-user">
+                            <div class="view-user__wall">
+                                {% helper wall_events.wall_block({'place': 'myprofile', 'id_wall': user_id}) %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="bonuses" class="clearfix mb10">
+                        {% helper bonuses.bonuses_form() %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="magazine-profile__pagecontrols magazine-profile__pagecontrols_topleft">
+                <a href="{{ magazine_close_url }}"><span class="fa fa-times"></span></a>
+            </div>
+            <div class="magazine-profile__pagecontrols magazine-profile__pagecontrols_topright">
+                <a href="{{ site_url }}users/view/{{ user_id }}/{% if action == 'wall' %}wall{% else %}profile{% endif %}/all" title="{% helper lang.l('tooltip_profile_view_mode', 'users') %}">
+                    <span class="far fa-eye"></span>
+                </a>
+                {% if action == 'wall' %}
+                    <a id="wall_permissions_link" href="javascript: void(0);" title="{% helper lang.l('header_wall_settings', 'wall_events') %}" onclick="ajax_permissions_form(site_url + 'wall_events/ajax_user_permissions/');">
+                        <i class="fa fa-cog hover wall-settings"></i>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    {% elseif action == 'gallery' %}
+        <div class="magazine-profile__gallery mag-mygallery">
+            <div class="mag-mygallery__header">
+                <div class="container">
+                    <div class="userblock">
+                        <a class="userblock__content" href="{{ site_url }}users/profile/view/all">
+                            <span class="fa fa-chevron-left"></span>
+                            <span class="userblock__photo">{% helper users.formatAvatar({'user': data, 'size': 'small', 'class': 'img-circle'}) %}</span>
+                            {{ data.output_name }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mag-mygallery__media">
+                <div class="container">
+                    <div class="description">
+                        <div class="view-user">
+                            {% helper media.media_block({
+                                'param': subsection,
+                                'page': '1',
+                                'location_base_url': location_base_url,
+                                'template': 'magazine'
+                            }) %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function(){
+                {# gallery fix #}
+                $('.pjaxcontainer-inner').css('background-color',
+                    $('.magazine-profile').css('background-color'));
+            });
+        </script>
+    {% endif %}
+</div>
+
+{% if data.approved and data.confirm and not data.is_activated
+    and not data.available_activation.status  and data.services_status.user_activate_in_search.service.status %}
+    <div id="modalIncomplete" class="hide">
+        <div class="load_content_controller">
+            <h1>
+                {% helper lang.l('header_services', 'users') %}
+            </h1>
+            <div class="inside">
+                <div data-block="activate-profile">
+                    {% helper lang.l('text_activate_profile', 'users') %}
+                    <input data-action="profile_available" type="button" class="btn btn-primary btn-large btn-block mt20" data-service="user_activate_in_search" value="{% helper lang.l('link_activate_profile', 'users') %}" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function() {
+            var modal_incomplete_window = new loadingContent({
+                loadBlockWidth: '500px',
+                loadBlockLeftType: 'center',
+                loadBlockTopType: 'center',
+                closeBtnClass: 'w'
+            });
+            modal_incomplete_window.show_load_block($('#modalIncomplete').html());
+        });
+    </script>
+{% endif %}

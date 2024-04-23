@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 ">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>{% helper lang.l('admin_header_install_countries_list', 'countries') %}</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="col-sm-6">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="accordion" id="accordion-1" role="tablist" aria-multiselectable="true">
+                            {% for letter in 'a'..'m' %}
+                                {% if list[letter] is not empty %}
+                                    {% include 'install_countries_item.twig' with {k: 1, letter: letter, list: list} %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="accordion" id="accordion-2" role="tablist" aria-multiselectable="true">
+                            {% for letter in 'n'..'z' %}
+                                {% if list[letter] is not empty %}
+                                    {% include 'install_countries_item.twig' with {k: 2, letter: letter, list: list} %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div id="vmap" style="height:400px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="{{ site_root }}application/modules/countries/js/jqvmap/dist/jqvmap.min.css">
+<script>
+    $(function(){
+        loadScripts(
+            [
+                "{% helper utils.jscript('countries', 'jqvmap/dist/jquery.vmap.js', 'path') %}",
+                "{% helper utils.jscript('countries', 'jqvmap/dist/maps/jquery.vmap.world.js', 'path') %}",
+                "{% helper utils.jscript('countries', 'jqvmap/examples/js/jquery.vmap.sampledata.js', 'path') %}",
+                "{% helper utils.jscript('countries', 'InstallLocations.js', 'path') %}"
+                
+            ],
+            function(){
+                installLocations = new InstallLocations({
+                    siteUrl: site_url,
+                    lang: {
+                        field: {
+                            countryInstalled: "{% helper lang.l('country_installed', 'countries') %}",
+                            countriesInstallLink: "{% helper lang.l('countries_install_link','countries') %}"
+                        },
+                        error: {
+                            headerRegionSelect: "{% helper lang.l('header_region_select', 'countries') %}"
+                        }
+                    }
+                });
+            },
+            'installLocations',
+            {async: false}
+        );
+    });
+</script>
+{% include '@app/footer.twig' %}

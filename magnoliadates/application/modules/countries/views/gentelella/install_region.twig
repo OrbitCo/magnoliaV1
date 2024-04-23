@@ -1,0 +1,18 @@
+<h1>{% helper lang.l('admin_header_install_regions_list', 'countries') %}</h1>
+<div class="regions_install">
+    {% for item in list %}
+        <div class="regions_install__name" id="item_{{ item.country_code }}_{{ item.code }}"> 
+        	{% if item.code in installed|keys %}
+        	{% else %}
+            	<input type="checkbox" class="grouping flat region-js" data-country="{{ item.country_code }}" value="{{ item.code }}" name="region[]" data="table_records">
+            {% endif %}
+            <span class="region_name">{{item.name}}</span><span class="region_code ml5">({{item.code}})</span>
+            {% if item.code in installed|keys %}
+        		<i class="fa fa-check green lg"></i>
+            {% endif %}
+        </div>
+    {% endfor %}
+    <div class="mt20">
+        <input type="checkbox" class="flat" data-action="check-all" id="check-all"> {% helper lang.l('select_all', 'start') %}
+    </div>
+</div>

@@ -1,0 +1,16 @@
+{% include '@app/header.twig' %}
+<div class="menu-list">
+    {% for item in options %}
+    <div id="{{ item.gid }}_block" class="settings-block{% if item.gid %} with-{{ item.gid }}{% endif %}" onclick="{% helper start.setAnalytics('menu_list', item.gid) %}javascript: location.href='{{ item.link }}';">
+        <a id="{{ item.gid }}" href="{{ item.link }}">
+            <h6>{{ item.value }}</h6>
+        </a>
+        <div>
+            {{ item.tooltip }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="clearfix"></div>
+{% helper start.marketplace({gid: menu.gid}) %}
+{% include '@app/footer.twig' %}

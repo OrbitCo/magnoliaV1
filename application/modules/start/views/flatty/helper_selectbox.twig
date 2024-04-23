@@ -1,0 +1,24 @@
+<select class="form-control" name="{{ sb_input }}{% if sb_is_multiple %}[]{% endif %}" id="{{ sb_id }}" {% if sb_is_multiple %}multiple{% endif %}>
+    {% if sb_default %}
+        <option value="0">{{ sb_default }}</option>
+    {% endif %}
+
+    {% for key, item in sb_value %}
+        {% if sb_is_multiple %}
+            <option value="{{ key }}" {% if key in sb_selected %}selected{% endif %}>{{ item }}</option>
+        {% else %}
+            <option value="{{ key }}" {% if sb_selected == key %}selected{% endif %}>{{ item }}</option>
+        {% endif %}
+    {% endfor %}
+</select>
+{% if sb_is_multiple %}
+    <span class="a" onclick="$(this).parent().find('option').prop('selected', true);">
+        {% helper lang.l('select_all', 'start') %}
+    </span>
+
+    &nbsp;|&nbsp;
+
+    <span class="a" onclick="$(this).parent().find('option').prop('selected', false);">
+        {% helper lang.l('unselect_all', 'start') %}
+    </span>
+{% endif %}

@@ -1,0 +1,7 @@
+{% set rand = random(111111, 999999) %}
+<img 
+    src="{{site_url}}uploads/default/{{picture_params.size_name}}-default-gallery-image.png" 
+    data-src="{{ picture_params.src }}?{{rand}}" alt="{{ picture_params.alt }}" 
+    title="{{ picture_params.title }}" 
+    class="{% if picture_params.class %}{{ picture_params.class }} img-responsive{% endif %} lazyload lazy-{{picture_params.size_name}}" 
+    data-size="{{picture_params.size_name}}"/>

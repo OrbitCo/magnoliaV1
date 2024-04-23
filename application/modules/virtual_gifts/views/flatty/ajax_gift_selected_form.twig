@@ -1,0 +1,70 @@
+<div class="gift-selected-wrapper">
+    <a onclick="get_back();" class="gift-selected-get-back"><i class="fas fa-long-arrow-alt-left"></i> {% helper lang.l('get_back_to_gift_select', 'virtual_gifts') %}</a>
+    <div class="selected-gift">
+        <img src="{{ gift_data.mediafile.thumbs_data.big.file_url }}">
+    </div>
+    <p align="center" class="selected-gift-price">{% helper lang.l('gift_price', 'virtual_gifts') %}: <strong>{% helper start.currency_format_output({'value': gift_data.price}) %}</strong></p>
+    <div class="form-group selected-gift-comment">
+        <textarea id="comment-input" class="form-control" maxlength="130" 
+                  placeholder="{% helper lang.l('field_write_comment', 'virtual_gifts') %}"></textarea>
+        <p class="selected-gift-comment_symbols">{% helper lang.l('gift_comment_field_symbol_left', 'virtual_gifts') %}:<span id="symbols">130</span></p>
+    </div>
+    <div class="form-group selected-gift-private">
+        <label class="checkbox-inline"><input type="checkbox" id="private-input" class="is_private"> {% helper lang.l('gift_label_make_private', 'virtual_gifts') %}</label>
+    </div>
+    <div class="form-group send-gift-form send-gift-btn-block">
+        <button id="send-gift-btn" class="btn btn-primary send-gift-btn">{% helper lang.l('send_gift', 'virtual_gifts') %}</button>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div id="gift-id" style="display:none;" value="{{ gift_data.id }}"></div>
+<script>
+    var maxLength = $('#comment-input').attr('maxlength');
+    $('#comment-input').keyup(function()
+    {
+        var curLength = $('#comment-input').val().length;
+        $(this).val($(this).val().substr(0, maxLength));
+        var remaining = maxLength - curLength;
+        if (remaining < 0) remaining = 0;
+        $('#symbols').html(remaining);
+    });
+    $('.send-gift-btn-block').on('click', '.send-gift-btn', function(){
+            var gift_id = $('#gift-id').attr('value');
+            var comment = $('#comment-input').val();
+            var is_private = $('#private-input').is(':checked');
+            is_private = is_private ? 1 : 0;
+            var send_data = {
+                       "comment":comment,
+                       "is_private":is_private
+                       };
+            $.ajax({
+                url: site_url + "virtual_gifts/ajax_send_gift/" + "{{user_id}}/" + gift_id,
+                method: "POST",
+                data: send_data,
+                dataType: "json",
+                success: function(data){
+                            if(data.redirect) {
+                                error_object.show_error_block(data.errors, 'error');
+                                locationHref(data.redirect);
+                            } else {
+                                $('.gifts-list-block').html(data.content);
+                            }
+                        }
+            });
+    });
+    var get_back = function(){
+        $.ajax({
+            url: site_url + "virtual_gifts/ajax_get_gifts_form/{{user_id}}",
+            method: "POST",
+            dataType: "html",
+            data: {"parted":"1"},
+            success: function(data){
+                    if (data.errors) {
+                            error_object.show_error_block(data.errors, 'error');
+                    } else {
+                        $('.gifts-list-block').closest('.modal-body').html(data);
+                    }
+            }
+        });
+    }
+</script>

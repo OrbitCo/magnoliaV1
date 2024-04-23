@@ -1,0 +1,25 @@
+{% helper utils.jscript('', 'jquery-slimscroll.js', '') %}
+{% helper utils.jscript('', 'number-format.js', '') %}
+<script>
+    $(function () {
+        var access_permissions;
+        loadScripts(
+            ["{% helper utils.jscript('access_permissions', 'AccessPermissions.js', 'path') %}"],
+            function () {
+                access_permissions = new AccessPermissions({
+                    siteUrl: site_url,
+                {% for key, value in properties %}
+                    {{ key }}: '{{ value }}',
+                {% endfor %}
+                    lang: {
+                        systemError: "{% helper lang.l('error_system', 'access_permissions', '', 'js') %}"
+                },
+                currency_output: {% helper start.currency_format_regexp_output() %},
+            })
+                ;
+            },
+            ['access_permissions'],
+            {async: false}
+        );
+    });
+</script>

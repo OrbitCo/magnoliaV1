@@ -1,0 +1,5 @@
+{% if auth_type == 'user' %}
+<div class="menu-item">    
+    {% helper menu.get_menu('settings_menu', 'settings_menu') %}
+</div>    
+{% endif %}

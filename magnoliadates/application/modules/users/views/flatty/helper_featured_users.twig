@@ -1,0 +1,73 @@
+{% if helper_featured_users_data.buy_ability %}
+    {% set overlay_add %}
+    <div class="users-be-featured{% if center_block %} center-block-width {% endif %} with-overlay-add" id="featured_add_{{ helper_featured_users_data.rand }}">
+        <div class="user">
+            <div class="photo">
+                <a href="{% helper seo.seolink('users', 'view', user) %}">
+                  {% helper users.formatAvatar({'user': user, 'size': 'small'}) %}
+                </a>
+                <i>
+                    <i class="fa fa-plus edge icon-big w"></i>
+                </i>
+            </div>
+        </div>
+    </div>
+    {% endset %}
+{% endif %}
+
+{% if not center_block %}
+    {{ overlay_add }}
+{% endif %}
+
+{% set carousel_attrs= {
+    'users': helper_featured_users_data.users,
+    'scroll': 'auto',
+    'class': 'small',
+    'thumb_name': 'small'
+} %}
+
+<div class="user-carousel-line{% if center_block %} center-block-width container{% endif %} {% if helper_featured_users_data.buy_ability %}unshift-icon{% endif %}">
+    {% if center_block %}
+        {{ overlay_add }}
+    {% endif %}
+    {% helper users.usersCarousel(carousel_attrs) %}
+</div>
+{% if helper_featured_users_data.buy_ability %}
+    <script>
+        $(function () {
+            loadScripts(
+                    [
+                        "{% helper utils.jscript('', 'available_view.js', 'path') %}",
+                        "{% helper utils.jscript('users', '../views/flatty/js/users-avatar.js', 'path') %}"
+                    ],
+                    function () {
+                        users_featured_available_view = new available_view({
+                            siteUrl: site_url,
+                            checkAvailableAjaxUrl: 'users/ajax_available_users_featured/',
+                            buyAbilityAjaxUrl: 'users/ajax_activate_users_featured/',
+                            buyAbilityFormId: 'ability_form',
+                            buyAbilitySubmitId: 'ability_form_submit',
+                            formType: 'list',
+                            success_request: function (message) {
+                                error_object.show_error_block(message, 'success');
+                                locationHref('');
+                            },
+                            fail_request: function (message) {
+                                error_object.show_error_block(message, 'error');
+                            },
+                        });
+                        var rand = '{{ helper_featured_users_data.rand }}';
+                        var user_logo = '{{ helper_featured_users_data.users.0.user_logo }}';
+                        $('#featured_add_' + rand).off('click').on('click', function (e) {
+                            if (user_logo) {
+                                users_featured_available_view.check_available();
+                            }
+                            return false;
+                        });
+                    },
+                    ['users_featured_available_view'],
+                   {async: false}
+            );
+        });
+    </script>
+{% endif %}

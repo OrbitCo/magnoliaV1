@@ -1,0 +1,298 @@
+{% include '@app/header.twig' %}
+<style>
+    .header-image label{
+        text-align: center;
+    }
+
+    .header-image input{
+        max-width: 300px; margin: 8px auto
+    }
+    .header-image_img{
+        overflow: hidden;
+        margin: 20px auto;
+        position: relative;
+        background-repeat:no-repeat ;
+        background-size: cover;
+        background-position: center center;
+    }
+    .header-image_img img{
+        margin: auto;
+        display: block;
+        max-width: 100%;
+    }
+    .header-image_img:before{
+        content: "";
+        width: 100%;
+        height: 100%;
+        border: 2px dashed #cecece;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+    .header_image_mobile_img{
+        background-size: cover;
+        background-position: center;
+        margin: 20px auto;
+        position: relative;
+    }
+    .header_image_mobile_img:before{
+        content: "";
+        width: 100%;
+        height: 100%;
+        border: 2px dashed #cecece;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+</style>
+<div class="col-md-12 col-xs-12">
+    <div class="x_panel">
+        <form method="post" action="{{ data.action }}" name="save_form"  enctype="multipart/form-data"
+              data-parsley-validate class="form-horizontal form-label-left">
+
+            <h2 class="col-xs-12">{% helper lang.l('admin_header_logo_editor', 'themes') %}  /  {{theme.theme}}  /  {{set.set_name}}</h2>
+            <div class="col-md-6 col-xs-6 col-xs-12">
+                <div class="h5">{% helper lang.l('admin_header_logo_settings', 'themes') %}</div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                        {% helper lang.l('field_logo_width', 'themes') %} ({% helper lang.l('size_px', 'themes') %}): </label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" value="{% if colourset_logo.logo_width %}{{ colourset_logo.logo_width }}{% else %}{{ theme.logo_width }}{% endif %}" name="logo_width" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                        {% helper lang.l('field_logo_height', 'themes') %} ({% helper lang.l('size_px', 'themes') %}): </label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" value="{% if colourset_logo.logo_height %}{{ colourset_logo.logo_height }}{% else %}{{ theme.logo_height }}{% endif %}" name="logo_height" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xs-12">
+                <div class="h5">{% helper lang.l('admin_header_mini_logo_settings', 'themes') %}</div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                        {% helper lang.l('field_logo_width', 'themes') %} ({% helper lang.l('size_px', 'themes') %}): </label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" value="{% if colourset_logo.mini_logo_width %}{{ colourset_logo.mini_logo_width }}{% else %}{{ theme.mini_logo_width }}{% endif %}" name="mini_logo_width" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                        {% helper lang.l('field_logo_height', 'themes') %} ({% helper lang.l('size_px', 'themes') %}): </label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" value="{% if colourset_logo.mini_logo_height %}{{ colourset_logo.mini_logo_height }}{% else %}{{ theme.mini_logo_height }}{% endif %}" name="mini_logo_height" class="form-control">
+                    </div>
+                </div>
+            </div>
+            {% if header_style.header_size %}
+            <div class="clearfix"></div>
+            <div class="x_title"></div>
+            {#header img#}
+                <div class="header-image">
+                    <label class="control-label col-sm-3 col-xs-12" style="text-align: left">
+                        {% helper lang.l('field_header_image', 'themes') %}:
+                        <br>
+                        {{ header_image_size }}
+                    </label>
+                    <input  type="file" value="" name="header_image" class="header_image_input form-control col-sm-9 col-xs-12" >
+                    <div class="clearfix"></div>
+
+                    <div class="header-image_container" style="display: {% if header_style.image_url %}block {% else %}none{% endif %} ">
+                        {% if header_style.type == 'background' %}
+                        <div class="header-image_img header_image_tag" style="
+                                width: {{ header_style.header_size.x }}px;
+                                height: {{ header_style.header_size.y }}px;
+                                background-image: url({{ header_style.image_url ? header_style.image_url : '' }});"></div>
+                        {% else %}
+                            <div class="header-image_img header_image_tag " style="width: {{ header_style.header_size.x }}px;">
+                                <img style="min-height: {{ header_style.header_size.y }}px" class="header_image_tag"  src="{{ header_style.image_url ? header_style.image_url : '' }}" alt="">
+                            </div>
+                        {% endif %}
+                        <div class="form-group">
+                            <label class="control-label col-sm-3 col-xs-12">
+                                {% helper lang.l('field_delete_index_bg_image', 'themes') %}:
+                            </label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="checkbox" name="delete_header_img" value="1" class="flat">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            {% endif %}
+            {% if header_style_mobile.header_size_mobile %}
+            <div class="clearfix"></div>
+            <div class="x_title"></div>
+            {#header img mobile#}
+                <div class="header-image">
+                <label class="control-label col-sm-3 col-xs-12" style="text-align: left">
+                    {% helper lang.l('field_header_image_mobile', 'themes') %}:
+                    <br>{{header_size_mobile}}
+                </label>
+                <input  type="file" value="" name="header_image_mobile" class="header_image_mobile_input form-control col-sm-9 col-xs-12" >
+                    <div class="clearfix"></div>
+                <div class="header-image_container" style="display: {% if header_style_mobile.image_mobile_url %}block {% else %}none{% endif %} ">
+                    {% if header_style.type == 'background' %}
+                        <div class="header_image_mobile_img header_image_tag" style="
+                                width: {{ header_style_mobile.header_size_mobile.x }}px;
+                                height: {{ header_style_mobile.header_size_mobile.y }}px;
+                                background-image: url({{ header_style_mobile.image_mobile_url ? header_style_mobile.image_mobile_url : '' }});"></div>
+                    {% else %}
+                        <div class="header-image_img header_image_tag " style="width: {{ header_style_mobile.header_size_mobile.x  }}px;">
+                            <img  class="header_image_tag"  src="{{ header_style_mobile.image_mobile_url ? header_style_mobile.image_mobile_url : '' }}" alt="">
+                        </div>
+                    {% endif %}
+                        <div class="form-group">
+                            <label class="control-label col-sm-3 col-xs-12">
+                                {% helper lang.l('field_delete_index_bg_image', 'themes') %}: </label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="checkbox" name="delete_header_mobile_img" value="1" class="flat">
+                            </div>
+                        </div>
+                </div>
+            </div>
+            {% endif %}
+            <div class="clearfix"></div>
+            <div class="ln_solid"></div>
+
+            <div class="col-xs-12 ">
+                <div class="menu-level3 hidden-xs">
+                    <ul class="nav nav-tabs bar_tabs" id="edit_tabs">
+                        {% for key, item in langs %}
+                            <li{% if item.id == lang_id %} class="active"{% endif %}><a href="{{ site_url }}admin/themes/view_installed/{{ theme.id }}/{{ item.id }}/{{ id_set }}">{{ item.name }}</a></li>
+                            {% endfor %}
+                    </ul>
+                </div>
+                <div class="menu-level3 visible-xs">
+                    <ul class="nav nav-tabs tabs-left" id="edit_tabs">
+                        {% for key, item in langs %}
+                            <li{% if item.id == lang_id %} class="active"{% endif %}><a href="{{ site_url }}admin/themes/view_installed/{{ theme.id }}/{{ item.id }}/{{ id_set }}">{{ item.name }}</a></li>
+                            {% endfor %}
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="h5 x_title"></div>
+                    <div class="disabled-block">
+                        <div class="form-group">
+                            <label class="control-label col-sm-3 col-xs-12">
+                                {% helper lang.l('field_logo_text', 'themes') %}: </label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="text" value="{{ theme.text_logo }}" name="text_logo" class="form-control" id="text_logo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-block="logo">
+                        <label class="control-label col-sm-3 col-xs-12">
+                            {% helper lang.l('field_logo_file', 'themes') %}: </label>
+                        <div class="col-sm-9 col-xs-12">
+                            <input type="file" value="" name="logo" class="form-control" {% if theme.text_logo %}disabled{% endif %}>
+                            <br>
+                            <img src="{% if colourset_logo.logo_url %}{{colourset_logo.logo_url}}?{{random()}}{% else %}{{theme.logo_url}}?{{random()}}{% endif %}" width="{% if colourset_logo %}{{ colourset_logo.logo_width }}{% else %}{{ theme.logo_width }}{% endif %}"
+                                 height="{% if colourset_logo %}{{ colourset_logo.logo_height }}{% else %}{{ theme.logo_height }}{% endif %}" />
+                        </div>
+                    </div>
+                    {% if colourset_logo.logo %}
+                        <div class="form-group">
+                            <label class="control-label col-sm-3 col-xs-12">
+                                {% helper lang.l('field_logo_delete', 'themes') %}: </label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="checkbox" name="logo_delete" value="1" class="flat">
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="h5 x_title"></div>
+                    <div class="disabled-block">
+                        <div class="form-group">
+                            <label class="control-label col-sm-3 col-xs-12">
+                                {% helper lang.l('field_logo_text', 'themes') %}: </label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="text" value="{{ theme.text_logo_mini }}" name="text_logo_mini" class="form-control" id="text_logo_mini">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group"  data-block="mini_logo">
+                        <label class="control-label col-sm-3 col-xs-12">
+                            {% helper lang.l('field_mini_logo_file', 'themes') %}: </label>
+                        <div class="col-sm-9 col-xs-12">
+                    <input type="file" value="" name="mini_logo" class="form-control" {% if theme.text_logo_mini %}disabled{% endif %}>
+                            <br>
+                            <img src="{% if colourset_logo.mini_logo_url %}{{colourset_logo.mini_logo_url}}?{{random()}}{% else %}{{ theme.mini_logo_url }}?{{random()}}{% endif %}" width="{% if colourset_logo %}{{ colourset_logo.mini_logo_width }}{% else %}{{ theme.mini_logo_width }}{% endif %}"
+                                 height="{% if colourset_logo %}{{ colourset_logo.mini_logo_height }}{% else %}{{ theme.mini_logo_height }}{% endif %}" />
+                        </div>
+                    </div>
+
+                    {% if colourset_logo.mini_logo %}
+                        <div class="form-group">
+                            <label class="control-label col-sm-3 col-xs-12">
+                                {% helper lang.l('field_logo_delete', 'themes') %}: </label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="checkbox" name="mini_logo_delete" value="1" class="flat">
+                            </div>
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="ln_solid"></div>
+            <div class="form-group">
+                <div class="col-sm-9 col-xs-12 col-sm-offset-3">
+                    <input onclick="{% helper start.setAnalytics('themes', 'btn_save') %}" class="btn btn-success" type="submit" name="btn_save" value="{% helper lang.l('btn_save', 'start', '', 'button') %}">
+                    <a class="btn btn-default" href="{{ site_url }}admin/themes/installed_themes/{{ theme.type }}">{% helper lang.l('btn_cancel', 'start') %}</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#text_logo').focus(function () {
+            $('[data-block="logo"]').find('input').prop('disabled', true);
+        });
+        $('#text_logo').focusout(function () {
+            if ($(this).val() === '') {
+                $('[data-block="logo"]').find('input').prop('disabled', false);
+            }
+        });
+        $('#text_logo_mini').focus(function () {
+            $('[data-block="mini_logo"]').find('input').prop('disabled', true);
+        });
+        $('#text_logo_mini').focusout(function () {
+            if ($(this).val() === '') {
+                $('[data-block="mini_logo"]').find('input').prop('disabled', false);
+            }
+        });
+
+        $(".header_image_input,.header_image_mobile_input").on('change',function() {
+            let headerImage             = $(this).closest('.header-image');
+            let headerImageContainer    = headerImage.find('.header-image_container');
+            let input                   = this;
+
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    {% if header_style.type == 'background' %}
+                         $(headerImage.find('.header_image_tag')).css({'background-image' : 'url(' + e.target.result + ')'});
+                    {% else %}
+                         $(headerImage.find('.header_image_tag img')).attr('src',e.target.result);
+                    {% endif %}
+                }
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+
+            $(headerImageContainer).css('display', "block")
+        });
+
+    });
+</script>
+{% include '@app/footer.twig' %}

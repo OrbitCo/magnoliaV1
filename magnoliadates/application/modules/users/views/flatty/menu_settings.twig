@@ -1,0 +1,16 @@
+<ul class="nav nav-pills nav-stacked content-pages-tree">
+    {% for key, item in menu_settings %}
+        <li {% if key == page.gid %}class="active"{% endif %}>
+            <div class="info-menu-inner">
+                <a href="{% helper seo.seolink('users', 'settings', key) %}">
+                    <div class="clearfix">
+                        <div class="fleft">{{ item }}</div>
+                        {% if menu_settings_alert[key] %}
+                            <span class="badge pull-right">{{ menu_settings_alert[key] }}</span>
+                        {% endif %}
+                    </div>
+                </a>
+            </div>
+        </li>
+    {% endfor %}
+</ul>

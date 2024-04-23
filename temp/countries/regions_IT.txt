@@ -1,0 +1,564 @@
+	323	Voltole	43.1935900	12.7532600	IT	18	0	0	Voltole	Voltole
+	323	Volperino	42.9801700	12.8632100	IT	18	0	0	Volperino	Volperino
+	323	Visciano	42.4782600	12.4932900	IT	18	0	0	Visciano	Visciano
+	323	Villa San Silvestro	42.6502900	13.0538600	IT	18	0	0	Villa San Silvestro	Villa San Silvestro
+	323	Villanova	43.0070400	12.3294100	IT	18	0	0	Villanova	Villanova
+	323	Villa di Serravalle	42.7904600	13.0523800	IT	18	0	0	Villa di Serravalle	Villa di Serravalle
+	323	Villa Col dei Canali	43.3766900	12.6926200	IT	18	0	0	Villa Col dei Canali	Villa Col dei Canali
+	323	Vigne	42.4660700	12.5055300	IT	18	0	0	Vigne	Vigne
+	323	Rancolfo	43.2397100	12.4270700	IT	18	0	0	Rancolfo	Rancolfo
+	323	Viceno	42.7417200	12.0144600	IT	18	0	0	Viceno	Viceno
+	323	Verchiano	42.9501000	12.8821000	IT	18	0	0	Verchiano	Verchiano
+	323	Vasciano	42.7397400	12.4192000	IT	18	0	0	Vasciano	Vasciano
+	323	Vasciano	42.4516000	12.6083200	IT	18	0	0	Vasciano	Vasciano
+	323	Vallo di Nera	42.8004100	12.8637900	IT	18	0	0	Vallo di Nera	Vallo di Nera
+	323	Vallocchia	42.7189600	12.7895500	IT	18	0	0	Vallocchia	Vallocchia
+	323	Valle San Martino	42.6218700	12.7236300	IT	18	0	0	Valle San Martino	Valle San Martino
+	323	Valfabbrica	43.1578400	12.6020200	IT	18	0	0	Valfabbrica	Valfabbrica
+	323	Valcaldara	42.7403400	13.1276100	IT	18	0	0	Valcaldara	Valcaldara
+	323	Vagli	42.6982900	12.3505400	IT	18	0	0	Vagli	Vagli
+	323	Usigni	42.6962200	12.9333200	IT	18	0	0	Usigni	Usigni
+	323	Uppello	42.9552700	12.7376600	IT	18	0	0	Uppello	Uppello
+	323	Uncinano	42.7729500	12.6629000	IT	18	0	0	Uncinano	Uncinano
+	323	Umbertide	43.3034100	12.3374900	IT	18	0	0	Umbertide	Umbertide
+	323	Tuoro sul Trasimeno	43.2065400	12.0746500	IT	18	0	0	Tuoro sul Trasimeno	Tuoro sul Trasimeno
+	323	Trivio	42.6525200	12.9783800	IT	18	0	0	Trivio	Trivio
+	323	Triponzo	42.8277600	12.9372600	IT	18	0	0	Triponzo	Triponzo
+	323	Trevi	42.8776900	12.7493800	IT	18	0	0	Trevi	Trevi
+	323	Treggio	42.9857600	12.7093600	IT	18	0	0	Treggio	Treggio
+	323	Toscolano	42.6580500	12.3493300	IT	18	0	0	Toscolano	Toscolano
+	323	Torre San Severo	42.6711400	12.0623600	IT	18	0	0	Torre San Severo	Torre San Severo
+	323	Torreorsina	42.5740700	12.7347000	IT	18	0	0	Torreorsina	Torreorsina
+	323	Torre del Colle	42.9448800	12.5762200	IT	18	0	0	Torre del Colle	Torre del Colle
+	323	Torre Calzolari	43.2949900	12.6649500	IT	18	0	0	Torre Calzolari	Torre Calzolari
+	323	Torrecola	42.6616700	12.7353900	IT	18	0	0	Torrecola	Torrecola
+	323	Torgiano	43.0276100	12.4401500	IT	18	0	0	Torgiano	Torgiano
+	323	Tordandrea	43.0358900	12.5557800	IT	18	0	0	Tordandrea	Tordandrea
+	323	Torchiagina	43.1196000	12.5346800	IT	18	0	0	Torchiagina	Torchiagina
+	323	Todiano	42.8448900	13.0637300	IT	18	0	0	Todiano	Todiano
+	323	Todi	42.7788100	12.4120200	IT	18	0	0	Todi	Todi
+	323	Terria	42.6588800	12.8371200	IT	18	0	0	Terria	Terria
+	323	Terraia	42.7886700	12.7005100	IT	18	0	0	Terraia	Terraia
+	323	Terontola	43.2100900	12.0111300	IT	18	0	0	Terontola	Terontola
+	323	Terni	42.5633500	12.6432900	IT	18	0	0	Terni	Терни
+	323	Tenaglie	42.6485300	12.2825200	IT	18	0	0	Tenaglie	Tenaglie
+	323	Tazzo	42.7200400	13.0542300	IT	18	0	0	Tazzo	Tazzo
+	323	Tavernelle	43.0033300	12.1452000	IT	18	0	0	Tavernelle	Tavernelle
+	323	Terne	42.9148800	12.8840700	IT	18	0	0	Terne	Terne
+	323	Strozzacapponi	43.0755900	12.3158000	IT	18	0	0	Strozzacapponi	Strozzacapponi
+	323	Stroncone	42.5119600	12.6477000	IT	18	0	0	Stroncone	Stroncone
+	323	Strettura	42.6306100	12.7314400	IT	18	0	0	Strettura	Strettura
+	323	Bagni Stravignano	43.0833300	12.8166700	IT	18	0	0	Bagni Stravignano	Bagni Stravignano
+	323	Stifone	42.4965600	12.4953400	IT	18	0	0	Stifone	Stifone
+	323	Sterpeto	43.1133600	12.5542300	IT	18	0	0	Sterpeto	Sterpeto
+	323	Spoleto	42.7407100	12.7389900	IT	18	0	0	Spoleto	Сполето
+	323	Spina Nuova	42.8552000	12.8428500	IT	18	0	0	Spina Nuova	Spina Nuova
+	323	Spina	42.9852800	12.2811200	IT	18	0	0	Spina	Spina
+	323	Spello	42.9923100	12.6663200	IT	18	0	0	Spello	Spello
+	323	Sostino	42.9914600	12.8000400	IT	18	0	0	Sostino	Sostino
+	323	Solomeo	43.0824500	12.2763600	IT	18	0	0	Solomeo	Solomeo
+	323	Sismano	42.6873600	12.4413100	IT	18	0	0	Sismano	Sismano
+	323	Sigillo	43.3311100	12.7405900	IT	18	0	0	Sigillo	Sigillo
+	323	Setri	42.9070300	12.9480800	IT	18	0	0	Setri	Setri
+	323	Serravalle	42.7856200	13.0228900	IT	18	0	0	Serravalle	Serravalle
+	323	Sellano	42.8873500	12.9231100	IT	18	0	0	Sellano	Sellano
+	323	Scritto	43.2395100	12.5555700	IT	18	0	0	Scritto	Scritto
+	323	Scoppieto	42.7239600	12.2895900	IT	18	0	0	Scoppieto	Scoppieto
+	323	Scopoli	42.9718900	12.8093200	IT	18	0	0	Scopoli	Scopoli
+	323	Schifanoia	42.4595500	12.5162000	IT	18	0	0	Schifanoia	Schifanoia
+	323	Scheggino	42.7130400	12.8300700	IT	18	0	0	Scheggino	Scheggino
+	323	Scheggia	43.4036400	12.6658400	IT	18	0	0	Scheggia	Scheggia
+	323	Scandolaro	42.9352900	12.7496300	IT	18	0	0	Scandolaro	Scandolaro
+	323	Savelli	42.7261200	13.1275500	IT	18	0	0	Savelli	Savelli
+	323	Saragano	42.8891000	12.4837800	IT	18	0	0	Saragano	Saragano
+	323	San Vito	42.4402200	12.4423800	IT	18	0	0	San Vito	San Vito
+	323	San Vitale	43.0464100	12.6380100	IT	18	0	0	San Vitale	San Vitale
+	323	San Venanzo	42.8688600	12.2685300	IT	18	0	0	San Venanzo	San Venanzo
+	323	San Valentino	42.9764100	12.3400400	IT	18	0	0	San Valentino	San Valentino
+	323	Sant'Urbano	42.4654000	12.5861000	IT	18	0	0	Sant'Urbano	Sant'Urbano
+	323	Santo Stefano dei Piccioni	42.9269600	12.7488600	IT	18	0	0	Santo Stefano dei Piccioni	Santo Stefano dei Piccioni
+	323	San Terenziano	42.8673100	12.4731900	IT	18	0	0	San Terenziano	San Terenziano
+	323	Sant'Egidio	43.1021800	12.4908000	IT	18	0	0	Sant'Egidio	Sant'Egidio
+	323	Santa Trinità	42.6993000	13.0748100	IT	18	0	0	Santa Trinita	Santa Trinità
+	323	Santa Restituta	42.6444400	12.3443100	IT	18	0	0	Santa Restituta	Santa Restituta
+	323	Sant'Apollinare	42.9897700	12.2629100	IT	18	0	0	Sant'Apollinare	Sant'Apollinare
+	323	Sant'Angelo	42.8386800	13.1033600	IT	18	0	0	Sant'Angelo	Sant'Angelo
+	323	Sant'Andrea di Agliano	43.0542100	12.3949900	IT	18	0	0	Sant'Andrea di Agliano	Sant'Andrea di Agliano
+	323	Sant'Anatolia di Narco	42.7331900	12.8357600	IT	18	0	0	Sant'Anatolia di Narco	Sant'Anatolia di Narco
+	323	Santa Maria in Valle	42.8929400	12.7496500	IT	18	0	0	Santa Maria in Valle	Santa Maria in Valle
+	323	Santa Maria degli Angeli	43.0569100	12.5749700	IT	18	0	0	Santa Maria degli Angeli	Santa Maria degli Angeli
+	323	San Sisto	42.7667700	12.3704800	IT	18	0	0	San Sisto	San Sisto
+	323	San Silvestro	42.7606500	12.6808400	IT	18	0	0	San Silvestro	San Silvestro
+	323	San Secondo	43.4046800	12.2338900	IT	18	0	0	San Secondo	San Secondo
+	323	San Savino	43.1078800	12.1931100	IT	18	0	0	San Savino	San Savino
+	323	San Pellegrino	42.7567500	13.1492200	IT	18	0	0	San Pellegrino	San Pellegrino
+	323	San Niccolò di Celle	43.0166700	12.3833300	IT	18	0	0	San Niccolo di Celle	San Niccolò di Celle
+	323	San Martino in Colle	43.3449000	12.5121900	IT	18	0	0	San Martino in Colle	San Martino in Colle
+	323	San Martino in Campo	43.0360800	12.4026500	IT	18	0	0	San Martino in Campo	San Martino in Campo
+	323	San Martino dei Colli	43.0464300	12.2457600	IT	18	0	0	San Martino dei Colli	San Martino dei Colli
+	323	San Marco	42.7170300	13.1362100	IT	18	0	0	San Marco	San Marco
+	323	San Luca	42.8623300	12.6891200	IT	18	0	0	San Luca	San Luca
+	323	San Lorenzo	42.9047500	12.0602000	IT	18	0	0	San Lorenzo	San Lorenzo
+	323	San Lorenzo	42.8484100	12.7184400	IT	18	0	0	San Lorenzo	San Lorenzo
+	323	San Litardo	42.9767900	11.9876300	IT	18	0	0	San Litardo	San Litardo
+	323	San Liberato	42.4809300	12.4414300	IT	18	0	0	San Liberato	San Liberato
+	323	San Gregorio	42.7342100	12.6292000	IT	18	0	0	San Gregorio	San Gregorio
+	323	San Giustino	43.5466000	12.1752800	IT	18	0	0	San Giustino	San Giustino
+	323	San Giovanni del Pantano	43.2230000	12.3267900	IT	18	0	0	San Giovanni del Pantano	San Giovanni del Pantano
+	323	San Giacomo	42.7938700	12.7524300	IT	18	0	0	San Giacomo	San Giacomo
+	323	San Gemini	42.6137800	12.5452800	IT	18	0	0	San Gemini	San Gemini
+	323	San Fatucchio	43.0766700	12.0517200	IT	18	0	0	San Fatucchio	San Fatucchio
+	323	Zona Artigianale Industriale San Carlo	42.4158300	12.5464200	IT	18	0	0	Zona Artigianale Industriale San Carlo	Zona Artigianale Industriale San Carlo
+	323	San Brizio	42.8010700	12.7104000	IT	18	0	0	San Brizio	San Brizio
+	323	San Biagio	42.9868000	12.0201100	IT	18	0	0	San Biagio	San Biagio
+	323	Ruscio	42.6440100	12.9557500	IT	18	0	0	Ruscio	Ruscio
+	323	Roviglieto	42.9307900	12.7712700	IT	18	0	0	Roviglieto	Roviglieto
+	323	Roveto	43.1894300	12.7908500	IT	18	0	0	Roveto	Roveto
+	323	Roselli	42.7673200	12.6127200	IT	18	0	0	Roselli	Roselli
+	323	Rosciano	42.5808600	12.8085100	IT	18	0	0	Rosciano	Rosciano
+	323	Rosceto	42.7342600	12.4828300	IT	18	0	0	Rosceto	Rosceto
+	323	Rosaro	42.7086700	12.4850400	IT	18	0	0	Rosaro	Rosaro
+	323	Romazzano	42.7383800	12.3886400	IT	18	0	0	Romazzano	Romazzano
+	323	Rocchetta	42.7720500	12.9370300	IT	18	0	0	Rocchetta	Rocchetta
+	323	Roccanolfi	42.8610900	13.0178100	IT	18	0	0	Roccanolfi	Roccanolfi
+	323	Ripalvella	42.8473200	12.3132400	IT	18	0	0	Ripalvella	Ripalvella
+	323	Ripaioli	42.8626100	12.4161600	IT	18	0	0	Ripaioli	Ripaioli
+	323	Ripabianca	42.9397000	12.4032300	IT	18	0	0	Ripabianca	Ripabianca
+	323	Rescia	42.6271500	12.9910100	IT	18	0	0	Rescia	Rescia
+	323	Ravigliano	43.0143100	12.0278100	IT	18	0	0	Ravigliano	Ravigliano
+	323	Rasiglia	42.9594400	12.8608900	IT	18	0	0	Rasiglia	Rasiglia
+	323	Rapicciano	42.6992900	12.6375700	IT	18	0	0	Rapicciano	Rapicciano
+	323	Raggio	42.7584300	12.5243500	IT	18	0	0	Raggio	Raggio
+	323	Quadro	42.7807000	12.3147600	IT	18	0	0	Quadro	Quadro
+	323	Quadrelli	42.6469400	12.5230500	IT	18	0	0	Quadrelli	Quadrelli
+	323	Puro	42.7325700	13.0336200	IT	18	0	0	Puro	Puro
+	323	Pupaggi	42.8897200	12.8881600	IT	18	0	0	Pupaggi	Pupaggi
+	323	Pucciarelli	43.0912000	12.0537300	IT	18	0	0	Pucciarelli	Pucciarelli
+	323	Protte	42.7962000	12.7323100	IT	18	0	0	Protte	Protte
+	323	Prodo	42.7646000	12.2346600	IT	18	0	0	Prodo	Prodo
+	323	Preci	42.8806900	13.0374700	IT	18	0	0	Preci	Preci
+	323	Pozzuolo	43.1216500	11.9559900	IT	18	0	0	Pozzuolo	Pozzuolo
+	323	Pozzo	42.9052400	12.5079000	IT	18	0	0	Pozzo	Pozzo
+	323	Postignano	42.8666700	12.9166700	IT	18	0	0	Postignano	Postignano
+	323	Porzano	42.6657100	12.6338600	IT	18	0	0	Porzano	Porzano
+	323	Portaria	42.6565500	12.5661200	IT	18	0	0	Portaria	Portaria
+	323	Pornello	42.8875200	12.1856200	IT	18	0	0	Pornello	Pornello
+	323	Poreta	42.8092800	12.7853500	IT	18	0	0	Poreta	Poreta
+	323	Purello	43.3170200	12.7572700	IT	18	0	0	Purello	Purello
+	323	Porchiano	42.7571000	12.3630300	IT	18	0	0	Porchiano	Porchiano
+	323	Porchiano	42.5513900	12.3537200	IT	18	0	0	Porchiano	Porchiano
+	323	Porano	42.6809900	12.1033100	IT	18	0	0	Porano	Porano
+	323	Popoli	42.7517200	13.1045300	IT	18	0	0	Popoli	Popoli
+	323	Popola	42.9893500	12.8915100	IT	18	0	0	Popola	Popola
+	323	Stazione Ponte Rio	42.7900800	12.4176700	IT	18	0	0	Stazione Ponte Rio	Stazione Ponte Rio
+	323	Ponte Centesimo	43.0221400	12.7505500	IT	18	0	0	Ponte Centesimo	Ponte Centesimo
+	323	Ponte	42.8061700	12.9127100	IT	18	0	0	Ponte	Ponte
+	323	Pompagnano	42.6914600	12.7008000	IT	18	0	0	Pompagnano	Pompagnano
+	323	Polino	42.5842400	12.8443800	IT	18	0	0	Polino	Polino
+	323	Poggio Primocaso	42.7483400	12.9888200	IT	18	0	0	Poggio Primocaso	Poggio Primocaso
+	323	Poggiolo	42.4275800	12.5509000	IT	18	0	0	Poggiolo	Poggiolo
+	323	Poggio Lavarino	42.6372600	12.6521600	IT	18	0	0	Poggio Lavarino	Poggio Lavarino
+	323	Poggiodomo	42.7123700	12.9325100	IT	18	0	0	Poggiodomo	Poggiodomo
+	323	Poggio Aquilone	42.9091300	12.2775300	IT	18	0	0	Poggio Aquilone	Poggio Aquilone
+	323	Poggio	42.4392100	12.5466700	IT	18	0	0	Poggio	Poggio
+	323	Pistrino	43.5096600	12.1518100	IT	18	0	0	Pistrino	Pistrino
+	323	Pincano	42.6749900	12.7116100	IT	18	0	0	Pincano	Pincano
+	323	Piloni	42.4209400	12.5348400	IT	18	0	0	Piloni	Piloni
+	323	Pila	43.0532900	12.3285700	IT	18	0	0	Pila	Pila
+	323	Corciano-Pigge	42.8500000	12.7500000	IT	18	0	0	Corciano-Pigge	Corciano-Pigge
+	323	Pieve di Compresseto	43.2342300	12.6917200	IT	18	0	0	Pieve di Compresseto	Pieve di Compresseto
+	323	Pietrauta	42.8926500	12.6294400	IT	18	0	0	Pietrauta	Pietrauta
+	323	Pietralunga	43.4360900	12.4292100	IT	18	0	0	Pietralunga	Pietralunga
+	323	Pietrafitta	42.9911100	12.2129700	IT	18	0	0	Pietrafitta	Pietrafitta
+	323	Pierantonio	43.2645000	12.3885300	IT	18	0	0	Pierantonio	Pierantonio
+	323	Piemonte	42.7740500	12.5489700	IT	18	0	0	Piemonte	Piemonte
+	323	Piegaro	42.9659600	12.0840900	IT	18	0	0	Piegaro	Piegaro
+	323	Piedipaterno	42.7685600	12.8629300	IT	18	0	0	Piedipaterno	Piedipaterno
+	323	Piediluco	42.5353700	12.7607900	IT	18	0	0	Piediluco	Piediluco
+	323	Piedicolle	42.8950600	12.4033600	IT	18	0	0	Piedicolle	Piedicolle
+	323	Pie' la Rocca	42.8334600	13.1136900	IT	18	0	0	Pie' la Rocca	Pie' la Rocca
+	323	Piccione	43.1805100	12.5095500	IT	18	0	0	Piccione	Piccione
+	323	Picciche	42.8474300	12.7013900	IT	18	0	0	Picciche	Picciche
+	323	Pian di San Martino	42.8025000	12.3920900	IT	18	0	0	Pian di San Martino	Pian di San Martino
+	323	Piandoli	42.7682600	12.9908800	IT	18	0	0	Piandoli	Piandoli
+	323	Piana	43.1386900	12.0084900	IT	18	0	0	Piana	Piana
+	323	Piaggia	42.9139800	12.9640500	IT	18	0	0	Piaggia	Piaggia
+	323	Pettino	42.8633700	12.8134100	IT	18	0	0	Pettino	Pettino
+	323	Petrognano	42.8960200	12.9582900	IT	18	0	0	Petrognano	Petrognano
+	323	Petrognano	42.8109300	12.6954400	IT	18	0	0	Petrognano	Petrognano
+	323	Petrignano	43.1527300	11.9397400	IT	18	0	0	Petrignano	Petrignano
+	323	Petrignano	43.1026900	12.5323900	IT	18	0	0	Petrignano	Petrignano
+	323	Pesciano	42.6963100	12.4286300	IT	18	0	0	Pesciano	Pesciano
+	323	Perugia	43.1122000	12.3887800	IT	18	0	0	Perugia	Перуджа
+	323	Penna in Teverina	42.4934200	12.3584500	IT	18	0	0	Penna in Teverina	Penna in Teverina
+	323	Pastina	43.2216700	12.7404000	IT	18	0	0	Pastina	Pastina
+	323	Passignano sul Trasimeno	43.1904300	12.1353500	IT	18	0	0	Passignano sul Trasimeno	Passignano sul Trasimeno
+	323	Parrano	42.8662400	12.1102600	IT	18	0	0	Parrano	Parrano
+	323	Papigno	42.5497500	12.6910800	IT	18	0	0	Papigno	Papigno
+	323	Papiano	42.9611700	12.3473500	IT	18	0	0	Papiano	Papiano
+	323	Pantalla	42.8728700	12.3986100	IT	18	0	0	Pantalla	Pantalla
+	323	Panicarola	43.0693300	12.0859700	IT	18	0	0	Panicarola	Panicarola
+	323	Panicale	43.0283000	12.0999300	IT	18	0	0	Panicale	Panicale
+	323	Palazzo Mancinelli-Vaccara	43.2590000	12.7628100	IT	18	0	0	Palazzo Mancinelli-Vaccara	Palazzo Mancinelli-Vaccara
+	323	Palazzetto	43.2384500	12.7348100	IT	18	0	0	Palazzetto	Palazzetto
+	323	Palazzo	43.0970800	12.5643600	IT	18	0	0	Palazzo	Palazzo
+	323	Paganelli	42.7326200	13.1269400	IT	18	0	0	Paganelli	Paganelli
+	323	Stazione di Padule	43.3076600	12.6155700	IT	18	0	0	Stazione di Padule	Stazione di Padule
+	323	Paciano	43.0228800	12.0678800	IT	18	0	0	Paciano	Paciano
+	323	Otricoli	42.4207900	12.4773700	IT	18	0	0	Otricoli	Otricoli
+	323	Ospedalicchio	43.0781200	12.5007400	IT	18	0	0	Ospedalicchio	Ospedalicchio
+	323	Ospedaletto	42.7769500	13.0596100	IT	18	0	0	Ospedaletto	Ospedaletto
+	323	Osarella	42.7352300	12.1736900	IT	18	0	0	Osarella	Osarella
+	323	Osa	42.7355900	12.2403500	IT	18	0	0	Osa	Osa
+	323	Orvieto	42.7192400	12.1124900	IT	18	0	0	Orvieto	Орвието
+	323	Oro	42.9924200	12.1621300	IT	18	0	0	Oro	Oro
+	323	Opagna	42.6567100	13.0991200	IT	18	0	0	Opagna	Opagna
+	323	Onelli	42.6923700	13.0323500	IT	18	0	0	Onelli	Onelli
+	323	Olmeto	42.9855000	12.3259800	IT	18	0	0	Olmeto	Olmeto
+	323	Olevole	42.8677600	12.0836700	IT	18	0	0	Olevole	Olevole
+	323	Ocricchio	42.7417700	13.0959500	IT	18	0	0	Ocricchio	Ocricchio
+	323	Ocenelli	42.7457300	12.6238400	IT	18	0	0	Ocenelli	Ocenelli
+	323	Nottoria	42.7287800	13.1561200	IT	18	0	0	Nottoria	Nottoria
+	323	Nortosce	42.7882600	12.9508100	IT	18	0	0	Nortosce	Nortosce
+	323	Norcia	42.7910500	13.0960000	IT	18	0	0	Norcia	Norcia
+	323	Nocera Umbra	43.1140000	12.7892500	IT	18	0	0	Nocera Umbra	Nocera Umbra
+	323	Narni Scalo	42.5362000	12.5168000	IT	18	0	0	Narni Scalo	Narni Scalo
+	323	Narni	42.5195600	12.5275800	IT	18	0	0	Narni	Narni
+	323	Mugnano	43.0554600	12.2198500	IT	18	0	0	Mugnano	Mugnano
+	323	Morruzze	42.7122800	12.3268300	IT	18	0	0	Morruzze	Morruzze
+	323	Morro	42.7569900	12.6949000	IT	18	0	0	Morro	Morro
+	323	Morrano Nuovo	42.7666700	12.1333300	IT	18	0	0	Morrano Nuovo	Morrano Nuovo
+	323	Moriano	42.8306900	12.6175800	IT	18	0	0	Moriano	Moriano
+	323	Morcicchia	42.8177200	12.6041100	IT	18	0	0	Morcicchia	Morcicchia
+	323	Morcella	42.9360500	12.3070600	IT	18	0	0	Morcella	Morcella
+	323	Montoro	42.5071100	12.4669700	IT	18	0	0	Montoro	Montoro
+	323	Montone	43.3607800	12.3234600	IT	18	0	0	Montone	Montone
+	323	Montignano	42.7396400	12.5251300	IT	18	0	0	Montignano	Montignano
+	323	Monticello	42.7960200	12.4807800	IT	18	0	0	Monticello	Monticello
+	323	Monte Vibiano Vecchio	42.9635600	12.2483000	IT	18	0	0	Monte Vibiano Vecchio	Monte Vibiano Vecchio
+	323	Monte San Vito	42.6775800	12.8468800	IT	18	0	0	Monte San Vito	Monte San Vito
+	323	Montesanto	42.8940600	12.9341100	IT	18	0	0	Montesanto	Montesanto
+	323	Monte Santa Maria Tiberina	43.4368800	12.1622000	IT	18	0	0	Monte Santa Maria Tiberina	Monte Santa Maria Tiberina
+	323	Monterubiaglio	42.7666700	12.0166700	IT	18	0	0	Monterubiaglio	Monterubiaglio
+	323	Monterivoso	42.6159000	12.8049900	IT	18	0	0	Monterivoso	Monterivoso
+	323	Monte Petriolo	43.0160900	12.2277700	IT	18	0	0	Monte Petriolo	Monte Petriolo
+	323	Montepennino	42.9033600	12.6417000	IT	18	0	0	Montepennino	Montepennino
+	323	Montenero	42.7181400	12.4444200	IT	18	0	0	Montenero	Montenero
+	323	Montemolino	42.8276300	12.3715400	IT	18	0	0	Montemolino	Montemolino
+	323	Monte Melino	43.1080300	12.2368400	IT	18	0	0	Monte Melino	Monte Melino
+	323	Montemartano	42.7889700	12.5979400	IT	18	0	0	Montemartano	Montemartano
+	323	Monteleto	43.3798200	12.5084400	IT	18	0	0	Monteleto	Monteleto
+	323	Monteleone d'Orvieto	42.9217100	12.0534700	IT	18	0	0	Monteleone d'Orvieto	Monteleone d'Orvieto
+	323	Monteleone di Spoleto	42.6504600	12.9515800	IT	18	0	0	Monteleone di Spoleto	Monteleone di Spoleto
+	323	Monte Grimano	43.4666700	12.4666700	IT	18	0	0	Monte Grimano	Monte Grimano
+	323	Montegiove	42.9158000	12.1444300	IT	18	0	0	Montegiove	Montegiove
+	323	Montegabbione	42.9197300	12.0921200	IT	18	0	0	Montegabbione	Montegabbione
+	323	Montefranco	42.5983500	12.7637600	IT	18	0	0	Montefranco	Montefranco
+	323	Montefalco	42.8908400	12.6482700	IT	18	0	0	Montefalco	Montefalco
+	323	Monte del Lago	43.1436800	12.1631800	IT	18	0	0	Monte del Lago	Monte del Lago
+	323	Montecchio	42.8442700	12.5414300	IT	18	0	0	Montecchio	Montecchio
+	323	Montecchio	42.6623400	12.2880300	IT	18	0	0	Montecchio	Montecchio
+	323	Montecastrilli	42.6508700	12.4881100	IT	18	0	0	Montecastrilli	Montecastrilli
+	323	Monte Castello di Vibio	42.8404000	12.3524000	IT	18	0	0	Monte Castello di Vibio	Monte Castello di Vibio
+	323	Montecastelli	43.3398000	12.2946100	IT	18	0	0	Montecastelli	Montecastelli
+	323	Montebufo	42.8277500	13.0260400	IT	18	0	0	Montebufo	Montebufo
+	323	Montebibico	42.6547500	12.6919400	IT	18	0	0	Montebibico	Montebibico
+	323	Montaglioni	42.8598200	13.0028900	IT	18	0	0	Montaglioni	Montaglioni
+	323	Renzetti	43.5500000	12.2666700	IT	18	0	0	Renzetti	Renzetti
+	323	Miranda	42.5337200	12.6869400	IT	18	0	0	Miranda	Miranda
+	323	Migliano	42.9286600	12.2337000	IT	18	0	0	Migliano	Migliano
+	323	Migiana	43.1445900	12.2929100	IT	18	0	0	Migiana	Migiana
+	323	Messenano	42.7041100	12.6075300	IT	18	0	0	Messenano	Messenano
+	323	Mercatello	42.9692000	12.2655000	IT	18	0	0	Mercatello	Mercatello
+	323	Mercatello	42.8349500	12.6792500	IT	18	0	0	Mercatello	Mercatello
+	323	Mercatale	43.2577300	12.1397200	IT	18	0	0	Mercatale	Mercatale
+	323	Melezzole	42.6695400	12.3366500	IT	18	0	0	Melezzole	Melezzole
+	323	Meggiano	42.7547400	12.8637900	IT	18	0	0	Meggiano	Meggiano
+	323	Meggiano	42.6972000	12.6812100	IT	18	0	0	Meggiano	Meggiano
+	323	Massa Martana	42.7731200	12.5257900	IT	18	0	0	Massa Martana	Massa Martana
+	323	Marsciano	42.9209300	12.3506600	IT	18	0	0	Marsciano	Marsciano
+	323	Marcellano	42.8739100	12.5163500	IT	18	0	0	Marcellano	Marcellano
+	323	Mantignana	43.1599200	12.2885500	IT	18	0	0	Mantignana	Mantignana
+	323	Manigi	42.7141000	13.0847300	IT	18	0	0	Manigi	Manigi
+	323	Maltignano	42.7088800	13.0541300	IT	18	0	0	Maltignano	Maltignano
+	323	Magione	43.1417900	12.2116900	IT	18	0	0	Magione	Magione
+	323	Maestrello	43.1889100	12.3201000	IT	18	0	0	Maestrello	Maestrello
+	323	Macerino	42.6729000	12.6035700	IT	18	0	0	Macerino	Macerino
+	323	Macereto Basso	42.9940200	12.1348300	IT	18	0	0	Macereto Basso	Macereto Basso
+	323	Macenano	42.6459600	12.8237900	IT	18	0	0	Macenano	Macenano
+	323	Macchie	43.0604800	12.0722000	IT	18	0	0	Macchie	Macchie
+	323	Lugnano in Teverina	42.5759200	12.3333600	IT	18	0	0	Lugnano in Teverina	Lugnano in Teverina
+	323	Lugnano	43.3611300	12.1866700	IT	18	0	0	Lugnano	Lugnano
+	323	Loreno	42.6380000	12.7904000	IT	18	0	0	Loreno	Loreno
+	323	Lorgnano	42.8321000	12.4635600	IT	18	0	0	Lorgnano	Lorgnano
+	323	Logna	42.7442800	13.0124500	IT	18	0	0	Logna	Logna
+	323	Limiti	42.9883300	12.6232300	IT	18	0	0	Limiti	Limiti
+	323	Limigiano	42.9759600	12.5469600	IT	18	0	0	Limigiano	Limigiano
+	323	Lidarno	43.1116300	12.4753100	IT	18	0	0	Lidarno	Lidarno
+	323	Marmore	42.5482600	12.7147900	IT	18	0	0	Marmore	Marmore
+	323	Legogne	42.8000500	13.0268100	IT	18	0	0	Legogne	Legogne
+	323	Selci-Lama	43.5171900	12.2129300	IT	18	0	0	Selci-Lama	Selci-Lama
+	323	Izzalini	42.7341200	12.3681500	IT	18	0	0	Izzalini	Izzalini
+	323	Itieli	42.4800100	12.5681000	IT	18	0	0	Itieli	Itieli
+	323	Isola Fossara	43.4330400	12.7386500	IT	18	0	0	Isola Fossara	Isola Fossara
+	323	Ilci	42.8385400	12.4128000	IT	18	0	0	Ilci	Ilci
+	323	Gubbio	43.3499600	12.5730900	IT	18	0	0	Gubbio	Губбио
+	323	Guardea	42.6237000	12.2992800	IT	18	0	0	Guardea	Guardea
+	323	Gualdo Tadino	43.2294100	12.7786200	IT	18	0	0	Gualdo Tadino	Gualdo Tadino
+	323	Gualdo Cattaneo	42.9122800	12.5566600	IT	18	0	0	Gualdo Cattaneo	Gualdo Cattaneo
+	323	Gualdo	42.4541700	12.4769100	IT	18	0	0	Gualdo	Gualdo
+	323	Guadamello	42.4483600	12.4438600	IT	18	0	0	Guadamello	Guadamello
+	323	Grutti	42.8494400	12.4766600	IT	18	0	0	Grutti	Grutti
+	323	Grello	43.2092000	12.7368000	IT	18	0	0	Grello	Grello
+	323	Giove	42.5098800	12.3301500	IT	18	0	0	Giove	Giove
+	323	Giomici	43.1936500	12.6131100	IT	18	0	0	Giomici	Giomici
+	323	Gioiella	43.0929300	11.9703900	IT	18	0	0	Gioiella	Gioiella
+	323	Giano dell'Umbria	42.8338400	12.5777700	IT	18	0	0	Giano dell'Umbria	Giano dell'Umbria
+	323	Gavelli	42.6922000	12.8954800	IT	18	0	0	Gavelli	Gavelli
+	323	Gallo	42.8741200	12.6617000	IT	18	0	0	Gallo	Gallo
+	323	Gaglioli	42.9084700	12.5807900	IT	18	0	0	Gaglioli	Gaglioli
+	323	Gaglietole	42.9238400	12.4645000	IT	18	0	0	Gaglietole	Gaglietole
+	323	Frontignano	42.8484600	12.4495900	IT	18	0	0	Frontignano	Frontignano
+	323	Frattuccia	42.6265600	12.3936900	IT	18	0	0	Frattuccia	Frattuccia
+	323	Fratticiola Selvatica	43.1900400	12.5512200	IT	18	0	0	Fratticiola Selvatica	Fratticiola Selvatica
+	323	Fratta Todina	42.8568400	12.3636600	IT	18	0	0	Fratta Todina	Fratta Todina
+	323	Frascaro	42.7473700	13.1440900	IT	18	0	0	Frascaro	Frascaro
+	323	Fraccano	43.5040000	12.3071300	IT	18	0	0	Fraccano	Fraccano
+	323	Fossato di Vico	43.2964400	12.7612100	IT	18	0	0	Fossato di Vico	Fossato di Vico
+	323	Forsivo	42.7990800	13.0145000	IT	18	0	0	Forsivo	Forsivo
+	323	Fontignano	43.0243600	12.1919000	IT	18	0	0	Fontignano	Fontignano
+	323	Foligno	42.9548800	12.7026800	IT	18	0	0	Foligno	Фолиньо
+	323	Fogliano	42.7322300	13.0462300	IT	18	0	0	Fogliano	Fogliano
+	323	Foce	42.5667000	12.4547500	IT	18	0	0	Foce	Foce
+	323	Fiore	42.7500600	12.3923900	IT	18	0	0	Fiore	Fiore
+	323	Finocchieto	42.4527300	12.6577400	IT	18	0	0	Finocchieto	Finocchieto
+	323	Fighille	43.5189200	12.1076600	IT	18	0	0	Fighille	Fighille
+	323	Ficulle	42.8319400	12.0680100	IT	18	0	0	Ficulle	Ficulle
+	323	Fiano	42.8244900	13.0650600	IT	18	0	0	Fiano	Fiano
+	323	Fiamenga	42.9541500	12.6613800	IT	18	0	0	Fiamenga	Fiamenga
+	323	Fiaiola	42.5139800	12.6079200	IT	18	0	0	Fiaiola	Fiaiola
+	323	Ferentillo	42.6202700	12.7872600	IT	18	0	0	Ferentillo	Ferentillo
+	323	Fanciullata	42.9884900	12.3922700	IT	18	0	0	Fanciullata	Fanciullata
+	323	Faiolo	42.8965100	12.0781500	IT	18	0	0	Faiolo	Faiolo
+	323	Fabro	42.8726700	12.0154000	IT	18	0	0	Fabro	Fabro
+	323	Fabbri	42.8739000	12.6853500	IT	18	0	0	Fabbri	Fabbri
+	323	Eggi	42.7614000	12.7773200	IT	18	0	0	Eggi	Eggi
+	323	Dunarobba	42.6708200	12.4506900	IT	18	0	0	Dunarobba	Dunarobba
+	323	Due Santi	42.8162000	12.4461200	IT	18	0	0	Due Santi	Due Santi
+	323	Doglio	42.8107100	12.3240900	IT	18	0	0	Doglio	Doglio
+	323	Deruta	42.9846500	12.4176000	IT	18	0	0	Deruta	Deruta
+	323	Crocicchio	43.2695900	12.7161900	IT	18	0	0	Crocicchio	Crocicchio
+	323	Costano	43.0442000	12.5341000	IT	18	0	0	Costano	Costano
+	323	Costacciaro	43.3586600	12.7126200	IT	18	0	0	Costacciaro	Costacciaro
+	323	Costa	43.1586200	12.8010800	IT	18	0	0	Costa	Costa
+	323	Cortigno	42.8091100	12.9770900	IT	18	0	0	Cortigno	Cortigno
+	323	Cortignano	42.8588700	12.6423500	IT	18	0	0	Cortignano	Cortignano
+	323	Corciano	43.1282100	12.2868400	IT	18	0	0	Corciano	Corciano
+	323	Corcia	43.1952000	12.7903600	IT	18	0	0	Corcia	Corcia
+	323	Corbara	42.7042700	12.2264900	IT	18	0	0	Corbara	Corbara
+	323	Coppe	42.4843100	12.6508600	IT	18	0	0	Coppe	Coppe
+	323	Configni	42.6959000	12.5305100	IT	18	0	0	Configni	Configni
+	323	Compignano	42.9481900	12.2810800	IT	18	0	0	Compignano	Compignano
+	323	Colpetrazzo	42.7388300	12.5503100	IT	18	0	0	Colpetrazzo	Colpetrazzo
+	323	Colpalombo	43.2482800	12.6122100	IT	18	0	0	Colpalombo	Colpalombo
+	323	Colmotino	42.7121800	13.0718100	IT	18	0	0	Colmotino	Colmotino
+	323	Collicello	42.6169600	12.4040900	IT	18	0	0	Collicello	Collicello
+	323	Collestatte	42.5702800	12.7266300	IT	18	0	0	Collestatte	Collestatte
+	323	Colle Secco	42.6808600	12.4775500	IT	18	0	0	Colle Secco	Colle Secco
+	323	Collescille	42.8752100	13.0641300	IT	18	0	0	Collescille	Collescille
+	323	Colle Sant'Angelo	42.5415700	12.7867100	IT	18	0	0	Colle Sant'Angelo	Colle Sant'Angelo
+	323	Colle di San Lorenzo	42.9666700	12.7500000	IT	18	0	0	Colle di San Lorenzo	Colle di San Lorenzo
+	323	Collepino	43.0212100	12.7038200	IT	18	0	0	Collepino	Collepino
+	323	Collepepe	42.9154800	12.3948600	IT	18	0	0	Collepepe	Collepepe
+	323	Collemincio	43.1737600	12.6844100	IT	18	0	0	Collemincio	Collemincio
+	323	Collemancio	42.9809900	12.5216400	IT	18	0	0	Collemancio	Collemancio
+	323	Collelungo	42.8663400	12.3200700	IT	18	0	0	Collelungo	Collelungo
+	323	Collelungo	42.7132200	12.3544400	IT	18	0	0	Collelungo	Collelungo
+	323	Collefabbri	42.6944900	12.8087700	IT	18	0	0	Collefabbri	Collefabbri
+	323	Colle del Marchese	42.8259800	12.6263500	IT	18	0	0	Colle del Marchese	Colle del Marchese
+	323	Colle di Avendita	42.7581800	13.0480600	IT	18	0	0	Colle di Avendita	Colle di Avendita
+	323	Colle Calzolaro	43.0120500	12.1353100	IT	18	0	0	Colle Calzolaro	Colle Calzolaro
+	323	Collebaldo	42.9787500	12.1745400	IT	18	0	0	Collebaldo	Collebaldo
+	323	Colle	43.2162700	12.8565200	IT	18	0	0	Colle	Colle
+	323	Collazzoni	42.8400700	13.0054400	IT	18	0	0	Collazzoni	Collazzoni
+	323	Collazzone	42.9014700	12.4358200	IT	18	0	0	Collazzone	Collazzone
+	323	Cocciano	42.6340600	12.3149600	IT	18	0	0	Cocciano	Cocciano
+	323	Civita	42.6727200	13.1183600	IT	18	0	0	Civita	Civita
+	323	Città di Castello	43.4655600	12.2375000	IT	18	0	0	Citta di Castello	Città di Castello
+	323	Città della Pieve	42.9593400	12.0069600	IT	18	0	0	Citta della Pieve	Città della Pieve
+	323	Citerna	43.4988200	12.1137600	IT	18	0	0	Citerna	Citerna
+	323	Chioano	42.7765700	12.4566700	IT	18	0	0	Chioano	Chioano
+	323	Chiavano	42.6562000	13.0612100	IT	18	0	0	Chiavano	Chiavano
+	323	Cese	42.6781400	12.7874300	IT	18	0	0	Cese	Cese
+	323	Cerreto di Spoleto	42.8218800	12.9203200	IT	18	0	0	Cerreto di Spoleto	Cerreto di Spoleto
+	323	Cerqueto	42.9520100	12.3185400	IT	18	0	0	Cerqueto	Cerqueto
+	323	Cerasola	42.7719300	12.9965800	IT	18	0	0	Cerasola	Cerasola
+	323	Cecanibbi	42.8128400	12.3714300	IT	18	0	0	Cecanibbi	Cecanibbi
+	323	Cecalocco	42.6112200	12.7129800	IT	18	0	0	Cecalocco	Cecalocco
+	323	Castiglioni	42.5772300	12.7844800	IT	18	0	0	Castiglioni	Castiglioni
+	323	Castiglion Fosco	42.9850100	12.1674400	IT	18	0	0	Castiglion Fosco	Castiglion Fosco
+	323	Castiglione della Valle	43.0199700	12.2514900	IT	18	0	0	Castiglione della Valle	Castiglione della Valle
+	323	Castiglione del Lago	43.1245700	12.0398200	IT	18	0	0	Castiglione del Lago	Castiglione del Lago
+	323	Castel Viscardo	42.7535900	12.0007200	IT	18	0	0	Castel Viscardo	Castel Viscardo
+	323	Castelvecchio	42.8894900	13.0176200	IT	18	0	0	Castelvecchio	Castelvecchio
+	323	Casteltodino	42.6666700	12.5000000	IT	18	0	0	Casteltodino	Casteltodino
+	323	Castel Santa Maria	42.7153000	13.1118100	IT	18	0	0	Castel Santa Maria	Castel Santa Maria
+	323	Castel San Giovanni	42.8348600	12.7051300	IT	18	0	0	Castel San Giovanni	Castel San Giovanni
+	323	Castel San Giovanni	42.6832900	13.0622700	IT	18	0	0	Castel San Giovanni	Castel San Giovanni
+	323	Castel San Felice	42.7432300	12.8411300	IT	18	0	0	Castel San Felice	Castel San Felice
+	323	Castel Ritaldi	42.8224700	12.6742000	IT	18	0	0	Castel Ritaldi	Castel Ritaldi
+	323	Castel Rigone	43.1983300	12.2227200	IT	18	0	0	Castel Rigone	Castel Rigone
+	323	Castelnuovo	43.0294000	12.5840800	IT	18	0	0	Castelnuovo	Castelnuovo
+	323	Castelluccio	42.8289000	13.2058200	IT	18	0	0	Castelluccio	Castelluccio
+	323	Castellonalto	42.6233500	12.8285100	IT	18	0	0	Castellonalto	Castellonalto
+	323	Castello delle Forme	42.9797400	12.3561700	IT	18	0	0	Castello delle Forme	Castello delle Forme
+	323	Castel Giorgio	42.7069700	11.9771700	IT	18	0	0	Castel Giorgio	Castel Giorgio
+	323	Casteldelmonte	42.6993400	12.5729600	IT	18	0	0	Casteldelmonte	Casteldelmonte
+	323	Castel di Fiori	42.9065600	12.1088100	IT	18	0	0	Castel di Fiori	Castel di Fiori
+	323	Castelbuono	42.9525200	12.5484500	IT	18	0	0	Castelbuono	Castelbuono
+	323	Castagna	42.5944800	12.7111200	IT	18	0	0	Castagna	Castagna
+	323	Casigliano	42.7134200	12.5064800	IT	18	0	0	Casigliano	Casigliano
+	323	Casenove	42.9757700	12.8418000	IT	18	0	0	Casenove	Casenove
+	323	Cascia	42.7179000	13.0169700	IT	18	0	0	Cascia	Cascia
+	323	Semonte-Casamorcia	43.3682600	12.5306400	IT	18	0	0	Semonte-Casamorcia	Semonte-Casamorcia
+	323	Casamaggiore	43.1023400	11.9707500	IT	18	0	0	Casamaggiore	Casamaggiore
+	323	Casalina	42.9500000	12.4000000	IT	18	0	0	Casalina	Casalina
+	323	Casale	42.9620300	12.7968700	IT	18	0	0	Casale	Casale
+	323	Casale	42.8814300	12.6171900	IT	18	0	0	Casale	Casale
+	323	Casalalta	42.9465100	12.4379000	IT	18	0	0	Casalalta	Casalalta
+	323	Casacce	43.2132000	12.5315000	IT	18	0	0	Casacce	Casacce
+	323	Casacastalda	43.1973400	12.6470800	IT	18	0	0	Casacastalda	Casacastalda
+	323	Carpini	43.3848900	12.3861800	IT	18	0	0	Carpini	Carpini
+	323	Carbonesca	43.2276800	12.6250200	IT	18	0	0	Carbonesca	Carbonesca
+	323	Capodacqua	43.0182500	12.7808600	IT	18	0	0	Capodacqua	Capodacqua
+	323	Capitone	42.5712600	12.4767400	IT	18	0	0	Capitone	Capitone
+	323	Cantone	42.8421800	12.1272400	IT	18	0	0	Cantone	Cantone
+	323	Cantalupo	42.9679800	12.5807200	IT	18	0	0	Cantalupo	Cantalupo
+	323	Canonica	42.7000800	12.0489500	IT	18	0	0	Canonica	Canonica
+	323	Cannara	42.9954000	12.5820200	IT	18	0	0	Cannara	Cannara
+	323	Cannaiola	42.8646600	12.7139100	IT	18	0	0	Cannaiola	Cannaiola
+	323	Canalicchio	42.9478000	12.4563100	IT	18	0	0	Canalicchio	Canalicchio
+	323	Campi	42.8512000	13.0949400	IT	18	0	0	Campi	Campi
+	323	Campello sul Clitunno	42.8268500	12.7693100	IT	18	0	0	Campello sul Clitunno	Campello sul Clitunno
+	323	Cammoro	42.8927200	12.8527700	IT	18	0	0	Cammoro	Cammoro
+	323	Camiano Grande	42.8939400	12.6632900	IT	18	0	0	Camiano Grande	Camiano Grande
+	323	Camerata	42.7039200	12.3813700	IT	18	0	0	Camerata	Camerata
+	323	Calzolaro	43.3488600	12.2258900	IT	18	0	0	Calzolaro	Calzolaro
+	323	Calvi dell'Umbria	42.4042100	12.5677100	IT	18	0	0	Calvi dell'Umbria	Calvi dell'Umbria
+	323	Caligiana	43.1725800	12.2542500	IT	18	0	0	Caligiana	Caligiana
+	323	Bugiano	42.8485200	12.9101100	IT	18	0	0	Bugiano	Bugiano
+	323	Budino	42.9544500	12.6326200	IT	18	0	0	Budino	Budino
+	323	Bruna	42.8207100	12.6885100	IT	18	0	0	Bruna	Bruna
+	323	Brufa	43.0570400	12.4710100	IT	18	0	0	Brufa	Brufa
+	323	Branca	43.2733500	12.6810100	IT	18	0	0	Branca	Branca
+	323	Botto	42.6890600	12.1595400	IT	18	0	0	Botto	Botto
+	323	Borgiano	42.7358900	12.7840400	IT	18	0	0	Borgiano	Borgiano
+	323	Borghetto	43.1867000	12.0269100	IT	18	0	0	Borghetto	Borghetto
+	323	Borgaria	42.4829500	12.5043800	IT	18	0	0	Borgaria	Borgaria
+	323	Boneggio	43.0566000	12.3635600	IT	18	0	0	Boneggio	Boneggio
+	323	Buonacquisto	42.5476100	12.8085800	IT	18	0	0	Buonacquisto	Buonacquisto
+	323	Bevagna	42.9374800	12.6148800	IT	18	0	0	Bevagna	Bevagna
+	323	Bettona	43.0112400	12.4869800	IT	18	0	0	Bettona	Bettona
+	323	Beroide	42.8268500	12.7235200	IT	18	0	0	Beroide	Beroide
+	323	Belvedere	42.6458300	12.7565900	IT	18	0	0	Belvedere	Belvedere
+	323	Casali Belforte	42.8543300	12.9699100	IT	18	0	0	Casali Belforte	Casali Belforte
+	323	Bazzano Superiore	42.7810900	12.7986200	IT	18	0	0	Bazzano Superiore	Bazzano Superiore
+	323	Bazzano Inferiore	42.7765400	12.7890300	IT	18	0	0	Bazzano Inferiore	Bazzano Inferiore
+	323	Baucca	43.4364600	12.2644500	IT	18	0	0	Baucca	Baucca
+	323	Bastia umbra	43.0642500	12.5461200	IT	18	0	0	Bastia umbra	Bastia umbra
+	323	Baschi	42.6732400	12.2176200	IT	18	0	0	Baschi	Baschi
+	323	Bardano	42.7457100	12.0613800	IT	18	0	0	Bardano	Bardano
+	323	Baiano	42.7233100	12.6765900	IT	18	0	0	Baiano	Baiano
+	323	Bagni	42.7847100	12.1119100	IT	18	0	0	Bagni	Bagni
+	323	Badiola	43.0260900	12.3189500	IT	18	0	0	Badiola	Badiola
+	323	Badia	43.0883000	12.0107900	IT	18	0	0	Badia	Badia
+	323	Azzano	42.8197000	12.7446900	IT	18	0	0	Azzano	Azzano
+	323	Avigliano Umbro	42.6530300	12.4257100	IT	18	0	0	Avigliano Umbro	Avigliano Umbro
+	323	Avendita	42.7534700	13.0499400	IT	18	0	0	Avendita	Avendita
+	323	Attigliano	42.5150500	12.2945500	IT	18	0	0	Attigliano	Attigliano
+	323	Assisi	43.0667100	12.6210900	IT	18	0	0	Assisi	Ассизи
+	323	Arrone	42.5826600	12.7671400	IT	18	0	0	Arrone	Arrone
+	323	Appecano	42.6255000	12.6522400	IT	18	0	0	Appecano	Appecano
+	323	Apagni	42.8787500	12.8918400	IT	18	0	0	Apagni	Apagni
+	323	Annifo	43.0532700	12.8596000	IT	18	0	0	Annifo	Annifo
+	323	Amelia	42.5517700	12.4207600	IT	18	0	0	Amelia	Amelia
+	323	Alviano	42.5908400	12.2977500	IT	18	0	0	Alviano	Alviano
+	323	Allerona	42.8117400	11.9745100	IT	18	0	0	Allerona	Allerona
+	323	Aliena	42.7607700	13.0394200	IT	18	0	0	Aliena	Aliena
+	323	Aguzzo	42.4745900	12.6214700	IT	18	0	0	Aguzzo	Aguzzo
+	323	Agriano	42.7641800	13.0307200	IT	18	0	0	Agriano	Agriano
+	323	Agliano	42.8639100	12.8719800	IT	18	0	0	Agliano	Agliano
+	323	Agello	43.0705900	12.2387100	IT	18	0	0	Agello	Agello
+	323	Acquasparta	42.6891500	12.5427500	IT	18	0	0	Acquasparta	Acquasparta
+	323	Acqualoreto	42.7281300	12.3366200	IT	18	0	0	Acqualoreto	Acqualoreto
+	323	Acqualacastagna	42.6568100	12.7162500	IT	18	0	0	Acqualacastagna	Acqualacastagna
+	323	Acera	42.8239100	12.8425100	IT	18	0	0	Acera	Acera
+	323	Abeto	42.8368900	13.0631100	IT	18	0	0	Abeto	Abeto
+	323	Valtopina	43.0567400	12.7530700	IT	18	0	0	Valtopina	Valtopina
+	323	Lisciano Niccone	43.2468400	12.1430500	IT	18	0	0	Lisciano Niccone	Lisciano Niccone
+	323	Lippiano	43.4614400	12.1202000	IT	18	0	0	Lippiano	Lippiano
+	323	Cesi	42.6107500	12.5845200	IT	18	0	0	Cesi	Cesi
+	323	Sant'Arcangelo	43.0845600	12.1590700	IT	18	0	0	Sant'Arcangelo	Sant'Arcangelo
+	323	Villastrada	43.0484200	12.0091600	IT	18	0	0	Villastrada	Villastrada
+	323	Civitella del Lago	42.7118100	12.2824100	IT	18	0	0	Civitella del Lago	Civitella del Lago
+	323	Preggio	43.2417400	12.2237400	IT	18	0	0	Preggio	Preggio
+	323	San Feliciano	43.1177800	12.1669400	IT	18	0	0	San Feliciano	San Feliciano
+	323	Cenerente	43.1459700	12.3523700	IT	18	0	0	Cenerente	Cenerente
+	323	Oscano	43.1586300	12.3377600	IT	18	0	0	Oscano	Oscano
+	323	Milano	42.7823500	12.5983600	IT	18	0	0	Milano	Milano
+	323	Montecampano	42.5164600	12.4312900	IT	18	0	0	Montecampano	Montecampano
+	323	Casalini	43.0637500	12.1416100	IT	18	0	0	Casalini	Casalini
+	323	Armenzano	43.0703800	12.6989100	IT	18	0	0	Armenzano	Armenzano
+	323	Cantagallina	43.0398100	12.0112400	IT	18	0	0	Cantagallina	Cantagallina
+	323	Castello	42.4880200	12.4785400	IT	18	0	0	Castello	Castello
+	323	Cimbano	43.0479400	12.0019100	IT	18	0	0	Cimbano	Cimbano
+	323	Vaiano	43.0613300	12.0001600	IT	18	0	0	Vaiano	Vaiano
+	323	Colfiorito	43.0279300	12.8908300	IT	18	0	0	Colfiorito	Colfiorito
+	323	Borghetto	42.8522300	12.6808000	IT	18	0	0	Borghetto	Borghetto
+	323	San Biagio della Valle	43.0205400	12.2881200	IT	18	0	0	San Biagio della Valle	San Biagio della Valle
+	323	Ponte Santa Lucia	42.9811000	12.7853600	IT	18	0	0	Ponte Santa Lucia	Ponte Santa Lucia
+	323	Sambucheto	42.6518900	12.8268800	IT	18	0	0	Sambucheto	Sambucheto
+	323	Ceselli	42.6849900	12.8175700	IT	18	0	0	Ceselli	Ceselli
+	323	Castellone Basso	42.6239200	12.8198000	IT	18	0	0	Castellone Basso	Castellone Basso
+	323	Colle Olivo	42.6226200	12.8135100	IT	18	0	0	Colle Olivo	Colle Olivo
+	323	Ampognano	42.6273600	12.7709800	IT	18	0	0	Ampognano	Ampognano
+	323	Le Mura	42.6219300	12.7730000	IT	18	0	0	Le Mura	Le Mura
+	323	San Mamiliano	42.6245800	12.7630200	IT	18	0	0	San Mamiliano	San Mamiliano
+	323	Leazzano	42.6151400	12.7461600	IT	18	0	0	Leazzano	Leazzano
+	323	Macchialunga	42.6195000	12.7374000	IT	18	0	0	Macchialunga	Macchialunga
+	323	Lerchi	43.4758400	12.1994200	IT	18	0	0	Lerchi	Lerchi
+	323	Bastardo	42.8714400	12.5594300	IT	18	0	0	Bastardo	Bastardo
+	323	Fratta	42.8456100	12.6872300	IT	18	0	0	Fratta	Fratta
+	323	Miralduolo	43.0602000	12.4414400	IT	18	0	0	Miralduolo	Miralduolo
+	323	Colonnetta di Prodo	42.7547000	12.1959000	IT	18	0	0	Colonnetta di Prodo	Colonnetta di Prodo
+	323	Rotecastello	42.8793000	12.2928000	IT	18	0	0	Rotecastello	Rotecastello
+	323	Nicciano	42.6407800	12.7800200	IT	18	0	0	Nicciano	Nicciano
+	323	San Liberatore	42.5709700	12.7107500	IT	18	0	0	San Liberatore	San Liberatore
+	323	La Romita	42.5717300	12.6921300	IT	18	0	0	La Romita	La Romita
+	323	Battiferro	42.6195600	12.6976200	IT	18	0	0	Battiferro	Battiferro
+	323	Molinaccio	42.6045900	12.7245700	IT	18	0	0	Molinaccio	Molinaccio
+	323	Palombare	42.5977000	12.7758100	IT	18	0	0	Palombare	Palombare
+	323	Terria di Contra	42.6582300	12.8339100	IT	18	0	0	Terria di Contra	Terria di Contra
+	323	San Benedetto Vecchio	43.4340200	12.4621000	IT	18	0	0	San Benedetto Vecchio	San Benedetto Vecchio
+	323	Sant'Enea	43.0100400	12.3577300	IT	18	0	0	Sant'Enea	Sant'Enea
+	323	Oliveto	43.1235700	12.3688000	IT	18	0	0	Oliveto	Oliveto
+	323	Ponte Felcino	43.1304900	12.4491400	IT	18	0	0	Ponte Felcino	Ponte Felcino
+	323	Trestina	43.3659700	12.2370100	IT	18	0	0	Trestina	Trestina
+	323	Morra	43.3854400	12.1311800	IT	18	0	0	Morra	Morra
+	323	Fontechiaruccia	42.5875900	12.7618200	IT	18	0	0	Fontechiaruccia	Fontechiaruccia
+	323	Casteldilago	42.5815300	12.7548700	IT	18	0	0	Casteldilago	Casteldilago
+	323	Promano	43.3677500	12.2682100	IT	18	0	0	Promano	Promano
+	323	Cornetto	43.3736700	12.2512100	IT	18	0	0	Cornetto	Cornetto
+	323	Pascelupo	43.3993400	12.7516100	IT	18	0	0	Pascelupo	Pascelupo
+	323	Coldipeccio	43.4055800	12.7480500	IT	18	0	0	Coldipeccio	Coldipeccio
+	323	Cerbara	43.4991300	12.2111300	IT	18	0	0	Cerbara	Cerbara
+	323	Cinquemiglia	43.3789800	12.2590300	IT	18	0	0	Cinquemiglia	Cinquemiglia
+	323	Niccone	43.3206800	12.2953300	IT	18	0	0	Niccone	Niccone
+	323	Osteria di Ramazzano	43.1711900	12.4619300	IT	18	0	0	Osteria di Ramazzano	Osteria di Ramazzano
+	323	Ranciano	43.0941500	12.0307200	IT	18	0	0	Ranciano	Ranciano
+	323	Mercanzie	43.1415800	12.3834800	IT	18	0	0	Mercanzie	Mercanzie
+	323	Crocemarroggia	42.7133400	12.6469800	IT	18	0	0	Crocemarroggia	Crocemarroggia
+	323	Colle Campanaro	42.7234300	12.6428700	IT	18	0	0	Colle Campanaro	Colle Campanaro
+	323	Pieve San Nicolò	43.1288600	12.6185700	IT	18	0	0	Pieve San Nicolo	Pieve San Nicolò
+	323	Civitella Benazzone	43.2036300	12.4472100	IT	18	0	0	Civitella Benazzone	Civitella Benazzone
+	323	Ponte Pattoli	43.1780700	12.4284200	IT	18	0	0	Ponte Pattoli	Ponte Pattoli

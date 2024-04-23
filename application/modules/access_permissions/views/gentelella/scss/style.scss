@@ -1,0 +1,90 @@
+.load_content_controller {
+  textarea {
+    resize: vertical;
+  }
+}
+.subscription-block {
+    .h5 {
+        padding-#{$left}: 10px;
+    }
+    margin-bottom: 50px;
+    margin-#{$left}: -5px;
+}
+.permissions-list {
+    .fa{
+        font-size: 25px;
+    }
+    .far, .fas{
+      font-size: 25px;
+    }
+    .fa-circle{
+        position: relative;
+    }
+    .incomplete {
+        background: $font_color;
+        border-radius: 100%;
+        clip: rect(0px, 10px, 20px, 0px);
+        height: 20px;
+        position: absolute;
+        right: 3px;
+        top: 2px;
+        width: 20px;
+    }
+}
+.btn-success {
+    background-color: $input_main_btn;
+    border-color: $input_main_btn;
+}
+.btn-primary {
+    background-color: $input_additional_btn;
+    border-color: $input_additional_btn;
+}
+.clarification {
+    font-size: 12px;
+    color: rgba(115, 135, 156, 0.5);
+    padding-#{$left}: 10px;
+}
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+.tooltip.top > .tooltip-arrow {
+    border-top: 5px solid rgba(52, 73, 94, 0.94);
+    margin-bottom: 20px;
+}
+.tooltip > .tooltip-inner {
+    background: rgba(52, 73, 94, 0.94);
+    color: $contrast_color;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.group_change_btn {
+    cursor: pointer;
+}
+.membership_change_list {
+    margin-top: 40px;
+    cursor: pointer;
+}
+.list-group-item {
+    .selected {
+        background-color: $input_additional_btn;
+        z-index: 2;
+        height: 10px;
+        bottom: 0;
+        position: absolute;
+        #{$left}: 0;
+        span {
+            float: $right;
+            position: absolute;
+            #{$left}: 90%;
+            top: -5px;
+        }
+    }
+}
+.date-expires {
+    color: #CDCACA;
+}
