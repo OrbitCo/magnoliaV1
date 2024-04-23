@@ -1,0 +1,7 @@
+<?php
+/**
+ * Module settings
+ */
+return [
+
+];

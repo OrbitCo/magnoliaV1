@@ -1,0 +1,42 @@
+<div class="b-likeme__mymatches">
+    <div class="g-flatty-block clearfix">
+        {% for item in user_data.content %}
+            <div class="short-line"></div>
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                <div class="">
+                    <div class="g-users-gallery__content">
+                        <div class="g-users-gallery__photo">
+                            <a class="g-pic-border g-rounded" href="{% helper seo.seolink('users', 'view', item) %}">
+                                <img class="img-responsive" src="{{ item.media.user_logo.thumbs.great }}" alt="" />
+                            </a>
+                        </div>
+                        <div class="g-users-gallery__info">
+                            <div class="text-overflow">{% helper users.userName({'format':'age', 'user': item, 'is_link': 1}) %}</div>
+                                <div class="text-overflow">
+                                    {% if item.location %}{{ item.location }}{% else %}&nbsp;{% endif %}
+                                </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div>
+                <h2>
+                    {% helper lang.l('list_empty', 'like_me') %}
+                </h2>
+                <div>
+                    <input type="button" id="go-perfect" value="{% helper lang.l('field_play_more_perfect', 'like_me') %}" class="btn btn-secondary">
+                </div>
+            </div>
+        {% endfor %}
+        
+    </div>
+    {% if user_data.have_more is not empty %}
+        <div class="match-button-content">
+            <input id="show_more"  data-type="{{ data.type }}" type="button" value="{% helper lang.l('button_show_more', 'like_me') %}" class="btn btn-cancel form-control">
+        </div>
+    {% endif %}
+    <script>
+        $('.b-likeme-page').css({'position': 'relative', 'top': '2px'});
+    </script>

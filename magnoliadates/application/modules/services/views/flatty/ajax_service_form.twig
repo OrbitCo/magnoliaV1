@@ -1,0 +1,203 @@
+<div class="content-block load_content">
+    <div class="inside">
+        <form method="post" action="{{ site_url }}services/form/{{ data.gid }}" id="service_buy_form">
+            <input type="hidden" id="payment_method" name="" value="1">
+            <div class="service-payment-form">
+                <h1>
+                    {% if data.price > 0 %}
+                      {% helper lang.l('field_buy_service', 'services') %}
+                    {% else %}
+                      {% helper lang.l('field_apply_service', 'services') %}
+                    {% endif %}
+                    &nbsp;&laquo;{% helper lang.l(data.name_lang_gid, 'services') %}&raquo;
+                </h1>
+
+                <div class="service-description clearfix pointer" data-action="show-more">
+                    <div class="service-title">
+                        <div class="col-xs-10">
+                            <div>{% helper lang.l(data.name_lang_gid, 'services') %}</div>
+                            <div class="service-description-teaser">
+                                {% helper lang.l(data.description_lang_gid, 'services') %}
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="pull-right">
+                                {% if data.price > 0 %}
+                                    {% helper start.currency_format_output({'value': data.price}) %}
+                                {% else %}
+                                    {% helper lang.l('free', 'services') %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        {% for item in data.template.data_admin_array %}
+                            <div>{{ item.name }}:
+                                {% if item.type == 'string' or item.type == 'int' or item.type == 'text' %}
+                                    {{ item.value }}
+                                {% elseif item.type == 'price' %}
+                                    {% helper start.currency_format_output({'value': item.value}) %}
+                                {% elseif item.type == 'checkbox' %}
+                                    {% if item.value == '1' %}
+                                        {% helper lang.l('yes_checkbox_value', 'services') %}
+                                    {% else %}
+                                        {% helper lang.l('no_checkbox_value', 'services') %}
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <table>
+                        {% for item in data.template.data_user_array %}
+                            {% if item.type == 'hidden' %}
+                                <input type="hidden" name="data_user[{{ item.gid }}]" value="{{ item.value }}">
+                            {% else %}
+                                <tr>
+                                    <td>
+                                        {{ item.name }}:
+                                    </td>
+                                    {% if item.type == 'string' %}
+                                        <td class="value">
+                                            <input type="text" value="{{ item.value }}"
+                                                   name="data_user[{{ item.gid }}]">
+                                        </td>
+                                    {% elseif item.type == 'int' %}
+                                        <td class="value">
+                                            <input type="text" value="{{ item.value }}"
+                                                   name="data_user[{{ item.gid }}]" class="short">
+                                        </td>
+                                    {% elseif item.type == 'price' %}
+                                        <td class="value">
+                                            <input type="text" value="{{ item.value }}"
+                                                   name="data_user[{{ item.gid }}]" class="short">
+                                            {% helper start.currency_format_output() %}
+                                        </td>
+                                    {% elseif item.type == 'text' %}
+                                        <td class="value"class="value">
+                                            <textarea name="data_user[{{ item.gid }}]">{{ item.value }}</textarea>
+                                        </td>
+                                    {% elseif item.type == 'checkbox' %}
+                                        <td class="value">
+                                            <input type="checkbox" name="data_user[{{ item.gid }}]"
+                                                value="1" {% if item.value == '1' %}checked{% endif %}>
+                                        </td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                        {% if data.template.price_type == '2' %}
+                            <tr>
+                                <td>
+                                    {% helper lang.l('field_your_price', 'services') %}:
+                                </td>
+                                <td class="value">
+                                    <input type="text" value="{{ data.price }}" name="price" class="short">
+                                    <b>{% helper start.currency_format_output() %}</b>
+                                </td>
+                            </tr>
+                        {% elseif data.template.price_type == '3' %}
+                            <tr>
+                                <td>
+                                    {% helper lang.l('field_price', 'services') %}:
+                                </td>
+                                <td class="value">
+                                    <input type="hidden" value="{{ data.price }}" name="price" class="short">
+                                    <b>{% helper start.currency_format_output({'value': data.price}) %}</b>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    </table>
+                </div>
+            </div>
+            <div class="service-payment-form">
+
+                {% helper special_offers.getOfferNote('services', data.id) %}
+
+                {% if data.free_activate %}
+                    <div class="mtb20">
+                        <input data-pjax="0" type="submit"  class="btn btn-primary"  name="btn_account" value="{% helper lang.l('btn_activate_free', 'services', '', 'button') %}" id="btn-apply-service">
+                    </div>
+                    <input type="hidden" value="1" name="activate_immediately" />
+                    {% if data.gid == 'ability_delete' %}
+                    <script>
+                      $(function() {
+                        $('#btn-apply-service').trigger('click');
+                      });
+                    </script>
+                    {% endif %}
+                {% else %}
+                    <input type="hidden" value="1" name="activate_immediately" />
+                    {% if data.price > 0 and data.user_account %}
+                        <div class="pt10">
+                            {% helper lang.l('on_your_account_now', 'services') %}:
+                            {% helper start.currency_format_output({'value': data.user_account}) %}
+                            {% if data.disable_account_pay %}
+                                <br>{% helper lang.l('error_account_less_then_service_price', 'services') %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if (data.pay_type == 1 or data.pay_type == 2) and is_module_installed %}
+                        <div class="mtb10 btn-group">
+                            {% if data.disable_account_pay %}
+                                <button class="btn btn-primary" type="button" data-action="set-payment-system">
+                                    {% helper lang.l('link_add_founds', 'services') %}
+                                </button>
+                            {% else %}
+                                <button class="btn btn-primary" type="button" id="btn_account">
+                                    {% helper lang.l('btn_pay_account', 'services', '', 'button') %}
+                                </button>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if (data.pay_type == 1 or data.pay_type == 2) and is_module_installed and (data.pay_type == 2 or data.pay_type == 3) %}
+                        <span class="mtb10 mlr10">{% helper lang.l('add_founds_or', 'services') %}</span>
+                    {% endif %}
+                    {% if data.pay_type == 2 or data.pay_type == 3 %}
+                        <div class="mtb10 btn-group">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                {% helper lang.l('btn_direct_payment', 'services') %} <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <input type="hidden" id="system_gid" name="system_gid" value="">
+                                {% if billing_systems %}
+                                        {% for item in billing_systems %}
+                                            <li data-gid="{{ item.gid }}">
+                                                <a data-pjax="0" data-pjax-container="#pjaxcontainer" href="javascript:void(0)" class="btn_system" data-payment-gid="{{ item.gid }}">
+                                                    <img src="{{ item.logo_url }}" class="h50">
+                                                    {{ item.name }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </form>
+        <script>
+            $(function(){
+                loadScripts(
+                    ["{% helper utils.jscript('services', 'services.js', 'path') %}"],
+                    function(){
+                        services = new Services();
+                    },
+                    ['services'],
+                    {async: true}
+                );
+            });
+        </script>
+        <script>
+            $(function() {
+                $('[data-action="show-more"]').on('mouseover mouseout', function(e) {
+                    e.preventDefault();
+                    if ($('.service-description-teaser').hasClass('open')) {
+                        $('.service-description-teaser').removeClass('open');
+                    } else {
+                        $('.service-description-teaser').addClass('open');
+                    }
+                })
+            });
+        </script>
+    </div>
+</div>

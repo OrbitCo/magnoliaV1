@@ -1,0 +1,27 @@
+<script type="text/javascript">
+	$(function () {
+		var contentObj = new loadingContent({
+	        loadBlockWidth: '800px'
+	    });
+	    var content_text = '{% helper lang.l("text_not_valid_email", "users") %}';
+	    var contact_us = "{{contact_us_url}}";
+	    content_text = content_text.replace("%email_settings_url%", site_url + 'users/settings/email');
+	    content_text = content_text.replace("%tickets_url%", site_url + contact_us);
+	    content_text = content_text.replace("%notification_settings_url%", site_url + 'users/settings/notifications');
+	    var content_modal = '<div class="content-block no-margin">' +
+						        '<h1>' +
+						            '{% helper lang.l('header_not_valid_email', 'users') %}'+
+						        '</h1>'+
+						        '<div class="content-value">'+
+						        	content_text +
+						        '</div>'+
+						        '<div class="mt20">' +
+                					'<a href="' + site_url + 'users/settings/email"' +
+                					'class="btn btn-primary">{% helper lang.l('edit_email', 'users') %}</a>' +
+                					'<a href="' + site_url + 'users/settings/notifications"' +
+                					'class="ml10 btn btn-default">{% helper lang.l('manage_notifications', 'users') %}</a>' +
+            					'</div>' +
+						    '</div>';  
+		contentObj.show_load_block(content_modal);	
+	});		    
+</script>

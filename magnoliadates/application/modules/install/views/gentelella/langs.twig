@@ -1,0 +1,96 @@
+{% include '@app/header.twig' %}
+<style type="text/css">
+    .langs-modules-export, .langs-modules {
+        max-width: 196px;
+        display: inline-block;
+    }
+</style>
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_content">
+            <table id="users" class="table table-striped responsive-utilities jambo_table">
+                <thead>
+                    <tr class="headings">
+                        <th class="column-title text-center">Name</th>
+                        <th class="column-title text-center">Status</th>
+                        <th class="column-title text-center">Install</th>
+                        <th class="column-title text-center">Uninstall</th>
+                        <th class="column-title text-center">Export</th>
+                        <th class="column-title text-center">Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for key, lang in langs %}
+                    <tr>
+                        <td>
+                            {% if lang.is_default %}<b>{{ lang.name }} (default)</b>{% else %}{{ lang.name }}{% endif %}
+                        </td>
+                        <td class="text-center">
+                            {% if not lang.setup %}Not installed
+                            {% elseif lang.setup and not lang.update %}Created manually
+                            {% else %}Installed{% endif %}</td>
+                        <td class="text-center">
+                            {% if not lang.setup %}
+                                <a href="{{ site_url }}admin/install/langs/install/{{ key }}"><i class="fa fa-plus" title="Install lang"></i></a>
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            {% if lang.setup and lang.update and not lang.is_default and langs_count > 1 %}
+                                <a href="{{ site_url }}admin/install/langs/delete/{{ lang.id }}"><i class="fas fa-times" title="Uninstall lang"></i></a>
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            {% if lang.setup %}
+                                <select class="form-control langs-modules-export mr10" data-lang="{{ lang.id }}">
+                                    <option value="all" selected> All</option>
+                                {% for keymod, module in modules %}
+                                    <option value="{{ module.module_gid }}">{{ module.module_name }}</option>
+                                {% endfor %}
+                                </select>    
+                                <a id="export_lang_{{ lang.id }}" href="{{ site_url }}admin/install/langs/export/{{ lang.id }}"><i class="fa fa-download" title="Export lang"></i></a>
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            {% if lang.setup and lang.update %}
+                                <select class="form-control langs-modules mr10" data-lang="{{ lang.id }}">
+                                    <option value="all" selected> All</option>
+                                {% for keymod, module in modules %}
+                                    <option value="{{ module.module_gid }}">{{ module.module_name }}</option>
+                                {% endfor %}
+                                </select>    
+                                <a id="update_lang_{{ lang.id }}"  href="{{ site_url }}admin/install/langs/update/{{ lang.id }}"><i class="fas fa-sync" title="Update lang" src="{{ site_url }}{{ img_folder }}/icon-refresh.png"></i></a>
+                                
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $('.langs-modules-export').change(function(){
+            var lang = $(this).data('lang');
+            var sel_module = $(this).val();
+            if (sel_module == 'all') {
+                $("#export_lang_" + lang).attr('href', site_url + 'admin/install/langs/export/' + lang); 
+            } else {
+                $("#export_lang_" + lang).attr('href', site_url + 'admin/install/langs/export/' + lang + '/' + sel_module); 
+            }
+        });
+
+        $('.langs-modules').change(function(){
+            var lang = $(this).data('lang');
+            var sel_module = $(this).val();
+            if (sel_module == 'all') {
+                $("#update_lang_" + lang).attr('href', site_url + 'admin/install/langs/update/' + lang); 
+            } else {
+                $("#update_lang_" + lang).attr('href', site_url + 'admin/install/langs_update/' + lang + '/' + sel_module); 
+            }
+        });
+    });
+</script>
+
+{% include '@app/footer.twig' %}

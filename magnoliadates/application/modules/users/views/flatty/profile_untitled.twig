@@ -1,0 +1,25 @@
+{% include '@app/header.twig' %}
+
+<div class="content-block">
+    <div class="view small">
+        <div class="col-xs-12 col-sm-2">
+            <div class="image">
+                <div class="mb20">
+                    <img class="img-rounded img-responsive" src="{{ site_root }}uploads/default/midle-default-user-logo-deleted.png">
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+            <h1>
+                {% if data.id %}
+                    {% helper lang.l('profile_blocked', 'users') %}
+                {% else %}
+                    {% helper lang.l('profile_deleted', 'users') %}
+                {% endif %}
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="clr"></div>
+
+{% include '@app/footer.twig' %}

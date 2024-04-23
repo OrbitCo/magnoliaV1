@@ -1,0 +1,48 @@
+{% helper services.servicesBuyList({'tpl': 'magazine'}) %}
+{% if services_data.is_access_permissions %}
+    {% set is_one_group %}{% helper access_permissions.isMoreThanOneActiveGroup() %}{% endset %}
+    {% helper user_group = access_permissions.getUserGroupInfo({'id_user': user_session_data.user_id, 'is_default_excluded':1}) %}
+    {% if is_one_group|length > 0 %}
+        <div class="clearfix"></div>
+        <div class="membership-block">
+            <div class="center">
+                <div class="user-description mt10">{% helper lang.l('field_your_group', 'access_permissions') %}:</div>
+                <div class="user-description">[
+                    {% if is_one_group|length > 0 %}
+                        <a href="{% helper seo.seolink('access_permissions', 'index') %}" class="membership-link">
+                    {% else %}                        
+                        <span class="membership-title">
+                    {% endif %}                        
+                    {{ user_group.data.current_name }}
+                    {% if is_one_group|length > 0 %}                    
+                        </a>                       
+                    {% else %}
+                        </span>
+                    {% endif %}
+                    ]</div>
+            </div>
+            {% if user_group.left_str %}
+            <div class="center">
+                <span class="user-description">{{ user_group.left_str }} {% helper lang.l('date_diff_left', 'services') %}</span>
+            </div>
+            {% endif %}
+        </div>
+        <div class="center">
+            <a class="btn btn-outline-primary" href="{% helper seo.seolink('access_permissions', 'index') %}"
+            {% if user_group.left_str|length > 0 %}
+                    onclick="{% helper start.setAnalytics('left_menu_user', 'prolong') %}"
+            {% else %}
+                    onclick="{% helper start.setAnalytics('left_menu_user', 'upgrade') %}"
+            {% endif %}
+            >
+                <i class="fa fa-rocket"></i>
+                {% if user_group.left_str|length > 0 %}
+                    {% helper lang.l('btn_prolong_membership', 'access_permissions') %}
+                {% else %}
+                    {% helper lang.l('link_get_premium', 'users') %}
+                {% endif %}
+            </a>
+        </div>
+    {% endif %}
+{% endif %}
+<div class="clearfix"></div>

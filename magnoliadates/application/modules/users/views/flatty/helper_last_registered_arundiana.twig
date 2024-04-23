@@ -1,0 +1,39 @@
+<div>
+    <div class="row">
+        {% for item in active_users_block_data.users %}
+            {% set item_pos = item.id % 4 %}
+            <div class="col-sm-6 col-md-3 text-center
+                {% if item_pos == 1 %}
+                    th-set__main_bg
+                {% elseif item_pos == 2 %}
+                    th-set__header_bg
+                {% elseif item_pos == 3 %}
+                    th-set__status_color_bg
+                {% else %}
+                    th-set__main_bg_darken
+                {% endif %}
+                ">
+                <div class="thumbnail thumbNail">
+                    {% set text_user_logo %}
+                        {% helper lang.l('text_user_logo', 'users', '', 'button', item) %}
+                    {% endset %}
+                    <a href="{% helper seo.seolink('users', 'view', item) %}">
+                      {% helper users.formatAvatar({'user': item, 'size': 'great', 'class': 'img-responsive'}) %}
+                    </a>
+                    <div class="caption">
+                        <h4 class="text-overflow">
+                            <a href="{% helper seo.seolink('users', 'view', item) %}">
+                                {% if item.fname is not empty %}
+                                    {{ item.fname }}
+                                {% else %}
+                                    {{ item.nickname }}
+                                {% endif %}, {{ item.age }}
+                            </a>
+                        </h4>
+                        <p>{{ item.city }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

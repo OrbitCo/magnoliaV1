@@ -1,0 +1,75 @@
+{% set rand = random(1111,9999) %}
+<div class="xdisplay_inputx form-group has-feedback">
+    <input type="text" class="form-control has-feedback-left" value="{{value}}" {% if attrs.disabled %}disabled{%endif %}
+        id="{% if attrs.id %}{{ attrs.id }}{% else %}single_cal_{{rand}}{% endif %}" placeholder="" aria-describedby="inputSuccess2Status3" name="{{name}}">
+    <input type="hidden" value="{{value}}" id="hidden_{% if attrs.id %}{{ attrs.id }}{% else %}single_cal_{{rand}}{% endif %}" name="{{name}}">
+    <span class="far fa-calendar form-control-feedback left" aria-hidden="true"></span>
+    <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+</div>
+<!-- datepicker -->
+{% helper utils.jscript('', 'jquery-ui.custom.min.js') %}
+<link href="{{ site_root }}{{ js_folder }}jquery-ui/jquery-ui.custom.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript">
+    var monthNames = ["january", "february", "march", "april", "may", "june",
+        "july", "august", "september", "october", "november", "december"
+      ];
+    $(document).ready(function () {
+        var showCurrentDate = true;
+        {% if attrs.noSetCurrentDate %}
+            showCurrentDate = false;
+        {% endif %}
+        moment.locale('{{ _LANG.code }}');
+        $('#{% if attrs.id %}{{ attrs.id }}{% else %}single_cal_{{rand}}{% endif %}').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                showCurrentDate: showCurrentDate,
+                calender_style: "picker_2",
+                opens: {% if  _LANG.rtl == 'ltr' %}"right"{% else %}"left"{% endif %},
+                locale: {
+                  format: '{% if attrs.alt_format %}{{ attrs.alt_format }}{% else %}{{ date_format_js.date_literal }}{% endif %}',/*
+                 { monthNames: [
+                        {% for  month in locale.months %}
+                                "{{ month }}",
+                        {% endfor %}
+                  ],
+                  daysOfWeek: [
+                      {% for  day in locale.days %}
+                                "{{ day }}",
+                        {% endfor %}
+                  ]*/
+                },
+                showButtonPanel: true,
+            {% if attrs.year_range.min %}
+                minDate: new Date(new Date().getFullYear() + {{ attrs.year_range.min }}, new Date().getMonth(), new Date().getDate()),
+            {% else %}
+                minDate: new Date(new Date().getFullYear(), 0), 
+            {% endif %}
+
+            {% if attrs.year_range.max %}
+                maxDate: new Date(new Date().getFullYear() + {{ attrs.year_range.max }}, new Date().getMonth(), new Date().getDate()),
+            {% endif %}
+            {% if value %}
+                startDate: new Date("{{ value }}"),
+                endDate: new Date("{{ value }}"),
+            {% endif %}
+            {% if attrs.tstamp %}
+                startDate: new Date("{{ attrs.tstamp|date('Y-m-d') }}"),
+                endDate: new Date("{{ attrs.tstamp|date('Y-m-d') }}"),
+            {% endif %}
+        }, function (start, end, label) {
+            var date = new Date(start._d.toDateString());
+            $('#hidden_{% if attrs.id %}{{ attrs.id }}{% else %}single_cal_{{rand}}{% endif %}').val(function(){
+                return date.getDate() + ' ' + monthNames[date.getMonth()]  + ' ' + date.getFullYear();
+            });
+        }).on('apply.daterangepicker', function(ev, picker) {
+            {% if attrs.altField %}
+                var alt_field = '{{ attrs.altField }}';
+                if(alt_field) {
+                    $(alt_field).val(picker.startDate.format('YYYY-MM-DD'));
+                }
+            {% endif %}
+        });
+          
+
+    });
+</script>

@@ -1,0 +1,19 @@
+User-agent: *
+Disallow: /admin/
+
+Allow: /
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Disallow: /gravatar/
+Disallow: /tag/
+Disallow: /author/
+Disallow: /category/
+Disallow: /feed/
+Disallow: /*?=*
+Disallow: /*?
+
+Sitemap: https://magnoliadates.com/sitemap.xml

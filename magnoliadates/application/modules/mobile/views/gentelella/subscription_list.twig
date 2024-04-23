@@ -1,0 +1,56 @@
+<div class="x_title">
+    <h2>Subscriptions</h2>
+    <div class="clearfix"></div>
+</div>
+<div class="x_content">
+
+    <div id="actions">        
+        <a class="btn btn-primary" href="{{ site_url }}admin/mobile/subscription_edit">
+            Add subscription</a>
+    </div>
+
+    <table id="product" class="table table-striped responsive-utilities jambo_table">
+        <thead>
+            <tr class="headings">
+				<th class="column-title">{% helper lang.l('field_product_type', 'mobile') %}</th>
+                <th class="column-title">{% helper lang.l('field_product_sku', 'mobile') %}</th>
+                <th class="column-title">Period ID</th>
+                <th class="column-title">{% helper lang.l('field_product_price', 'mobile') %}</th>
+                <th class="column-title">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in list %}
+            <tr class="even pointer">
+				<td class="a-center">{{ item.type }}</td>
+                <td class="a-center">{{ item.sku }}</td>
+                <td class="a-center"></td>
+                <td class="a-center icons">{{ item.price }}</td>
+                <td class="icons">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary"
+                                onclick = "document.location.href='{{ site_url }}admin/mobile/subscription_edit/{{ item.id }}'">
+                                Edit subscription
+                        </button>
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">                        
+                            <li>
+                                <a href="{{ site_url }}admin/mobile/subscription_edit/{{ item.id }}">
+                                    Edit subscription</a>
+                            </li>
+                            <li>
+                                <a href="{{ site_url }}admin/mobile/subscription_delete/{{ item.id }}">
+                                    Remove subscription</a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

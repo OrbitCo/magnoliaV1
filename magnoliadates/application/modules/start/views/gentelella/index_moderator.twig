@@ -1,0 +1,88 @@
+{% include '@app/header.twig' %}
+{% helper wall = dashboard.dashboard_wall() %}
+
+{% if wall|trim %}
+    {{ wall }}
+    {% set statistics_col_sm = 6 %}
+{% else %}
+    {% set statistics_col_sm = 3 %}
+{% endif %}
+
+{% helper admin_home_payments_block = payments.admin_home_payments_block() %}
+{% helper admin_home_polls_block = polls.admin_home_polls_block() %}
+{% helper admin_home_users_block = users.admin_home_users_block() %}
+{% helper admin_home_banners_block = banners.admin_home_banners_block() %}
+{% helper admin_home_spam_block = spam.admin_home_spam_block() %}
+
+{% set page_blocks = []%}
+{% set page_blocks_cnt = 0 %}
+{% if admin_home_payments_block|trim %}
+    {% set page_blocks = page_blocks|merge([admin_home_payments_block])%}
+    {% set page_blocks_cnt = page_blocks_cnt + 1 %}
+{% endif %}    
+{% if admin_home_polls_block|trim %}
+    {% set page_blocks = page_blocks|merge([admin_home_polls_block])%}
+    {% set page_blocks_cnt = page_blocks_cnt + 1 %}
+{% endif %}    
+{% if admin_home_users_block|trim %}
+    {% set page_blocks = page_blocks|merge([admin_home_users_block])%}
+    {% set page_blocks_cnt = page_blocks_cnt + 1 %}
+{% endif %}    
+{% if admin_home_banners_block|trim %}
+    {% set page_blocks = page_blocks|merge([admin_home_banners_block])%}
+    {% set page_blocks_cnt = page_blocks_cnt + 1 %}
+{% endif %}    
+{% if admin_home_spam_block|trim %}
+    {% set page_blocks = page_blocks|merge([admin_home_spam_block])%}
+    {% set page_blocks_cnt = page_blocks_cnt + 1 %}
+{% endif %} 
+
+<div class="dashboard__after">
+    <div class="quick_stats x_content">
+        <div class="col-md-12 col-sm-12 col-xs-12 title_stats_count">
+        {% helper lang.l('moderator_comment', 'admin_home_page') %}
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12">    
+        <div class="x_panel">            
+            {% if page_blocks_cnt %}
+                <div class="x_title">
+                    <h2>{% helper lang.l('header_quick_start', 'admin_home_page') %}</h2>
+                    <ul class="panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up cursor-pointer"></i></a>
+                        </li>
+                    </ul>                
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content homepage-stats">
+                    <div class="col-md-{% if page_blocks_cnt == 1%}12{% else %}6{% endif %} col-sm-6 col-xs-12">
+                        <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                            <div class="panel">
+                                {% for page_block in page_blocks %}
+                                    {% if loop.index is odd %}
+                                        {{ page_block }}
+                                    {% endif %}
+                                {% endfor%}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel">
+                                {% for page_block in page_blocks%}
+                                    {% if loop.index is even %}
+                                        {{ page_block }}
+                                    {% endif %}
+                                {% endfor%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}                
+        </div>        
+    </div>
+</div>
+<div class="clearfix"></div>
+        
+{% include '@app/footer.twig' %}

@@ -1,0 +1,32 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+{% if statistics %}
+    <div class="quick-stats x_content quick-stats-js">
+        <div class="col-xs-12 col-md-9 quick-stats__main">
+            {% for gid, item in statistics %}
+                <div class="col-md-4 col-sm-{{ col_sm }} col-xs-6 tile_stats_count">
+                    <span class="count_top text-overflow">{% helper lang.l('stat_' ~ gid, 'start') %}</span>
+                    <div class="count">{{ item.week_1 }}</div>
+                    <span class="count_bottom">
+                        <i class="{% if item.week_percent > 0 %}green{% elseif item.week_percent < 0 %}red{% endif %}">
+                            {{ item.week_percent }}% </i> {% helper lang.l('from_last_week', 'start') %}</span>
+                </div>
+            {% endfor %}
+            {% if payment_total > 0 %}
+                <div class="col-md-4 col-sm-{{ col_sm }} col-xs-6 tile_stats_count">
+                    <span class="count_top text-overflow">{% helper lang.l('stat_payments_all', 'start') %}</span>
+                    <div class="count">{{ payment_total }}</div>
+                    <span class="count_bottom"><i></i> {% helper lang.l('total', 'start') %}</span>
+                </div>
+            {% endif %}
+            {% helper mailbox.statisticsMsgs() %}
+        </div>
+        <div class="col-xs-12 col-md-3 quick-stats__other"></div>
+    </div>
+    {% helper start.demoPromoBlock({'page': 'index'}) %}
+    {% helper chatbox.chatboxCounter() %}
+    <div class="row">
+        {% helper users.onlineNow() %}
+        {% helper users.usersCounter() %}
+    </div>
+    {% include 'site_visits_graph.twig' %}
+{% endif %}

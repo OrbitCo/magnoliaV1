@@ -1,0 +1,31 @@
+<div class="panel">
+    <a class="panel-heading" role="tab" id="heading-{{ letter }}" data-toggle="collapse" data-parent="#accordion-{{ k }}" href="#collapse-{{ letter }}" aria-expanded="true" aria-controls="collapse-{{ letter }}">
+        <h4 class="panel-title">{{ list[letter].title }}</h4>
+    </a>
+    <div id="collapse-{{ letter }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{ letter }}">
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="width:10%"></th>
+                        <th style="width:90%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for country in list[letter].list %}
+                        <tr class="cursor-pointer" data-action="get-regions" data-country="{{ country.code }}">
+                            <th style="vertical-align: middle;">
+                                <span class="sparkline_discreet">
+                                    <i class="fa fa-plus btn-get-region-js" aria-hidden="true"></i>
+                                </span>
+                            </th>
+                            <td>
+                                <div id="country_{{ country.code }}"><span class="country_name">{{country.name}}</span><span class="country_code ml5">({{country.code}})</span></div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<?php
+
+$install_lang["groups_demo_default"] = "По умолчанию";
+$install_lang["groups_demo_simple-users"] = "Обычные пользователи";
+$install_lang["groups_demo_vip-users"] = "VIP пользователи";
+$install_lang["seo_tags_account_delete_header"] = "Удаление аккаунта";
+$install_lang["seo_tags_account_delete_title"] = "Удаление аккаунта";
+$install_lang["seo_tags_account_header"] = "Аккаунт";
+$install_lang["seo_tags_account_title"] = "Регистрационные данные : [nickname|Demo пользователь]";
+$install_lang["seo_tags_confirm_header"] = "Подтверждение email";
+$install_lang["seo_tags_confirm_title"] = "Подтверждение email";
+$install_lang["seo_tags_listing_header"] = "Пользователи";
+$install_lang["seo_tags_listing_title"] = "Список пользователей : [filter|Все пользователи] ([count])";
+$install_lang["seo_tags_login_form_header"] = "Войти";
+$install_lang["seo_tags_login_form_title"] = "Вход в систему";
+$install_lang["seo_tags_my_guests_header"] = "Мои гости";
+$install_lang["seo_tags_my_guests_title"] = "Мои гости";
+$install_lang["seo_tags_my_visits_header"] = "Мои визиты";
+$install_lang["seo_tags_my_visits_title"] = "Мои визиты";
+$install_lang["seo_tags_photos_header"] = "Редактирование изображений : [output_name|Demo]";
+$install_lang["seo_tags_photos_title"] = "Редактирование изображений : [output_name|пользователь]";
+$install_lang["seo_tags_profile_header"] = "Анкета";
+$install_lang["seo_tags_profile_title"] = "Анкета : [output_name|пользователь]";
+$install_lang["seo_tags_registration_header"] = "Регистрация пользователя";
+$install_lang["seo_tags_registration_title"] = "Регистрация пользователя";
+$install_lang["seo_tags_restore_header"] = "Восстановить пароль";
+$install_lang["seo_tags_restore_title"] = "Восстановить пароль";
+$install_lang["seo_tags_search_header"] = "Поиск людей";
+$install_lang["seo_tags_search_title"] = "Поиск людей";
+$install_lang["seo_tags_settings_header"] = "Настройки";
+$install_lang["seo_tags_settings_title"] = "Настройки";
+$install_lang["seo_tags_view_header"] = "Просмотр анкеты";
+$install_lang["seo_tags_view_title"] = "Просмотр анкеты : [output_name|Demo]";

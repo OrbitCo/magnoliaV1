@@ -1,0 +1,35 @@
+{% helper is_module_installed = utils.depends('access_permissions', 'mailbox') %}
+<div class="magazine-profile__prename user-all-magazine-description">
+    {{ data.age }} {% helper lang.l('text_age', 'users') %}<span class="dot-splitter">•</span>
+    <span {% if is_owner %}class="pointer" data-change="location"{% endif %}>
+        <i class="fas fa-map-marker-alt"></i>&nbsp;
+        {% if data.city or data.region or data.country %}
+            {{ data.location }}
+        {% else %}
+            {% if is_user_owner %}
+                {% helper lang.l('link_select_region', 'countries') %}
+            {% else %}
+                {% helper lang.l('location_not_specified', 'countries') %}
+            {% endif %}
+        {% endif %}
+    </span>
+    <script>
+        $(function () {
+            loadScripts(
+                ["{% helper utils.jscript('users', 'users-settings.js', 'path') %}"],
+                function () {
+                    change_location = new usersSettings({
+                        siteUrl: site_url,
+                        langs: {
+                            link_select_region: "{% helper lang.l('link_select_region', 'countries') %}"
+                        }
+                    });
+                },
+                ['change_location'],
+                {async: false}
+            );
+        });
+    </script>
+</div>
+
+<h1 class="magazine-profile__name">{{ data.output_name }}</h1>

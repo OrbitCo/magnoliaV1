@@ -1,0 +1,11 @@
+	120	Tiraspol	46.8427400	29.6290900	MD	58	0	0	Tiraspol	Тирасполь
+	120	Slobozia	46.7292700	29.7044600	MD	58	0	0	Slobozia	Slobozia
+	120	Rîbniţa	47.7681700	29.0100000	MD	58	0	0	Ribnita	Рыбница
+	120	Pervomaisc	46.7325300	29.9617000	MD	58	0	0	Pervomaisc	Pervomaisc
+	120	Ocniţa	48.1327800	28.6355800	MD	58	0	0	Ocnita	Ocniţa
+	120	Maiac	47.2372700	29.3849800	MD	58	0	0	Maiac	Maiac
+	120	Crasnoe	46.6484400	29.8040300	MD	58	0	0	Crasnoe	Crasnoe
+	120	Hryhoriopol	47.1541300	29.3000800	MD	58	0	0	Hryhoriopol	Григориополь
+	120	Dubăsari	47.2656200	29.1666700	MD	58	0	0	Dubasari	Дубоссары
+	120	Dnestrovsc	46.6164000	29.9192600	MD	58	0	0	Dnestrovsc	Dnestrovsc
+	120	Camenca	48.0323300	28.6989900	MD	58	0	0	Camenca	Camenca

@@ -1,0 +1,348 @@
+{% include '@app/header.twig' with {load_type: 'editable'} %}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="x_panel">
+    <div class="row">
+          <div class="col-lg-offset-5 col-md-12 col-sm-12 col-xs-12" id="templates">
+
+            <input class="flat" id="template_key"  value="key" name="type_search" type="radio"/>
+            <label for="template_key">{% helper lang.l('field_gid', 'languages') %}</label>
+            &nbsp;&nbsp;
+            <input class="flat" id="template_text" value="text" name="type_search" type="radio" checked="checked" />
+            <label for="template_text">{% helper lang.l('field_text', 'languages') %}</label>
+          </div>
+          <br>
+      <div class="col-lg-6 col-lg-offset-3">
+        <div class="input-group">
+          <input id="lang-ac" type="text" class="all-langs-input form-control"
+                 placeholder="{% helper lang.l('field_search_in_all_modules', 'languages') %}">
+          <div class="input-group-btn">
+            {% for lang in langs %}
+              {% if lang.id == current_lang_id %}
+                <button lang-id="{{ lang.id }}" type="button"
+                        class="all-langs-btn btn btn-default dropdown-toggle btn-primary" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                  {{ lang.name }}
+                  <span class="caret"></span>
+                </button>
+              {% endif %}
+            {% endfor %}
+                      {% if langs|length > 1 %}
+            <ul class="all-langs-select dropdown-menu dropdown-menu-right">
+              {% for lang in langs %}
+                                <li><a  lang-id="{{ lang.id }}" href="#goto">{{ lang.name }}</a></li>
+              {% endfor %}
+            </ul>
+                      {% endif %}
+          </div><!-- /btn-group -->
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+      <hr>
+    <!-- 1 level menu -->
+    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+        {% helper menu.get_admin_level1_menu('admin_languages_menu') %}
+      </ul>
+    </div>
+    <div class="x_title">
+      <div id="menu" class="btn-group" data-toggle="buttons">
+        {% for lang_id, item in langs %}
+          <label class="btn btn-default
+                           {% if lang_id == current_lang_id %}active{% endif %}"
+                 onclick="document.location.href='{{ site_url }}admin/languages/pages/{{ lang_id }}/{{ current_module_id }}'">
+            <input type="radio" {% if lang_id == current_lang_id %}selected{% endif %}>
+            {{ item.name }}
+          </label>
+        {% endfor %}
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class='x_content'>
+      <div id="actions" class="hide">
+        <div class="btn-group">
+          <a href="{{ site_url }}admin/languages/pages_edit/{{ current_lang_id }}/{{ current_module_id }}"
+             class="btn btn-primary">
+            {% helper lang.l('link_add_page', 'languages') %}
+          </a>
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="{{ site_url }}admin/languages/pages_edit/{{ current_lang_id }}/{{ current_module_id }}">
+                {% helper lang.l('link_add_page', 'languages') %}
+              </a>
+            </li>
+            <li>
+              <a href="{{ site_url }}admin/languages/ajax_pages_delete/{{ current_lang_id }}/{{ current_module_id }}"
+                 onclick="javascript:  if (!confirm('{% helper lang.l('note_delete_pages', 'languages') %}')) return false;
+                   delete_strings(this.href); return false;">
+                {% helper lang.l('link_delete_selected', 'languages') %}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="filter">
+        <div class="col-md-4 col-sm-3 col-xs-12">
+          <select name="module_id" onchange="javascript: reload_page(this.value);" class='form-control'>
+            {% for module_id, item in modules %}
+              <option value="{{ module_id }}"
+                {% if module_id == current_module_id %} selected{% endif %}>
+                {{ item.module_gid }} ({{ item.module_name }})
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <table id="pages_table" class="table table-striped responsive-utilities jambo_table bulk-action">
+        <thead>
+        <tr class="headings">
+          <th class="column-group"><input type="checkbox" id="check-all" class="flat"></th>
+          <th class="column-title">{% helper lang.l('field_gid', 'languages') %}</th>
+          <th class="column-title">{% helper lang.l('field_text', 'languages') %}</th>
+          <th class="column-title text-center">&nbsp;</th>
+          <th class="bulk-actions" colspan="5">
+            {# <a href="{{site_url}}admin/languages/ajax_pages_delete/{{current_lang_id}}/{{current_module_id}}"
+                                   onclick="javascript:  if (!confirm('{% helper lang.l('note_delete_pages', 'languages') %}')) return false;
+                                            delete_strings(this.href); return false;">
+                                    {% helper lang.l('link_delete_selected', 'languages') %}
+                                </a> #}
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for key, item in pages %}
+          <tr id="l-{{ key }}_tr" class="even pointer">
+            <td class="text-center">
+              <input type="checkbox" class="flat grouping" value="{{ key }}" data="table_records">
+            </td>
+            <td>{{ key }}</td>
+            <td id="l-{{ key }}" class="editable">{{ item }}</td>
+            <td class="icons">
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary"
+                        onclick="document.location.href='{{ site_url }}admin/languages/pages_edit/{{ current_lang_id }}/{{ current_module_id }}/{{ key }}'">
+                  {% helper lang.l('link_edit_page', 'languages') %}
+                </button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a
+                      href="{{ site_url }}admin/languages/pages_edit/{{ current_lang_id }}/{{ current_module_id }}/{{ key }}">
+                      {% helper lang.l('link_edit_page', 'languages') %}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="{{ site_url }}admin/languages/pages_delete/{{ current_lang_id }}/{{ current_module_id }}/{{ key }}"
+                      onclick="javascript: if (!confirm('{% helper lang.l('note_delete_page', 'languages','','js') %}')) return false;">
+                      {% helper lang.l('link_delete_page', 'languages') %}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="{% helper utils.jscript('', 'jquery-ui.custom.min.js', 'path') %}"></script>
+
+<script>
+
+  /*autocomplete*/
+
+  $(".all-langs-select li a").click(function () {
+    $(".all-langs-btn:first-child").text($(this).text());
+    $(".all-langs-btn:first-child").attr('lang-id', $(this).attr('lang-id'));
+    $('#lang-ac').autocomplete("search");
+  });
+
+    $('[name="type_search"]:checked').on('change',function(){
+      setTimeout(()=>{
+        $('#lang-ac').autocomplete("search");
+      },0);
+
+    });
+
+  if (localStorage.getItem('lightUp')) {
+    let id = localStorage.getItem('lightUp');
+    $(id).addClass('lightUpActive');
+        if (typeof $(id).offset() != "undefined"){
+    $([document.documentElement, document.body]).animate({
+      scrollTop: $(id).offset().top
+    }, 2000);
+        }
+
+    setTimeout(() => {
+      $(id).removeClass('lightUpActive');
+      localStorage.removeItem('lightUp');
+    }, 5000)
+  }
+
+    $("#lang-ac").autocomplete({
+        minLength: 2,
+        source: function(request, response){
+          let word = request.term;
+          let langId = $('.all-langs-btn').attr('lang-id');
+          let typeSearch = document.querySelector('input[name="type_search"]:checked').value;
+          let obj = {
+              'id_lang' : langId,
+              'word' : word,
+              'typeSearch' : typeSearch
+            };
+
+            $.post('{{ site_url }}admin/languages/lang_autocomplete',obj, function (data){
+              $('.ui-autocomplete').scrollTop(0);
+        response(data.hit_list);
+      }, 'json');
+    },
+    create: function (event, ui) {
+      $(this).data('ui-autocomplete')._renderItem = function (ul, item) {
+                let typeSearch = document.querySelector('input[name="type_search"]:checked').value;
+                let textToShow = "<a>" + item.value + '<span>    ' + item.module_gid + '</span> <span> (' + item.gid + ')</span></a>';
+                if (typeSearch == 'key'){
+                  textToShow = "<a>" + item.gid + '<span>    ' + item.module_gid + '</span> <span> (' + item.value + ')</span></a>';
+                }
+        return $('<li class="autocomplete-flex">')
+                      .append(textToShow)
+          .appendTo(ul);
+      };
+    },
+    select: function (event, ui) {
+      let mG = ui.item.module_gid;
+      let gid = ui.item.gid
+      let langId = $('.all-langs-btn').attr('lang-id');
+      {% for module_id, item in modules %}
+
+      if ("{{ item.module_gid }}" == mG) {
+        localStorage.setItem('lightUp', "#l-" + gid + "_tr")
+        document.location.href = "{{ site_url }}admin/languages/pages/" + langId + "/" + {{ module_id }};
+      }
+      {% endfor %}
+    }
+  });
+
+  /*End autocomplete*/
+
+  var reload_url = "{{ site_url }}admin/languages/pages/{{ current_lang_id }}/";
+  var change_url = '{{ site_url }}admin/languages/ajax_pages_save/{{ current_lang_id }}/{{ current_module_id }}';
+
+  function reload_page(module_id) {
+    location.href = reload_url + module_id;
+  }
+
+  function delete_strings(url) {
+    var gidArr = new Object;
+    $(".del:checked").each(function (i) {
+      gidArr[i] = $(this).val();
+    });
+    $.ajax({
+      url: url,
+      type: 'POST',
+      data: ({gids: gidArr}),
+      cache: false,
+      success: function (data) {
+        for (i in gidArr) {
+          $('#' + gidArr[i] + '_tr').remove();
+        }
+        $('#pages_table tr').removeClass('zebra');
+        $("#pages_table tr:odd").addClass("zebra");
+      }
+    });
+  }
+
+  $(function () {
+    $('.editable').each(function () {
+      $(this).editable(change_url, {
+        type: 'textarea',
+        tooltip: '{% helper lang.l("default_editable_text", "languages",'','js') %}',
+        placeholder: '<font class="hide_text">{% helper lang.l("default_editable_text","languages",'',"js") %}</font>',
+        submitdata: {id: this.id.replace(/^l-/, '')},
+        name: 'text',
+        submit: 'Save',
+        height: 'auto',
+        width: 300,
+        cssclass: 'jeditable-form',
+        callback: function (value, settings) {
+          $(this).html(settings.current);
+        },
+        onEdit: function (content) {
+          //alert(content);
+        }
+      });
+    });
+  });
+</script>
+
+<!-- Datatables -->
+<script>
+  var asInitVals = new Array();
+  $(document).ready(function () {
+    var oTable = $('#pages_table').dataTable({
+      "oLanguage": {
+        "sSearch": "{% helper lang.l('search_all_column','start') %}:",
+        "sEmptyTable": "{% helper lang.l('no_users','users') %}"
+      },
+      "aoColumnDefs": [
+        {
+          'bSortable': false,
+          'aTargets': [0, 3]
+        } //disables sorting for column one
+      ],
+      'iDisplayLength': 10,
+      "bPaginate": false,
+      "bInfo": false,
+      "dom": 'T<"clear"><"actions"><"filter">lfrtip',
+    });
+    $("tfoot input").keyup(function () {
+      /* Filter on the column based on the index of this element's parent <th> */
+      oTable.fnFilter(this.value, $("tfoot th").index($(this).parent()));
+    });
+    $("tfoot input").each(function (i) {
+      asInitVals[i] = this.value;
+    });
+    $("tfoot input").focus(function () {
+      if (this.className == "search_init") {
+        this.className = "";
+        this.value = "";
+      }
+    });
+    $("tfoot input").blur(function (i) {
+      if (this.value == "") {
+        this.className = "search_init";
+        this.value = asInitVals[$("tfoot input").index(this)];
+      }
+    });
+    var actions = $("#actions");
+    $('#pages_table_wrapper').find('.actions').html(actions.html());
+    actions.remove();
+    var filter = $("#filter");
+    $('#pages_table_wrapper').find('.filter').html(filter.html());
+    filter.remove();
+  });
+</script>
+
+{% if TRIAL_MODE %}
+  <script>
+    $(function () {
+      var href = $('#languages_pages_item').attr('href');
+      href = href.replace('/pages/', '/pages/1/2');
+      $('#languages_pages_item').attr('href', href);
+    });
+  </script>
+{% endif %}
+
+{% include '@app/footer.twig' %}

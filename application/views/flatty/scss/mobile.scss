@@ -1,0 +1,431 @@
+@import "config";
+
+$dir: get_language_dir();
+
+$left: left;
+$right: right;
+
+@if $dir == "rtl" {
+    $left: right;
+    $right: left;
+}
+
+html {
+    visibility: visible;
+}
+a, 
+a:hover,
+a:focus {
+    color: $main_bg;
+    text-decoration: none;
+}
+body {
+    background-color: $html_bg;
+}
+.badge {
+    background-color: $header_color;
+}
+.btn-default, .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active,
+.open .dropdown-toggle.btn-default {
+    background-color: $html_bg;
+    color: $main_bg;
+}
+.btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active,
+.btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active, .btn-primary.active[disabled], fieldset[disabled] .btn-primary.active {
+    background-color: $main_bg;
+    border-color: $main_bg;
+}
+.btn-group > .btn-primary {
+    color: $main_bg;
+    background-color: $input_bg_color;
+    border-color: $input_bg_color;
+}
+.btn-group > .btn-primary:hover, .btn-group > .btn-primary.active {
+    color: #FFF;
+    background-color: $main_bg;
+    border-color: $main_bg;
+}
+.suggest .btn-primary {
+    color: $main_bg;
+}
+.datepicker button strong,
+.datepicker button strong:active,
+.datepicker button span,
+.datepicker button span:active {
+    color: $main_bg;
+}
+
+.default-avatar  span {
+    color: $main_bg;
+}
+.dropdown-menu-central.nav-stacked {
+    background-color: $main_bg;
+}
+.dropdown-menu-central.nav-stacked > li {
+    background-color: $main_bg;
+}
+.dropdown-menu-central.nav-stacked > li > a {
+    color: #fff;
+}
+.logo path {
+    fill: $main_bg;
+}
+.loading-indicator {
+    background-color: $html_bg;
+}
+.form-control:focus {
+    border-color: $main_bg;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 103, 103, 0.6);
+}
+.left-menu{
+    background-color: $html_bg;
+}
+.menu-central .nav-stacked {
+    background-color: $main_bg;
+}
+.menu-central .nav-stacked > li {
+    background-color: $main_bg;
+}
+.menu-central .nav-stacked > li > a {
+    color: #FFF;
+}
+.modal {
+    background-color: $content_bg;
+}
+.navbar-default {
+    background: $main_bg;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background-color: $main_bg;
+}
+.nav-pills > li > i {
+    color: $header_color;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: $main_bg;
+    color: #FFF;
+}
+.nav > .ng-click-active {
+    background-color: #EEE;
+}
+.nav-stacked .highlight {
+    background-color: #FDEDF5;
+}
+.pg-btn-container {
+    border-top-color: $html_bg;
+    border-bottom-color: $html_bg;
+}
+.pg-btn-container>div {
+    border-bottom-color: $html_bg;
+}
+.pg-btn-container>div>button, .pg-btn-container>div>button:hover {
+    border-#{$left}-color: $html_bg;
+}
+.switch {
+    background-color: $main_bg;
+}
+.view-fields {
+    /*background-color: $content_bg;*/
+    background-color: unset;
+}
+.wells .well {
+    background-color: $content_bg;
+    border: 1px solid $html_bg;
+    border-radius: 0;
+}
+.wells span {
+    color: $header_color;
+}
+.photo-actions {
+    .text-right {
+        b {
+            padding-#{$right}: 30px;
+        }
+    }    
+    .text-left {
+        b {
+            padding-#{$left}: 30px;
+        }
+    } 
+    i {
+        padding: 30px;
+        border: 1px solid $delimiter_color;
+        border-radius: 60px; 
+        font-size: 4em;
+        cursor: pointer;
+    }
+}
+.media-photo-editor {
+    background: $content_bg;
+    line-height: 0;
+    position: relative;
+
+    .media-photo-editor__content {
+        margin-bottom: 20px;
+    }
+
+    .media-photo-editor__menu {
+        background-color: $highlight_bg; 
+        line-height: 50px; 
+        /*overflow: hidden;*/
+        padding: 0 10px; 
+        position: relative;
+    }
+
+    .media-photo-editor__menu ul {
+        display: inline-block;
+        margin: 0; 
+        padding: 0;
+    }
+
+    .media-photo-editor__menu ul li {
+        display: inline-block; 
+        list-style: none outside none; 
+        padding: 0;
+    }
+
+    .media-photo-editor__menu ul li span {
+        color: $input_color; 
+        cursor: pointer;
+        display: inline-block; 
+        line-height: 17px; 
+        padding: 1px 7px; 
+    }
+
+    .media-photo-editor__menu ul li.active span {
+        background-color: $main_bg; 
+        color: #FFFFFF;
+    }
+
+    .media-photo-editor__menu select {
+        margin-#{$left}: 10px;
+        width: 180px; 
+    }
+
+    .media-photo-editor__source-box {
+        clear: both;
+        position: relative;
+        text-align: center;
+    }
+
+    .media-photo-editor__recrop-sizes {
+        background: none;
+        border: none;
+        box-shadow: none;
+        font-size: inherit;
+        width: auto;
+        
+        .media-photo-editor__recrop-sizes-toggle {
+            background: none;
+            border: none;
+            box-shadow: none;
+            color: $input_color;
+            padding-#{$left}: 0;
+            padding-#{$right}: 0;
+        }
+        
+        .media-photo-editor__recrop-sizes-menu {
+            
+        }
+    }
+
+    @media (min-width: 481px) {
+        .media-photo-editor__recrop-sizes {
+            max-width: 100%;
+            position: relative;
+            width: auto;
+        }
+        
+        .media-photo-editor__recrop-sizes-toggle {
+            display: none !important;
+        }
+        
+        .media-photo-editor__recrop-sizes-menu {
+            background: none;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            position: relative;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        ul.media-photo-editor__recrop-sizes-menu {
+            border-radius: 0;
+            display: none;
+            
+            li {
+                display: block;
+                
+                span {
+                    display: block;
+                    line-height: 25px;
+                }
+            }
+        }
+        
+        ul.media-photo-editor__recrop-sizes-menu.dropdown-menu {
+            margin-bottom: -35px;
+        }
+    }
+}
+
+.media-gallery-editor {
+    .media-gallery-editor__media-box {
+        background: rgba(#333, 0.95);
+        margin-bottom: 30px;
+        position: relative;
+    }
+    
+    .media-gallery-editor__media-source-box {
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .media-gallery-editor__media-source {
+        position: relative;
+    }   
+    
+    .media-gallery-editor__media-source-box img {
+        display: inline-block;
+    }
+    
+    .media-gallery-editor__media-actions {
+        bottom: 23px;
+        color: #fff;
+        position: absolute;
+        line-height: 0;
+        right: 20px;  
+        
+        .media-action-item {
+            display: inline-block; 
+            vertical-align: middle; 
+            padding-right: 30px;                
+        }
+    }
+    
+    .media-gallery-editor__photo-sizes {
+        color: inherit;
+        display: inline-block;
+        line-height: 20px;
+        margin: 0;
+         
+        li { 
+            padding: 0 10px;
+            
+            &.active {
+                border: 1px solid #fff;
+                border-radius: 4px;
+                color: inherit;
+            }
+        }
+    }
+    
+    .media-gallery-editor__photo-menu {
+        color: #fff;
+        cursor: pointer;
+        margin-top: 20px;
+        
+        li {
+            display: inline-block;
+        }
+    }
+    
+    .media-gallery-editor__photo-rotate {
+        bottom: 20px;
+        right: 20px;
+        position: absolute;
+        
+        li {
+            margin-#{$left}: 20px;
+        }
+    }
+    
+    .media-gallery-editor__photo-view {
+        color: inherit;
+        display: inline-block;
+    }
+
+    .load_content_left,
+    .load_content_right {
+        color: rgba(255, 255, 255, 0.25);
+        margin-top: -45px;
+
+        &:after {
+            font-size: 72px;
+            text-shadow: none;
+        }
+    }
+
+    &:hover {
+        .load_content_left,
+        .load_content_right {
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+}
+.media-gallery-editor__owner {
+    bottom: 23px;
+    left: 20px;
+    line-height: 1em;
+    position: absolute;
+
+    a {
+        color: #fff;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .media-gallery-editor {
+        .media-gallery-editor__photo-rotate {
+            bottom: 0;
+            clear: both;
+            margin: 0 auto;
+            margin-top: 20px;
+            position: relative;
+            right: 0;
+        }
+
+        .media-gallery-editor__media-source-box {
+            padding-bottom: 10px;
+        }
+        .media-gallery-editor__media-actions {
+            bottom: auto;
+            padding-bottom: 20px;
+            position: relative;
+            text-align: center;
+            right: auto;
+        }
+        .media-gallery-editor__owner {
+            bottom: auto;
+            left: auto;
+            position: relative;
+        }
+    }
+
+
+}
+
+.media-gallery-content {
+    width: 100%;
+}
+
+.selection-recrop-btn {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.pg-btn-container > div > button {
+  background: $main_bg;
+}
+
+.pg-btn-container > div > button:hover {
+  background: $main_bg;
+}

@@ -1,0 +1,57 @@
+<menu id="users-alerts-menu" class="menu-alerts">
+    {% if auth_type == 'user' %}
+        {% helper is_module_installed = utils.depends('tickets') %}
+        {% if is_module_installed.tickets %}
+            <div class="menu-alerts-item  menu-item-icon  menu-item" id="menu_admin_alerts"  data-toggle="tooltip" title="{% helper lang.l('field_alert_menu_new_alerts', 'menu') %}" data-placement="bottom">
+                <a id="menu-messages-more" href="" class="uam-top menu-messages-more"
+                   data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button"
+                   aria-expanded="false" data-pjax="0">
+                    <i class="fa fa-bell fa-lg item"></i>
+                    <span class="badge sum"></span>
+                </a>
+                <div class="menu-alerts-more dropdown-menu" role="menu" aria-labelledby="menu-messages-more">
+                    <div class="menu-alerts-more-triangle"></div>
+                    {% helper tickets.admin_new_messages({template: 'header', is_admin: '1'}) %}
+                    {% helper virtual_gifts.user_gifts_menu_notifier(user_session_data.user_id) %}
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="menu-account-item  menu-item-icon menu-item" id="menu_users_alerts_top">
+            <a id="menu-account-more" href="" class="uam-top menu-account-more"
+               data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button"
+               aria-expanded="false" data-pjax="0" data-type="account-more">
+                <i class="far fa-gem fa-lg item"></i>
+                <span class="badge sum"></span>
+            </a>
+            <div class="menu-alerts-more dropdown-menu" role="menu" aria-labelledby="menu-alerts-more">
+                <div class="menu-alerts-more-triangle"></div>
+                <div class="header-settings_menu">
+                    {% helper users.shortInformation() %}
+                </div>
+                <div class="actions-settings_menu center">
+                    {% helper users.actionsSettings() %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</menu>
+<script type="text/javascript">
+$(function () {
+    loadScripts(
+            "{% helper theme.include_js('users', 'top-menu.js', 'path') %}",
+            function () {
+                top_menu = new topMenu({
+                    siteUrl: site_url,
+                    parent: '.menu-alerts-item',
+                    summandsParent: '.menu-alerts-more-item'
+                });
+            },
+            ['top_menu'],
+            {async: false}
+    );
+    $('#menu_users_alerts_top .menu-alerts-more').off().on('click', function() {
+        {% helper start.setAnalytics('h', 'notify_people') %}
+    });
+});
+</script>

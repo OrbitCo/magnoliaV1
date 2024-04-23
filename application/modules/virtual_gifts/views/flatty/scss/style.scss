@@ -1,0 +1,269 @@
+.select-gift-wrapper {
+    padding: 0;
+}
+
+
+
+/*---------------------------------------------------
+    list
+---------------------------------------------------*/
+
+/* list in popup */
+.b-vgifts__list {
+    margin-#{$left}: -5px;
+    margin-#{$right}: -5px;
+}
+.b-vgifts__item {
+    margin-bottom: 10px;
+    padding-#{$left}: 5px;
+    padding-#{$right}: 5px;
+}
+.b-vgifts__thumb {
+    border: 2px #fff solid;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+
+    img {
+        margin: 0 auto;
+    }
+}
+.b-vgifts__thumb_selectable {
+    &:hover,
+    &:active,
+    &:focus {
+        border: 2px $link_color solid;
+    }
+}
+
+/* list in profile */
+
+/* caption info about gift */
+.b-vg-info {
+    background: $content_bg none repeat scroll 0% 0%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+    display: none;
+    font-size: 0.8571em;
+    padding: 10px;
+    position: fixed;
+    width: 300px;
+    z-index: 9999;
+}
+.b-vg-info__top {}
+.b-vg-info__photo {
+    float: $left;
+    margin-#{$right}: 5px;
+    width: 30px;
+}
+.b-vg-info__right {
+    float: $left;
+}
+.b-vg-info__name {
+    font-weight: bold;
+}
+.b-vg-info__location {
+    margin-#{$left}: 30px;
+}
+.b-vg-info__txt {
+    font-style: italic;
+    margin-top: 10px;
+}
+.b-vg-info__private {
+    font-weight: bold;
+    text-align: center;
+}
+
+.virtual_gifts__profile_btn {
+    height: 54px;
+    width: 54px;
+    border: 1px solid rgba(0, 2, 44, 0.15);
+    box-shadow: 0px 1px 2px rgba(0, 2, 44, 0.15);
+    border-radius: 60px;
+    padding: 10px 7px 15px 8px;
+    cursor: pointer;
+    margin-#{$left}: 26px;
+
+    svg {
+        vertical-align: middle;
+    }
+
+}
+
+@media (max-width: 767px) {
+    .b-vg-info {
+        width: 100% !important;
+        #{$left}: 0 !important;
+    }
+}
+
+/*---------------------------------------------------
+    end of list
+---------------------------------------------------*/
+
+/* send gift link in profile */
+.get-all-user-gifts {
+    line-height: 2em;
+    margin-top: 28px;
+
+    i {
+        color: $descr_color;
+        font-size: 13pt;
+    }
+}
+.btn-virtual-gift {
+    line-height: 2em;
+    margin-top: 28px;
+
+    i {
+        color: $descr_color;
+        font-size: 13pt;
+    }
+}
+
+
+/* btn load more */
+.load-more-gifts{
+    text-align: center;
+    margin: 15px;
+}
+
+/*---------------------------------------------------
+    selected gift form
+---------------------------------------------------*/
+
+.confirm-gifts-form img {
+    display: inline;
+}
+
+input.is_private {
+    position: relative!important;
+}
+
+.gift-selected-wrapper {
+    font-size: 14px;
+}
+
+.gift-selected-wrapper .selected-gift {
+    text-align: center;
+    padding: 15px;
+}
+.selected-gift-price {
+    font-size: 12px;
+}
+
+.selected-gift-comment {
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+.selected-gift-comment_symbols {
+    color: $contrast_color;
+    font-size: 12px;
+    margin-bottom: 10px;
+    text-align: $right;
+}
+.selected-gift-private {
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+.send-gift-btn-block {
+    margin-bottom: 0;
+}
+.send-gift-btn-block + a {
+    float: $right;
+    margin-top: 20px;
+}
+.gifts-payment-wrapper {
+    font-size: 14px;
+}
+.gifts-payment-wrapper .payment-description {
+    background: #E2EFF7;
+    padding: 8px 6px;
+}
+.gifts-payment-wrapper .payment-description p {
+    margin: 5px;
+}
+.gifts-payment-wrapper .payment-description p:last-child {
+    font-size: 12px;
+}
+.gifts-payment-wrapper .send-payment-btn {
+    background: #5A8FB1;
+    color: #fff;
+}
+/*---------------------------------------------------
+    end of selected gift form
+---------------------------------------------------*/
+
+.ajax-receipt-gift > h1 {
+    font-weight: bold;
+}
+.receipt-gift-img {
+    padding: 10px;
+    padding-bottom: 30px;
+}
+.receipt-gift-private {
+    color: #666;
+    text-align: center;
+}
+.receipt-gift-data img {
+    border-radius: 3px;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+}
+.receipt-gift-sender {
+    padding: 10px;
+    width: 85%;
+    display: inline-block;
+    vertical-align: top;
+    border: 1px solid #cecece;
+    border-radius: 3px;
+}
+.receipt-gift-sender > p:first-child {
+    font-weight: bold;
+    display: inline-block;
+}
+.receipt-gift-comment {
+    display: inline-block;
+    line-height: 1.3;
+}
+.receipt-gift-date {
+    font-size: 12px;
+    text-align: $right;
+    color: $contrast_color;
+    padding: 2px 0 0;
+}
+.receipt-gift-btns {
+    margin-bottom: 1px;
+}
+.receipt-gift-status-btn a {
+    margin: 0 10px;
+}
+
+
+.user-gifts-block + .btn-virtual-gift {
+    margin-top: 3px;
+}
+
+.user-gifts-block li {
+    margin: 0 5px 10px 0;
+    &.pg-dl-icons {
+        margin-top: 15px;
+        margin-left: 5px;
+    }
+}
+.user-gifts-block li, .all-user-gifts li {
+    line-height: 0;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+
+
+
+@media (min-width: 768px) {
+    .selected-gift-comment_symbols {
+        margin-bottom: 0;
+    }
+}

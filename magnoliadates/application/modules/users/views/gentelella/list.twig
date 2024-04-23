@@ -1,0 +1,531 @@
+{% include '@app/header.twig' %}
+{% helper is_module_installed = utils.depends('access_permissions') %}
+<style type="text/css">
+    .fa-info-circle:hover {
+        cursor: pointer;
+    }
+    .sm-hide .tooltip.top > .tooltip-arrow, .sm-hide .tooltip > .tooltip-inner, .actions .tooltip > .tooltip-inner{
+        margin-bottom: 0px;
+        font-weight: 200;
+        font-size: 12px;
+    }
+    .sm-hide .tooltip-inner, .actions .tooltip > .tooltip-inner{
+        max-width: 360px;
+        min-width: 200px;
+    }
+    .actions .tooltip > .tooltip-arrow {
+        border-left-color: rgba(52, 73, 94, 0.94);
+        border-right-color: rgba(52, 73, 94, 0.94);
+    }
+</style>
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+
+        <div id="menu" class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default" data-analytic="qweqwe"
+                    data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"
+                    onclick="{% helper start.setAnalytics('users', 'btn_settings') %}document.location.href='{{ site_url }}admin/users/settings'">
+                {% helper lang.l('btn_settings', 'users') %}
+            </label>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                <li class="{% if filter == 'all' %}active{% endif %} {% if not filter_data.all %}disabled{% endif %}">
+                    <a href="{% if filter_data.all %}{{ site_url }}admin/users/index/all/{{ user_type }}{% else %}javascript:;{% endif %}">
+                        {% helper lang.l('filter_all_users', 'users') %} ({{ filter_data.all }})
+                    </a>
+                </li>
+                <li class="{% if filter == 'not_active' %}active{% endif %} {% if not filter_data.not_active %} disabled{% endif %}">
+                    <a href="{% if filter_data.not_active %}{{ site_url }}admin/users/index/not_active/{{ user_type }}{% else %}javascript:;{% endif %}">
+                        {% helper lang.l('filter_not_active_users', 'users') %} ({{ filter_data.not_active }})
+                    </a>
+                </li>
+                <li class="{% if filter == 'active' %}active{% endif %} {% if not filter_data.active %}disabled{% endif %}">
+                    <a href="{% if filter_data.active %}{{ site_url }}admin/users/index/active/{{ user_type }}{% else %}javascript:;{% endif %}">
+                        {% helper lang.l('filter_active_users', 'users') %} ({{ filter_data.active }})
+                    </a>
+                </li>
+                <li class="{% if filter == 'not_confirm' %}active{% endif %} {% if not filter_data.not_confirm %}disabled{% endif %}">
+                    <a href="{% if filter_data.not_confirm %}{{ site_url }}admin/users/index/not_confirm/{{ user_type }}{% else %}javascript:;{% endif %}">
+                        {% helper lang.l('filter_not_confirm_users', 'users') %} ({{ filter_data.not_confirm }})
+                    </a>
+                </li>
+                <li class="{% if filter == 'deleted' %}active{% endif %} {% if not filter_data.deleted %}disabled{% endif %}">
+                    <a href="{% if filter_data.deleted %}{{ site_url }}admin/users/deleted{% else %}javascript:;{% endif %}">
+                        {% helper lang.l('filter_deleted_users', 'users') %} ({{ filter_data.deleted }})
+                    </a>
+                </li>
+                {% helper incomplete_signup.not_registered_add_filter(filter) %}
+                {# <custom_R> #}
+                <li>
+                    <a href="{{ site_url }}admin/users/index_users">
+                        {% helper lang.l('filter_index_users', 'users') %}
+                    </a>
+                </li>
+                {# </custom_R> #}
+            </ul>
+        </div>
+
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>{% helper lang.l('header_filters', 'start') %}</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-down cursor-pointer"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content hide">
+                <form method="post" enctype="multipart/form-data" data-parsley-validate
+                    class="form-horizontal form-label-left">
+                    <input type="hidden" name="filter" value="{{ filter|e }}">
+                    <input type="hidden" name="order" value="{{ order|e }}">
+                    <input type="hidden" name="order_direction" value="{{ order_direction|e }}">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            {% helper lang.l('user_type', 'users') %}:</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div id="gender" class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                    <input type="radio" name="user_type" value="all"{% if user_type == 'all' %} selected{% endif %}>...
+                                </label>
+                                {% for key, item in user_types.option %}
+                                <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                    <input type="radio" name="user_type" value="{{ key }}"{% if user_type == key %} selected{% endif %}>{{ item }}
+                                </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">{% helper lang.l('search_by', 'users') %}:</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" name="val_text" value="{{ search_param.text|e }}" class="form-control">
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <select name="type_text" class="form-control">
+                                <option value="all" {% if search_param.type == 'all' %} selected{% endif %}>
+                                    {% helper lang.l('filter_all', 'users') %}
+                                </option>
+                                <option value="email" {% if search_param.type == 'email' %} selected{% endif %}>
+                                    {% helper lang.l('field_email', 'users') %}
+                                </option>
+                                <option value="fname" {% if search_param.type == 'fname' %} selected{% endif %}>
+                                    {% helper lang.l('field_fname', 'users') %}
+                                </option>
+                                <option value="sname" {% if search_param.type == 'sname' %} selected{% endif %}>
+                                    {% helper lang.l('field_sname', 'users') %}
+                                </option>
+                                <option value="nickname" {% if search_param.type == 'nickname' %} selected{% endif %}>
+                                    {% helper lang.l('field_nickname', 'users') %}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">
+                            {% helper lang.l('latest_active', 'users') %}:</label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            {% helper start.getCalendarInput('last_active_from', search_param.last_active.from, {id: 'last_active_from', year_range: {min: -30, max: 1}}) %}
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-1 text-center">
+                            <label class="control-label" for="last_active_to">&nbsp;{% helper lang.l('to', 'users') %}&nbsp;</label>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            {% helper start.getCalendarInput('last_active_to', search_param.last_active.to, {id: 'last_active_to', year_range: {min: -30, max: 1}}) %}
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-sm-offset-3">
+                            <input type="submit" class="btn btn-primary" value="{% helper lang.l('header_user_find', 'users') %}" name="btn_search">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="x_content">
+            <div id="actions" class="hide">
+                <div class="btn-group">
+                    <a id="users_link_add" href="{{ site_url }}admin/users/edit/personal/" class="btn btn-primary">
+                        {% helper lang.l('link_add_user', 'users') %}
+                    </a>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a id="users_link_add" href="{{ site_url }}admin/users/edit/personal/">
+                                {% helper lang.l('link_add_user', 'users') %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" id="users_link_delete">
+                                {% helper lang.l('link_delete_user', 'users') %}
+                            </a>
+                        </li>
+                        {% helper add_funds = users_payments.button_add_funds() %}
+                        {% if add_funds|trim %}
+                        <li>
+                            {{ add_funds }}
+                        </li>
+                        {% endif %}
+                        <li>
+                            <a data-toggle="tooltip" data-placement="right" title="{% helper lang.l('invalid_email_btn_tooltip', 'users') %}" href="javascript:;" id="make_invalid_emails">
+                                {% helper lang.l('invalid_email_btn', 'users') %}
+                            </a>
+                        </li>
+                        {#% if is_module_installed.access_permissions %}
+                            <li>{% helper access_permissions.membershipChangeByAdmin({type: 'choise'}) %}</li>
+                        {% endif %#}
+                    </ul>
+                </div>
+            </div>
+            <table id="users" class="table table-striped responsive-utilities jambo_table bulk_action">
+                <thead>
+                        <tr class="headings">
+                            <th class="column-group"><input type="checkbox" id="check-all" class="flat"></th>
+                            <th data-field="nickname" data-action="sorting" class="column-title">{% helper lang.l('field_nickname', 'users') %}</th>
+                            <th data-field="user_type" data-action="sorting" class="column-title">{% helper lang.l('user_type', 'users') %}</th>
+                            {% if is_module_installed.access_permissions %}
+                                <th data-field="user_membership" class="column-title">{% helper lang.l('field_membership', 'access_permissions') %}</th>
+                            {% endif %}
+                            <th data-field="email" data-action="sorting" class="column-title sm-hide">{% helper lang.l('field_email', 'users') %}</th>
+                            <th data-field="account" data-action="sorting" class="column-title xs-hide">{% helper lang.l('field_account', 'users') %}</th>
+                            <th data-field="date_created" data-action="sorting" class="column-title sm-hide">{% helper lang.l('field_date_created', 'users') %}</th>
+                            <th class="column-title">{% helper lang.l('text_status', 'start') %}</th>
+                            <th class="column-title">&nbsp;</th>
+                            <th class="bulk-actions" colspan="8"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in users %}
+                    <tr class="{% if not empty(item.net_is_incomer) %}net_incomer {% endif %}even pointer">
+                        <td class="text-center">
+                            {% if item.net_is_incomer == 1 %}
+                                <div class="corner-triangle" title="{% helper lang.l('network_is_incomer', 'users') %}"></div>
+                            {% endif %}
+                            <input type="checkbox" class="tableflat grouping" value="{{ item.id }}" data="table_records">
+                        </td>
+                        <td>
+                            {% if item.user_type == 'couple' %}
+                              <div><b>{{ item.output_name }}</b></div>
+                            {% else %}
+                                <div><b>{{ item.nickname }}</b><br>{{ item.fname }} {{ item.sname }}</div>
+                            {% endif %}
+                        </td>
+                        <td>{{ item.user_type_str }}</td>
+                        {% if is_module_installed.access_permissions %}
+                            <td>{% helper access_permissions.membershipChangeByAdmin({id_user: item.id, user_type: item.user_type}) %}</td>
+                        {% endif %}
+                        <td class="sm-hide">
+                            {% if item.net_is_incomer == 1 %}
+                                {% helper lang.l('network_email', 'users') %}
+                            {% else %}
+                                {{ item.email }}
+                            {% endif %}
+                                <span><i class="fa fa-check-circle
+                                    {% if item.checked_email == 1 and item.valid_email %} {% else %}hide{% endif %}" style="color: #32b44a;"
+                                         data-toggle="tooltip" data-placement="top" title="{% helper lang.l('email_valid_info', 'users') %}"></i></span>
+                                <span><i class="fa fa-info-circle
+                                    {% if item.checked_email == 1 and not item.valid_email %} {% else %}hide{% endif %}" data-toggle="tooltip" data-placement="top" title="{% helper lang.l('email_not_valid_info', 'users') %}"></i></span>
+                                <div>
+                                <span id="invalid-email-{{item.id}}"></span>
+                                {# <button type="button" id="invalid-email-{{item.id}}" class="btn btn-warning
+                                     {% if item.checked_email == 1 and not item.valid_email %} hide{% else %}{% endif %}"
+                                     style="padding: 2px 10px;" data-toggle="tooltip" data-placement="top" title="{% helper lang.l('invalid_email_btn_tooltip', 'users') %}" onclick="make_invalid_email([{{item.id}}])">{% helper lang.l('invalid_email_btn', 'users') %}
+                                </button> #}
+                            </div>
+                        </td>
+                        <td class="xs-hide a-right">
+                            {% helper start.currency_format_output({value: item.account, template: '[abbr][value|dec_part:2|dec_sep:.|gr_sep:]'}) %}
+                        </td>
+                        <td class="sm-hide">
+                            {{ item.date_created }}
+                        </td>
+                        <td>
+                            <div>{% if item.approved %}
+                                {% helper lang.l('btn_tableicon_is_active','start') %}
+                            {% else %}
+                                {% helper lang.l('btn_tableicon_is_not_active','start') %}
+                            {% endif %}</div>
+                                {% if item.last_ip_addr %}
+                                    <div>{% helper lang.l('field_ip_address','users') %}: {{ item.last_ip_addr }}</div>
+                                {% endif %}
+                        </td>
+                        <td class="icons">
+                            <div class="btn-group">
+                                {% if item.net_is_incomer == 0 %}
+                                    <button type="button"
+                                        class="btn btn-primary" title="{% helper lang.l('link_edit_user','users') %}"
+                                        onclick = "document.location.href='{{ site_url }}admin/users/edit/personal/{{ item.id }}'">
+                                            {% helper lang.l('link_edit_user','users') %}
+                                    </button>
+                                {% else %}
+                                     <button type="button"
+                                        class="btn btn-primary" title="{% helper lang.l('network_is_incomer','users') %}">
+                                            {% helper lang.l('network_error_edit_user','users') %}
+                                    </button>
+                                {% endif %}
+                               {#  {% if item.approved %}
+                                <button type="button"
+                                    class="btn btn-primary" title="{% helper lang.l('link_deactivate_user','users') %}"
+                                    onclick = "document.location.href='{{ site_url }}admin/users/activate/{{ item.id }}/0/0'">
+                                        {% helper lang.l('make_inactive','start') %}
+                                </button>
+                                {% else %}
+                                    <button type="button"
+                                        class="btn btn-primary" title="{% helper lang.l('link_activate_user','users') %}"
+                                        onclick = "document.location.href='{{ site_url }}admin/users/activate/{{ item.id }}/1'">
+                                            {% helper lang.l('make_active','start') %}
+                                    </button>
+                                {% endif %} #}
+
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li onclick="{% helper start.setAnalytics('users', 'btn_edit_user') %}">
+                                    {% if item.net_is_incomer == 0 %}
+                                        <a href="{{ site_url }}admin/users/edit/personal/{{ item.id }}">
+                                            {% helper lang.l('link_edit_user','users') %}
+                                        </a>
+                                    {% else %}
+                                        <a>{% helper lang.l('network_is_incomer','users') %}. {% helper lang.l('network_error_edit_user','users') %}</a>
+                                    {% endif %}
+                                    </li>
+                                    <li>
+                                    {% if item.approved %}
+                                        <a href="{{ site_url }}admin/users/activate/{{ item.id }}/0">
+                                            {% helper lang.l('make_inactive','start') %}
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ site_url }}admin/users/activate/{{ item.id }}/1">
+                                            {% helper lang.l('make_active','start') %}
+                                        </a>
+                                    {% endif %}
+
+                                    </li>
+                                    {% helper add_funds = users_payments.buttonAddFunds({id_user: item.id}) %}
+                                    {% if add_funds|trim %}
+                                    <li>
+                                        {{ add_funds }}
+                                    </li>
+                                    {% endif %}
+
+                                    {% helper delete = users.delete_select_block({id_user: item.id, deleted: 0}) %}
+                                    {% if delete %}
+                                    <li>
+                                        {{ delete }}
+                                    </li>
+                                    {% endif %}
+
+                                    {% helper contact = tickets.contact_user_link({id_user: item.id}) %}
+                                    {% if contact|trim %}
+                                    <li onclick="{% helper start.setAnalytics('users', 'btn_contact_user') %}">
+                                        {{ contact }}
+                                    </li>
+                                    {% endif %}
+                                    {% if is_module_installed.access_permissions %}
+                                    <li>{% helper access_permissions.membershipChangeByAdmin({id_user: item.id, type: 'btn', user_type: item.user_type}) %}</li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% include "@app/pagination.twig" %}
+    </div>
+</div>
+
+<link href="{{ site_root }}{{ js_folder }}jquery-ui/jquery-ui.custom.css" rel="stylesheet" type="text/css" media="screen" />
+
+<script type="text/javascript">
+    var reload_link = '{{ site_url }}admin/users/index/';
+    var filter = '{{ filter|e('js') }}';
+    var order = '{{ order|e('js') }}';
+    var loading_content;
+    var order_direction = '{{ order_direction|e('js') }}';
+
+    $(function(){
+        $(function () {
+          $('.sm-hide [data-toggle="tooltip"]').tooltip();
+          $('.dropdown-menu li a').tooltip();
+        })
+        delete_select_block = new loadingContent({
+            closeBtnPadding: '15',
+            closeBtnClass: 'close',
+            loadBlockSize: 'big',
+            loadBlockTitle: '{% helper lang.l('admin_header_delete_user', 'users') %}',
+            footerButtons: '<input type="submit" id="full_delete" class="btn btn-primary" name="btn_confirm_del" value="{% helper lang.l('btn_confirm_del', 'users', '', 'js') %}" disabled form="delete_user">'
+        });
+        $(document).off('click', '#users_link_delete').on('click', '#users_link_delete', function() {
+            var data = new Array();
+            $('.grouping:checked').each(function(i){
+                data[i] = $(this).val();
+            });
+            if(data.length > 0){
+                $.ajax({
+                    url: site_url + 'admin/users/ajax_delete_select/',
+                    data: {user_ids: data},
+                    type: "POST",
+                    cache: false,
+                    dataType: 'json',
+                    success: function(data){
+                        if (typeof (data.error) !== 'undefined' && data.error.length > 0) {
+                            error_object.show_error_block(data.error, 'error');
+                        } else {
+                            delete_select_block.show_load_block(data.content);
+                        }
+                    }
+                });
+            }else{
+                error_object.show_error_block('{% helper lang.l('error_no_users_to_change_group', 'users', '', 'js') %}', 'error');
+            }
+        });
+
+        $(document).off('click', '#make_invalid_emails').on('click', '#make_invalid_emails', function() {
+            var data = new Array();
+            $('.grouping:checked').each(function(i){
+                data[i] = $(this).val();
+            });
+            if(data.length > 0){
+                make_invalid_email(data);
+            }else{
+                error_object.show_error_block('{% helper lang.l('error_no_users_to_change_group', 'users', '', 'js') %}', 'error');
+            }
+        });
+    });
+
+    function make_invalid_email(ids){
+        $.ajax({
+            url: site_url + 'admin/users/ajax_make_invalid_email/',
+            data: {user_ids: ids},
+            type: "POST",
+            cache: false,
+            dataType: 'json',
+            success: function(data){
+                if (typeof (data.info) !== 'undefined') {
+                    error_object.show_error_block(data.info, 'info');
+                }
+                $.each(ids, function (index, value) {
+                    var obj = "#invalid-email-" + value;
+                    $(obj).addClass('hide');
+                    $(obj).parents('td').find('.fa-check-circle').addClass('hide');
+                    $(obj).parents('td').find('.fa-info-circle').removeClass('hide');
+                });
+            }
+        });
+    }
+
+    function reload_this_page(value){
+        var link = reload_link + filter + '/' + value + '/' + order + '/' + order_direction;
+        location.href=link;
+    }
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('input.tableflat').iCheck({
+            checkboxClass: 'icheckbox_flat-green',
+            radioClass: 'iradio_flat-green',
+        });
+    });
+</script>
+
+<!-- Datatables -->
+<script>
+    var asInitVals = new Array();
+    var sorting_fields = {
+        nickname: 1,
+        user_type: 2,
+        email: 4,
+        account: 5,
+        date_created: 6
+    };
+    $(document).ready(function () {
+        var oTable = $('#users').dataTable({
+            "stateSave": true,
+            "stateSaveCallback": function (settings, data) {
+                    localStorage.setItem('sorting_users_fields', JSON.stringify(data));
+            },
+            "fnStateLoaded": function (oSettings, data) {
+                var sorting_users_fields = JSON.parse(localStorage.getItem('sorting_users_fields'))
+                this.fnSort(sorting_users_fields.order);
+            },
+            "oLanguage": {
+                "sSearch": "{% helper lang.l('search_all_column','start') %}:",
+                "sEmptyTable": "{% helper lang.l('no_users','users') %}"
+            },
+             columnDefs: [
+                { type: 'natural-nohtml', targets: 0 }
+              ],
+             "aoColumnDefs": [
+                {
+                    'bSortable': false,
+                    'aTargets': [0,3, 8]
+                } //disables sorting for column one
+            ],
+            'iDisplayLength': 10,
+            "bPaginate": false,
+            "bInfo": false,
+            "dom": 'T<"clear"><"actions">lfrtip',
+        });
+
+        $("tfoot input").keyup(function () {
+            /* Filter on the column based on the index of this element's parent <th> */
+            oTable.fnFilter(this.value, $("tfoot th").index($(this).parent()));
+        });
+        $("tfoot input").each(function (i) {
+            asInitVals[i] = this.value;
+        });
+        $("tfoot input").focus(function () {
+            if (this.className == "search_init") {
+                this.className = "";
+                this.value = "";
+            }
+        });
+        $("tfoot input").blur(function (i) {
+            if (this.value == "") {
+                this.className = "search_init";
+                this.value = asInitVals[$("tfoot input").index(this)];
+            }
+        });
+        var actions = $("#actions");
+        $('#users_wrapper').find('.actions').html(actions.html());
+        actions.remove();
+        oTable.fnSort([sorting_fields[order], order_direction.toLowerCase()]);
+        $('[data-action=sorting]').click(function(){
+            var field = $(this).data('field');
+            var sortLinks = {{ sort_links|json_encode() }};
+            locationHref(sortLinks[field]);
+        });
+
+    });
+</script>
+{% if is_module_installed.access_permissions %}
+{% helper utils.jscript('access_permissions', 'AdminAccessPermissions.js') %}
+<script type='text/javascript'>
+    $(function () {
+        new AdminAccessPermissions({
+            siteUrl: '{{ site_root }}',
+            contentObj: new loadingContent({
+                footerButtons: '<input type="button" data-action="change-membership" value="Save" class="btn btn-primary">'
+            })
+        }).getMemberships();
+    });
+</script>
+{% endif %}
+{% include '@app/footer.twig' %}

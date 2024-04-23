@@ -1,0 +1,22 @@
+<span id="link-virtual_gift-{{ virtual_gifts_button_rand }}" class="{% if virtual_gifts_class is not empty %}{{ virtual_gifts_class }}{% endif %}">
+    {% include 'icon/gift.svg' %}
+</span>
+<script>
+    $(function () {
+        loadScripts(
+            "{% helper utils.jscript('virtual_gifts', 'send_gift.js', 'path') %}",
+            function () {
+                virtual_gifts = new SendGift({
+                    siteUrl: site_url,
+                    use_form: true,
+                    btnForm: 'link-virtual_gift-{{ virtual_gifts_button_rand }}',
+                    urlGetForm: 'virtual_gifts/ajax_get_gifts_form/{{ user_id }}',
+                    urlSendForm: 'virtual_gifts/ajax_set_gifts/{{ user_id }}',
+                    dataType: 'html'
+                });
+            },
+            ['virtual_gifts'],
+            {async: false}
+        );
+    });
+</script>

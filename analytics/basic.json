@@ -1,0 +1,105 @@
+{
+    "admin_panel" : {
+        "admin_upgrade_package" : "admin_upgrade_package"
+    }, 
+    "user_register_success" : {
+        "user_email_register_success" : "user_email_register_success",            
+        "user_social_register_success" : "user_social_register_success"
+    },
+    "user_login_success" : {
+        "user_modal_login_success" : "user_modal_login_success",
+        "user_form_login_success"  : "user_form_login_success" 
+    },
+    "user_register_fail" : {
+        "user_email_register_fail" : "user_email_register_fail",        
+        "user_social_register_fail" : "user_social_register_fail"    
+    },
+    "communication" : {
+        "mailbox_send_message" : "mailbox_send_message",
+        "im_send_message" : "im_send_message",
+        "winks_send_message" : "winks_send_message",
+        "kisses_send_kiss" : "kisses_send_kiss",
+        "associations_send_association" : "associations_send_association",
+        "questions_send_question" : "questions_send_question",
+        "send_money_approved" : "send_money_approved",
+        "send_membership_approved" : "send_membership_approved",
+        "send_virtual_gift" : "send_virtual_gift",
+        "store_send_gift" : "store_send_gift",
+        "send_like_media" : "send_like_media",
+        "wall_events_post" : "wall_events_post"
+    },
+    "user_avatar_success" : {
+        "computer_upload_avatar_success" : "computer_upload_avatar_success",
+        "web_upload_avatar_success" : "web_upload_avatar_success"
+    },
+    "user_avatar_fail" : {
+        "computer_upload_avatar_fail" : "computer_upload_avatar_fail",
+        "web_upload_avatar_fail" : "web_upload_avatar_fail"
+    },
+    "membership_system_payment_send" : {
+        "membership_system_account_payment_send" : "membership_system_account_payment_send",
+        "membership_system_paypal_payment_send" : "membership_system_paypal_payment_send"
+    },
+    "membership_system_payment_success" : {
+        "membership_system_account_payment_success" : "membership_system_account_payment_success",
+        "membership_system_paypal_payment_success" : "membership_system_paypal_payment_success"
+    },
+    "membership_system_payment_fail" : {
+        "membership_system_account_payment_fail" : "membership_system_account_payment_fail",
+        "membership_system_paypal_payment_fail" : "membership_system_account_payment_fail"
+    },
+    "membership_group_payment_send" : {
+        "membership_group_silver_payment_send" : "membership_group_silver_payment_send",
+        "membership_group_gold_payment_send" : "membership_group_gold_payment_send"
+    },
+    "membership_group_payment_success" : {
+        "membership_group_silver_payment_success" : "membership_group_silver_payment_success",
+        "membership_group_gold_payment_success" : "membership_group_gold_payment_success"
+    },
+    "membership_group_payment_fail" : {
+        "membership_group_silver_payment_fail" : "membership_group_silver_payment_fail",
+        "membership_group_gold_payment_fail" : "membership_group_gold_payment_fail"
+    },
+    "service_system_payment_send" : {
+        "service_system_account_payment_send" : "service_system_account_payment_send"
+    },
+    "service_system_payment_success" : {
+        "service_system_account_payment_success" : "service_system_account_payment_success"
+    },
+    "service_system_payment_fail" : {
+        "service_system_account_payment_fail" : "service_system_account_payment_fail"
+    },
+    "service_payment_send" : {
+        "service_user_activate_in_search_payment_send" : "service_user_activate_in_search_payment_send",
+        "service_admin_approve_payment_send" : "service_admin_approve_payment_send",
+        "service_users_featured_payment_send" : "service_users_featured_payment_send",
+        "service_highlight_in_search_payment_send" : "service_highlight_in_search_payment_send",
+        "service_up_in_search_payment_send" : "service_up_in_search_payment_send",
+        "service_ability_delete_payment_send" : "service_ability_delete_payment_send",
+        "service_hide_on_site_payment_send" : "service_hide_on_site_payment_send"
+    },
+    "service_payment_success" : {
+        "service_user_activate_in_search_payment_success" : "service_user_activate_in_search_payment_success",
+        "service_admin_approve_payment_success" : "service_admin_approve_payment_success",
+        "service_users_featured_payment_success" : "service_users_featured_payment_success",
+        "service_highlight_in_search_payment_success" : "service_highlight_in_search_payment_success",
+        "service_up_in_search_payment_success" : "service_up_in_search_payment_success",
+        "service_ability_delete_payment_success" : "service_ability_delete_payment_success",
+        "service_hide_on_site_payment_success" : "service_hide_on_site_payment_success"
+    },
+    "service_payment_fail" : {
+        "service_user_activate_in_search_payment_fail" : "service_user_activate_in_search_payment_fail",
+        "service_admin_approve_payment_fail" : "service_admin_approve_payment_fail",
+        "service_users_featured_payment_fail" : "service_users_featured_payment_fail",
+        "service_highlight_in_search_payment_fail" : "service_highlight_in_search_payment_fail",
+        "service_up_in_search_payment_fail" : "service_up_in_search_payment_fail",
+        "service_ability_delete_payment_fail" : "service_ability_delete_payment_fail",
+        "service_hide_on_site_payment_fail" : "service_hide_on_site_payment_fail"
+    },
+    "payment_status_success" : {
+        "payment_status_success" : "payment_status_success"
+    },
+    "payment_status_fail" : {
+        "payment_status_fail" : "payment_status_fail"
+    }
+}

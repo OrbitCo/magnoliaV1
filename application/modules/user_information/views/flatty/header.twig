@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html dir="{{ _LANG.rtl }}" lang="{{ _LANG.code }}">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>{% helper lang.l('information_about_you', 'user_information') %}</title>
+        <base href="">
+        {% include 'style.twig' %}
+    </head>
+    <body> 
+        <header id="main-menu-container">
+            <div>
+                <a href="{{ site_url }}"><img src="{{ base_url }}{{ mini_logo_settings.path }}" class="center-block"
+                     border="0" alt="{% helper seo.seo_tags_default(header_text) %}"
+                     width="{{ mini_logo_settings.width }}" height="{{ mini_logo_settings.height }}"></a>
+            </div>
+        </header>
+        <div class="col-xs-12 col-sm-8 col-md-6 col-md-offset-3 col-sm-offset-2 container">

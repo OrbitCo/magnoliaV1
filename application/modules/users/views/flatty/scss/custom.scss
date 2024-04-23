@@ -1,0 +1,51 @@
+.c-index-users {
+    margin-bottom: 4rem;
+
+    .c-profiles {
+        display: flex;
+        margin: 0 -0.5rem;
+
+        &__item {
+            flex-basis: calc(100% / 6);
+            min-width: 0;
+            padding: 0.5rem;
+
+            &_image {
+                img {
+                    border-radius: 0.5rem;
+                }
+            }
+
+            &_caption {
+                font-size: 16px;
+                text-align: center;
+                padding: 0.5rem;
+            }
+
+            &_name {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+
+                a {
+                    color: inherit;
+                    font-weight: bold;
+                }
+            }
+
+            &_location {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+
+        @media (max-width: 991px) {
+            flex-wrap: wrap;
+
+            &__item {
+                flex-basis: calc(100% / 3);
+            }
+        }
+    }
+}

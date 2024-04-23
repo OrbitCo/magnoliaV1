@@ -1,0 +1,105 @@
+{% for message in messages %}
+    {% if message.dir != 'o' or contact.id != user.id %}
+        {% if message.message is not empty %}
+        <li class="chatbox-messages__item {% if message.dir == 'o' %}user-message{% endif %} {% if message.is_read_mess %}is_read{% endif %} {% if message.is_read == '0' %}chatbox-messages__item_new{% endif %}" data-message-id="{{ message.id }}" id="chb_msg_{{ message.id }}" data-date-added="{{ message.date_added }}">
+            {% if loop.first != loop.last %}
+                {% if loop.first %}
+                    {% set msg_time = message.date_added|date_modify("+1 hour")|date('Y-m-d H:i') %}
+                {% endif %}
+                {% if loop.first or msg_time < message.date_added|date('Y-m-d H:i') %}
+                    {% set msg_time = message.date_added|date_modify("+1 hour")|date('Y-m-d H:i') %}
+                    <div
+                        class="chatbox-messages__time">{% helper date_format.tpl_date_format(message.date_added, date_format_st.date_time_literal) %}</div>
+                {% endif %}
+            {% endif %}
+            <div
+                class="{% if contact.id != user.id %}chatbox-messages__userlogo{% else %}chatbox-messages__sitelogo{% endif %}">
+                {% if contact.id != user.id %}
+                    {% if message.dir == 'i' %}
+                        <img class="" src="{{ contact.media.user_logo.thumbs.small }}" alt="{{ contact.output_name }}"/>
+                    {% else %}
+                        <img class="" src="{{ user.media.user_logo.thumbs.small }}" alt="{{ user.output_name }}"/>
+                    {% endif %}
+                {% else %}
+                    {% if is_mini_logo %}
+                        <img src="{{ site_root }}{{ mini_logo_settings.path }}?{{ random() }}" border="0"
+                             alt="{% helper seo.seo_tags_default('header_text') %}"
+                             width="{{ mini_logo_settings.width }}"
+                             height="{{ mini_logo_settings.height }}" id="logo">
+                    {% else %}
+                        {% helper start.logo({type: 'user', settings: logo_settings}) %}
+                    {% endif %}
+                {% endif %}
+            </div>
+            <div class="chatbox-messages__content">
+                <div
+                    class="chatbox-messages__bubble {% if message.dir == 'o' %}chatbox-messages__bubble-right{% else %}chatbox-messages__bubble-left{% endif %}">
+                    <div class="chatbox-messages__message">{{ message.message }}</div>
+                    {% if message.dir == 'o' %}
+                        <i data-message-id="{{ message.id }}"
+                           title="{% helper lang.l('link_message_delete', 'chatbox') %}" data-placement="top"
+                           data-toggle="tooltip" class="fas fa-times chatbox-messages__delele"></i>
+                        <i class="fas fa-check"></i><i class="fas fa-check two"></i>
+                    {% endif %}
+                </div>
+            </div>
+            {% set last_message_dir  = message.dir %}
+            {% set last_message_time = message.date_added|date('Y-m-d H:i') %}
+        </li>
+        {% endif %}
+        {% if message.attaches_count %}
+            <li class="chatbox-messages__item {% if message.dir == 'o' %}user-message{% endif %} {% if message.is_read_mess %}is_read{% endif %}"
+                data-message-id="{{ message.id }}" id="chb_msg_{{ message.id }}"
+                data-date-added="{{ message.date_added }}">
+                {% if last_message_time is empty or last_message_time != message.date_added|date('Y-m-d H:i') %}
+                    <div
+                        class="chatbox-messages__time">{% helper date_format.tpl_date_format(message.date_added, date_format_st.date_time_literal) %}</div>
+                {% endif %}
+                <div
+                    class="{% if contact.id != user.id %}chatbox-messages__userlogo{% else %}chatbox-messages__sitelogo{% endif %}">
+                    {% if contact.id != user.id %}
+                        {% if message.dir == 'i' %}
+                            <img class="" src="{{ contact.media.user_logo.thumbs.small }}"
+                                 alt="{{ contact.output_name }}"/>
+                        {% else %}
+                            <img class="" src="{{ user.media.user_logo.thumbs.small }}" alt="{{ user.output_name }}"/>
+                        {% endif %}
+                    {% else %}
+                        {% if is_mini_logo %}
+                            <img src="{{ site_root }}{{ mini_logo_settings.path }}?{{ random() }}" border="0"
+                                 alt="{% helper seo.seo_tags_default('header_text') %}"
+                                 width="{{ mini_logo_settings.width }}"
+                                 height="{{ mini_logo_settings.height }}" id="logo">
+                        {% else %}
+                            {% helper start.logo({type: 'user', settings: logo_settings}) %}
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div class="chatbox-messages__content">
+                    <div
+                        class="chatbox-messages__bubble {% if message.dir == 'o' %}chatbox-messages__bubble-right{% else %}chatbox-messages__bubble-left{% endif %}">
+                        {% for key,attach in message.attaches %}
+                            {% if attach.mime == "image/gif" %}
+                                <img class="chatbox-messages__message-image pointer" src="{{ attach.format.file_url }}"
+                                     gallery-src="{{ attach.format.file_url }}" style="max-width: 200px;"/>
+                            {% else %}
+                                <img class="chatbox-messages__message-image pointer"
+                                     src="{{ attach.format.thumbs.middle }}"
+                                     gallery-src="{{ attach.format.thumbs.grand }}"/>
+                            {% endif %}
+                        {% endfor %}
+                        {% if message.dir == 'o' %}
+                            <i data-message-id="{{ message.id }}"
+                               title="{% helper lang.l('link_message_delete', 'chatbox') %}" data-placement="top"
+                               data-toggle="tooltip" class="fas fa-times chatbox-messages__delele"></i>
+                            <i class="fas fa-check"></i><i class="fas fa-check two"></i>
+                        {% endif %}
+                    </div>
+                </div>
+                {% set last_message_dir  = message.dir %}
+                {% set last_message_time = message.date_added|date('Y-m-d H:i') %}
+            </li>
+        {% endif %}
+
+    {% endif %}
+{% endfor %}

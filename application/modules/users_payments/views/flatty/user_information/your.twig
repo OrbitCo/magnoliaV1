@@ -1,0 +1,15 @@
+<div class="content-page">
+    <div class="ui-title">{% helper lang.l('header_main', 'users_payments') %}</div>
+    <div class="ui-descr">
+        {% helper lang.l('field_usr_inf_description', 'users_payments') %}
+    </div>
+</div>
+
+{% for item in your %}
+    <div class="col-xs-12 content-page">
+        <div class="ui-title bb">{% helper lang.l('account_funds_'~item.price_type~'_message', 'users_payments') %}</div> 
+        <div>{{ item.message }}</div>
+        <div>{% helper lang.l('field_amount', 'users_payments') %}: {{ item.price }}</div>
+        <div>{{ item.date_add }}</div>
+    </div>
+{% endfor %}

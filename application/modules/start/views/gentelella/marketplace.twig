@@ -1,0 +1,23 @@
+<div class="marketplace-button col-md-6 col-sm-4 col-xs-2">
+    <a onclick="{% helper start.setAnalytics('main', 'btn_visit_marketplace') %}" target="_blank" href="{{ data.url }}" alt="{% helper lang.l('link_visit_marketplace', 'start') %}" title="{% helper lang.l('link_visit_marketplace', 'start') %}">{% helper lang.l('link_visit_marketplace', 'start') %}</a>
+</div>
+{% helper utils.jscript('start', 'AdminStart.js') %}
+<style>
+    #intercom-container 
+    .intercom-launcher-frame {
+        bottom: 80px !important;
+    }
+    #intercom-container 
+    .intercom-app-launcher-enabled 
+    .intercom-messenger-frame {
+        bottom: 145px !important;
+    }
+</style>
+<script type='text/javascript'>
+    $(function () {
+        new AdminStart({
+            siteUrl: '{{ site_root }}',
+            pageGid: '{{ data.page_gid }}'
+        });
+    });
+</script>

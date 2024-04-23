@@ -1,0 +1,13 @@
+{% include '@app/header.twig' %}
+</div></div>
+
+{% if action == 'view' or action == 'wall' or action == 'gallery' %}
+    {% include 'user_profile_magazine.twig' with {is_owner: is_owner} %}
+{% else %}
+    {% include 'user_form.twig' %}
+{% endif %}
+
+{% helper utils.jscript('', 'datepicker-dropdown-template.js') %}
+
+<div class="container"><div class="row">
+{% include '@app/footer.twig' %}

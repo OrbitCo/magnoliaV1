@@ -1,0 +1,77 @@
+<style>
+    .guide-modal {
+        max-width: 500px;
+        margin: auto;
+    }
+    .guide-modal .modal-body {
+        min-height: 200px;
+    }
+    #guide-btn {
+        padding: 0 20px;
+    }
+    #guide-btn i {
+        font-size:25px;
+        line-height: 0;
+        vertical-align: middle;
+    }
+    #guide-close {
+        display: none;
+    }
+    .guide-show {
+        display: block !important;
+    }
+    .guide_content.load_content_inner {
+        bottom: 10%;
+    }
+    .guide_content.load_content_inner .load_content_inner2,
+    .guide_content.load_content_inner .lc-content-outer,
+    .guide_content.load_content_inner .lc-content-inner,
+    .guide_content.load_content_inner .lc-content-inner .pg-modal {
+        height: 100%;
+    }
+    .guide_content.load_content_inner .lc-content-inner .pg-modal {
+        height: 100%;
+        /*overflow: auto;*/
+    }
+    .guide_content.load_content_inner .lc-content-inner {
+        border: 1px solid #ccc;
+    }
+    .guide_content .load_content_inner2 {
+        max-width: 420px;
+        margin: 0 auto;
+    }
+    .guide_content h1 {
+        font-size: 18px;
+    }
+</style>
+<a href="javascript:;" id="guide-btn" class="top-menu-item" onclick="{% helper start.setAnalytics('guide', 'learning_hat') %}">
+    <i class="fa fa-graduation-cap"></i>
+</a>
+<script>
+    $(function() {
+        loadScripts(
+                "{% helper utils.jscript_by_theme('start', 'guide.js', 'path', 'flatty') %}",
+                function () {
+                    guideObj = new guide({
+                    guide:{{ guide }},
+                    step:{{ step }},
+                    autoshow: {% if autoshow %}true{% else %}false{% endif %},
+                    labelOf: '{% helper lang.l('text_of', 'start') %}',
+                    labelSkip: '{% helper lang.l('btn_skip', 'start') %}',
+                    labelNext: '{% helper lang.l('btn_next', 'start') %}',
+                    labelBuy: '{% helper lang.l('btn_buy', 'start') %}',
+                    callbackShow: function() {
+                        $('#guide-skip').on('click', function () {
+                            {% helper start.setAnalytics('guide', 'learning_close') %}
+                        });
+                        $('#guide-next').on('click', function () {
+                            {% helper start.setAnalytics('guide', 'learning_next') %}
+                        });
+                    }
+                    });
+                },
+            ['guideObj'],
+            {async: false}
+        );
+        });
+</script>

@@ -1,0 +1,276 @@
+[15-Nov-2022 08:49:40 UTC] PHP Fatal error:  Uncaught TypeError: floor(): Argument #1 ($num) must be of type int|float, string given in /home/tenyj8xke3ou/public_html/system/libraries/Loader.php:60
+Stack trace:
+#0 /home/tenyj8xke3ou/public_html/system/libraries/Loader.php(60): floor()
+#1 /home/tenyj8xke3ou/public_html/system/codeigniter/Common.php(135): CI_Loader->__construct()
+#2 /home/tenyj8xke3ou/public_html/system/libraries/Controller.php(275): load_class()
+#3 /home/tenyj8xke3ou/public_html/system/libraries/Controller.php(62): Controller->_ci_initialize()
+#4 /home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php(206): Controller->__construct()
+#5 /home/tenyj8xke3ou/public_html/index.php(134): require_once('/home/tenyj8xke...')
+#6 {main}
+  thrown in /home/tenyj8xke3ou/public_html/system/libraries/Loader.php on line 60
+[15-Nov-2022 08:49:42 UTC] PHP Warning:  session_start(): Failed to decode session object. Session has been destroyed in /home/tenyj8xke3ou/public_html/index.php on line 4
+[15-Nov-2022 08:49:42 UTC] PHP Fatal error:  Uncaught TypeError: floor(): Argument #1 ($num) must be of type int|float, string given in /home/tenyj8xke3ou/public_html/system/libraries/Loader.php:60
+Stack trace:
+#0 /home/tenyj8xke3ou/public_html/system/libraries/Loader.php(60): floor()
+#1 /home/tenyj8xke3ou/public_html/system/codeigniter/Common.php(135): CI_Loader->__construct()
+#2 /home/tenyj8xke3ou/public_html/system/libraries/Controller.php(275): load_class()
+#3 /home/tenyj8xke3ou/public_html/system/libraries/Controller.php(62): Controller->_ci_initialize()
+#4 /home/tenyj8xke3ou/public_html/application/modules/install/controllers/AdminInstall.php(74): Controller->__construct()
+#5 /home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php(252): Pg\modules\install\controllers\AdminInstall->__construct()
+#6 /home/tenyj8xke3ou/public_html/index.php(134): require_once('/home/tenyj8xke...')
+#7 {main}
+  thrown in /home/tenyj8xke3ou/public_html/system/libraries/Loader.php on line 60
+[15-Nov-2022 08:51:33 UTC] PHP Deprecated:  Optional parameter $module_gid declared before required parameter $action is implicitly treated as a required parameter in /home/tenyj8xke3ou/public_html/application/modules/install/models/InstallModel.php on line 1293
+[15-Nov-2022 08:52:41 UTC] PHP Deprecated:  Optional parameter $module_gid declared before required parameter $action is implicitly treated as a required parameter in /home/tenyj8xke3ou/public_html/application/modules/install/models/InstallModel.php on line 1293
+[15-Nov-2022 08:52:55 UTC] PHP Deprecated:  Optional parameter $module_gid declared before required parameter $action is implicitly treated as a required parameter in /home/tenyj8xke3ou/public_html/application/modules/install/models/InstallModel.php on line 1293
+[15-Nov-2022 08:53:47 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'pg_theme' for key 'model' in /home/tenyj8xke3ou/public_html/vendor/robmorgan/phinx/src/Phinx/Db/Adapter/PdoAdapter.php:335
+Stack trace:
+#0 /home/tenyj8xke3ou/public_html/vendor/robmorgan/phinx/src/Phinx/Db/Adapter/PdoAdapter.php(335): PDOStatement->execute(Array)
+#1 /home/tenyj8xke3ou/public_html/vendor/robmorgan/phinx/src/Phinx/Db/Adapter/AdapterWrapper.php(180): Phinx\Db\Adapter\PdoAdapter->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#2 /home/tenyj8xke3ou/public_html/vendor/robmorgan/phinx/src/Phinx/Db/Adapter/TimedOutputAdapter.php(102): Phinx\Db\Adapter\AdapterWrapper->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#3 /home/tenyj8xke3ou/public_html/vendor/robmorgan/phinx/src/Phinx/Db/Table.php(652): Phinx\Db\Adapter\TimedOutputAdapter->bulkinsert(Object(Phinx\Db\Table\Table), Array)
+#4 /home/tenyj8xke3ou/public_html/application/modules/install/install/db/seeds/InstallMainSeeder.php(28): Phinx\Db\Table->saveD in /home/tenyj8xke3ou/public_html/vendor/robmorgan/phinx/src/Phinx/Db/Adapter/PdoAdapter.php on line 335
+[15-Nov-2022 09:03:19 UTC] PHP Fatal error:  Allowed memory size of 419430400 bytes exhausted (tried to allocate 167936 bytes) in /home/tenyj8xke3ou/public_html/application/libraries/PG_Exceptions.php on line 52
+[15-Nov-2022 09:07:09 UTC] PHP Fatal error:  Allowed memory size of 419430400 bytes exhausted (tried to allocate 167936 bytes) in /home/tenyj8xke3ou/public_html/system/database/drivers/pdo/pdo_driver.php on line 0
+[15-Nov-2022 09:07:22 UTC] PHP Fatal error:  Allowed memory size of 419430400 bytes exhausted (tried to allocate 167936 bytes) in /home/tenyj8xke3ou/public_html/application/libraries/PG_Exceptions.php on line 52
+[15-Nov-2022 09:07:32 UTC] PHP Fatal error:  Allowed memory size of 419430400 bytes exhausted (tried to allocate 262144 bytes) in /home/tenyj8xke3ou/public_html/vendor/twig/twig/src/Template.php on line 453
+[25-Nov-2022 09:17:50 UTC] PHP Fatal error:  Uncaught TypeError: Return value of Pg\modules\access_permissions\models\AccessPermissionsModel::isAccessGroups() must be of the type bool, null returned in /home/tenyj8xke3ou/public_html/application/modules/access_permissions/models/AccessPermissionsModel.php:754
+Stack trace:
+#0 /home/tenyj8xke3ou/public_html/application/modules/access_permissions/helpers/AccessPermissionsHelper.php(358): Pg\modules\access_permissions\models\AccessPermissionsModel->isAccessGroups(Array)
+#1 /home/tenyj8xke3ou/public_html/temp/twig/compiled/8a/8a6747d36ce2e85982e4bd94a2e7225a76353a3858af83a5dbf8f8d1efbbf695.php(164): Pg\modules\access_permissions\helpers\isModule()
+#2 /home/tenyj8xke3ou/public_html/vendor/twig/twig/src/Template.php(453): __TwigTemplate_486d0ef8796b16f563b97027ed44d882956f24baae823208190837d3531ca842->doDisplay(Array, Array)
+#3 /home/tenyj8xke3ou/public_html/vendor/twig/twig/src/Template.php(420): Twig\Template->displayWithErrorHandling(Array, Array)
+#4 /home/tenyj8xke3ou/public_html/vendor/twig/twig/src/Templa in /home/tenyj8xke3ou/public_html/application/modules/access_permissions/models/AccessPermissionsModel.php on line 754
+[17-Dec-2022 16:20:09 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/tenyj8xke3ou/public_html/system/codeigniter/Common.php on line 51
+[17-Dec-2022 16:20:11 UTC] PHP Parse error:  syntax error, unexpected ':', expecting '{' in /home/tenyj8xke3ou/public_html/system/codeigniter/Common.php on line 51
+[17-Dec-2022 23:53:45 UTC] PHP Notice:  Undefined index: url in /home/tenyj8xke3ou/public_html/sucuri-version-check.php on line 2262
+[17-Dec-2022 23:53:49 UTC] PHP Notice:  Undefined index: url in /home/tenyj8xke3ou/public_html/sucuri-version-check.php on line 2262
+[17-Dec-2022 23:53:53 UTC] PHP Notice:  Undefined index: url in /home/tenyj8xke3ou/public_html/sucuri-version-check.php on line 2262
+[17-Dec-2022 23:54:11 UTC] PHP Notice:  Undefined index: url in /home/tenyj8xke3ou/public_html/sucuri-version-check.php on line 2262
+[17-Dec-2022 23:54:16 GMT] PHP Warning:  require_once(wp-load.php): failed to open stream: No such file or directory in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 29306
+[17-Dec-2022 23:54:16 GMT] PHP Fatal error:  require_once(): Failed opening required 'wp-load.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 29306
+[17-Dec-2022 23:59:52 GMT] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 38906
+[17-Dec-2022 23:59:52 GMT] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 38906
+[17-Dec-2022 23:59:52 GMT] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 38906
+[17-Dec-2022 23:59:52 GMT] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 38906
+[17-Dec-2022 23:59:57 GMT] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 38906
+[18-Dec-2022 00:00:38 GMT] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 38906
+[18-Dec-2022 00:00:40 GMT] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 38906
+[18-Dec-2022 00:01:34 GMT] PHP Warning:  fileowner(): stat failed for wp-admin in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 37153
+[18-Dec-2022 00:01:34 GMT] PHP Warning:  fileowner(): stat failed for /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 37153
+[18-Dec-2022 00:07:13 GMT] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 38906
+[18-Dec-2022 00:07:13 GMT] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 38906
+[18-Dec-2022 00:07:13 GMT] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 38906
+[18-Dec-2022 00:07:14 GMT] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 38906
+[18-Dec-2022 00:07:17 GMT] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 38906
+[18-Dec-2022 00:08:22 GMT] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 38906
+[18-Dec-2022 00:08:24 GMT] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 38906
+[18-Dec-2022 00:34:52 GMT] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code:13) in /home/tenyj8xke3ou/public_html/sucuri-cleanup.php(69) : eval()'d code(111) : eval()'d code(45987) : eval()'d code on line 37967
+[26-Dec-2022 15:46:45 UTC] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/tenyj8xke3ou/public_html/aadm.php on line 1180
+[26-Dec-2022 15:46:45 UTC] PHP Warning:  session_cache_limiter(): Cannot change cache limiter when headers already sent in /home/tenyj8xke3ou/public_html/aadm.php on line 170
+[26-Dec-2022 15:46:45 UTC] PHP Warning:  session_name(): Cannot change session name when headers already sent in /home/tenyj8xke3ou/public_html/aadm.php on line 170
+[26-Dec-2022 15:46:45 UTC] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when headers already sent in /home/tenyj8xke3ou/public_html/aadm.php on line 170
+[26-Dec-2022 15:46:45 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/tenyj8xke3ou/public_html/aadm.php on line 170
+[26-Dec-2022 15:46:45 UTC] PHP Warning:  Use of undefined constant SID - assumed 'SID' (this will throw an Error in a future version of PHP) in /home/tenyj8xke3ou/public_html/aadm.php on line 51
+[26-Dec-2022 15:46:45 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tenyj8xke3ou/public_html/aadm.php:1180) in /home/tenyj8xke3ou/public_html/aadm.php on line 71
+[26-Dec-2022 15:46:45 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tenyj8xke3ou/public_html/aadm.php:1180) in /home/tenyj8xke3ou/public_html/aadm.php on line 1603
+[26-Dec-2022 15:46:45 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tenyj8xke3ou/public_html/aadm.php:1180) in /home/tenyj8xke3ou/public_html/aadm.php on line 1603
+[26-Dec-2022 15:46:45 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tenyj8xke3ou/public_html/aadm.php:1180) in /home/tenyj8xke3ou/public_html/aadm.php on line 1603
+[26-Dec-2022 15:46:45 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tenyj8xke3ou/public_html/aadm.php:1180) in /home/tenyj8xke3ou/public_html/aadm.php on line 1603
+[26-Dec-2022 15:46:45 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tenyj8xke3ou/public_html/aadm.php:1180) in /home/tenyj8xke3ou/public_html/aadm.php on line 1603
+[26-Dec-2022 15:46:45 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tenyj8xke3ou/public_html/aadm.php:1180) in /home/tenyj8xke3ou/public_html/aadm.php on line 1603
+[26-Dec-2022 15:46:45 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tenyj8xke3ou/public_html/aadm.php:1180) in /home/tenyj8xke3ou/public_html/aadm.php on line 1604
+[27-Dec-2022 08:18:05 UTC] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/tenyj8xke3ou/public_html/aadm.php on line 1180
+[27-Dec-2022 08:18:05 UTC] PHP Warning:  session_cache_limiter(): Cannot change cache limiter when headers already sent in /home/tenyj8xke3ou/public_html/aadm.php on line 170
+[27-Dec-2022 08:18:05 UTC] PHP Warning:  session_name(): Cannot change session name when headers already sent in /home/tenyj8xke3ou/public_html/aadm.php on line 170
+[27-Dec-2022 08:18:05 UTC] PHP Warning:  session_set_cookie_params(): Cannot change session cookie parameters when headers already sent in /home/tenyj8xke3ou/public_html/aadm.php on line 170
+[27-Dec-2022 08:18:05 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/tenyj8xke3ou/public_html/aadm.php on line 170
+[27-Dec-2022 08:18:05 UTC] PHP Warning:  Use of undefined constant SID - assumed 'SID' (this will throw an Error in a future version of PHP) in /home/tenyj8xke3ou/public_html/aadm.php on line 51
+[27-Dec-2022 08:18:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tenyj8xke3ou/public_html/aadm.php:1180) in /home/tenyj8xke3ou/public_html/aadm.php on line 71
+[27-Dec-2022 08:18:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tenyj8xke3ou/public_html/aadm.php:1180) in /home/tenyj8xke3ou/public_html/aadm.php on line 1603
+[27-Dec-2022 08:18:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tenyj8xke3ou/public_html/aadm.php:1180) in /home/tenyj8xke3ou/public_html/aadm.php on line 1603
+[27-Dec-2022 08:18:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tenyj8xke3ou/public_html/aadm.php:1180) in /home/tenyj8xke3ou/public_html/aadm.php on line 1603
+[27-Dec-2022 08:18:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tenyj8xke3ou/public_html/aadm.php:1180) in /home/tenyj8xke3ou/public_html/aadm.php on line 1603
+[27-Dec-2022 08:18:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tenyj8xke3ou/public_html/aadm.php:1180) in /home/tenyj8xke3ou/public_html/aadm.php on line 1603
+[27-Dec-2022 08:18:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tenyj8xke3ou/public_html/aadm.php:1180) in /home/tenyj8xke3ou/public_html/aadm.php on line 1603
+[27-Dec-2022 08:18:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/tenyj8xke3ou/public_html/aadm.php:1180) in /home/tenyj8xke3ou/public_html/aadm.php on line 1604
+[16-Jan-2023 06:11:51 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:11:51 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:17:54 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:17:54 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:28:29 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:28:29 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:29:04 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:29:04 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:29:52 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:29:52 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:31:36 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:31:36 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:32:54 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:32:54 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:33:18 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:33:18 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:35:03 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:35:03 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:36:35 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:36:35 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:45:51 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:45:51 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:47:54 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:47:54 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:54:48 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:54:48 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:54:49 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:54:49 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:54:52 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:54:52 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:54:54 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:54:54 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:55:55 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:55:55 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:55:57 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:55:57 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:55:58 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:55:58 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:55:59 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:55:59 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:57:35 UTC] PHP Warning:  require_once(/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php): failed to open stream: No such file or directory in /home/mliadov/public_html/index.php on line 134
+[16-Jan-2023 06:57:35 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/tenyj8xke3ou/public_html/system/codeigniter/CodeIgniter.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/mliadov/public_html/index.php on line 134
+[26-Jan-2023 09:51:39 UTC] PHP Fatal error:  Uncaught Error: Undefined constant 'T_DOUBLE_COLON' in /home/mliadov/public_html/vendor/nikic/php-parser/lib/PhpParser/Lexer.php:499
+Stack trace:
+#0 /home/mliadov/public_html/vendor/nikic/php-parser/lib/PhpParser/Lexer.php(40): PhpParser\Lexer->createTokenMap()
+#1 /home/mliadov/public_html/vendor/goaop/parser-reflection/src/ReflectionEngine.php(66): PhpParser\Lexer->__construct(Array)
+#2 /home/mliadov/public_html/vendor/goaop/parser-reflection/src/bootstrap.php(18): Go\ParserReflection\ReflectionEngine::init(Object(Go\ParserReflection\Locator\ComposerLocator))
+#3 /home/mliadov/public_html/vendor/composer/autoload_real.php(71): require('/home/mliadov/p...')
+#4 /home/mliadov/public_html/vendor/composer/autoload_real.php(61): composerRequire3e0cb6ad6a1e05254a63aa5a41f8e7cd('950e8c5ec01dc90...', '/home/mliadov/p...')
+#5 /home/mliadov/public_html/vendor/autoload.php(7): ComposerAutoloaderInit3e0cb6ad6a1e05254a63aa5a41f8e7cd::getLoader()
+#6 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(68): require(' in /home/mliadov/public_html/vendor/nikic/php-parser/lib/PhpParser/Lexer.php on line 499
+[26-Jan-2023 09:51:44 UTC] PHP Warning:  file_get_contents(/tmp/adminer.version): failed to open stream: Permission denied in /home/mliadov/public_html/aadm.php on line 1581
+[31-Jan-2023 07:56:39 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 4096 bytes) in /home/mliadov/public_html/system/database/drivers/pdo/pdo_driver.php on line 188
+[31-Jan-2023 07:57:15 UTC] PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 8192 bytes) in /home/mliadov/public_html/application/modules/users/models/UsersModel.php on line 1788
+[27-Apr-2023 15:17:31 UTC] PHP Fatal error:  Uncaught Twig\Error\SyntaxError: Unexpected "index_users" tag (expecting closing tag for the "block" tag defined near line 5). in /home/mliadov/public_html/application/modules/start/views/flatty/index_pleasure.twig:42
+Stack trace:
+#0 /home/mliadov/public_html/vendor/twig/twig/src/TokenParser/BlockTokenParser.php(47): Twig\Parser->subparse(Array, true)
+#1 /home/mliadov/public_html/vendor/twig/twig/src/Parser.php(209): Twig\TokenParser\BlockTokenParser->parse(Object(Twig\Token))
+#2 /home/mliadov/public_html/vendor/twig/twig/src/Parser.php(122): Twig\Parser->subparse(NULL, false)
+#3 /home/mliadov/public_html/vendor/twig/twig/src/Environment.php(735): Twig\Parser->parse(Object(Twig\TokenStream))
+#4 /home/mliadov/public_html/vendor/twig/twig/src/Environment.php(793): Twig\Environment->parse(Object(Twig\TokenStream))
+#5 /home/mliadov/public_html/vendor/twig/twig/src/Environment.php(482): Twig\Environment->compileSource(Object(Twig\Source))
+#6 /home/mliadov/public_html/vendor/twig/twig/src/Environment.php(445): Twig in /home/mliadov/public_html/application/modules/start/views/flatty/index_pleasure.twig on line 42
+[22-Jun-2023 10:47:04 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Pg\modules\access_permissions\models\AccessPermissionsGroupsModel::formatGroupsForServices() must be of the type array, null given, called in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 118 and defined in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php:211
+Stack trace:
+#0 /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php(118): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->formatGroupsForServices(NULL, Array)
+#1 /home/mliadov/public_html/application/modules/access_permissions/controllers/AdminAccessPermissions.php(489): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->getActivePaidGroups()
+#2 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(283): Pg\modules\access_permissions\controllers\AdminAccessPermissions->membershipChange()
+#3 /home/mli in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 211
+[22-Jun-2023 10:49:41 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Pg\modules\access_permissions\models\AccessPermissionsGroupsModel::formatGroupsForServices() must be of the type array, null given, called in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 118 and defined in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php:211
+Stack trace:
+#0 /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php(118): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->formatGroupsForServices(NULL, Array)
+#1 /home/mliadov/public_html/application/modules/access_permissions/controllers/AdminAccessPermissions.php(489): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->getActivePaidGroups()
+#2 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(283): Pg\modules\access_permissions\controllers\AdminAccessPermissions->membershipChange()
+#3 /home/mli in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 211
+[22-Jun-2023 11:00:52 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Pg\modules\access_permissions\models\AccessPermissionsGroupsModel::formatGroupsForServices() must be of the type array, null given, called in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 118 and defined in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php:211
+Stack trace:
+#0 /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php(118): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->formatGroupsForServices(NULL, Array)
+#1 /home/mliadov/public_html/application/modules/access_permissions/controllers/AdminAccessPermissions.php(489): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->getActivePaidGroups()
+#2 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(283): Pg\modules\access_permissions\controllers\AdminAccessPermissions->membershipChange()
+#3 /home/mli in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 211
+[22-Jun-2023 11:02:07 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Pg\modules\access_permissions\models\AccessPermissionsGroupsModel::formatGroupsForServices() must be of the type array, null given, called in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 118 and defined in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php:211
+Stack trace:
+#0 /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php(118): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->formatGroupsForServices(NULL, Array)
+#1 /home/mliadov/public_html/application/modules/access_permissions/controllers/AdminAccessPermissions.php(489): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->getActivePaidGroups()
+#2 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(283): Pg\modules\access_permissions\controllers\AdminAccessPermissions->membershipChange()
+#3 /home/mli in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 211
+[22-Jun-2023 11:02:43 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Pg\modules\access_permissions\models\AccessPermissionsGroupsModel::formatGroupsForServices() must be of the type array, null given, called in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 118 and defined in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php:211
+Stack trace:
+#0 /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php(118): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->formatGroupsForServices(NULL, Array)
+#1 /home/mliadov/public_html/application/modules/access_permissions/controllers/AdminAccessPermissions.php(489): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->getActivePaidGroups()
+#2 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(283): Pg\modules\access_permissions\controllers\AdminAccessPermissions->membershipChange()
+#3 /home/mli in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 211
+[22-Jun-2023 11:22:54 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Pg\modules\access_permissions\models\AccessPermissionsGroupsModel::formatGroupsForServices() must be of the type array, null given, called in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 118 and defined in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php:211
+Stack trace:
+#0 /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php(118): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->formatGroupsForServices(NULL, Array)
+#1 /home/mliadov/public_html/application/modules/access_permissions/controllers/AdminAccessPermissions.php(489): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->getActivePaidGroups()
+#2 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(283): Pg\modules\access_permissions\controllers\AdminAccessPermissions->membershipChange()
+#3 /home/mli in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 211
+[23-Jun-2023 08:21:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method CI_DB_pdo_driver::where_sql() in /home/mliadov/public_html/application/modules/users/models/UsersImportBaseModel.php:335
+Stack trace:
+#0 [internal function]: Pg\modules\users\models\UsersImportBaseModel->updateLogo()
+#1 /home/mliadov/public_html/application/modules/cronjob/models/CronjobModel.php(374): call_user_func_array(Array, Array)
+#2 /home/mliadov/public_html/application/modules/cronjob/controllers/AdminCronjob.php(173): Pg\modules\cronjob\models\CronjobModel->run('33')
+#3 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(283): Pg\modules\cronjob\controllers\AdminCronjob->run('33')
+#4 /home/mliadov/public_html/index.php(134): require_once('/home/mliadov/p...')
+#5 {main}
+  thrown in /home/mliadov/public_html/application/modules/users/models/UsersImportBaseModel.php on line 335
+[23-Jun-2023 08:22:17 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method CI_DB_pdo_driver::where_sql() in /home/mliadov/public_html/application/modules/users/models/UsersImportBaseModel.php:335
+Stack trace:
+#0 [internal function]: Pg\modules\users\models\UsersImportBaseModel->updateLogo()
+#1 /home/mliadov/public_html/application/modules/cronjob/models/CronjobModel.php(374): call_user_func_array(Array, Array)
+#2 /home/mliadov/public_html/application/modules/cronjob/controllers/AdminCronjob.php(173): Pg\modules\cronjob\models\CronjobModel->run('33')
+#3 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(283): Pg\modules\cronjob\controllers\AdminCronjob->run('33')
+#4 /home/mliadov/public_html/index.php(134): require_once('/home/mliadov/p...')
+#5 {main}
+  thrown in /home/mliadov/public_html/application/modules/users/models/UsersImportBaseModel.php on line 335
+[23-Jun-2023 08:22:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method CI_DB_pdo_driver::where_sql() in /home/mliadov/public_html/application/modules/users/models/UsersImportBaseModel.php:335
+Stack trace:
+#0 [internal function]: Pg\modules\users\models\UsersImportBaseModel->updateLogo()
+#1 /home/mliadov/public_html/application/modules/cronjob/models/CronjobModel.php(374): call_user_func_array(Array, Array)
+#2 /home/mliadov/public_html/application/modules/cronjob/controllers/AdminCronjob.php(173): Pg\modules\cronjob\models\CronjobModel->run('33')
+#3 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(283): Pg\modules\cronjob\controllers\AdminCronjob->run('33')
+#4 /home/mliadov/public_html/index.php(134): require_once('/home/mliadov/p...')
+#5 {main}
+  thrown in /home/mliadov/public_html/application/modules/users/models/UsersImportBaseModel.php on line 335
+[23-Jun-2023 08:36:39 UTC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in /home/mliadov/public_html/application/modules/users/models/UsersImportBaseModel.php on line 359
+[31-Oct-2023 08:00:14 UTC] PHP Warning:  file_get_contents(/tmp/adminer.version): failed to open stream: Permission denied in /home/mliadov/public_html/aadm.php on line 1581
+[13-Nov-2023 06:18:04 UTC] PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 203522048 bytes) in /home/mliadov/public_html/application/libraries/PG_Exceptions.php on line 52
+[13-Nov-2023 06:24:38 UTC] PHP Fatal error:  Uncaught TypeError: strtolower() expects parameter 1 to be string, null given in /home/mliadov/public_html/application/modules/cronjob/models/CronjobModel.php:327
+Stack trace:
+#0 /home/mliadov/public_html/application/modules/cronjob/models/CronjobModel.php(327): strtolower(NULL)
+#1 /home/mliadov/public_html/application/modules/cronjob/models/CronjobModel.php(364): Pg\modules\cronjob\models\CronjobModel->isMethodCallable(NULL, NULL, NULL)
+#2 /home/mliadov/public_html/application/modules/cronjob/controllers/AdminCronjob.php(173): Pg\modules\cronjob\models\CronjobModel->run('33')
+#3 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(283): Pg\modules\cronjob\controllers\AdminCronjob->run('33')
+#4 /home/mliadov/public_html/index.php(134): require_once('/home/mliadov/p...')
+#5 {main}
+  thrown in /home/mliadov/public_html/application/modules/cronjob/models/CronjobModel.php on line 327
+[13-Nov-2023 06:26:28 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Pg\modules\access_permissions\models\AccessPermissionsGroupsModel::formatGroupsForServices() must be of the type array, null given, called in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 118 and defined in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php:211
+Stack trace:
+#0 /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php(118): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->formatGroupsForServices(NULL, Array)
+#1 /home/mliadov/public_html/application/modules/access_permissions/controllers/AdminAccessPermissions.php(489): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->getActivePaidGroups()
+#2 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(283): Pg\modules\access_permissions\controllers\AdminAccessPermissions->membershipChange()
+#3 /home/mli in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 211
+[13-Nov-2023 06:26:57 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Pg\modules\access_permissions\models\AccessPermissionsGroupsModel::formatGroupsForServices() must be of the type array, null given, called in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 118 and defined in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php:211
+Stack trace:
+#0 /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php(118): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->formatGroupsForServices(NULL, Array)
+#1 /home/mliadov/public_html/application/modules/access_permissions/controllers/AdminAccessPermissions.php(489): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->getActivePaidGroups()
+#2 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(283): Pg\modules\access_permissions\controllers\AdminAccessPermissions->membershipChange()
+#3 /home/mli in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 211
+[13-Nov-2023 06:27:36 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Pg\modules\access_permissions\models\AccessPermissionsGroupsModel::formatGroupsForServices() must be of the type array, null given, called in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 118 and defined in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php:211
+Stack trace:
+#0 /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php(118): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->formatGroupsForServices(NULL, Array)
+#1 /home/mliadov/public_html/application/modules/access_permissions/controllers/AdminAccessPermissions.php(489): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->getActivePaidGroups()
+#2 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(283): Pg\modules\access_permissions\controllers\AdminAccessPermissions->membershipChange()
+#3 /home/mli in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 211
+[13-Nov-2023 06:27:48 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Pg\modules\access_permissions\models\AccessPermissionsGroupsModel::formatGroupsForServices() must be of the type array, null given, called in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 118 and defined in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php:211
+Stack trace:
+#0 /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php(118): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->formatGroupsForServices(NULL, Array)
+#1 /home/mliadov/public_html/application/modules/access_permissions/controllers/AdminAccessPermissions.php(489): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->getActivePaidGroups()
+#2 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(283): Pg\modules\access_permissions\controllers\AdminAccessPermissions->membershipChange()
+#3 /home/mli in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 211
+[13-Nov-2023 06:28:11 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Pg\modules\access_permissions\models\AccessPermissionsGroupsModel::formatGroupsForServices() must be of the type array, null given, called in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 118 and defined in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php:211
+Stack trace:
+#0 /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php(118): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->formatGroupsForServices(NULL, Array)
+#1 /home/mliadov/public_html/application/modules/access_permissions/controllers/AdminAccessPermissions.php(489): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->getActivePaidGroups()
+#2 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(283): Pg\modules\access_permissions\controllers\AdminAccessPermissions->membershipChange()
+#3 /home/mli in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 211
+[13-Nov-2023 06:30:53 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Pg\modules\access_permissions\models\AccessPermissionsGroupsModel::formatGroupsForServices() must be of the type array, null given, called in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 118 and defined in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php:211
+Stack trace:
+#0 /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php(118): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->formatGroupsForServices(NULL, Array)
+#1 /home/mliadov/public_html/application/modules/access_permissions/controllers/AdminAccessPermissions.php(489): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->getActivePaidGroups()
+#2 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(283): Pg\modules\access_permissions\controllers\AdminAccessPermissions->membershipChange()
+#3 /home/mli in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 211
+[13-Nov-2023 06:31:42 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Pg\modules\access_permissions\models\AccessPermissionsGroupsModel::formatGroupsForServices() must be of the type array, null given, called in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 118 and defined in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php:211
+Stack trace:
+#0 /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php(118): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->formatGroupsForServices(NULL, Array)
+#1 /home/mliadov/public_html/application/modules/access_permissions/controllers/AdminAccessPermissions.php(489): Pg\modules\access_permissions\models\AccessPermissionsGroupsModel->getActivePaidGroups()
+#2 /home/mliadov/public_html/system/codeigniter/CodeIgniter.php(283): Pg\modules\access_permissions\controllers\AdminAccessPermissions->membershipChange()
+#3 /home/mli in /home/mliadov/public_html/application/modules/access_permissions/models/AccessPermissionsGroupsModel.php on line 211

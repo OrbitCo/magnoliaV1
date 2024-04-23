@@ -1,0 +1,59 @@
+<span class="user-menu-item">
+    <dt>
+        <a id="btn-wink-{{ wink_button_rand }}"
+           class="btn-wink{% if wink_back %}-back{% endif %} link-r-margin {% if is_pending %}link-disabled{% endif %}"
+           data-user-id="{{ partner_id }}" data-is-pending="{{ is_pending }}"
+           data-is-new="{{ is_new }}" title="{% spaceless %}
+           {% if wink_back %}
+               {% helper lang.l('wink_back', 'winks') %}
+           {% else %}
+               {% helper lang.l('wink', 'winks') %}
+           {% endif %}{% endspaceless %}" href="javascript:void(0);">
+
+               {% if wink_back %}
+                   <i class="far fa-eye"></i>
+               {% else %}
+                   <i class="far fa-eye"></i>
+               {% endif %}
+           </a>
+        </dt>
+        <dd>
+            <a onclick="{% helper start.setAnalytics('user_profile', 'btn_wink') %}" id="btn-wink-{{ wink_button_rand }}"
+               class="btn-wink{% if wink_back %}-back{% endif %} link-r-margin {% if is_pending %}link-disabled{% endif %}"
+               data-user-id="{{ partner_id }}" data-is-pending="{{ is_pending }}"
+               data-is-new="{{ is_new }}" title="{% spaceless %}
+               {% if wink_back %}
+                   {% helper lang.l('wink_back', 'winks') %}
+               {% else %}
+                   {% helper lang.l('wink', 'winks') %}
+               {% endif %}{% endspaceless %}" href="javascript:void(0);">
+
+                   {% if wink_back %}
+                       {% helper lang.l('wink_back', 'winks') %}
+                   {% else %}
+                       {% helper lang.l('wink', 'winks') %}
+                   {% endif %}
+               </a>
+            </dd>
+        </span>
+        <script>
+            $(function () {
+            loadScripts(
+            ["{% helper utils.jscript('winks', 'winks.js', 'path') %}"],
+                    function () {
+                    winksObj = new winks({
+                    siteUrl: site_url,
+                            titleWink: "{% helper lang.l('wink', 'winks', '', 'js')         %}",
+                            titleWinkBack: "{% helper lang.l('wink_back', 'winks', '', 'js')         %}",
+                            errIsPending: "{% helper lang.l('error_is_pending', 'winks', '', 'js')         %}",
+                            succIgnored: "{% helper lang.l('msg_ignored', 'winks', '', 'js')         %}",
+                            succWinked: "{% helper lang.l('msg_winked', 'winks', '', 'js')         %}",
+                            succResponded: "{% helper lang.l('msg_responded', 'winks', '', 'js')         %}",
+                            wink_button_rand: "{{ wink_button_rand }}"
+                    });
+                    },
+                    'winksObj',
+                    {async: false}
+                    );
+            });
+        </script>

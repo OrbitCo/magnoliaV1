@@ -1,0 +1,313 @@
+{% include '@app/header.twig' %}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                {% helper menu.get_admin_level1_menu('admin_moderation_menu') %}
+            </ul>
+        </div>
+        <div class="x_title">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div id="menu" class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default{% if type_name == 'all' %} active{% endif %}"
+                           data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"
+                           onclick="document.location.href='{{ site_url }}admin/moderation'">
+                        <input type="radio" name="looking_user_type"{% if type_name == 'all' %} selected{% endif %}>
+                        {% helper lang.l('all_objects', 'moderation') %}
+                    </label>
+                    {% for item in moder_types %}
+                        {% if item.mtype >= 0 %}
+                            <label id="check_link" class="btn btn-default{% if type_name == item.name %} active{% endif %}"
+                                   data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"
+                                   onclick="document.location.href='{{ site_url }}admin/moderation/index/{{ item.name }}'">
+                                <input type="radio" name="looking_user_type"{% if type_name == item.name %} selected{% endif %}>
+                                {% helper lang.l('mtype_'~item.name, 'moderation') %} ({{ item.count }})
+                            </label>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div id="actions" class="hide">
+                <button type="button" class="btn btn-primary" id="btn_mass_approve">
+                    {% helper lang.l('approve_object','moderation') %}
+                </button>
+            </div>
+            <table id="users" class="table table-striped responsive-utilities jambo_table">
+                <thead>
+                <tr class="headings">
+                    <th class="column-group"><input type="checkbox" id="check-all" class="flat"></th>
+                    <th class="column-title text-center">{% helper lang.l('field_date_add', 'moderation') %}</th>
+                    {% if type_name == 'all' %}
+                        <th class="column-title text-center">{% helper lang.l('moder_object_type', 'moderation') %}</th>
+                    {% endif %}
+                    <th class="column-title">{% helper lang.l('moder_object', 'moderation') %}</th>
+                    <th class="column-title">&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in list %}
+                    <tr class="even pointer">
+                        <td class="text-center">
+                            <input type="checkbox" class="tableflat grouping" value="{{ item.id }}" data="table_records">
+                        </td>
+                        <td class="text-center">{% helper date_format.tpl_date_format(item.date_add, date_format_st.date_literal) %}</td>
+                        {% if type_name == 'all' %}
+                            <td class="text-center" style="text-transform: capitalize">
+                                {% helper lang.l('mtype_' ~ item.type_name, 'moderation') %}
+                            </td>
+                        {% endif %}
+                        <td>
+                            {{ item.html }}
+                        </td>
+                        <td class="icons"  {% if item.type_name == 'media_content' %} id="media_{{item.user_data.id}}" {% endif %}>
+
+                            {#TODO (nsavanaev) переписать весь блок с действиями#}
+                            <div class="btn-group">
+                                <button onclick="{% helper start.setAnalytics('moderation', 'btn_approve') %}document.location.href='{{site_url}}admin/moderation/approve/{{item.id}}/'"
+                                        type="button" class="btn btn-primary">
+                                    {% helper lang.l('approve_object','moderation') %}
+                                </button>
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li onclick="{% helper start.setAnalytics('moderation', 'btn_approve') %}">
+                                        <a href="{{site_url}}admin/moderation/approve/{{item.id}}/">
+                                            {% helper lang.l('approve_object','moderation') %}
+                                        </a>
+                                    </li>
+                                    {% if item.avail_decline %}
+                                        {% if item.type_name == 'network_data' %}
+                                            <li onclick="{% helper start.setAnalytics('moderation', 'btn_decline') %}">
+                                                <a data-title="{% helper lang.l('decline_object','moderation') %}" href='{{site_url}}admin/moderation/decline/{{item.id}}/'>
+                                                    {% helper lang.l('decline_object','moderation') %}
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li class="moderation-action-js" onclick="{% helper start.setAnalytics('moderation', 'btn_decline') %}">
+                                                <a data-title="{% helper lang.l('decline_object','moderation') %}" href="#" data-href='{{site_url}}admin/moderation/decline/{{item.id}}/'>
+                                                    {% helper lang.l('decline_object','moderation') %}
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endif %}
+                                    {% if item.view_link %}
+                                        <li>
+                                            <a href="{{ item.view_link }}" target="_blank">
+                                                {% helper lang.l('view_object','moderation') %}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if item.edit_link %}
+                                        <li>
+                                            <a href="{{ item.edit_link }}" target="_blank">
+                                                {% helper lang.l('edit_object','moderation') %}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if item.avail_delete %}
+                                        <li class="moderation-action-js" onclick="{% helper start.setAnalytics('moderation', 'btn_delete') %}">
+                                            <a href="#" data-href="{{ site_url }}admin/moderation/delete_object/{{ item.id }}/"
+                                               onclick="javascript: if(!confirm('{% helper lang.l('note_delete_object', 'moderation', '', 'js') %}')) return false;" data-title="{% helper lang.l('delete_object','moderation') %}">
+                                                {% helper lang.l('delete_object','moderation') %}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if item.mark_adult %}
+                                        <li class="moderation-action-js-adult" onclick="{% helper start.setAnalytics('moderation', 'btn_mark_as_adult') %}">
+                                            <a href="{{ site_url }}admin/moderation/mark_adult_object/{{ item.id }}/" data-title="{% helper lang.l('mark_adult','moderation') %}">
+                                                {% helper lang.l('mark_adult','moderation') %}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if (item.type_name == 'media_content' or item.type_name == 'user_logo') and  item.user_data.upload_gid != 'gallery_video' and item.user_data.upload_gid != 'gallery_audio' %}
+                                        <li class="moderation-action-js-edit" onclick="{% helper start.setAnalytics('moderation', 'btn_edit') %}">
+                                            <a data-click="view-media"   {% if  item.type_name == 'user_logo' %}  id="logo_{{ item.user_data.id }}"  {% endif %}  data-id-media="{{item.user_data.id}}" data-user-id="{{item.user_data.id_owner}}">
+                                                {% helper lang.l('edit_object','moderation') %}
+                                            </a>
+                                        </li>
+
+                                    {% if item.type_name == 'user_logo' %}
+                                        <script>
+                                            $(function () {
+                                                loadScripts(
+                                                    "{% helper utils.jscript('users', '../views/flatty/js/users-avatar.js', 'path') %}",
+                                                    function () {
+                                                        user_avatar_{{ item.user_data.id }} = new UsersAvatar({
+                                                            site_url: site_url,
+                                                            load_avatar_url: 'admin/users/ajax_load_avatar/',
+                                                            recrop_url: 'admin/users/ajax_recrop_avatar/',
+                                                            rotateUrl: 'admin/users/photoRotate/',
+                                                            id_user: '{{ item.user_data.id }}',
+                                                            saveAfterSelect: true,
+                                                            haveAvatar: false,
+                                                            userType: 'admin',
+                                                            photo_id: 'logo_{{ item.user_data.id }}'
+                                                        });
+                                                    },
+                                                    'user_avatar_{{ item.user_data.id }}',
+                                                    {async: false}
+                                                );
+                                            });
+                                        </script>
+                                    {% endif %}
+                                    {% if item.type_name == 'media_content' and  item.user_data.upload_gid != 'gallery_video' and item.user_data.upload_gid != 'gallery_audio' %}
+                                        <script>
+                                            $(function () {
+                                                loadScripts(
+                                                    "{% helper utils.jscript('media', '../views/flatty/js/media.js', 'path') %}",
+                                                    function () {
+                                                        recent_mediagallery = new media({
+                                                            siteUrl: site_url,
+                                                            gallery_name: 'recent_mediagallery',
+                                                            galleryContentPage: 1,
+                                                            idUser: '{{ item.user_data.id_owner }}',
+                                                            all_loaded: 1,
+                                                            post_data: {filter_duplicate: 1},
+                                                            load_on_scroll: false,
+                                                            viewMediaUrl: 'admin/media/ajax_view_media',
+                                                            galleryContentDiv: 'media_{{item.user_data.id}}',
+                                                            direction: 'desc'
+                                                        });
+                                                    },
+                                                    'recent_mediagallery',
+                                                    {async: false}
+                                                );
+                                            });
+                                        </script>
+                                    {% endif %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% include "@app/pagination.twig" %}
+    </div>
+</div>
+
+{% helper utils.jscript('', 'jquery-ui.custom.min.js') %}
+<link href="{{ site_root }}{{ js_folder }}jquery-ui/jquery-ui.custom.css" rel="stylesheet" type="text/css" media="screen" />
+<!-- Datatables -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('input.tableflat').iCheck({
+            checkboxClass: 'icheckbox_flat-green',
+            radioClass: 'iradio_flat-green',
+        });
+    });
+</script>
+<script type="text/javascript">
+    var asInitVals = new Array();
+    $(function () {
+        loadScripts("{% helper utils.jscript('', 'jquery.imgareaselect/jquery.imgareaselect.js', 'path') %}", function () {}, '', {async: false});
+
+        var oTable = $('#users').dataTable({
+            "order": [[1, 'desc']],
+            "oLanguage": {
+                "sSearch": "{% helper lang.l('search_all_column','start') %}:",
+                "sEmptyTable": "{% helper lang.l('no_objects','moderation') %}"
+            },
+            columnDefs: [
+                { type: 'natural-nohtml', targets: 0 }
+            ],
+            "aoColumnDefs": [
+                {
+                    'bSortable': false,
+                    'aTargets': [{% if type_name == 'all' %}0,4{% else %}0,3{% endif %}]
+                } //disables sorting for column one
+            ],
+            'iDisplayLength': 10,
+            "bPaginate": false,
+            "bInfo": false,
+            "dom": 'T<"clear"><"actions">lfrtip'
+        });
+        var actions = $("#actions");
+        $('#users_wrapper').find('.actions').html(actions.html());
+        actions.remove();
+        oTable.fnSort([[1, 'desc']]);
+        $("tfoot input").keyup(function () {
+            /* Filter on the column based on the index of this element's parent <th> */
+            oTable.fnFilter(this.value, $("tfoot th").index($(this).parent()));
+        });
+        $("tfoot input").each(function (i) {
+            asInitVals[i] = this.value;
+        });
+        $("tfoot input").focus(function () {
+            if (this.className == "search_init") {
+                this.className = "";
+                this.value = "";
+            }
+        });
+        $("tfoot input").blur(function (i) {
+            if (this.value == "") {
+                this.className = "search_init";
+                this.value = asInitVals[$("tfoot input").index(this)];
+            }
+        });
+        moderation_block = new loadingContent({
+            loadBlockWidth: '50%',
+            footerButtons: '<a class="btn btn-primary btn-moder-action-js" href="#">{% helper lang.l('btn_confirm','media') %}</a>',
+            closeBtnLabel: '{% helper lang.l('btn_close', 'start') %}'
+
+        });
+        var action = false;
+
+        $('.moderation-action-js').click(function(){
+            moderation_block.show_load_block('<div id="moderation_block">\n\
+            <h3>{% helper lang.ld_header('rejection_reason', 'moderation') %}</h3>\n\
+                <div class="load_content">\n\
+            <div class="form-group"><div>{% for key, reason in rejection_reason.option %}<div class="checkbox"><input type="radio" value="{{key}}" name="rejection_reason" class="flat" id="rejection-reason-{{ key }}" ><label for="rejection-reason-{{ key }}" class="reason-text">{{ reason }}</label></div>{% endfor %}</div></div></div><div class="alert alert-danger hide">{% helper lang.l('error_empty_reason','users') %}</div></div>');
+            action = $(this).find('a').data('href');
+            var title = $(this).find('a').data('title');
+            $('.btn-moder-action-js').text(title).attr('href', action);
+        });
+
+        $(document)
+            .off('ifChanged', 'input[name="rejection_reason"]').on('ifChanged', 'input[name="rejection_reason"]', function () {
+            var key = $(this).val();
+            $('.btn-moder-action-js').attr('href', action+key);
+            $('#moderation_block').find('.alert-danger').addClass('hide')
+        }).off('click', '.btn-moder-action-js').on('click', '.btn-moder-action-js', function () {
+            if ( $('input[name="rejection_reason"]').is( ":checked" ) === false) {
+                $('#moderation_block').find('.alert-danger').removeClass('hide');
+                return false;
+            }
+        });
+
+    });
+    $(document).off('click', '#btn_mass_approve').on('click', '#btn_mass_approve', function() {
+        var data = new Array();
+        $('.grouping:checked').each(function(i){
+            data[i] = $(this).val();
+        });
+        if(data.length > 0){
+            $.ajax({
+                url: site_url + 'admin/moderation/mass_approve/',
+                data: {ids: data},
+                type: "POST",
+                cache: false,
+                dataType: 'json',
+                success: function(data){
+                    if (typeof (data.redirect) !== 'undefined' && data.redirect.length > 0) {
+                        locationHref(data.redirect);
+                    }
+                }
+            });
+        }else{
+            error_object.show_error_block('{% helper lang.l('error_no_users_to_change_group', 'users', '', 'js') %}', 'error');
+        }
+    });
+</script>
+
+
+{% include '@app/footer.twig' %}

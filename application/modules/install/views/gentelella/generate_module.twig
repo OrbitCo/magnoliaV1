@@ -1,0 +1,67 @@
+{% include '@app/header.twig' %}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="x_panel">
+      <div class="x_content">
+          <div class="row form-group">
+              <label class="control-label col-md-4 col-xs-12 col-sm-5" for="module_name">
+                  Enter module name:
+              </label>
+              <div class="col-md-5 col-xs-12 col-sm-5" id="module_name">
+                  <input type="text" class="form-control" name="module_name" value="" />
+              </div>
+          </div>
+          <div class="ln_solid"></div>
+          <div class="row form-group">
+              <div class="col-md-offset-4 col-md-5 col-sm-offset-5 col-sm-5">
+                  <input class="btn btn-success" type="button" name="btn_save" value="{% helper lang.l('btn_save', 'start', '', 'button') %}">
+                  <a class="btn btn-default" href="{{ site_url }}admin/install/generator">
+                      {% helper lang.l('btn_cancel', 'start') %}
+                  </a>
+              </div>
+          </div>
+          <div data-block="success"></div>
+      </div>
+  </div>
+</div>
+<script>
+    $(function() {
+        $(document).off('click', '[name="btn_save"]').on('click', '[name="btn_save"]', function () {
+            generate();
+        });
+
+        function generate() {
+            let moduleName = $('[name="module_name"]').val();
+            $.ajax({
+                url: '{{ site_url }}admin/install/generate_module',
+                type: 'POST',
+                dataType: 'JSON',
+                data: {module_name: moduleName, btn_save: 1},
+                cache: false,
+                success: function (res) {
+                    $('[name="module_name"]').val('');
+                    if (typeof (res.errors) != 'undefined' && res.errors != '') {
+                        error_object.show_error_block(res.errors, 'error');
+                    } else {
+                        $('[data-block="success"]').html(function () {
+                            let list = res.data.files_list;
+                            let successBlock = '<div class="ln_solid"></div>';
+                            successBlock += '<div style="padding:10px; background: #363537; color: #56DB3A; font-weight: bold;">';
+                            successBlock += '<h3>' + res.data.success_msg + '</h3>';
+                            successBlock += '<h4><span class="glyphicon glyphicon-folder-open" style="color: #FF8400"></span> : ' + res.data.module_path + '</h4>';
+                            for (let i in list) {
+                                if (list[i]['type'] == 'file') {
+                                    successBlock += '<div><span class="glyphicon glyphicon-file" style="color: #FF8400"></span> ' + list[i]['path'] + '</div>'
+                                }
+                            }
+                            successBlock += '</div>';
+
+                            return successBlock;
+                        });
+                    }
+                }
+            });
+        }
+    })
+</script>
+{% include '@app/footer.twig' %}

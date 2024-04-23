@@ -1,0 +1,135 @@
+    {% helper data_alert_lng = lang.l('service_activate_confirm', 'services') %}
+
+    <div class="b-memberships__list">
+        {% for item in services_block_services %}
+          {% if item.gid != 'ability_delete' %}
+            <div class="b-memberships__item">
+                <div class="b-member-plan">
+                    {% if item.service_user_data.is_expired == '0' %}
+                    <ul class="b-member-plan__offers">
+                        {% if item.service_user_data.count is defined %}
+                            {% for setting_options in item.service_user_data.count %}
+                                <li>
+                                        {% helper lang.l('field_count', 'users') %}:
+                                        {{ setting_options }}
+                                </li>
+                            {% endfor %}
+                        {% else %}
+                            {% if item.gid != 'admin_approve' %}
+                            {% if item.service_user_data.date_expired %}       
+                            <li>{% helper lang.l('expires', 'services') %}:
+                                &nbsp;{% helper date_format.tpl_date_format(item.service_user_data.date_expired, date_format_st.date_literal) %}
+                            </li>
+                            {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    </ul>
+                    {% else %}
+                    {% endif %}
+                    <div class="b-member-plan__title">{{ item.name }}</div>
+                    <ul class="b-member-plan__offers">
+                        {% if item.description %}
+                            <li>{{ item.description }}</li>
+                        {% endif %}
+                        {% for setting_gid, setting_options in item.template.data_admin_array %}
+                            <li>
+                                {{ setting_options.name }}:
+                                {{ item.data_admin[setting_gid] }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="b-member-plan__price clearfix">
+                        {% if item.price %}
+                            <div class="b-member-plan__price__val">{% helper start.currency_format_output({'value': item.price}) %}</div>
+                        {% else %}
+                            {% helper lang.l('free', 'services') %}
+                        {% endif %}
+
+                        {% if item.service_user_data.is_expired == '0' and item.service_user_data.date_expired is empty %}
+                            <div class="b-member-plan__price__btn">{% helper lang.l('activated', 'services') %}</div>
+                        {% else %}                                    
+                            {% if item.price or item.template.price_type != 1 %}
+                                <div class="b-member-plan__price__btn">
+                                    {% if item.service_user_data.activate is defined  %}
+                                        <input type="button" class="btn btn-primary btn-sm btn-service-active"
+                                            value="{% helper lang.l('link_activate_service', 'services') %}"
+                                              id="service_buy_{{ item.tpl_gid }}" />
+                                    {% else %}
+                                        <input type="button"
+                                            class="btn btn-primary btn-sm {% if item.service_user_data.is_expired == '0' %}btn-service-active{% else %}{% endif %}"
+                                            data-action="{% if item.service_user_data.is_expired == '0' %}extend_service{% else %}{% endif %}"
+                                            value="{% if item.service_user_data.is_expired == '0' %}
+                                               {% helper lang.l('activated', 'services') %}
+                                            {% else %}
+                                                {% helper lang.l('btn_buy_now', 'services') %}
+                                             {% endif %}"
+                                             id="service_buy_{{ item.tpl_gid }}"  />
+                                    {% endif %}                               
+                                </div>
+                            {% else %}
+                                <div class="b-member-plan__price__btn">
+                                    <input type="button" 
+                                        class="btn btn-primary btn-sm {% if item.service_user_data.is_expired == '0' %}btn-service-active{% else %}{% endif %}"
+                                        data-action="{% if item.service_user_data.is_expired == '0' %}extend_service{% else %}{% endif %}"
+                                        id="service_buy_{{ item.tpl_gid }}" 
+                                        value="{% if item.service_user_data.is_expired == '0' %}
+                                            {% helper lang.l('activated', 'services') %}
+                                        {% elseif item.price > 0 %}
+                                            {% helper lang.l('btn_buy_now', 'services') %}
+                                        {% else %}
+                                            {% helper lang.l('btn_apply', 'start') %}
+                                        {% endif %}"/>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <script>
+                $(function () {
+                    loadScripts(
+                            [
+                                "{% helper utils.jscript('', 'available_view.js', 'path') %}",
+                                "{% helper utils.jscript('users', '../views/flatty/js/users-avatar.js', 'path') %}"
+                            ],
+                            function () {
+                                {{ item.tpl_gid }}_available_view = new available_view({
+                                    siteUrl: site_url,
+                                    checkAvailableAjaxUrl: '{{ item.additional_settings.checkAvailableAjaxUrl }}',
+                                    buyAbilityAjaxUrl: '{{ item.additional_settings.buyAbilityAjaxUrl }}',
+                                    buyAbilityFormId: 'ability_form',
+                                    buyAbilitySubmitId: 'ability_form_submit',
+                                    formType: 'list',
+                                    success_request: function (message) {
+                                        error_object.show_error_block(message, 'success');
+                                    },
+                                    fail_request: function (message) {
+                                        error_object.show_error_block(message, 'error');
+                                    },
+                                });
+                                $('#service_buy_{{ item.tpl_gid }}').off('click').on('click', function (e) {
+                                    {{ item.tpl_gid }}_available_view.check_available();                            
+                                    return false;
+                                });
+                            },
+                            ['{{ item.gid }}_available_view'],
+                           {async: false}
+                    );
+                });
+            </script>
+          {% endif %}
+        {% else %}
+            {% helper lang.l('no_services', 'services') %}
+        {% endfor %}
+    </div>
+<script>
+$( document ).ready(function() {    
+    $('[data-action="extend_service"]').on('mouseover', function() {
+        $(this).val("{% helper lang.l('extend', 'services') %}");
+    });
+    
+    $('[data-action="extend_service"]').on('mouseout', function() {
+        $(this).val("{% helper lang.l('activated', 'services') %}");
+    });
+});    
+</script>

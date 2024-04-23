@@ -1,0 +1,28 @@
+<div class="content-page">
+    <div class="ui-title">{% helper lang.l('header_main', 'im') %}</div>
+    <div class="ui-descr">
+        {% helper lang.l('field_usr_inf_description', 'im') %}
+    </div>
+</div>
+<div class="col-xs-12 content-page">
+    <div class="ui-title">{{ msgs.contact.output_name }}</div>
+</div>
+{% for item in msgs.msg %}
+    <div class="col-xs-12 content-page">
+        <div class="ui-title bb">
+            {% if item.dir == 'o' %}
+                {{ user.output_name }}
+            {% else %}
+                {{ msgs.contact.output_name }}
+            {% endif %}
+        </div>
+        <div>{{ item.text }}</div>
+        <div>{{ item.date_add }}</div>
+    </div>
+{% else %}
+    <div class="col-xs-12 content-page">
+        <div>
+            {% helper lang.l('list_empty', 'im') %}
+        </div>
+    </div>
+{% endfor %}

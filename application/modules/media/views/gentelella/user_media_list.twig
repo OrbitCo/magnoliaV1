@@ -1,0 +1,207 @@
+{% include '@app/header.twig' %}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="" role="tabpanel" data-example-id="togglable-tabs">
+          <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+            <li>
+              <a href="{{ site_url }}admin/users/edit/personal/{{ user_id }}">
+                {% helper lang.l('table_header_personal', 'users') %}
+              </a>
+            </li>
+
+        {% if sections %}
+            {% for key, item in sections %}
+                <li>
+                    <a href="{{ site_url }}admin/users/edit/{{ item.gid }}/{{ user_id }}">
+                      {{ item.name }}</a>
+                </li>
+            {% endfor %}
+        {% endif %}
+        {% helper is_module_installed = utils.depends('seo_advanced') %}
+        {% if is_module_installed.seo_advanced %}
+            <li>
+                <a href="{{ site_url }}admin/users/edit/seo/{{ user_id }}">
+                    {% helper lang.l('filter_section_seo', 'seo') %}
+                </a>
+            </li>
+        {% endif %}
+            <li class="active">
+                <a href="{{ site_url }}admin/media/user_media/{{ user_id }}/{{ param }}">
+                    {% helper lang.l('filter_section_uploads', 'media') %}
+                </a>
+            </li>
+        </ul>
+      </div>
+
+    <div class="x_content">
+      <div id="actions" class="hide">
+            <div id="menu" class="btn-group" data-toggle="buttons">
+              <label class="btn btn-default {% if param == 'photo' %}active{% endif %}"
+                     data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"
+                     onclick="document.location.href='{{ site_url }}admin/media/user_media/{{ user_id }}/photo'">
+                <input type="radio"> {% helper lang.l('filter_section_photos', 'media') %}
+              </label>
+              <label class="btn btn-default {% if param == 'video' %}active{% endif %}"
+                    data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"
+                    onclick="document.location.href='{{ site_url }}admin/media/user_media/{{ user_id }}/video'">
+                <input type="radio">
+                {% helper lang.l('filter_section_videos', 'media') %}
+              </label>
+              <label class="btn btn-default {% if param == 'audio' %}active{% endif %}"
+                    data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"
+                    onclick="document.location.href='{{ site_url }}admin/media/user_media/{{ user_id }}/audio'">
+                <input type="radio">
+                {% helper lang.l('audio', 'media') %}
+              </label>
+            </div>
+      </div>
+
+      <table id="data" class="table table-striped responsive-utilities jambo_table bulk_action">
+        <thead>
+          <tr class="headings">
+              <th class="column-title">{% helper lang.l('field_files', 'media') %}</th>
+              <th class="column-title">{% helper lang.l('media_info', 'media') %}</th>
+              <th class="column-title text-center">18+</th>
+              <th class="column-title"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in media %}
+              <tr class="even pointer {% if item.is_adult != 0 %}adult{% endif %}">
+                  <td>
+                      {% if item.media %}
+                          <a href="{{ item.media.mediafile.file_url }}" target="_blank">
+                              <img src="{{ item.media.mediafile.thumbs.small }}"/>
+                          </a>
+                      {% endif %}
+                      {% if item.video_content %}
+                          <span onclick="vpreview = new loadingContent({'closeBtnClass': 'w'});
+                                  vpreview.show_load_block('{{ item.video_content.embed|e }}');">
+                              <img class="pointer" src="{{ item.video_content.thumbs.small }}" />
+                          </span>
+                      {% endif %}
+                  </td>
+                  <td>
+                      <b>{% helper lang.l('media_owner', 'media') %}</b>: {{ item.owner_info.output_name }}<br>
+                      <b>{% helper lang.l('media_user', 'media') %}</b>: {{ item.user_info.output_name }}<br>
+                      <b>{% helper lang.l('field_permitted_for', 'media') %}</b>:
+                        {% helper lang.ld_option('permissions', 'media', item.permissions) %}
+                  </td>
+                  <td class="text-center">
+                    {% if item.is_adult == 0 %}
+                        <span class="label label-default">18+</span>
+                    {% else %}
+                        <span class="label label-danger">18+</span>
+                    {% endif %}
+                  </td>
+                  <td class="icons" {% if param == 'photo' %} id="media_{{item.id}}" {% endif %}>
+                    <div class="btn-group">
+                      <a href="{{ site_url }}admin/media/delete_media/{{ item.id }}" class="btn btn-primary">
+                        {% helper lang.l('btn_delete', 'start') %}
+                      </a>
+                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                              aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a href="{{ site_url }}admin/media/delete_media/{{ item.id }}">
+                            {% helper lang.l('btn_delete', 'start') %}
+                          </a>
+                        </li>
+                        {% if param == 'photo' %}
+                            <li class="moderation-action-js-edit" onclick="{% helper start.setAnalytics('moderation', 'btn_edit') %}">
+                                <a data-click="view-media"   {% if  item.type_name == 'user_logo' %}  id="logo_{{ item.id }}"  {% endif %}  data-id-media="{{item.id}}" data-user-id="{{item.id_owner}}">
+                                    {% helper lang.l('edit_object','moderation') %}
+                                </a>
+
+                            </li>
+                        {% endif %}
+                      </ul>
+                      {% if param == 'photo' %}
+                        <script>
+                              $(function () {
+                                  loadScripts(
+                                          "{% helper utils.jscript('media', '../views/flatty/js/media.js', 'path') %}",
+                                          function () {
+                                              recent_mediagallery = new media({
+                                                  siteUrl: site_url,
+                                                  gallery_name: 'recent_mediagallery',
+                                                  galleryContentPage: 1,
+                                                  idUser: '{{ item.id_owner }}',
+                                                  all_loaded: 1,
+                                                  post_data: {filter_duplicate: 1},
+                                                  load_on_scroll: false,
+                                                  viewMediaUrl: 'admin/media/ajax_view_media',
+                                                  galleryContentDiv: 'media_{{item.id}}',
+                                                  direction: 'desc'
+                                              });
+                                          },
+                                          'recent_mediagallery',
+                                          {async: false}
+                                  );
+                              });
+                      </script>
+                    {% endif %}
+                    </div>
+                  </td>
+              </tr>
+          {% endfor %}
+      </table>
+
+      {% include '@app/pagination.twig' %}
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+
+<!-- Datatables -->
+<script>
+    var asInitVals = new Array();
+    $(document).ready(function () {
+        loadScripts("{% helper utils.jscript('', 'jquery.imgareaselect/jquery.imgareaselect.js', 'path') %}", function () {}, '', {async: false});
+        var oTable = $('#data').dataTable({
+            "oLanguage": {
+                "sSearch": "{% helper lang.l('search_all_column','start') %}:",
+                "sEmptyTable": "{% helper lang.l('no_media','media') %}"
+            },
+            "aoColumnDefs": [
+                {
+                    'bSortable': false,
+                    'aTargets': []
+                } //disables sorting for column one
+            ],
+            'iDisplayLength': 10,
+            "bPaginate": false,
+            "bInfo": false,
+            "bSort": false,
+            "dom": 'T<"clear"><"actions">lfrtip',
+        });
+        $("tfoot input").keyup(function () {
+            /* Filter on the column based on the index of this element's parent <th> */
+            oTable.fnFilter(this.value, $("tfoot th").index($(this).parent()));
+        });
+        $("tfoot input").each(function (i) {
+            asInitVals[i] = this.value;
+        });
+        $("tfoot input").focus(function () {
+            if (this.className == "search_init") {
+                this.className = "";
+                this.value = "";
+            }
+        });
+        $("tfoot input").blur(function (i) {
+            if (this.value == "") {
+                this.className = "search_init";
+                this.value = asInitVals[$("tfoot input").index(this)];
+            }
+        });
+        var actions = $("#actions");
+        $('#data_wrapper').find('.actions').html(actions.html());
+        actions.remove();
+    });
+</script>
+
+{% include '@app/footer.twig' %}

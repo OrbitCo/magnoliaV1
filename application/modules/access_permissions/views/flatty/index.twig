@@ -1,0 +1,139 @@
+{% include '@app/header.twig' %}
+<div class="container-fluid">
+    <div class="row row-content">
+        <div id="access_permissions">
+            <div data-content="advertising-image" class="hide">
+                <div class="advertising-image">
+                    <div class="tagline">{% helper lang.l('header_slogan', 'access_permissions') %}</div>
+                    <div class="btn-actions">
+                        <a href="{% helper seo.seolink('access_permissions', 'index') %}" class="btn btn-default">{% helper lang.l('link_groups', 'access_permissions') %}</a>
+                        <a href="{% helper seo.seolink('users', 'account', 'services') %}" class="services">{% helper lang.l('link_services', 'access_permissions') %}</a>
+                    </div>
+                </div>
+                {% helper access_permissions.isModule() %}
+            </div>
+            <div>
+                <div class="access-list">
+                {% for key, group in groups %}
+                    {% if (group.is_default != 1 and group.periods is not empty)  or group.is_default   or (group.is_trial and group.trial_period_left.count > 0) %}
+                        <div class="item-group">
+                            <div class="g-flatty-block group-block active well" id="{{ group.gid }}-block">
+                                <div class="title-block center">{{ group.current_name }}</div>
+                                <div class="center periods">
+                                    {% if group.is_default %}
+                                        <div class="period-block">
+                                            <div class="price">
+                                                {% helper start.currency_format_output({'value': 0}) %}
+                                            </div>
+                                            <div>{% helper lang.l('field_period_unlimited', 'access_permissions') %}</div>
+                                        </div>
+                                    {% elseif group.is_trial %}
+                                        <div class="period-block">
+                                            <div class="price">
+                                                {% helper start.currency_format_output({'value': 0}) %}
+                                            </div>
+                                            {#<div>{{ group.trial_period_str }}</div>#}
+                                            <div>{% helper lang.l('field_expires_in', 'access_permissions') %}:&nbsp; {{ group.trial_period_left.str }}</div>
+                                        </div>
+                                    {% else %}
+                                        <div id="period-{{ group.gid }}" class="period-block" data-group="{{ group.gid }}" data-id="{{  group.periods.0.id }}" data-period="{{ group.periods.0.period }}" data-price="{{ group.periods.0.price }}">
+                                            <div class="price">
+                                                {% helper start.currency_format_output({'value': group.periods.0.price}) %}
+                                            </div>
+                                            <span class="period">{{ group.periods.0.period_str }}</span><i class="fa fa-angle-down" aria-hidden="true"></i>
+                                        </div>
+                                        <div id="period-{{ group.gid }}-all" class="hide all-periods">
+                                            <div class="box-sizing">
+                                                {% for period in group.periods %}
+                                                    <div id="period-{{ group.gid }}-{{ period.id }}" class="all-period" data-group="{{ group.gid }}" data-id="{{ period.id }}" data-period="{{ period.period }}" data-price="{{ period.price }}">
+                                                        <span>{{ period.period_str }}</span>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    {% if group.is_default or group.is_trial %}
+                                        <input class="btn btn-active btn-group-justified" type="button" value="{% helper lang.l('btn_active', 'access_permissions') %}">
+                                    {% else %}
+                                        <div class="actions-block actions-block-absolute">
+                                            <div class="btn-group">
+                                                    {% if group.is_purchased %}
+                                                        <a class="btn btn-group-justified buy" href="{% helper seo.seolink('access_permissions/groupPage', group.gid, group.periods.0.id) %}" data-action="select-group" data-group="{{ group.gid }}" name="buy">
+                                                            {% helper lang.l('btn_active', 'access_permissions') %}
+                                                        </a>
+                                                        <button type="button" class="btn btn-group-justified dropdown-toggle sel set-data-js" data-toggle="dropdown" data-action="pay-systems" data-group="{{ group.gid }}" id="pay-item-{{ group.gid }}">
+                                                            <span class="caret"></span>
+                                                            <span class="sr-only">Dropdown toggle</span>
+                                                       </button>
+                                                    {% else %}
+                                                        <a type="button" class="btn btn-primary buy" href="{% helper seo.seolink('access_permissions/groupPage', group.gid, group.periods.0.id) %}" data-action="select-group" data-group="{{ group.gid }}" name="buy">
+                                                            {% helper lang.l('btn_buy_now', 'services') %}
+                                                        </a>
+                                                        <button type="button" class="btn btn-primary dropdown-toggle sel set-data-js" data-toggle="dropdown" data-action="pay-systems" data-group="{{ group.gid }}" id="pay-item-{{ group.gid }}">
+                                                            <span class="caret"></span>
+                                                            <span class="sr-only">Dropdown toggle</span>
+                                                       </button>
+                                                    {% endif %}
+                                                    <ul id="pay-systems-list-{{ group.gid }}" class="dropdown-menu " role="menu">
+                                                        <li>
+                                                            <a data-target="#" class="cursor-pointer" data-action="set-paysystem" data-gid="account">
+                                                              {% helper lang.l('btn_pay_account', 'services') %}
+                                                            </a>
+                                                        </li>
+                                                        {% for  system in billing_systems%}
+                                                            <li>
+                                                                <a class="cursor-pointer" data-action="set-paysystem"  data-gid="{{ system.gid }}">
+                                                                    <img src="{{ system.logo_url }}">
+                                                                    {{ system.name }}
+                                                                </a>
+                                                            </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    {% endif %}
+                                </div>
+                                <div class="modules {% if group.is_default %}default-group{% endif %}">
+                                    {% for module_gid, module in group.access %}
+                                        {% for item in module %}
+                                            {% if item.is_available %}
+                                                <div class="module">
+                                                    <div class="module-name">{{ item.name }}</div>
+                                                    <div class="module-description">
+                                                        {{ item.description }}
+                                                        {% helper count = access_permissions.isCount({'data': {'module_gid': module_gid}, 'permissions': item.list, 'group_gid': key}) %}
+                                                        {% if count %}
+                                                            {% for type, value in count %}
+                                                                <div>{{ value.name }}:
+                                                                    {% if value.count > 0 %}
+                                                                        {{ value.count }}
+                                                                    {% else %}
+                                                                         {% helper lang.l('field_period_unlimited', 'access_permissions') %}
+                                                                     {% endif %}
+                                                                </div>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endfor %}
+                                    <div class="toggle-block center" data-action="groupToggle" data-group="{{ group.gid }}">
+                                        <i class="fa"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% helper currency = start.currency_format_output() %}
+{% helper access_permissions.jsData({'headerAdvertisingImage': 1, 'currency': currency}) %}
+{% include '@app/footer.twig' %}

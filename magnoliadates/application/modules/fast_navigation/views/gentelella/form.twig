@@ -1,0 +1,22 @@
+<div class="edit-form mtb10">
+    <input onfocus="{% helper start.setAnalytics('main', 'fast_navigation_input') %}" data-action="fast_search" type="text" name="keyword" class="form-control" placeholder="{% helper lang.l('value_fast_navigation_botton', 'fast_navigation') %}" required>
+</div>
+
+<script type='text/javascript'>
+    $(function () {
+        loadScripts(
+        ["{% helper utils.jscript('fast_navigation', 'fastNavigationAdmin.js', 'path') %}"],
+            function () {
+                 fast_nav = new fastNavigationAdmin({
+                    siteUrl: site_url,
+                    id: {fastBlock: 'fastBlock'},
+                    langs: {
+                        header: "{% helper lang.l('admin_header_search', 'fast_navigation') %}",
+                        placeholder: "{% helper lang.l('value_fast_navigation_botton', 'fast_navigation') %}",
+                        close: "{% helper lang.l('btn_close', 'start') %}",
+                    }
+                });
+            }
+        )
+    });
+</script>

@@ -1,0 +1,212 @@
+{% include '@app/header.twig' %}
+</div></div>
+
+{% helper is_module_installed = utils.depends('geomap') %}
+
+<div class="magazine-profile">
+    {% if profile_section == '' or profile_section == 'profile' or profile_section == 'wall' %}
+        <div class="magazine-profile__media mag-portrait">
+            <div class="magazine-profile__avabg" style="background: url({{ data.media.user_logo.thumbs.middle }}) no-repeat center / cover;"></div>
+            <div class="magazine-profile__ava">
+                <a id="user_photo" data-profile_id='{{ data.id }}'>
+                    {% helper users.formatAvatar({'user': data, 'size': 'grand', 'get_original_file_url': 0, 'class': 'img-responsive'}) %}
+                </a>
+
+                {% if is_owner %}
+                    <div class="change-photo-button photo-action-js owner-change-photo">
+                        {% helper lang.l('btn_change_photo', 'media') %}
+                    </div>
+                {% endif %}
+                <div class="view-photo-button photo-action-js">
+                    {% helper lang.l('btn_view_photo', 'media') %}
+                </div>
+
+                <script>
+                    $(function () {
+                        loadScripts(
+                                ["{% helper utils.jscript('users', '../views/flatty/js/users-avatar.js', 'path') %}"],
+                                function () {
+                                    user_avatar = new UsersAvatar({
+                                        site_url: site_url,
+                                        id_user:{{ data.id }} ,
+                                        saveAfterSelect: false,
+                                        haveAvatar: '{{ data.have_avatar }}',
+                                        callback: function () {
+                                            (new usersSettings({siteUrl: site_url})).rebuild('user_logo');
+                                        }
+                                    });
+                                },
+                                ['user_avatar'],
+                                {async: false}
+                        );
+                    });
+                </script>
+            </div>
+            <div class="magazine-profile__status">
+                {% if data.online_status == 0 %}
+                    {% helper lang.l('field_last_seen', 'users') %} {% helper date_format.tpl_date_format(data.date_last_activity, date_format_st.date_time_literal) %}
+                {% else %}
+                    {{ data.statuses.online_status_lang }}
+                {% endif %}
+            </div>
+            <div class="magazine-profile__recentmedia">
+                {% helper media.user_media_block({'count': 3, 'user_id': user_id, 'media_size': 'middle', 'template': 'magazine'}) %}
+            </div>
+        </div>
+
+        <div class="magazine-profile__text">
+            <div class="magazine-profile__content">
+
+                {% if profile_section == '' or profile_section == 'profile' %}
+                    <div class="magazine-profile__tabs">
+                        {% include 'view_profile_menu.twig' with {'template': 'magazine'} %}
+                    </div>
+
+                    {% include 'profile_top_magazine.twig' %}
+
+                    <div class="magazine-profile__base">
+                        {{ data.user_type_str }},
+                        {% helper is_module_installed = utils.depends('horoscope', 'perfect_match') %}
+                        {% if is_module_installed.horoscope %}{% helper sign_horoscope = horoscope.getSignHoroscope({'user': data, 'template': 'text'}) %}{% if sign_horoscope is not empty %}{{ sign_horoscope }},{% endif %}{% endif %}{% if is_module_installed.perfect_match %} <span>{% helper lang.l('field_looking_user_type_profile', 'users') %}
+                        {{ data.looking_user_type_str }}</span> {% helper lang.l('field_aged', 'users') %}
+                        {% if data.age_min %}{{ data.age_min }}{% endif %}{% if data.age_min and data.age_max %}-{% endif %}{% if data.age_max %}{{ data.age_max }}{% endif %}
+                        {% endif %}
+                    </div>
+
+                    {% if not is_owner %}
+                        <div class="magazine-profile__actions">
+                            {% if auth_type == 'user' %}
+                                {% helper is_module_installed = utils.depends('access_permissions', 'ratings', 'chatbox', 'chats') %}
+
+                                {% if is_module_installed.chatbox %}
+                                    {% helper chatbox.send_message_chatbox({'id_user': data.id, 'view_type': 'button', 'text_type': 'chat', 'class': 'btn btn-primary ellipsis'}) %}
+                                {% endif %}
+                                {% if is_module_installed.chats %}
+                                    {% helper chats.helperBtnChat({'user_id': data.id, 'view_type': 'button', 'class': 'btn btn-primary ellipsis'}) %}
+                                {% endif %}
+                                <span id="service-menu_block">
+                                    <button id="services-menu" type="button" class="btn btn-default" data-toggle="popover">
+                                        <i class="fa fa-ellipsis-h"></i>&nbsp;{% helper lang.l('btn_more', 'users') %}
+                                    </button>
+                                </span>
+                                <div class="hide" id="services-menu_template" class="services-menu_content">
+                                    {% include 'view_actions.twig' with {is_owner: is_owner}  %}
+                                </div>
+
+
+                            {% else %}
+                                <button onclick="javascript: $('#ajax_login_link').click();" class="btn btn-primary ellipsis">
+                                    {% helper lang.l('chat_now', 'chatbox') %}
+                                </button>
+                                <button type="button" class="btn btn-default" onclick="javascript: $('#ajax_login_link').click();">
+                                    <i class="fa fa-ellipsis-h"></i>&nbsp;{% helper lang.l('btn_more', 'users') %}
+                                </button>
+                            {% endif %}
+                        </div>
+
+                        <div class="magazine-profile__gifts clearfix">
+                            <div class="user-gifts-block">
+                                <div class="media-items">
+                            {% helper virtual_gifts.user_gifts_block({'id_wall': data.id, 'is_mine': 'false', 'template': 'magazine'}) %}
+                            {% helper virtual_gifts.send_gift({'user_id': data.id, 'template': 'magazine'}) %}
+                            </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="magazine-profile__gifts clearfix">
+                            {% helper virtual_gifts.user_gifts_block({'id_wall': data.id, 'is_mine': 'true', 'template': 'magazine'}) %}
+                        </div>
+                    {% endif %}
+
+                    <div class="magazine-profile__params">
+                        {% for item in sections %}
+                            {% set view_fields %}
+                                {% include 'custom_view_fields.twig' with {'fields_data': item.fields, 'is_owner': false} %}
+                            {% endset %}
+                            {% if view_fields|trim %}
+                                <div class="view-section">
+                                    {{ view_fields }}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                {% elseif profile_section == 'wall' %}
+                    <div class="magazine-profile__tabs">
+                        {% include 'view_profile_menu.twig' with {'template': 'magazine'} %}
+                    </div>
+
+                    {% include 'profile_top_magazine.twig' %}
+
+                    <div class="description">
+                        <div class="view-user">
+                            <div class="view-user__wall">
+                                {% if is_owner %}
+                                    {% set place = 'myprofile' %}
+                                {% else %}
+                                    {% set place = 'viewprofile' %}
+                                {% endif %}
+                                {% helper wall_events.wall_block({
+                                    'place': place,
+                                    'id_wall': user_id
+                                }) %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% helper users.flippingProfiles({navigation: magazine_navigation, profile_id: data.id}) %}
+
+                {% helper banners.show_banner_place('banner-980x90') %}
+                {% helper banners.show_banner_place('banner-185x75') %}
+                {% helper banners.show_banner_place('banner-185x155') %}
+                {% helper banners.show_banner_place('banner-320x250') %}
+                {% helper banners.show_banner_place('banner-320x75') %}
+
+            </div>
+            <div class="magazine-profile__pagecontrols magazine-profile__pagecontrols_topleft">
+                <a href="{{ magazine_close_url }}"><span class="fa fa-times"></span></a>
+            </div>
+            {% if is_owner %}
+                <div class="magazine-profile__pagecontrols magazine-profile__pagecontrols_topright">
+                    <a href="{{ site_url }}users/profile/{#% if profile_section == 'wall' %}wall{% else %#}view{#% endif %#}/all" title="{% helper lang.l('tooltip_profile_edit_mode', 'users') %}">
+                        <span class="fas fa-pencil-alt"></span>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    {% elseif profile_section == 'gallery' %}
+        <div class="magazine-profile__gallery mag-mygallery">
+            <div class="mag-mygallery__header">
+                <div class="container">
+                    <div class="userblock">
+                        <a class="userblock__content" href="{{ site_url }}users/view/{{ data.id }}/profile/all">
+                            <span class="fa fa-chevron-left"></span>
+                            <span class="userblock__photo">{% helper users.formatAvatar({'user': data, 'size': 'small', 'class': 'img-circle'}) %}</span>
+                            {{ data.output_name }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mag-mygallery__media">
+                <div class="container">
+                    <div class="description">
+                        <div class="view-user">
+                            {% helper media.media_block({
+                                'param': subsection,
+                                'page': '1',
+                                'user_id': user_id,
+                                'location_base_url': location_base_url,
+                                'template': 'magazine'
+                            }) %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<div class="container"><div class="row">
+{% include '@app/footer.twig' %}

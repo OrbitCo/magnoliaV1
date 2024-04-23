@@ -1,0 +1,30 @@
+<div class="instruction-block">
+    <div class="instruction-block__button" id="btn-show-help" data-toggle="popover" data-content="{{ instruction_text }}">
+        <i class="fa fa-info" id="instruction-icon" aria-hidden="true" title="{% helper lang.l('btn_instruction_text', 'admin_instructions_page') %}"></i>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#btn-show-help').popover({placement: 'right', html: true});
+        $('#btn-show-help').on('show.bs.popover', function () {
+            $("#instruction-icon").removeClass('fa-info');
+            $("#instruction-icon").addClass('fa-times');
+            {% helper start.setAnalytics('main', 'btn_info') %}
+        });
+        $('#btn-show-help').on('hide.bs.popover', function () {
+            $("#instruction-icon").removeClass('fa-times');
+            $("#instruction-icon").addClass('fa-info');
+        });
+        
+        $('html').on('click', function(e){
+            var target = $(e.target).attr('id');
+            if (target !== 'btn-show-help' && target !== 'instruction-icon') { 
+                $('#btn-show-help').popover('hide');
+            }
+            
+        });
+    })
+</script>   
+
+

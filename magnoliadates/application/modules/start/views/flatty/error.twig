@@ -1,0 +1,19 @@
+{% include '@app/header.twig' %}
+
+<div class="col-xs-12">
+    <div class="fhf-content">
+        <div class="fhf-title">
+            {% helper lang.l('fhf_title', 'start') %}
+        </div>
+        <div class="fhf-text">
+            {% helper lang.l('fhf_text', 'start') %}
+        </div>
+        <div class="fhf-link">
+            <a href="/">{% helper lang.l('fhf_back_link', 'start') %}</a>
+        </div>
+    </div>
+
+    {% helper site_map.getSitemap() %}
+</div>
+
+{% include '@app/footer.twig' %}

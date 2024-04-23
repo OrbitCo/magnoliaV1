@@ -1,0 +1,46 @@
+	83	Zhytomyr	50.2648700	28.6766900	UA	27	0	0	Zhytomyr	Житомир
+	83	Kvitneve	49.9878400	29.5312900	UA	27	0	0	Kvitneve	Жовтневе
+	83	Zarudyntsi	49.6517500	29.1910800	UA	27	0	0	Zarudyntsi	Зарудинцы
+	83	Topory	49.6518600	29.3174100	UA	27	0	0	Topory	Топоры
+	83	Ruzhyn	49.7228000	29.2045500	UA	27	0	0	Ruzhyn	Ружин
+	83	Rohachi	49.6441300	29.3607600	UA	27	0	0	Rohachi	Рогачи
+	83	Zoryane	49.6500000	29.2500000	UA	27	0	0	Zoryane	Зоряное
+	83	Radomyshl	50.4961300	29.2291100	UA	27	0	0	Radomyshl	Радомышль
+	83	Popil'nya	49.9665200	29.4435300	UA	27	0	0	Popil'nya	Попельня
+	83	Polyanka	50.2583600	27.6880900	UA	27	0	0	Polyanka	Полянка
+	83	Pershotravneve	51.3928700	28.8683700	UA	27	0	0	Pershotravneve	Pershotravneve
+	83	Ozerne	50.1781600	28.7338400	UA	27	0	0	Ozerne	Озерне
+	83	Ovruch	51.3246000	28.8035100	UA	27	0	0	Ovruch	Овруч
+	83	Novi Bilokorovychi	51.1154800	28.0546300	UA	27	0	0	Novi Bilokorovychi	Нові Білокоровичі
+	83	Novohrad-Volynskyi	50.5941200	27.6165000	UA	27	0	0	Novohrad-Volynskyi	Новоград-Волынский
+	83	Nova Borova	50.6929600	28.6344600	UA	27	0	0	Nova Borova	Нова Борова
+	83	Narodychi	51.2028600	29.0822800	UA	27	0	0	Narodychi	Народичі
+	83	Malyn	50.7723300	29.2383300	UA	27	0	0	Malyn	Малин
+	83	Lyubar	49.9204500	27.7591800	UA	27	0	0	Lyubar	Любар
+	83	Luhyny	51.0820200	28.4005700	UA	27	0	0	Luhyny	Лугини
+	83	Korostyshiv	50.3172300	29.0563000	UA	27	0	0	Korostyshiv	Коростишів
+	83	Korosten’	50.9593700	28.6385500	UA	27	0	0	Korosten'	Коростень
+	83	Kornyn	50.0953000	29.5358100	UA	27	0	0	Kornyn	Корнин
+	83	Hryshkivtsi	49.9352900	28.6038300	UA	27	0	0	Hryshkivtsi	Гришківці
+	83	Horodnytsya	50.8069700	27.3167600	UA	27	0	0	Horodnytsya	Городниця
+	83	Golubivka	49.6809800	29.1605900	UA	27	0	0	Golubivka	Голубовка
+	83	Holovyne	50.4711800	28.8253000	UA	27	0	0	Holovyne	Головине
+	83	Druzhba	51.1876800	27.9740300	UA	27	0	0	Druzhba	Druzhba
+	83	Dovbysh	50.3733200	27.9874200	UA	27	0	0	Dovbysh	Довбиш
+	83	Dibrova	51.1555600	27.9790000	UA	27	0	0	Dibrova	Діброва
+	83	Chudniv	50.0520400	28.1174500	UA	27	0	0	Chudniv	Чуднів
+	83	Chopovychi	50.8332500	28.9533400	UA	27	0	0	Chopovychi	Чоповичі
+	83	Chervone	49.9497500	28.8687400	UA	27	0	0	Chervone	Червоне
+	83	Cherniakhiv	50.4565200	28.6701800	UA	27	0	0	Cherniakhiv	Черняхів
+	83	Chornorudka	49.8464000	29.0606200	UA	27	0	0	Chornorudka	Чернорудка
+	83	Bystreyevka	49.8394200	29.2677500	UA	27	0	0	Bystreyevka	Быстреевка
+	83	Bykivka	50.2928500	27.9831400	UA	27	0	0	Bykivka	Биківка
+	83	Buchmany	51.0687900	28.0422100	UA	27	0	0	Buchmany	Бучмани
+	83	Brusyliv	50.2844900	29.5262600	UA	27	0	0	Brusyliv	Брусилив
+	83	Brovky Pershi	49.9323500	29.1981600	UA	27	0	0	Brovky Pershi	Бровки Первые
+	83	Berdychiv	49.8992800	28.6023500	UA	27	0	0	Berdychiv	Бердичев
+	83	Bila Krynytsya	50.6398200	29.4704100	UA	27	0	0	Bila Krynytsya	Біла Криниця
+	83	Baranovka	50.2969100	27.6622000	UA	27	0	0	Baranovka	Барановка
+	83	Zaritcha	49.7166700	29.2333300	UA	27	0	0	Zaritcha	Заречье
+	83	Andrushivka	50.0228800	29.0202300	UA	27	0	0	Andrushivka	Андрушёвка
+	83	Denyshi	50.2141500	28.4039500	UA	27	0	0	Denyshi	Деныши

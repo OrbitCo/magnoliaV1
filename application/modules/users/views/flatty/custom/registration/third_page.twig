@@ -1,0 +1,86 @@
+<div data-block="pages" data-act="close" id="third-registration-page" class="hide">
+    <div class="col-xs-12 
+        {% if social_button is not empty and data.is_auth == 0 %}
+        col-md-8 col-md-offset-2{% else %}col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3{% endif %}">
+        <div class="g-flatty-block">
+            <h3>{% helper lang.l('get_started', 'users') %}</h3>
+            <div class="col-xs-12">
+                <div class="form-group nickname-block">
+                    <label for="" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3">
+                        {% helper lang.l('field_nickname', 'users') %}:
+                    </label>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3">
+                        <input data-action="validation" data-field="nickname" id="nickname" type="text" name="data[nickname]" value="{{ user_data.nickname }}" class="form-control">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="form-group birthday-block">
+                    <label for="" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3">
+                        {% helper lang.l('birth_date', 'users') %}:
+                    </label>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3">
+                        <div id="datepicker" class="hidden"></div>
+                        <input  data-action="validation" data-field="birth_date" type="text" value="{% if user_data.birth_date is not empty %}{{ user_data.birth_date }}{% else %}{{ data.min_date|e }}{% endif %}" name="data[birth_date]" id="birth_date" maxlength="10" class="form-control hidden">                            
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="form-group location-block">
+                    <label for="" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3">
+                        {% helper lang.l('field_location', 'users') %}:
+                    </label>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3">
+                        {% helper countries.locationSelect({
+                                    'module': 'countries',
+                                    'select_type': 'city',
+                                    'id_country': user_data.id_country, 
+                                    'id_region': user_data.id_region, 
+                                    'id_city': user_data.id_city,
+                                    'lat': user_data.lat,
+                                    'lon': user_data.lon,
+                                    'var_country_name': 'data[id_country]',
+                                    'var_region_name': 'data[id_region]',
+                                    'var_city_name': 'data[id_city]',
+                                    'var_lat_name': 'data[lat]',
+                                    'var_lon_name': 'data[lon]',
+                                    'auto_detect': 1
+                                }) %}
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                {# <custom_R> #}
+                <div class="registration-form-fields clearfix">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3">
+                        <div class="row">
+                            {% include 'custom/custom_form_fields.twig' with {'register_form': 1} %}
+                        </div>
+                    </div>
+                </div>
+                {# </custom_R> #}
+                
+                {# {% if data.is_auth == 0 %}
+                    <div class="form-group captcha-block">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3">
+                            {% helper start.captcha({'input_name': 'data[captcha_confirmation]'}) %}
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>   
+                {% endif %} #}
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3">
+                        <button onclick="{% helper start.setAnalytics('index', 'btn_register_step3') %}" data-action="update-profile" class="btn btn-primary btn-block btn-lg" data-page="3" >{% helper lang.l('btn_next', 'start') %}</button>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>    
+        <div class="sign_in-block center">
+            {% helper lang.l('field_have_account', 'users') %}
+            <a onclick="{% helper start.setAnalytics('index', 'btn_sign_in') %}"  
+                href="{% helper seo.seolink('users', 'login_form') %}" data-bind="login">
+                {% helper lang.l('btn_login', 'start') %}
+            </a>
+        </div>
+    </div>
+</div>

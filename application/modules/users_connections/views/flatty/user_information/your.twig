@@ -1,0 +1,12 @@
+<div class="content-page">
+    <div class="ui-title">{% helper lang.l('header_main', 'users_connections') %}</div>
+    <div class="ui-descr">
+        {% helper lang.l('field_usr_inf_description', 'users_connections') %}
+    </div>
+</div>
+{% for item in your %}
+    <div class="col-xs-12 content-page">
+        <div class="ui-title bb">{% helper lang.l('field_name', 'social_networking') %}: {{ item.name }}</div>
+        <div>{% helper lang.l('success_added_service', 'social_networking') %}</div>
+    </div>
+{% endfor %}

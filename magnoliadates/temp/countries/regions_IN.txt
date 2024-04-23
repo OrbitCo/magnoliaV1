@@ -1,0 +1,2 @@
+	358	Puducherry	11.9338100	79.8297900	IN	22	0	0	Puducherry
+	358	Kāraikāl	10.9166700	79.8333300	IN	22	0	0	Karaikal

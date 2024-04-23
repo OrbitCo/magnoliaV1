@@ -1,0 +1,76 @@
+{% for item in services_block_services %}          
+  {% if item.gid != 'ability_delete' %}
+    {% if item.service_user_data.is_expired == '0' and item.service_user_data.date_expired is empty %}                
+        {% set item_is_bought = 1 %}
+    {% else %}
+        {% set item_is_bought = 0 %}
+    {% endif %}
+    <div id="service_buy_{{ item.tpl_gid }}{% if item_is_bought == 1 %}__{% endif %}" class="mag-services__item
+        {% if item.service_user_data.is_expired == '0' %} mag-services__item_active{% endif %}
+        {% if item_is_bought == 1 %} mag-services__unavailable{% endif %}">
+        <div class="mag-services__icon" data-toggle="tooltip" data-placement="top" title="{{ item.description }}">
+            <img class="mag-services__color" onclick="{% helper start.setAnalytics('left_menu_user', 'my_services') %}" src="{{ base_url }}{{ img_folder }}icons/{{ item.additional_settings.icon_active }}" alt="{{ item.name }}">
+            <img class="mag-services__gray" src="{{ base_url }}{{ img_folder }}icons/{{ item.additional_settings.icon_inactive }}" alt="{{ item.name }}">            
+            {% if item_is_bought == 0 %}                
+                <div class="mag-services__plus"><i class="fa fa-plus"></i></div>
+            {% endif %}
+            {% if item.service_user_data.is_expired == '0' %}
+                <div class="mag-services__counter">
+                    {% if item.service_user_data.count is defined %}
+                        {% for setting_options in item.service_user_data.count %}
+                            <div>
+                                {% helper lang.l('field_count', 'users') %}:
+                                {{ setting_options }}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% if item.gid != 'admin_approve' %}
+                            <div>
+                                {% helper date_format.tpl_date_diff_from_now(item.service_user_data.date_expired) %}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endif %}    
+        </div>
+        <div class="mag-services__title">{{ item.name }}</div>                               
+    </div>
+    <script>
+        $(function () {
+            loadScripts(
+                    [
+                        "{% helper utils.jscript('', 'available_view.js', 'path') %}",
+                        "{% helper utils.jscript('users', '../views/flatty/js/users-avatar.js', 'path') %}"
+                    ],
+                    function () {
+                        {{ item.tpl_gid }}_available_view = new available_view({
+                            siteUrl: site_url,
+                            checkAvailableAjaxUrl: '{{ item.additional_settings.checkAvailableAjaxUrl }}',
+                            buyAbilityAjaxUrl: '{{ item.additional_settings.buyAbilityAjaxUrl }}',
+                            buyAbilityFormId: 'ability_form',
+                            buyAbilitySubmitId: 'ability_form_submit',
+                            formType: 'list',
+                            success_request: function (message) {
+                                error_object.show_error_block(message, 'success');
+                            },
+                            fail_request: function (message) {
+                                error_object.show_error_block(message, 'error');
+                            },
+                        });
+                        $('#service_buy_{{ item.tpl_gid }}').off('click').on('click', function (e) {
+                            {{ item.tpl_gid }}_available_view.check_available();                            
+                            return false;
+                        });
+                    },
+                    ['{{ item.gid }}_available_view'],
+                   {async: false}
+            );
+        });
+    </script>
+  {% endif %}
+{% endfor %}
+<script>
+$(function() { 
+    $('[data-toggle="tooltip"]').tooltip();    
+});    
+</script>

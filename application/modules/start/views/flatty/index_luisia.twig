@@ -1,0 +1,301 @@
+{% extends '@app/header_lite.twig' %}
+ {% block bodyclass %}index-pleasure{% endblock bodyclass %}
+
+ {% block container %}
+  <div id="error_block" class="hide">{% for item in _PREDEFINED.error %}{% if item.text %}{{ item.text }}
+      <br>{% endif %}{% endfor %}</div>
+  <div id="info_block" class="hide">{% for item in _PREDEFINED.info %}{% if item.text %}{{ item.text }}
+      <br>{% endif %}{% endfor %}</div>
+  <div id="success_block" class="hide">{% for item in _PREDEFINED.success %}{% if item.text %}{{ item.text }}
+      <br>{% endif %}{% endfor %}</div>
+  <div class="th-set__main_bg" id="header">
+    <section class="container header_container">
+      <section id="logo" class="col-md-4">
+        <div class="b-logo">
+          <div class="b-header__logo">
+            <a href="{{ site_url }}">
+              {% helper start.logo({type: 'user', settings: logo_settings}) %}
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="col-md-8">
+        <nav class="navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              {% helper reglang = lang.l('join_now', 'start') %}
+              {% helper users.usersRegistration({'is_link': 1, 'page': 1, 'lang': reglang, 'class': 'th-set__link_color'}) %}
+            </li>
+            <li>
+              <a href="{{ site_root }}content/view/about-us" class="btn_border"
+                 id="btn_abo">{% helper lang.l('about_us', 'start') %}</a>
+            </li>
+            <li>
+              <a href="{{ site_root }}contact_us" class="btn_border"
+                 id="btn_con">{% helper lang.l('contacts', 'start') %}</a>
+            </li>
+            <li>
+              <a id="btn_log" class="btn_border" onclick="{% helper start.setAnalytics('index', 'btn_sign_in') %}"
+                 href="{% helper seo.seolink('users', 'login_form') %}">
+                {% helper lang.l('btn_login', 'start') %}</a>
+            </li>
+            <li>
+              {% helper users.users_lang_select({type: 'menu', template: 'dropdown'}) %}
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </section>
+    <section id="header-photos">
+      <div class="clearfix"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4 pd5">
+            <img class="img-responsive" src="{{ site_root }}uploads/themes-fixed/luisia/images/b-header-photo-1.jpg"
+                 alt="header photo 1">
+          </div>
+          <div class="col-md-4 pd5">
+            <img class="img-responsive" src="{{ site_root }}uploads/themes-fixed/luisia/images/b-header-photo-2.jpg"
+                 alt="header photo 2">
+          </div>
+          <div class="col-md-4 pd5">
+            <img class="img-responsive" src="{{ site_root }}uploads/themes-fixed/luisia/images/b-header-photo-3.jpg"
+                 alt="header photo 3">
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="custom-header-photos"></div>
+  </div>
+  <main>
+    <section id="welcome">
+      <div class="th-set__main_bg text-color-white">
+        <div class="container">
+          <h1 class="slogan th-set__index_promo_text_main">{% helper lang.l('welcome_to_site', 'start') %}</h1>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="container">
+        <div class="row pd30">
+          <div class="col-xs-6 col-md-4">
+            <a href="#" class="thumbnail">
+              <img src="{{ site_root }}uploads/themes-fixed/luisia/images/b-ouragency-photo-1.jpg" alt="header photo 1"
+                   class="img-responsive">
+            </a>
+            <a href="#" class="thumbnail">
+              <img src="{{ site_root }}uploads/themes-fixed/luisia/images/b-ouragency-photo-3.jpg" alt="header photo 2"
+                   class="img-responsive">
+            </a>
+          </div>
+          <div class="col-xs-6 col-md-4">
+            <a href="#" class="thumbnail">
+              <img src="{{ site_root }}uploads/themes-fixed/luisia/images/b-ouragency-photo-2.jpg" alt="header photo 2"
+                   class="img-responsive">
+            </a>
+            <a href="#" class="thumbnail">
+              <img src="{{ site_root }}uploads/themes-fixed/luisia/images/b-ouragency-photo-4.jpg" alt="header photo 2"
+                   class="img-responsive">
+            </a>
+          </div>
+          <div class="col-md-4">
+            <div class="caption">
+              <div class="th-set__link_color">
+                <h2 class="tsize72">
+                  <span>{% helper lang.l('premium', 'start') %}</span>
+                </h2>
+              </div>
+              <p class="text-bold tsize40">{% helper lang.l('singles_online', 'start') %}</p>
+              <p class="our_agency">{% helper lang.l('singles_online_txt', 'start') %}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="what_we_do">
+      <div class="th-set__main_bg text-color-white ">
+        <div class="container">
+          <h1 class="slogan th-set__index_promo_text_main">{% helper lang.l('what_you_get', 'start') %}</h1>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="container thumb-box4">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="caption">
+              <h2 class="th-set__link_color tsize72">
+                <span>{% helper lang.l('premium_services', 'start') %}</span>
+                <p class="text-bold tsize45"></p>
+              </h2>
+              <h3 class="text-bold">{% helper lang.l('f_search', 'start') %}</h3>
+              <p>{% helper lang.l('f_search_txt', 'start') %}</p>
+              <h3 class="text-bold">{% helper lang.l('f_winkskisses', 'start') %}</h3>
+              <p>{% helper lang.l('f_winkskisses_txt', 'start') %}</p>
+              <h3 class="text-bold">{% helper lang.l('f_chat', 'start') %}</h3>
+              <p>{% helper lang.l('f_chat_txt', 'start') %}</p>
+              <h3 class="text-bold">{% helper lang.l('f_galleries', 'start') %}</h3>
+              <p>{% helper lang.l('f_galleries_txt', 'start') %}</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="col-sm-6 photo_service">
+              <figure class="wow zoomIn animated" style="visibility: visible;">
+                <img src="{{ site_root }}uploads/themes-fixed/luisia/images/b-features-photo-1.jpg" alt=""
+                     class="img-responsive">
+              </figure>
+            </div>
+            <div class="col-sm-6 photo_service">
+              <figure class="wow zoomIn animated" style="visibility: visible;">
+                <img src="{{ site_root }}uploads/themes-fixed/luisia/images/b-features-photo-2.jpg" alt=""
+                     class="img-responsive">
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="featured_stars">
+      <div class="th-set__main_bg text-color-white ">
+        <div class="container">
+          <h1 class="slogan th-set__index_promo_text_main">{% helper lang.l('featured_members', 'start') %}</h1>
+        </div>
+      </div>
+      <!-- users block -->
+      <div class="clearfix"></div>
+      <div class="container">
+        <div class="row featured_stars__list">
+          {% helper users.featuredUsers(false, {'template':'luisia', 'count': 8, 'size': 'big'}) %}
+        </div>
+      </div>
+      <!-- users block -->
+    </section>
+    <section id="mission_and_values">
+      <div class="th-set__main_bg text-color-white">
+        <div class="container">
+          <h1 class="slogan th-set__index_promo_text_main">{% helper lang.l('header_news', 'news') %}</h1>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="news-backgroud row">
+          <div class="container">
+            <div id="news" class="news__list">
+              {% helper news.newsBlock(4) %}
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="th-set__index_footer_bg text-color-white">
+    <div class="container">
+      <div>
+        <p>&nbsp;</p>
+        <ul>
+          <li>
+            <p>{% helper lang.l('help', 'start') %}</p>
+            <ul>
+              <li>
+                <a href="{{ site_url }}contact_us">{% helper lang.l('contact_us', 'start') %}</a>
+              </li>
+              <li>
+                <a href="{{ site_url }}site_map">{% helper lang.l('sitemap', 'start') %}</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>{% helper lang.l('about_us', 'start') %}</p>
+            <ul>
+              <li>
+                <a href="{{ site_url }}content/view/about-us">{% helper lang.l('about_us', 'start') %}</a>
+              </li>
+              <li>
+                <a href="{{ site_url }}news/index">{% helper lang.l('header_news', 'news') %}</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>{% helper lang.l('privacy', 'start') %}</p>
+            <ul>
+              <li>
+                <a href="{{ site_url }}content/view/privacy-and-security">{% helper lang.l('privacy', 'start') %}</a>
+              </li>
+              <li>
+                <a href="{{ site_url }}content/view/legal-terms">{% helper lang.l('terms', 'start') %}</a>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+        <section id="copyright" class="col-md-12 copyright">
+          {% helper start.getCopyright('index_page') %}
+        </section>
+      </div>
+    </div>
+  </footer>
+</div>
+{% if not is_pjax %}
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=cyrillic" rel="stylesheet">
+  <link rel="stylesheet" href="{{ site_root }}uploads/themes-fixed/luisia/styles/bootstrap-{{ _LANG.rtl }}.css"
+        type="text/css"/>
+  <link rel="stylesheet" href="{{ site_root }}uploads/themes-fixed/luisia/styles/font-awesome.css" type="text/css"/>
+  <link rel="stylesheet" href="{{ site_root }}application/views/flatty/css/fontawesome/css/fontawesome-all.min.css"
+        type="text/css"/>
+  {% helper theme.include_css('style', 'screen') %}
+  {% helper theme.css(load_type) %}
+  <link rel="stylesheet" href="{{ site_root }}uploads/themes-fixed/luisia/styles/style-{{ _LANG.rtl }}.css"
+        type="text/css"/>
+{% endif %}
+   <script>
+     $(document).ready(function () {
+       let headerImg = {{ header_style|json_encode() }};
+       if (headerImg !== null) {
+         $(window).on('resize', setHeartImage)
+         let container = $('#b-header')
+         let imgContainer = $('.custom-header')
+
+         function setHeartImage () {
+           let widthW = document.body.clientWidth
+           let mobileWidth = 768
+           if (widthW > mobileWidth) {
+             if (typeof headerImg.image_url !== 'undefined') {
+               container.addClass('custom-header_without_img')
+               container.css({ 'background-image': 'url(' + headerImg.base_path + '/' + headerImg.image_url + ')' })
+             } else {
+               container.removeClass('custom-header_without_img')
+             }
+           } else if (widthW < mobileWidth) {
+             if (typeof headerImg.image_mobile_url !== 'undefined') {
+               container.addClass('custom-header_without_img')
+               container.css({ 'background-image': 'url(' + headerImg.base_path + '/' + headerImg.image_mobile_url + ')' })
+             } else {
+               container.removeClass('custom-header_without_img')
+             }
+           }
+         }
+
+         setHeartImage()
+       }
+     })
+   </script>
+
+   <script src="{{ site_root }}uploads/themes-fixed/pleasure/js/controls.js"></script>
+
+   {# TODO перенести в сборщик webpack (flatty/js/main.js) #}
+   {% helper utils.jscript('', 'twigjs/twig.js') %}
+   {% helper themes.load({'name': 'modules', 'ext': 'js'}) %}
+   {% helper themes.load({'name': 'modules_multi_request', 'ext': 'js'}) %}
+
+
+   {% helper cookie_policy.cookie_policy_block() %}
+   {% helper languages.lang_editor() %}
+   {% helper seo_advanced.seo_traker('footer') %}
+
+   <script>
+     $(function () {
+       $.datepicker.setDefaults($.datepicker.regional["{{ _LANG.code }}"])
+     })
+   </script>
+</body>
+
+</html>
+ {% endblock container %}

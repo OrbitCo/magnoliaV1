@@ -1,0 +1,26 @@
+<table>
+    <tr>
+        <td style="padding-bottom:30px;">
+            <img src='{{ data.image }}'>
+        </td>
+    </tr>
+    <tr>
+        <td>{% helper lang.l('notification_field_hello', 'notifications', lang_id) %}, {{ data.profile_nickname }}!</td>
+    </tr>
+    <tr>
+        <td style="padding-bottom:30px;">
+            <a href='{{ data.link_1 }}' style="text-decoration: none;">{{ data.user_nickname }}</a> {% helper lang.l('notification_overlap', 'like_me', lang_id) %}. 
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" style="margin:0;padding:0">
+            <table align="left" cellspacing="0" cellpadding="0" border="0" width="200px" style="margin:0;padding:10px">
+                <tr>
+                    <td align="center" valign="middle" bgcolor="#f06078" style="margin:0;">
+                        <a href='{{ data.link_1 }}' style='color:#ffffff;text-decoration: none;padding:10px;display:block;'>{% helper lang.l('notification_user_view', 'like_me', lang_id) %}</a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>

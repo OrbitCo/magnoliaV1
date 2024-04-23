@@ -1,0 +1,54 @@
+{% helper is_liked = like_me.isLiked({profile_id: profile_id}) %}
+{% helper in_blacklist = blacklist.in_my_blacklist(profile_id) %}
+
+<div class="magazine-profile__likemepanel likemecontrols {% if in_blacklist %} hide {% endif %}">
+    <a href='{% if flipping_navigation.prev is empty %}javascript:;{% else %}{{ flipping_navigation.prev }}{% endif %}'  
+       class="likemecontrols__item likemecontrols__item_back {% if flipping_navigation.prev is empty %}inactive{% endif %}">
+        <span class="fa fa-undo"></span>
+    </a>
+    <a href='{% if flipping_navigation.next is empty %}javascript:;{% else %}{{ flipping_navigation.next }}{% endif %}'  
+       class="likemecontrols__item likemecontrols__item_skip {% if flipping_navigation.next is empty %}inactive{% endif %}">
+        <span class="fa fa-times"></span>&nbsp;{% helper lang.l('button_skip', 'like_me') %}
+    </a>
+    <button  data-pjax="0" id="like_button" class="likemecontrols__item {% if is_liked == false %}likemecontrols__item_like{% else %}likemecontrols__item_liked{% endif %}" data-action="{% if is_liked == false %}like{% else %}unlike{% endif %}">
+        <span class="{% if is_liked == false %}far fa-heart {% else %}fas fa-heart"{% endif %}"></span>&nbsp;{% helper lang.l('button_like', 'like_me') %}
+    </button>
+</div>
+<script>
+    $(function () {
+        loadScripts(
+                [
+                    "{% helper utils.jscript('like_me', 'like_me.js', 'path') %}",
+                    "{% helper utils.jscript('like_me', 'match_me.js', 'path') %}"
+                ],
+                function () {
+                    like_me = new LikeMe({
+                        siteUrl: site_url,
+                        action_id: 'play_global',
+                        isRegistr: 0,
+                        isFlippingProfiles: 1,
+                        langs: {
+                            header: "{% helper lang.l('field_evaluate_users', 'like_me') %}",
+                            gotItBtn: "{% helper lang.l('link_got_it', 'like_me') %}",
+                            searchBtn: "{% helper lang.l('link_skip', 'like_me') %}"
+                        }
+                    });
+                    match_me = new MatchMe({
+                        siteUrl: site_url,
+                        all_loaded: 0,
+                        show_more_lang: "{% helper lang.l('button_show_more', 'like_me') %}",
+                    });
+                },
+                ['like_me', 'match_me'],
+                {async: true}
+        );
+
+        $("[data-mobile-pop]").on("click", function () {
+            var mob_pop = $(this).attr("data-mobile-pop");
+            $(mob_pop).addClass("b-mobile-pop_show");
+        });
+        $("[data-mobile-pop-close]").on("click", function () {
+            $(this).parents('.b-mobile-pop').removeClass('b-mobile-pop_show');
+        });
+    });
+</script>

@@ -1,0 +1,17 @@
+.contact-us-block .title {
+    font-size: 18px;
+    color: $font_color;
+    padding-bottom: 10px;
+}
+.captcha-img img {
+    height: 34px;
+    margin-bottom: 10px;
+}
+@media(max-width: 767px){
+    .captcha-img.contact_us-captcha img{
+        width: auto;
+    }
+    .contact_us-btn{
+        width:100%;
+    }
+}

@@ -1,0 +1,121 @@
+<h2 class="section-header">
+    <span class="upper">
+        {% helper lang.l('table_header_personal', 'users') %}
+        {% helper personal_section_name = lang.l('filter_section_personal', 'users') %}
+    </span>
+    <a href="{% helper seo.seolink('users', 'profile', {'section-code': 'personal', 'section-name': personal_section_name}) %}" class="fright">
+        <i class="fas fa-pencil-alt"></i>&nbsp;Edit
+    </a>
+</h2>
+
+<div class="view-section owner-actions">
+    {% helper no_info_str = lang.l('no_information', 'users') %}
+
+    <div class="field-block clearfix">
+        <div class="field-name col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            {% helper lang.l('field_user_type', 'users') %}:
+        </div>
+        <div class="field-info col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            {{ data.user_type_str }}
+        </div>
+    </div>
+
+    {% if data.looking_user_type_str %}
+        <div class="field-block clearfix" data-field="looking_user_type" data-action="change-field">
+            <div class="field-name col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                {% helper lang.l('field_looking_user_type', 'users') %}:
+            </div>
+            <div class="field-info col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                {{ data.looking_user_type_str }}, {% helper lang.l('field_aged', 'users') %}
+                {% if data.age_min %}{{ data.age_min }}{% endif %}
+                {% if data.age_min and data.age_max %} - {% endif %}
+                {% if data.age_max %}{{ data.age_max }}{% endif %}
+                <i class="fas fa-pencil-alt"></i>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="field-block clearfix" data-field="nickname" data-action="change-field">
+        <div class="field-name col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            {% helper lang.l('field_nickname', 'users') %}:
+        </div>
+        <div class="field-info col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            {{ data.nickname }}<i class="fas fa-pencil-alt"></i>
+        </div>
+    </div>
+    <div class="field-block clearfix" data-field="fname_sname" data-action="change-field">
+        <div class="field-name col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            {% helper lang.l('field_name', 'users') %}:
+        </div>
+        <div class="field-info col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            {{ data.fname }} {% if data.sname %}{{ data.sname }}{% endif %}
+            <i class="fas fa-pencil-alt"></i>
+        </div>
+    </div>
+    <div class="field-block clearfix"  {% if not not_editable_fields.birth_date %}data-field="birth_date" data-action="change-field"{% endif %}>
+        <div class="field-name col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            {% helper lang.l('birth_date', 'users') %}:
+        </div>
+        <div class="field-info col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            {% if data.birth_date %}
+                {{ data.birth_date }}
+            {% else %}
+                {{ no_info_str }}
+            {% endif %}
+            {% if not not_editable_fields.birth_date %}<i class="fas fa-pencil-alt"></i>{% endif %}
+        </div>
+    </div>
+
+    {% if data.location %}
+        <div class="field-block clearfix" data-field="location" data-action="change-field">
+            <div class="field-name col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                {% helper lang.l('field_region', 'users') %}:
+            </div>
+            <div class="field-info col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                {{ data.location }}<i class="fas fa-pencil-alt"></i>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+{% for item in sections %}
+    <h2 class="section-header">
+        <span class="upper">
+            {{ item.name }}
+        </span>
+        <a href="{% helper seo.seolink('users', 'profile', {'section-code': item.gid, 'section-name': item.name}) %}" class="fright">
+            <i class="fas fa-pencil-alt"></i>&nbsp;Edit
+        </a>
+    </h2>
+    <div class="view-section owner-actions">
+        {% include 'custom_view_fields.twig' with {'fields_data': item.fields, 'is_owner': is_owner} %}
+    </div>
+{% endfor %}
+{% helper utils.jscript('', 'datepicker-select-template.js') %}
+<script type="text/javascript">
+    $(function () {
+        loadScripts(
+                "{% helper utils.jscript('users', 'users-settings.js', 'path') %}",
+                function () {
+                    users_settings_obj = new usersSettings({
+                        siteUrl: site_url,
+                        langs: {
+                            save: "{% helper lang.l('btn_save', 'start', '', 'js') %}",
+                            link_select_region: '{% helper lang.l('link_select_region', 'countries') %}'
+                        },
+                        user: {
+                            age_min: '{{ age_min }}',
+                            age_max: '{{ age_max }}',
+                            birth_date: '{{ data.birth_date_raw }}',
+                            dateFormat: '{{ date_format_ui.date_literal }}'
+                        },
+                         usersProfileAvailableView: new available_view({
+                            siteUrl: site_url
+                        })
+                    });
+                },
+                'users_settings_obj',
+                {async: false}
+        );
+    });
+</script>

@@ -1,0 +1,293 @@
+{% include '@app/header.twig' %}
+
+<style>
+    .c-profiles {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -1rem 2rem;
+    }
+    .c-profiles__item {
+        flex-basis: 20%;
+        padding: 1rem;
+        cursor: pointer;
+        min-width: 0;
+        position: relative;
+    }
+    .c-profiles__item_image {
+        position: relative;
+    }
+    .c-profiles__item_caption {
+        padding: 0.5rem;
+        border-left: 1px solid #e6e9ed;
+        border-right: 1px solid #e6e9ed;
+        border-bottom: 1px solid #e6e9ed;
+    }
+    .c-profiles__item_name,
+    .c-profiles__item_location {
+        min-width: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .c-profiles__item_check {
+        display: none;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        color: #32b44a;
+        align-items: center;
+        justify-content: center;
+        font-size: 15rem;
+    }
+    .c-profiles__item.selected .c-profiles__item_check {
+        display: flex;
+    }
+    @media (max-width: 1199px) {
+        .c-profiles__item {
+            flex-basis: 25%;
+        }
+        .c-profiles__item_check {
+            font-size: 10rem;
+        }
+    }
+    @media (max-width: 991px) {
+        .c-profiles__item {
+            flex-basis: calc(100% / 3);
+        }
+    }
+</style>
+
+<div class="col-xs-12">
+    <div class="x_panel">
+        <div id="menu" class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default" data-analytic="qweqwe"
+                    data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"
+                    onclick="{% helper start.setAnalytics('users', 'btn_settings') %}document.location.href='{{ site_url }}admin/users/settings'">
+                {% helper lang.l('btn_settings', 'users') %}
+            </label>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                <li class="{% if filter == 'all' %}active{% endif %} {% if not filter_data.all %}disabled{% endif %}">
+                    <a href="{% if filter_data.all %}{{ site_url }}admin/users/index/all/{{ user_type }}{% else %}javascript:;{% endif %}">
+                        {% helper lang.l('filter_all_users', 'users') %} ({{ filter_data.all }})
+                    </a>
+                </li>
+                <li class="{% if filter == 'not_active' %}active{% endif %} {% if not filter_data.not_active %} disabled{% endif %}">
+                    <a href="{% if filter_data.not_active %}{{ site_url }}admin/users/index/not_active/{{ user_type }}{% else %}javascript:;{% endif %}">
+                        {% helper lang.l('filter_not_active_users', 'users') %} ({{ filter_data.not_active }})
+                    </a>
+                </li>
+                <li class="{% if filter == 'active' %}active{% endif %} {% if not filter_data.active %}disabled{% endif %}">
+                    <a href="{% if filter_data.active %}{{ site_url }}admin/users/index/active/{{ user_type }}{% else %}javascript:;{% endif %}">
+                        {% helper lang.l('filter_active_users', 'users') %} ({{ filter_data.active }})
+                    </a>
+                </li>
+                <li class="{% if filter == 'not_confirm' %}active{% endif %} {% if not filter_data.not_confirm %}disabled{% endif %}">
+                    <a href="{% if filter_data.not_confirm %}{{ site_url }}admin/users/index/not_confirm/{{ user_type }}{% else %}javascript:;{% endif %}">
+                        {% helper lang.l('filter_not_confirm_users', 'users') %} ({{ filter_data.not_confirm }})
+                    </a>
+                </li>
+                <li class="{% if filter == 'deleted' %}active{% endif %} {% if not filter_data.deleted %}disabled{% endif %}">
+                    <a href="{% if filter_data.deleted %}{{ site_url }}admin/users/deleted{% else %}javascript:;{% endif %}">
+                        {% helper lang.l('filter_deleted_users', 'users') %} ({{ filter_data.deleted }})
+                    </a>
+                </li>
+                {% helper incomplete_signup.not_registered_add_filter(filter) %}
+                <li class="active">
+                    <a href="{{ site_url }}admin/users/index_users">
+                        {% helper lang.l('filter_index_users', 'users') %}
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>{% helper lang.l('header_filters', 'start') %}</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-down cursor-pointer"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content hide">
+                <form method="post" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            {% helper lang.l('user_type', 'users') %}:</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div id="gender" class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-default {% if search_params.user_type == '' %}active{% endif %}" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                    <input type="radio" name="user_type" value=""{% if search_params.user_type == '' %} checked{% endif %}>...
+                                </label>
+                                {% for key, item in user_types.option %}
+                                    <label class="btn btn-default {% if search_params.user_type == key %}active{% endif %}" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                        <input type="radio" name="user_type" value="{{ key }}"{% if search_params.user_type == key %} checked{% endif %}>{{ item }}
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">{% helper lang.l('search_by', 'users') %}:</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" name="search_text" value="{{ search_params.search_text|e }}" class="form-control">
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <select name="search_type" class="form-control">
+                                <option value="all" {% if search_params.search_type == 'all' %} selected{% endif %}>
+                                    {% helper lang.l('filter_all', 'users') %}
+                                </option>
+                                <option value="email" {% if search_params.search_type == 'email' %} selected{% endif %}>
+                                    {% helper lang.l('field_email', 'users') %}
+                                </option>
+                                <option value="fname" {% if search_params.search_type == 'fname' %} selected{% endif %}>
+                                    {% helper lang.l('field_fname', 'users') %}
+                                </option>
+                                <option value="sname" {% if search_params.search_type == 'sname' %} selected{% endif %}>
+                                    {% helper lang.l('field_sname', 'users') %}
+                                </option>
+                                <option value="nickname" {% if search_params.search_type == 'nickname' %} selected{% endif %}>
+                                    {% helper lang.l('field_nickname', 'users') %}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">
+                            {% helper lang.l('latest_active', 'users') %}:</label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            {% helper start.getCalendarInput('last_active_from', search_params.last_active.from, {id: 'last_active_from', year_range: {min: -30, max: 1}}) %}
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-1 text-center">
+                            <label class="control-label" for="last_active_to" style="font-weight:normal;">&nbsp;{% helper lang.l('to', 'users') %}&nbsp;</label>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            {% helper start.getCalendarInput('last_active_to', search_params.last_active.to, {id: 'last_active_to', year_range: {min: -30, max: 1}}) %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">
+                            {% helper lang.l('field_date_created', 'users') %}:</label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            {% helper start.getCalendarInput('date_created_from', search_params.date_created.from, {id: 'date_created_from', year_range: {min: -30, max: 1}}) %}
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-1 text-center">
+                            <label class="control-label" for="date_created_to" style="font-weight:normal;">&nbsp;{% helper lang.l('to', 'users') %}&nbsp;</label>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            {% helper start.getCalendarInput('date_created_to', search_params.date_created.to, {id: 'date_created_to', year_range: {min: -30, max: 1}}) %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">
+                            {% helper lang.l('field_location', 'users') %}:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            {% helper location_lang = lang.l('field_search_country', 'users') %}
+                            {% helper countries.location_select({
+                                'is_radius': 0,
+                                'is_search': 1,
+                                'select_type': 'city',
+                                'placeholder': location_lang,
+                                'id_country': search_params.id_country,
+                                'id_region': search_params.id_region,
+                                'id_city': search_params.id_city,
+                            }) %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-sm-3 col-xs-12">
+                            {% helper lang.l('field_with_photo', 'users') %}:</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="checkbox" name="with_photo" class="flat" value="1" {% if search_params.with_photo %}checked{% endif %}>
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-sm-offset-3">
+                            <input type="submit" class="btn btn-primary" value="{% helper lang.l('header_user_find', 'users') %}" name="btn_search">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="x_content">
+            <div id="actions" class="hide"></div>
+
+            <div class="c-profiles">
+                {% for user in users %}
+                    <div class="c-profiles__item {% if user.id in selected_users %}selected{% endif %}">
+                        <div class="c-profiles__item_image" data-action="index-user" data-id="{{ user.id }}">
+                            <img src="{{ user.media.user_logo.thumbs.great}}" alt="{{ user.output_name|e }}" class="img-responsive">
+                            <div class="c-profiles__item_check">
+                                <i class="fa fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="c-profiles__item_caption">
+                            <div class="c-profiles__item_name">
+                                <a href="{{ site_url }}admin/users/edit/personal/{{ user.id }}">{{ user.output_name }}</a>{% if user.age %}, {{ user.age }}{% endif %}
+                            </div>
+                            <div class="c-profiles__item_location" title="{{ user.location|e }}">
+                                {{ user.location }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% include "@app/pagination.twig" %}
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('[data-action="index-user"]').off('click').click(function (e) {
+            e.preventDefault();
+
+            const container = $(this).parent();
+
+            let userId = $(this).data('id') || 0;
+            let action = container.hasClass('selected') ? 'remove' : 'add';
+
+            container.toggleClass('selected');
+
+            $.ajax({
+                type: "post",
+                url: site_url + "admin/users/ajax_set_index_user",
+                data: {
+                    user_id: userId,
+                    action: action,
+                },
+                dataType: "json",
+                backend: 1,
+                cache: false,
+                success: function (response) {
+                    if (response.message) {
+                        error_object.show_error_block(response.message, response.status == 1 ? 'success' : 'error');
+                    }
+
+                    if (response.status == 0) {
+                        if (action == 'add') {
+                            container.removeClass('selected');
+                        } else {
+                            container.addClass('selected');
+                        }
+                    }
+                }
+            });
+
+            return false;
+        })
+    });
+</script>
+
+{% include '@app/footer.twig' %}

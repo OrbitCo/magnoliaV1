@@ -1,0 +1,254 @@
+{% helper default_select_lang = lang.l('select_default', 'users') %}
+{% helper all_select_lang = lang.l('filter_all', 'users') %}
+{% helper location_lang = lang.l('field_search_country', 'users') %}
+
+<div class="horizontal_main_search_form">
+    <form action="{{ form_settings.action }}" method="POST" id="main_search_form_{{ form_settings.form_id }}">
+        <input type="hidden" name="main_search_form" value="1">
+        <div class="{{ form_settings.type }}">
+            {% if form_settings.type == 'line' %}
+                <div class="inside">
+                    <div id="line-search-form_{{ form_settings.form_id }}">
+                        <input type="text" name="search" placeholder="{% helper lang.l('search_people', 'start') %}" />
+                        <button type="submit" id="main_search_button_{{ form_settings.form_id }}" class="search"><i class="fa-search w"></i></button>
+                    </div>
+                </div>
+            {% elseif form_settings.type == 'index' %}
+                <div class="fields-block aligned-fields">
+                    <div id="short-search-form_{{ form_settings.form_id }}">
+                        <div>
+                            {hlbox input='user_type' id='looking_user_type' value=$looking_user_types.option multiselect=true selected=$data.user_type}
+                        </div>
+                        <div class="table">
+                            <div class="search-fields">
+                                <div class="search-field age">
+                                    <span class="inline vmiddle">{% helper lang.l('field_age', 'users') %}&nbsp;</span>
+                                    <div class="ib vmiddle">
+                                        {% helper start.selectbox({
+                                            'input': 'age_min',
+                                            'id': 'age_min',
+                                            'value': age_range,
+                                            'selected': data.age_min
+                                        }) %}
+                                    </div>
+                                    &nbsp;-&nbsp;
+                                    <div class="ib vmiddle">
+                                        {% helper start.selectbox({
+                                            'input': 'age_max',
+                                            'id': 'age_max',
+                                            'value': age_range,
+                                            'selected': data.age_max
+                                        }) %}
+                                    </div>
+                                </div>
+                                <div class="search-field country">
+                                    {% helper countries.locationSelect({
+                                        'select_type': 'city',
+                                        'placeholder': location_lang,
+                                        'id_country': data.looking_id_country,
+                                        'id_region': data.looking_id_region,
+                                        'id_city': data.looking_id_city
+                                    }) %}
+                                </div>
+                                <div class="search-field search-btn righted">
+                                    <button type="submit" id="main_search_button_{{ form_settings.form_id }}" name="search_button">{% helper lang.l('btn_search', 'start') %}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            {% else %}
+                <div class="clearfix">
+                    <div class="fline">
+                        <div class="fline__item user_types-search_block">
+                            <div class="f-title">
+                                {% filter upper %}{% helper lang.l('field_gender', 'users') %}{% endfilter %}
+                            </div>
+                            <div class="f-block">
+                                {% helper start.checkbox({
+                                        'input': 'user_type',
+                                        'id': 'looking_user_type',
+                                        'value': looking_user_types.option,
+                                        'selected': data.user_type,
+                                        'default': all_select_lang
+                                    }) %}
+                            </div>
+                        </div>
+                        <div class="fline__item looking_ages-search_block">
+                            <div class="f-title">
+                                {% filter upper %}{% helper lang.l('field_ages', 'users') %}{% endfilter %}
+                            </div>
+                            <div class="f-block clearfix looking-age_block">
+                                <div class="">
+                                    {% helper start.selectbox({
+                                            'input': 'age_min',
+                                            'id': 'age_min',
+                                            'value': age_range,
+                                            'selected': data.age_min
+                                        }) %}
+                                </div>
+                                <div class="looking-age_center">-</div>
+                                <div class="">
+                                    {% helper start.selectbox({
+                                            'input': 'age_max',
+                                            'id': 'age_max',
+                                            'value': age_range,
+                                            'selected': data.age_max
+                                        }) %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fline__item location-search_block">
+                            <div class="f-title">
+                                {% filter upper %}{% helper lang.l('field_location', 'users') %}{% endfilter %}
+                            </div>
+                            <div class="f-block">
+                                <div>
+                                    {% helper countries.location_select({
+                                                    'is_radius': 1,
+                                                    'is_search': 1,
+                                                    'select_type': 'city',
+                                                    'placeholder': location_lang,
+                                                    'id_country': data.id_country,
+                                                    'id_region': data.id_region,
+                                                    'id_city': data.id_city,
+                                                    'lat': data.lat,
+                                                    'lon': data.lon,
+                                                    'radius': data.radius
+                                                }) %}
+                                </div>
+                            </div>
+                        </div>
+                        {% if withPhotoActive %}
+                        <div class="fline__item">
+                            <div class="f-title">
+                                {% filter upper %}{% helper lang.l('field_with_photo', 'users') %}{% endfilter %}
+                            </div>
+                            <div class="f-block">
+                                <input type="checkbox"  name="withPhoto"  {{ withPhoto ? 'checked' : '' }}>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {# <div class="fline__item online_status-search_block">
+                            <div class="f-title">{% filter upper %}{% helper lang.l('online_now', 'users') %}{% endfilter %}</div>
+                            <div class="f-block">
+                            <input type="checkbox" name="online_status" class="hide" id="online_status" {% if  data.online_status == 'on' %}checked{% endif %}>
+                            <script>
+                                $(function () {
+                                    if ($('.bootstrap-switch-container').find('input').is('#online_status') === false) {
+                                        if (typeof $.fn.bootstrapSwitch == "undefined") {
+                                            loadScripts([
+                                                "{{ site_url}}application/js/bootstrap/bootstrap.min.js",
+                                                "{{ site_url}}application/js/bootstrap-switch/dist/js/bootstrap-switch.min.js"
+                                            ]);
+                                        }
+                                        var load_script = setInterval(function() {
+                                            if (typeof $.fn.bootstrapSwitch !== "undefined") {
+                                                $("#online_status").bootstrapSwitch().show();
+                                                clearInterval(load_script);
+                                            }
+                                        }, 300);
+                                    }
+                                });
+                            </script>
+                            </div>
+                        </div> #}
+
+                        {% if form_settings.use_advanced %}
+                            <div class="fline__item more-search_block">
+                                <div class="f-title">&nbsp;</div>
+                                <div class="f-block">
+                                    <a class="btn btn-default hide" style="display: block;" href="#" id="more-options-link_{{ form_settings.form_id }}" title="{% helper lang.l('link_more_options', 'start') %}"><i class="fa fa-angle-double-down icon-big text-icon"></i><span class="hidden-sm hidden-md">&nbsp;{% helper lang.l('link_more_options', 'start') %}</span></a>
+                                    <a class="btn btn-default hide" style="display: block;" href="#" id="less-options-link_{{ form_settings.form_id }}" title="{% helper lang.l('link_less_options', 'start') %}"><i class="fa fa-angle-double-up icon-big text-icon"></i><span class="hidden-sm hidden-md">&nbsp;{% helper lang.l('link_less_options', 'start') %}</span></a>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="fline__item fline__item_right button-search_block">
+                            <div class="f-title">&nbsp;</div>
+                            <div class="f-block text-right">
+                                <input data-action="send_search_form" name="main_search_button" type="button" id="main_search_button_{{ form_settings.form_id }}" class="btn btn-primary" value="{% helper lang.l('btn_search', 'start') %}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="full-search-form_{{ form_settings.form_id }}" class="advline hide">
+                    {% if form_settings.use_advanced %}
+                        <div class="row">
+                            {% for item in advanced_form %}
+                                {% if item.type == 'section' %}
+                                    {% for field in item.section.fields %}
+                                        <div class="search-field custom {{ field.field.type }} {{ field.settings.search_type }}  col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                            <div class="f-title">{{ field.field_content.name }}</div>
+                                            <div class="f-block">
+                                                {% include 'helper_search_field_block.twig' with {
+                                                                'field': field,
+                                                                'field_name': field.field_content.field_name
+                                                            }  %}
+                                            </div>
+                                        </div>
+                                        {% if loop.index is divisible by(4) %}
+                                            <div class="clr"></div>
+                                         {% endif %}
+                                    {% endfor %}
+                                {% else %}
+                                    <div class="search-field custom {{ item.field.type }} {{ item.field.view_type }} {{ item.settings.search_type }}  col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                        <div class="f-title">{{ item.field_content.name }}</div>
+                                        <div class="f-block">
+                                            {% include 'helper_search_field_block.twig' with {
+                                                'field': item,
+                                                'field_name': item.field_content.field_name
+                                            }  %}
+                                        </div>
+                                    </div>
+                                    {% if loop.index is divisible by(3) %}
+                                        <div class="clr"></div>
+                                     {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                            <div class="col-sm-12">
+                                <div class="bottom-serch-btn-js"></div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+            <div class="clearfix"></div>
+        </div>
+    </form>
+</div>
+<script>
+    $(function () {
+        loadScripts(
+                ["{% helper utils.jscript('users', 'UsersSearch.js', 'path') %}"],
+                function () {
+                    users_search = new UsersSearch({
+                        siteUrl: "{{ site_url }}",
+                        users: {
+                            countAll: {{ page_data.total_rows }},
+                            countPage: {{ page_data.per_page }}
+                        },
+                        page: {
+                            count: {{ page_data.total_pages }},
+                            previous: {{ page_data.prev_page }},
+                            current:{{ page_data.cur_page }},
+                            next: {% if page_data.next_page == 1 %}2{% else %}{{ page_data.next_page }}{% endif %}
+                        },
+                        langs: {
+                            sortBy: {
+                                latestActive: '{% helper lang.l('field_latest_active', 'users') %}',
+                                newest: '{% helper lang.l('field_newest', 'users') %}',
+                                usersNotFound: '{% helper lang.l('header_users_found', 'users') %}: {{ page_data.total_rows }}'
+                            }
+                        },
+                        url: {
+                            search: '{{ form_settings.form_url }}',
+                            ajaxSearch: '{{ form_settings.search_url }}',
+                            ajaxLoadUsers: '{{ form_settings.load_users }}'
+                        }
+                    });
+                },
+                ['users_search']
+                );
+    });
+</script>

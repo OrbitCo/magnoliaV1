@@ -1,0 +1,1055 @@
+.no-notifications .menu-video-more {
+  color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.twilio-room .local-media-tw video {
+  width: 100%;
+  -webkit-box-shadow: 0 0 3px 1px #b9b1b1;
+  box-shadow: 0 0 3px 1px #b9b1b1;
+}
+
+.twilio-room {
+  position: relative;
+  height: auto;
+  min-height: 500px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-shadow: 0px 0px 9px #f1f1f1;
+  box-shadow: 0px 0px 9px #f1f1f1;
+}
+
+.local-media-tw {
+  width: 30%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.twilio-room .connect-tw {
+
+}
+
+.menu-video-more {
+  -webkit-border-radius: 18px;
+  border-radius: 18px;
+}
+
+.menu-video-more .menu-alerts-more-triangle {
+  right: 17px;
+  float: right;
+  left: unset;
+}
+
+.badge-pulsar {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Trebuchet MS', sans-serif;
+  background: #09f;
+  cursor: default;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  height: 30px;
+  line-height: 1.55em;
+  top: 0;
+  right: 0;
+  border: 2px solid #fff;
+  position: absolute;
+  text-align: center;
+  width: 30px;
+  -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .2);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, .2);
+  -webkit-animation: pulse 2.5s infinite;
+  animation: pulse 2.5s infinite;
+  z-index: 9;
+}
+
+.badge-pulsar.green {
+  border: 2px solid #4CAF50;
+  background: none;
+}
+
+.green.bottom.badge {
+  position: absolute;
+  bottom: 0;
+  right: -7px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 26px;
+  color: #fff;
+  background: #32b44a;
+  -webkit-border-radius: 38px;
+  border-radius: 38px;
+  z-index: 10;
+}
+
+.badge-pulsar.bottom {
+  top: unset;
+  bottom: 0;
+  right: -7px;
+}
+
+.badge-pulsar:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 2px solid rgba(0, 155, 243, .5);
+  opacity: 0;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  -webkit-animation: sonar 2.5s infinite;
+  animation: sonar 2.5s infinite;
+}
+
+.pulsar-btn::before,
+.pulsar-btn::after {
+  cursor: pointer;
+  content: '';
+  position: absolute;
+  top: -9px;
+  bottom: 0;
+  left: -13px;
+  border: 2px solid rgba(238, 44, 85, 0.66);
+  opacity: 0;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  width: 148px;
+  height: 64px;
+  -webkit-animation: pulse_dbl 1.8s linear infinite;
+  animation: pulse_dbl 1.8s linear infinite;
+}
+
+.no-notifications .pulsar-icon {
+  display: none;
+}
+
+.no-notifications .menu-video-more.dropdown-menu {
+  display: none !important;
+}
+
+.pulsar-icon {
+  width: 100%;
+}
+
+/*.fa-video.pulse .pulsar-icon {
+display: block;
+}*/
+
+.pulsar-icon::before,
+.pulsar-icon::after {
+  cursor: pointer;
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border: 2px solid rgb(255, 255, 255);
+  opacity: 0;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  width: inherit;
+  height: inherit;
+  -webkit-animation: pulse_dbl 1.8s linear infinite;
+  animation: pulse_dbl 1.8s linear infinite;
+}
+
+.navbar-ava-xs.menu-video-item {
+  margin-left: 28px;
+  margin-right: 10px;
+  position: relative;
+}
+
+.navbar-ava-xs.menu-video-item .dropdown-menu {
+  left: initial;
+  right: 0;
+}
+
+.navbar-ava-xs .fa-video {
+  height: 35px;
+  width: 40px;
+  padding: 10px;
+}
+
+.pulsar-icon::after {
+  -webkit-animation-delay: .5s;
+  animation-delay: .5s;
+}
+
+.pulsar-btn::after {
+  -webkit-animation-delay: .5s;
+  animation-delay: .5s;
+}
+
+.badge-pulsar:hover {
+  cursor: pointer;
+}
+
+.pulsar {
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+}
+
+.pulsar.offset-rigth {
+  top: -30px !important;
+  right: -20px !important;
+}
+
+.pulsar.offset-center {
+  right: 50% !important;
+  top: 23% !important;
+}
+
+@-webkit-keyframes pulse_dbl {
+  0% {
+      -webkit-transform: scale(0.8);
+      transform: scale(0.8);
+      opacity: 0
+  }
+  50% {
+      opacity: 1
+  }
+  100% {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+      opacity: 0
+  }
+}
+
+@keyframes pulse_dbl {
+  0% {
+      -webkit-transform: scale(0.8);
+      transform: scale(0.8);
+      opacity: 0
+  }
+  50% {
+      opacity: 1
+  }
+  100% {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+      opacity: 0
+  }
+}
+
+@-webkit-keyframes sonar {
+  0% {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+      opacity: 1;
+  }
+  100% {
+      -webkit-transform: scale(1.4);
+      transform: scale(1.4);
+      opacity: 0;
+  }
+}
+
+@keyframes sonar {
+  0% {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+      opacity: 1;
+  }
+  100% {
+      -webkit-transform: scale(1.4);
+      transform: scale(1.4);
+      opacity: 0;
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+  }
+  20% {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+  }
+  50% {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+  }
+  80% {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+  }
+  100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+  }
+  20% {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+  }
+  50% {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+  }
+  80% {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+  }
+  100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+  }
+}
+
+.load_content_bg .new_features_inside video {
+  width: 100%;
+  height: auto;
+}
+
+.modal-dialog .new_features_inside img, .load_content_bg .new_features_inside img {
+  width: 100%;
+  height: auto;
+  max-height: 390px;
+  max-width: 630px;
+  -o-object-fit: fill;
+  object-fit: fill;
+}
+
+.modal-dialog {
+  max-width: 700px;
+  top: 45px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  position: absolute;
+}
+
+.modal-dialog.modal-lg.proto {
+  max-width: 1366px;
+  width: 1366px;
+}
+
+.modal-dialog.modal-lg.proto .modal-content {
+  max-height: 800px;
+}
+
+.modal-dialog.modal-lg.proto .modal-footer {
+  display: none;
+}
+
+.modal-dialog .modal-body {
+  padding: 20px 30px 10px 30px !important;
+}
+
+.new_features_inside .clearfix .col-xs-12 {
+  padding: 0;
+}
+
+.tooltip > .tooltip-inner {
+  font-size: 13px;
+  font-weight: 100;
+  background: rgb(52, 73, 94);
+}
+
+.content-block.load_content h1 {
+  font-size: 28px;
+}
+
+.left .tooltip-arrow, .right .tooltip-arrow {
+  border-left-color: rgb(52, 73, 94) !important;
+  border-right-color: rgb(52, 73, 94) !important;
+}
+
+.tooltip.in {
+  opacity: 1;
+}
+
+.tooltip-inner {
+  max-width: 200px;
+  min-width: 200px;
+}
+
+.guided-popup .modal-dialog {
+  max-width: 1400px;
+}
+
+.modal-dialog .fa-close:nth-child(2) {
+  display: none;
+}
+
+.bs-example-modal-sm.guide-modal {
+  max-width: unset;
+}
+
+.twilio_chat .lc-content-inner {
+  padding: 0;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 0px 9px 2px #8a91bd;
+  box-shadow: 0px 0px 9px 2px #8a91bd;
+}
+
+.twilio_chat .twilio-room {
+  padding: 0;
+  background: #dadada;
+}
+
+.twilio_chat .lc-content-outer {
+  padding: 0;
+}
+
+.load_content_inner.twilio_chat {
+  margin: 0;
+}
+
+.navbar-flatty a.menu-video-more:hover {
+  color: #fff;
+}
+
+.connect-tw video {
+  width: 100%;
+  max-height: 520px;
+}
+
+.twilio-room_control {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  bottom: 0;
+  position: relative;
+  left: 0;
+  right: 0;
+  width: 100%;
+  -webkit-transition: all 0.7s;
+  -o-transition: all 0.7s;
+  transition: all 0.7s;
+  z-index: 11;
+  /*opacity: 0.5;*/
+}
+
+.twilio-room_control:hover {
+  opacity: 1;
+}
+
+.twilio-room_control a {
+  margin: 10px;
+  background: #e6e6e6;
+  padding: 5px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.twilio-room_control svg {
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  -webkit-transition: fill 0.6s;
+  -o-transition: fill 0.6s;
+  transition: fill 0.6s;
+  margin: 8px 8px;
+  pointer-events: none;
+}
+
+.twilio-room_control .twilio-mute-switcher,
+.twilio-room_control .twilio-camera-off,
+.twilio-room_control .twilio_close,
+.twilio-room_control .twilio-camera-switcher {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.twilio-room_control .twilio_close {
+  margin-left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.twilio-room_control .twilio_close svg {
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  fill: #eb2a54;
+}
+
+.twilio-room_control .twilio-mute-switcher svg {
+  fill: #eb2a54;
+}
+
+.twilio-room_control .twilio-camera-off svg {
+  fill: #7dc877;
+}
+
+.twilio-room_control .twilio-camera-switcher {
+  margin-right: auto;
+  display: none;
+}
+
+.twilio-room_control .twilio-camera-switcher svg {
+  fill: white;
+}
+
+.twilio-room_control .twilio-room_control_left {
+  position: relative;
+  margin-bottom: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 32px 0 0 32px;
+  border-radius: 32px 0 0 32px;
+  padding-left: 17px;
+  margin-left: auto;
+  right: -1px;
+}
+
+.twilio-camera-switcher {
+  position: relative;
+  margin-bottom: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 0 32px 32px 0;
+  border-radius: 0 32px 32px 0;
+  padding-right: 17px;
+  margin-right: auto;
+}
+
+.twilio-room_user {
+  position: relative;
+  text-align: right;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 19px;
+  padding: 5px 18px;
+  z-index: 5;
+}
+
+.twilio-room_user .twilio-room_user_time {
+  /* background: rgba(117, 117, 116, 0.6);*/
+  padding: 5px 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+.twilio-room_user .twilio-room_user_time .twilio-room_user_time-counter {
+  margin-left: 5px;
+}
+
+.twilio_user_status {
+  position: relative;
+  z-index: 5;
+}
+
+.connect-tw .caller {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 5;
+}
+
+.connect-tw .caller video {
+  width: 100%;
+  min-height: 100%;
+  position: absolute;
+  -o-object-fit: cover;
+  object-fit: cover;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.twilio_user_info_top {
+  background-size: cover;
+  background-position: center center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 230px;
+  height: 230px;
+  margin: auto;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  border: 5px solid #eb2a54;
+  -webkit-transition: all 0.8s;
+  -o-transition: all 0.8s;
+  transition: all 0.8s;
+  z-index: 10;
+}
+
+.twilio-room.partner_in .twilio_user_info_top {
+  left: 28px;
+  top: 28px;
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  width: 64px;
+  height: 64px;
+  border: 3px solid #7dc877;
+  -webkit-transition: all 0.8s;
+  -o-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+.twilio-room_control .svg-active .svgActive {
+  fill: #eb2a54 !important;
+}
+
+.twilio-room_control .svg-active svg .line-off {
+  display: inline-block !important;
+}
+
+.twilio-room_control svg:hover .svgActive {
+  fill: #eb2a54 !important;
+  -webkit-transition: fill 0.4s;
+  -o-transition: fill 0.4s;
+  transition: fill 0.4s;
+
+}
+
+.twilio-room_control a:hover {
+  background: #000000;
+}
+
+
+.twilio-room_control img {
+  width: 32px;
+  height: 32px;
+}
+
+.twilio-room_user_info {
+  position: absolute;
+  left: 114%;
+  background: #383533;
+  font-size: 14px;
+  min-width: 149px;
+  text-align: center;
+  color: #fff;
+  padding: 1px 19px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  top: -309px;
+  opacity: 0;
+  -webkit-transition: all 0.8s;
+  -o-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+.partner_in .twilio-room_user_info {
+  top: 50%;
+  opacity: 1;
+  -webkit-transition: all 0.8s;
+  -o-transition: all 0.8s;
+  transition: all 0.8s;
+  display: block;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.menu-video-more.dropdown-menu {
+  min-width: 260px;
+  -webkit-box-shadow: 0px 0 7px 1px #8a91bd;
+  box-shadow: 0px 0 7px 1px #8a91bd;
+}
+
+.twilio-video-chat-btn-icon {
+  font-size: 28px;
+  color: #ee2c55;
+  cursor: pointer;
+  margin-left: 15px;
+  position: relative;
+  top: 6px;
+}
+
+@-webkit-keyframes ring {
+  0% {
+      -webkit-transform: rotate(0);
+      transform: rotate(0);
+  }
+  1% {
+      -webkit-transform: rotate(30deg);
+      transform: rotate(30deg);
+  }
+  3% {
+      -webkit-transform: rotate(-28deg);
+      transform: rotate(-28deg);
+  }
+  5% {
+      -webkit-transform: rotate(34deg);
+      transform: rotate(34deg);
+  }
+  7% {
+      -webkit-transform: rotate(-32deg);
+      transform: rotate(-32deg);
+  }
+  9% {
+      -webkit-transform: rotate(30deg);
+      transform: rotate(30deg);
+  }
+  11% {
+      -webkit-transform: rotate(-28deg);
+      transform: rotate(-28deg);
+  }
+  13% {
+      -webkit-transform: rotate(26deg);
+      transform: rotate(26deg);
+  }
+  15% {
+      -webkit-transform: rotate(-24deg);
+      transform: rotate(-24deg);
+  }
+  17% {
+      -webkit-transform: rotate(22deg);
+      transform: rotate(22deg);
+  }
+  19% {
+      -webkit-transform: rotate(-20deg);
+      transform: rotate(-20deg);
+  }
+  21% {
+      -webkit-transform: rotate(18deg);
+      transform: rotate(18deg);
+  }
+  23% {
+      -webkit-transform: rotate(-16deg);
+      transform: rotate(-16deg);
+  }
+  25% {
+      -webkit-transform: rotate(14deg);
+      transform: rotate(14deg);
+  }
+  27% {
+      -webkit-transform: rotate(-12deg);
+      transform: rotate(-12deg);
+  }
+  29% {
+      -webkit-transform: rotate(10deg);
+      transform: rotate(10deg);
+  }
+  31% {
+      -webkit-transform: rotate(-8deg);
+      transform: rotate(-8deg);
+  }
+  33% {
+      -webkit-transform: rotate(6deg);
+      transform: rotate(6deg);
+  }
+  35% {
+      -webkit-transform: rotate(-4deg);
+      transform: rotate(-4deg);
+  }
+  37% {
+      -webkit-transform: rotate(2deg);
+      transform: rotate(2deg);
+  }
+  39% {
+      -webkit-transform: rotate(-1deg);
+      transform: rotate(-1deg);
+  }
+  41% {
+      -webkit-transform: rotate(1deg);
+      transform: rotate(1deg);
+  }
+  43% {
+      -webkit-transform: rotate(0);
+      transform: rotate(0);
+  }
+  100% {
+      -webkit-transform: rotate(0);
+      transform: rotate(0);
+  }
+}
+
+@keyframes ring {
+  0% {
+      -webkit-transform: rotate(0);
+      transform: rotate(0);
+  }
+  1% {
+      -webkit-transform: rotate(30deg);
+      transform: rotate(30deg);
+  }
+  3% {
+      -webkit-transform: rotate(-28deg);
+      transform: rotate(-28deg);
+  }
+  5% {
+      -webkit-transform: rotate(34deg);
+      transform: rotate(34deg);
+  }
+  7% {
+      -webkit-transform: rotate(-32deg);
+      transform: rotate(-32deg);
+  }
+  9% {
+      -webkit-transform: rotate(30deg);
+      transform: rotate(30deg);
+  }
+  11% {
+      -webkit-transform: rotate(-28deg);
+      transform: rotate(-28deg);
+  }
+  13% {
+      -webkit-transform: rotate(26deg);
+      transform: rotate(26deg);
+  }
+  15% {
+      -webkit-transform: rotate(-24deg);
+      transform: rotate(-24deg);
+  }
+  17% {
+      -webkit-transform: rotate(22deg);
+      transform: rotate(22deg);
+  }
+  19% {
+      -webkit-transform: rotate(-20deg);
+      transform: rotate(-20deg);
+  }
+  21% {
+      -webkit-transform: rotate(18deg);
+      transform: rotate(18deg);
+  }
+  23% {
+      -webkit-transform: rotate(-16deg);
+      transform: rotate(-16deg);
+  }
+  25% {
+      -webkit-transform: rotate(14deg);
+      transform: rotate(14deg);
+  }
+  27% {
+      -webkit-transform: rotate(-12deg);
+      transform: rotate(-12deg);
+  }
+  29% {
+      -webkit-transform: rotate(10deg);
+      transform: rotate(10deg);
+  }
+  31% {
+      -webkit-transform: rotate(-8deg);
+      transform: rotate(-8deg);
+  }
+  33% {
+      -webkit-transform: rotate(6deg);
+      transform: rotate(6deg);
+  }
+  35% {
+      -webkit-transform: rotate(-4deg);
+      transform: rotate(-4deg);
+  }
+  37% {
+      -webkit-transform: rotate(2deg);
+      transform: rotate(2deg);
+  }
+  39% {
+      -webkit-transform: rotate(-1deg);
+      transform: rotate(-1deg);
+  }
+  41% {
+      -webkit-transform: rotate(1deg);
+      transform: rotate(1deg);
+  }
+  43% {
+      -webkit-transform: rotate(0);
+      transform: rotate(0);
+  }
+  100% {
+      -webkit-transform: rotate(0);
+      transform: rotate(0);
+  }
+}
+
+.alert-twilio-btn-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.alert-twilio-btn-box svg {
+  width: 40px;
+  height: 40px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  fill: white;
+}
+
+.alert-twilio-btn-box .decline-chat {
+  cursor: pointer;
+  background: #eb2a54;
+}
+
+.alert-twilio-btn-box .accept-chat {
+  cursor: pointer;
+  background: #7dc877;
+  margin-right: 24px;
+}
+
+.menu-alerts-more-items .message-top {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.message-top-text .partner_name a {
+  font-size: 18px;
+  color: #0a0c1d;
+}
+
+.message-top-text .partner_year, .message-top-text .partner_year a {
+  font-size: 15px;
+  color: #0a0c1d;
+}
+
+.message-top-text {
+  line-height: 1.5;
+  padding-top: 15px;
+  padding-left: 14px;
+  text-align: left;
+}
+
+.menu-alerts-more-items {
+  margin: 19px 19px 19px 19px;
+}
+
+.menu-alerts-more-items #partnerthumbs {
+  margin-bottom: 10px;
+  max-width: 65px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  border: 2px solid #7dc877;
+}
+
+@media (max-width: 767px) {
+  .load_content_inner.twilio_chat {
+      background-color: transparent;
+      width: 100%;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: stretch;
+      -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+      align-items: stretch;
+  }
+  .load_content_inner.twilio_chat .lc-header {
+      display: none;
+  }
+  .load_content_inner.twilio_chat .lc-content-outer {
+      background-color: transparent;
+  }
+  .twilio-room_control {
+      .twilio-camera-switcher {
+          cursor: pointer;
+      }
+
+      .twilio-room_control_left {
+          cursor: pointer;
+      }
+
+      .twilio_close {
+          cursor: pointer;
+
+          svg {
+              width: 44px;
+              height: 44px;
+          }
+      }
+
+      svg {
+          width: 30px;
+          height: 30px;
+      }
+  }
+}
+
+.twilio-room_control {
+  .twilio-camera-switcher {
+      cursor: pointer;
+  }
+
+  .twilio-room_control_left {
+      cursor: pointer;
+  }
+
+  .twilio_close {
+      cursor: pointer;
+  }
+}

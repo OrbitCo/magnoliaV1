@@ -1,0 +1,3 @@
+	204	Mykolayivka	44.9671400	33.6144300	RU	94	0	0	Mykolayivka	Николаевка
+	204	Krasnoperekops’k	45.9571600	33.7965000	RU	94	0	0	Krasnoperekops'k	Красноперекопск
+	204	Scholkine	45.4276100	35.8247000	RU	94	0	0	Scholkine	Scholkine

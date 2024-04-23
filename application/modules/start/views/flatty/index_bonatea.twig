@@ -1,0 +1,204 @@
+{% extends '@app/header_lite.twig' %}
+ {% block bodyclass %}index-pleasure{% endblock bodyclass %}
+
+ {% block container %}
+  <div id="error_block" class="hide">{% for item in _PREDEFINED.error %}{% if item.text %}{{ item.text }}
+      <br>{% endif %}{% endfor %}</div>
+  <div id="info_block" class="hide">{% for item in _PREDEFINED.info %}{% if item.text %}{{ item.text }}
+      <br>{% endif %}{% endfor %}</div>
+  <div id="success_block" class="hide">{% for item in _PREDEFINED.success %}{% if item.text %}{{ item.text }}
+      <br>{% endif %}{% endfor %}</div>
+
+
+  <div class="container-fluid containerHeader">
+    <section class="row mb20pt">
+      <div class="col-md-12">
+        <div class="b-header__logo">
+          <a href="{{ site_url }}">
+            {% helper start.logo({type: 'user', settings: logo_settings}) %}
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class="row mt13">
+      <nav class="navbar navbar-default upperRefs">
+        <div class="navbar-header floatLeft">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarCollapsed">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse floatLeft" id="navbarCollapsed">
+          <ul class="nav navbar-nav navbar-left" id="leftNavbar">
+            <li>
+              <a href="{{ site_url }}">{% helper lang.l('home', 'start') %}</a>
+            </li>
+            <li>
+              <a href="{{ site_root }}content/view/about-us">{% helper lang.l('how_it_works', 'start') %}</a>
+            </li>
+            <li>
+              <a href="{{ site_root }}users/search">{% helper lang.l('top_travelers', 'start') %}</a>
+            </li>
+            <li>
+              <a href="{{ site_root }}media/index">{% helper lang.l('photos', 'start') %}</a>
+            </li>
+
+          </ul>
+        </div>
+        <div class="notCollapsed">
+          <div class="col-xs-12">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a id="btn_log" class="btn_border" onclick="{% helper start.setAnalytics('index', 'btn_sign_in') %}"
+                   href="{% helper seo.seolink('users', 'login_form') %}">
+                  {% helper lang.l('btn_login', 'start') %}</a>
+              </li>
+              <li>
+                {% helper reglang = lang.l('join_now', 'start') %}
+                {% helper users.usersRegistration({'is_link': 1, 'page': 1, 'lang': reglang}) %}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </section>
+  </div>
+  <div class="splitrow">
+    <div class="splitrow__green th-set__main_bg">
+      <div class="splitrow__grcontent th-set__index_promo_text_main">
+        <h2>{% helper lang.l('find_travel_partner', 'start') %}</h2>
+        <p>{% helper lang.l('find_travel_partner_txt', 'start') %}</p>
+
+        {% helper reglang = lang.l('join_now', 'start') %}
+        {% helper users.usersRegistration({'is_link': 1, 'page': 1, 'lang': reglang}) %}
+      </div>
+    </div>
+    <div class="splitrow__chess">
+      <table class="chessrow th-set__index_promo_text_on_bg">
+        <tr>
+          <td>{% helper lang.l('clean_conversation', 'start') %}</td>
+          <td>
+            <img src="{{ site_root }}uploads/themes-fixed/bonatea/images/cells-2.jpg" alt="" class="img-responsive">
+            <figcaption></figcaption>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="{{ site_root }}uploads/themes-fixed/bonatea/images/cells-3.jpg" alt="" class="img-responsive">
+            <figcaption></figcaption>
+          </td>
+          <td>{% helper lang.l('travel_companions', 'start') %}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <main class="container-fluid">
+    <div class="row addDeviders">
+      <section class="col-md-6 col-sm-12 addDevidersToCols1">
+        <h3 class="mapps__title">{% helper lang.l('mobile_app_title', 'start') %}</h3>
+        <div class="mapps__list">
+          {% helper mobile.mobileAppLinks({'viewtype': 'btnsBlack'}) %}
+          <a href="{{ site_root }}m/">{% helper lang.l('mobilev', 'start') %}</a>
+        </div>
+      </section>
+
+      <section class="col-md-6 col-sm-12 addDevidersToCols2">
+        <h3 class="mobileApps h3mobApps">{% helper lang.l('travel_partnership', 'start') %}</h3>
+        <p class="partnership">{% helper lang.l('travel_partnership_txt', 'start') %}</p>
+      </section>
+    </div>
+  </main>
+  <footer class="th-set__index_footer_bg container-fluid">
+    <div class="row rlPadds">
+      <section id="footer-list" class="col-sm-8 col-md-5 noPadds">
+        <ul class="footer-nav">
+          <li>
+            <a href="{{ site_url }}site_map">{% helper lang.l('sitemap', 'start') %}</a>
+          </li>
+          <li>
+            <a href="{{ site_root }}contact_us/index/">{% helper lang.l('contacts', 'start') %}</a>
+          </li>
+          <li>
+            <a href="{{ site_url }}content/view/about-us">{% helper lang.l('about_us', 'start') %}</a>
+          </li>
+
+        </ul>
+      </section>
+      <section class="col-sm-4 col-md-2 text-center noPadds" id="languages">
+        <div class="footer__lang">{% helper users.users_lang_select({type: 'menu', template: 'dropup'}) %}</div>
+      </section>
+
+      <section id="copyright" class="col-sm-12 col-md-5 copyright noPadds">
+        {% helper start.getCopyright('index_page') %}
+      </section>
+    </div>
+  </footer>
+</div>
+{% if not is_pjax %}
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=cyrillic" rel="stylesheet">
+  <link rel="stylesheet" href="{{ site_root }}uploads/themes-fixed/bonatea/styles/bootstrap-{{ _LANG.rtl }}.css"
+        type="text/css"/>
+  <link rel="stylesheet" href="{{ site_root }}uploads/themes-fixed/bonatea/styles/font-awesome.css" type="text/css"/>
+  <link rel="stylesheet" href="{{ site_root }}application/views/flatty/css/fontawesome/css/fontawesome-all.min.css"
+        type="text/css"/>
+  {% helper theme.include_css('style', 'screen') %}
+  {% helper theme.css(load_type) %}
+  <link rel="stylesheet" href="{{ site_root }}uploads/themes-fixed/bonatea/styles/style-{{ _LANG.rtl }}.css"
+        type="text/css"/>
+{% endif %}
+
+   <script>
+     $(document).ready(function () {
+       let headerImg = {{ header_style|json_encode() }};
+       if (headerImg !== null) {
+         $(window).on('resize', setHeartImage)
+         let container = $('#b-header')
+         let imgContainer = $('.custom-header')
+
+         function setHeartImage () {
+           let widthW = document.body.clientWidth
+           let mobileWidth = 768
+           if (widthW > mobileWidth) {
+             if (typeof headerImg.image_url !== 'undefined') {
+               container.addClass('custom-header_without_img')
+               container.css({ 'background-image': 'url(' + headerImg.base_path + '/' + headerImg.image_url + ')' })
+             } else {
+               container.removeClass('custom-header_without_img')
+             }
+           } else if (widthW < mobileWidth) {
+             if (typeof headerImg.image_mobile_url !== 'undefined') {
+               container.addClass('custom-header_without_img')
+               container.css({ 'background-image': 'url(' + headerImg.base_path + '/' + headerImg.image_mobile_url + ')' })
+             } else {
+               container.removeClass('custom-header_without_img')
+             }
+           }
+         }
+
+         setHeartImage()
+       }
+     })
+   </script>
+
+   <script src="{{ site_root }}uploads/themes-fixed/pleasure/js/controls.js"></script>
+
+   {# TODO перенести в сборщик webpack (flatty/js/main.js) #}
+   {% helper utils.jscript('', 'twigjs/twig.js') %}
+   {% helper themes.load({'name': 'modules', 'ext': 'js'}) %}
+   {% helper themes.load({'name': 'modules_multi_request', 'ext': 'js'}) %}
+
+
+   {% helper cookie_policy.cookie_policy_block() %}
+   {% helper languages.lang_editor() %}
+   {% helper seo_advanced.seo_traker('footer') %}
+
+   <script>
+     $(function () {
+       $.datepicker.setDefaults($.datepicker.regional["{{ _LANG.code }}"])
+     })
+   </script>
+</body>
+</html>
+ {% endblock container %}

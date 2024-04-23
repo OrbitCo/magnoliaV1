@@ -1,0 +1,49 @@
+<div>
+    <h1>{% helper lang.l('field_download_data', 'user_information') %}</h1>
+    <div class="form-group">{% helper lang.l('field_download_data_description', 'user_information') %}</div>
+    <div class="form-group">
+        <button class="btn {% if data.status == 'during' or data.status == 'pending' %}btn-default{% else %}btn-primary{% endif %}" 
+            {% if data.status == 'ready' %}
+               data-action="ready-archive" data-status="{{ data.status }}">
+                    <i class="fa fa-download" aria-hidden="true"></i> {% helper lang.l('btn_download', 'user_information') %}
+                </button>
+                <button data-action="delete-archive" class="btn btn-default ">
+                    {% helper lang.l('btn_delete_archive', 'user_information') %}
+                </button>
+            {% elseif data.status == 'during' or data.status == 'pending' %}
+                data-action="during-archive" data-status="{{ data.status }}" disabled>
+                <i class="fa fa-spinner" aria-hidden="true"></i> {% helper lang.l('btn_gathering', 'user_information') %}</button>
+            {% else %}
+                    data-action="create-archive" data-status="{{ data.status }}">
+                {% helper lang.l('btn_create', 'user_information') %}</button>
+            {% endif %}
+    </div>
+    <div class="form-group">
+        <div  id="ui-description_block">
+            {% if data.status == 'during' or data.status == 'pending' %}
+                <div class="well">{% helper lang.l('field_download_data_description_prepared', 'user_information') %}</div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="form-group">{% helper user_information.modulesList() %}</div>
+</div>
+<script>
+    $(function () {
+        loadScripts(
+                "{% helper utils.jscript('user_information', 'UserInformation.js', 'path') %}",
+                function () {
+                    user_information = new UserInformation({
+                        siteUrl: site_url,
+                        lang:{
+                            btnCreate: '{% helper lang.l('btn_create', 'user_information') %}',
+                            btnDuring: '{% helper lang.l('btn_gathering', 'user_information') %}',
+                            btnReady: '{% helper lang.l('btn_download', 'user_information') %}',
+                            descriptionPrepared: '{% helper lang.l('field_download_data_description_prepared', 'user_information') %}'
+                        }
+                    });
+                },
+                ['user_information'],
+                {async: false}
+        );
+    });
+</script>

@@ -1,0 +1,14 @@
+<div class="content-page">
+    <div class="ui-title">{% helper lang.l('header_main', 'comments') %}</div>
+    <div class="ui-descr">
+        {% helper lang.l('field_usr_inf_description', 'comments') %}
+    </div>
+</div>
+{% for item in your %}
+    <div class="col-xs-12 content-page">
+        <div class="ui-title bb">{{ item.user_info.output_name }} {% helper lang.l('field_usr_inf_type_'~item.gid, 'comments') %}</div>
+        <div>
+            {{ item.text }}
+        </div>
+    </div>
+{% endfor %}

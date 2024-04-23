@@ -1,0 +1,114 @@
+                        </div>
+                    </div>
+                </div>
+            {% if footer_type is empty or footer_type != 'index' %}
+                {% helper shoutbox.shoutboxMobileBlock() %}
+                {% helper cookie_policy.cookie_policy_block() %}
+                <div class="logo-mobile-version"></div>
+            {% endif %}
+
+            </div>
+        </div>
+        {% helper users.isTerms() %}
+        {% if (footer_type is empty or footer_type != 'index') and page_type not in ['like_me', 'photo_upload'] %}
+        <footer>
+            <div class="container-fluid" id="footer_banner">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <ul class="footer-banners">
+                            {% helper banners.show_banner_place('bottom-banner') %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid" id="footer_languages">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="footer-languages">
+                            {% helper languages.lang_row_select() %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-menu">
+                <div class="container-fluid" id="footer_menu">
+                    <div class="row">
+                        {% helper menu.get_menu('user_footer_menu') %}
+                        <div class="col-sm-12 col-md-4 mobile_app_links">
+                            {% helper mobile.mobile_app_links() %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-info">
+                <div class="container-fluid" id="footer_info">
+                    <div class="row">
+                        {% helper mobile.mobileVersion() %}
+                        <div class="col-sm-6 col-md-6">
+                            <div class="copyright">
+                                {% helper start.getCopyright('internal') %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        {% endif %}
+
+        <script>
+            $('body').removeClass('index-page site-page')
+                     .addClass('{% if header_type == 'index' %}index-page{% else %}site-page{% endif %} mod-inner');
+            {% if page_type != 'like_me'  %}
+                 $('body').removeClass('mod-likeme mod-likeme-matches').addClass('{{ body_class }}');
+            {% else %}
+                $('body').removeClass('index-page site-page').addClass('mod-likeme mod-likeme-matches');
+            {% endif %}
+        </script>
+
+        <script>
+          $(function() {
+            $('body').removeClass('mod-magazine');
+            $('body').addClass('{{ body_class }}');
+            $.datepicker.setDefaults($.datepicker.regional["{{ _LANG.code }}"]);
+          });
+        </script>
+
+        {% helper start.new_features() %}
+{% if not is_pjax %}
+        </div>
+
+        {# TODO переделать на другую библиотеку и перенести в сборщик webpack (flatty/js/main.js) #}
+        {% helper utils.jscript('', 'emoji-picker/js/config.js') %}
+        {% helper utils.jscript('', 'emoji-picker/js/util.js') %}
+        {% helper utils.jscript('', 'emoji-picker/js/jquery.emojiarea.js') %}
+        {% helper utils.jscript('', 'emoji-picker/js/emoji-picker.js') %}
+
+        {# TODO перенести в сборщик webpack (flatty/js/main.js) #}
+         {% helper utils.jscript('', 'twigjs/twig.js') %}
+        <script src="//twemoji.maxcdn.com/twemoji.min.js"></script>
+
+        {% helper themes.load({'name': 'modules', 'ext': 'js'}) %}
+        {% helper themes.load({'name': 'modules_multi_request', 'ext': 'js'}) %}
+
+        {% helper mobile.pushNotifications() %}
+
+        <script type="text/javascript">
+          $(function () {
+            const messages = {% if _PREDEFINED %}{{ _PREDEFINED|json_encode(constant('JSON_FORCE_OBJECT')) }}{% else %}{}{% endif %};
+            new pginfo({'messages': messages});
+
+            alerts = new Alerts({
+              alertOkName: "{% helper lang.l('btn_ok', 'start') %}",
+              alertCancelName: "{% helper lang.l('btn_cancel', 'start') %}",
+              alertConfirmClass: "{% helper lang.l('confirm_alert', 'start') %}",
+            });
+            notifications = new Notifications();
+          });
+        </script>
+
+        {% helper languages.lang_editor() %}
+        {% helper seo_advanced.seo_traker('footer') %}
+        {% helper start.intercom() %}
+	</body>
+{% endif %}
+</html>

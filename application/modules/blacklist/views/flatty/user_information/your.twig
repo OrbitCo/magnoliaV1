@@ -1,0 +1,14 @@
+<div class="content-page">
+    <div class="ui-title">{% helper lang.l('blacklist', 'blacklist') %}</div>
+    <div class="ui-descr">
+        {% helper lang.l('field_usr_inf_description', 'blacklist') %}
+    </div>
+</div>
+{% for item in your %}
+    <div class="col-xs-12 content-page">
+        <div class="ui-title bb">{{ user.output_name }} {% helper lang.l('field_usr_inf_added', 'blacklist') %} {{ item.user.output_name }}</div>
+        <div>
+            {% helper lang.l('success_blacklist_add', 'blacklist') %} {{ item.user.output_name }}
+        </div>
+    </div>
+{% endfor %}

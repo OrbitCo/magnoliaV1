@@ -1,0 +1,12 @@
+<a href="{{ upgrade_packages_data.url }}" target="_blank" class="upgrade-btn label label-danger clear" onclick="sendAnalytics('admin_upgrade_package', 'admin_panel')">
+    {{ upgrade_packages_data.name }}</a>
+<span class="wrapper-info instruction-block">
+    <span class="instruction-block__button" data-toggle="popover" data-content="{% helper lang.l('upgrade_package_info', 'start') %}">
+        <i class="fa fa-info" aria-hidden="true" title="{% helper lang.l('btn_instruction_text', 'admin_instructions_page') %}"></i>
+    </span>
+</span>
+<script type="text/javascript">
+    $(function () {
+        $('[data-toggle="popover"]').popover({placement: 'right', html: true});
+    });
+</script>

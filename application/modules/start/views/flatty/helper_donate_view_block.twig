@@ -1,0 +1,129 @@
+{% if view_type == 'general' %}
+    <div class="g-flatty-block">
+{% endif %}
+<h2 class="b-title-control">
+    <span class="b-title-control__text">{% helper lang.l('header_donate_view_block', 'start') %}</span>
+    <div id="ajax_donate_link_menu_{{rand}}" class="b-title-control__action righted">
+        {% if send_money != ''%}
+            <input type='button' id="donate_link_send_money" class="btn btn-primary btn-sm" value="{% helper lang.l('send_money', 'send_money') %}" title="{% helper lang.l('send_money', 'send_money') %}">
+            <script>
+                $(function() {
+                    loadScripts(
+                        "{% helper utils.jscript('send_money', 'SendMoney.js', 'path') %}",
+                        function () {
+                            send_money = new SendMoney({
+                                siteUrl: site_url,
+                            });
+                        },
+                        ['send_money'],
+                        {async: true}
+                    );
+                });
+
+            </script>
+        {% endif %}
+        {% if send_vip != '' %}
+            <input type='button' id="donate_link_send_vip" class="btn btn-primary btn-sm" value="{% helper lang.l('send_vip', 'send_vip') %}" title="{% helper lang.l('send_vip', 'send_vip') %}">
+            <script>
+                $(function(){
+                    loadScripts(
+                        "{% helper utils.jscript('send_vip', 'SendVip.js', 'path') %}",
+                        function(){
+                          send_vip = new SendVip({
+                                siteUrl: site_url,
+                            });
+                        },
+                        ['send_vip'],
+                        {async: true}
+                    );
+                });
+            </script>
+        {% endif %}
+    </div>
+</h2>
+
+<div class="user-donate-history">
+    {% if transactions %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="w100">{% helper lang.l('donate_amount', 'start') %}</th>
+                <th class="w100">{% helper lang.l('donate_comment', 'start') %}</th>
+                <th class='w200'><div class="righted">{% helper lang.l('donate_status', 'start') %}</div></th>
+            </tr>
+        </thead>
+        {% for item in transactions %}
+        <tr>
+            <td data-label="{% helper lang.l('donate_amount', 'start') %}">
+                {% if item.full_amount == '' %}&nbsp;
+                {% elseif item.full_amount > 0 %}
+                    <span dir="ltr">
+                        <font class="donate approve">+{{item.amount}} {{currency.abbr}}</font>
+                    </span>
+                {% else %}
+                    <span dir="ltr">
+                        <font class="donate decline">{{item.full_amount}} {{currency.abbr}}</font>
+                    </span>
+                {% endif %}
+            </td>
+            <td data-label="{% helper lang.l('donate_comment', 'start') %}">
+                {{item.comment}}
+            </td>
+            <td id="status_{{item.rand}}" class="righted" data-label="{% helper lang.l('donate_status', 'start') %}">&nbsp;
+                {% if item.status == "waiting" %}
+                    {% if item.approveLink != '' %}
+                        <button class='btn btn-primary btn-sm' onClick="
+                                {% if item.membership_name !='' %}
+                                    send_vip.approveVipTransaction
+                                {% else %}
+                                    send_money.approveMoneyTransaction
+                                {% endif %}
+                                    ('{{item.id}}','{{item.rand}}');"
+                                title="{% helper lang.l('donate_approve', 'start') %}">
+                            {% helper lang.l('donate_approve', 'start') %}
+                        </button>
+                    {% endif %}
+                    <div class='ml10 fright{% if item.approveLink != '' %} mt5{% endif %}'>
+                        <a href="#" onClick="
+                            {% if item.membership_name !='' %}
+                                send_vip.declineVipTransaction
+                            {% else %}
+                                send_money.declineMoneyTransaction
+                            {% endif %}
+                                ('{{item.id}}','{{item.rand}}');"
+                                title="{% helper lang.l('donate_decline', 'start') %}">
+                            <font class='donate decline'>{% helper lang.l('donate_decline', 'start') %}</font>
+                        </a>
+                    </div>
+                {% elseif item.status == "approved" %}
+                    <font class="donate approve">{% helper lang.l('donate_approved', 'start') %}</font>
+                {% elseif (item.status == "declined") and (item.declined_by_me == '1') %}
+                    <font class="donate decline">{% helper lang.l('donate_declined_by_me', 'start') %}</font>
+                {% else %}
+                    <font class="donate decline">{% helper lang.l('donate_declined', 'start') %}</font>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <div class="text-center">{% helper lang.l('donate_no_data', 'start') %}</div>
+    {% endif %}
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        $('.user-donate-history [data-gid="donate"]').each(function(){
+            $(this).attr('data-action', null);
+        });
+        $('[data-gid="donate"]').click(function(){
+                if ($(this).data('href')) {
+                    location.href = $(this).data('href');
+                }
+        });
+    });
+</script>
+
+{% if view_type == 'general' %}
+    </div>
+{% endif%}

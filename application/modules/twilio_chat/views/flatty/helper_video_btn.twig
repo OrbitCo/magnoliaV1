@@ -1,0 +1,23 @@
+{% if params.view_type == 'link_icon' %}
+	<a class="twilio_video_chat link-r-margin" data-user-id="{{params.id_user}}" href="javascript:void(0);">{% helper lang.l('video_chat','twilio_chat')%}</a>
+{% elseif params.view_type == 'link' %}
+	<a class="twilio_video_chat link-r-margin" data-user-id="{{params.id_user}}" href="javascript:void(0);">{% helper lang.l('video_chat','twilio_chat')%}</a>
+{% elseif params.view_type == 'icon' %}
+	<a class="twilio_video_chat twilio-video-chat-btn-icon" data-user-id="{{params.id_user}}" href="javascript:void(0);"><i class="fas fa-video"></i></a>
+{% endif %}
+
+<script type="text/javascript">
+		$(function(){
+			var TwilioPilot = new TwilioChatVideo();
+			$('.twilio_video_chat').off('click').on('click', function (e) {
+				let user_id = $(this).data('user-id');
+
+				TW_Video = Twilio.Video;
+				if (TW_Video.isSupported) {
+					TwilioPilot.sendInviteTwilio(user_id);
+				} else {
+					error_object.show_error_block("{% helper lang.l('not_supported','twilio_chat') %}", 'error');
+				}
+			});
+        });
+</script>

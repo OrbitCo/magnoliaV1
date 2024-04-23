@@ -1,0 +1,36 @@
+{% if menu_items %}
+<div class="menu-alerts-item menu-item" id="menu_{{ menu_items.gid }}_alerts" data-action="event_menu" data-gid="{{ menu_items.gid }}">
+    <div id="menu-{{ menu_items.gid }}-more" class="top-menu-item-list"
+       data-toggle="dropdown" aria-haspopup="true" role="button"
+       aria-expanded="false" data-pjax="0">
+        {{ menu_items.value }}
+        <span class="caret"></span>
+        <span class="badge sum"></span>
+    </div>
+    <div class="menu-{{ menu_items.gid }}-more dropdown-menu" role="menu">
+        <div class="menu-alerts-more-triangle"></div>
+        {% for item in menu_items.sub %}
+            <div class="menu-alerts-more-item clearfix">
+                <a id="activities_{{ menu_items.gid }}_{{ item.gid }}" href="{{ item.link }}"  onclick="{% helper start.setAnalytics('left_menu_user', item.gid) %}">
+                    {{ item.value }}
+                    {% if item.indicator %}
+                        <span class="badge summand {{ item.gid }}_count">{{ item.indicator }}</span>
+                    {% endif %}
+                    {#TODO: перенести всё в indicators #}
+                    {% if item.gid == 'friendlist_item' %}
+                        {% helper friendlist.friend_requests({template: 'left'}) %}
+                    {% elseif item.gid == 'visits_item' %}
+                        {% helper users.visitors({template: 'left'}) %}
+                    {% elseif item.gid == 'kisses_item' %}
+                        {% helper kisses.new_kisses({template: 'left'}) %}
+                    {% elseif item.gid == 'winks_item' %}
+                        {% helper winks.winks_count({template: 'left'}) %}
+                    {% elseif item.gid == 'questions_item' %}
+                        {% helper questions.new_questions({ template: 'left' }) %}
+                    {% endif %}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}

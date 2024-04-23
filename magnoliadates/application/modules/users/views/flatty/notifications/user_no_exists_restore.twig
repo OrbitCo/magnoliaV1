@@ -1,0 +1,21 @@
+<table>
+    <tr>
+        <td style="padding-bottom:30px;">
+            {% helper lang.l('notification_field_hello', 'notifications', lang_id) %}. 
+            {% helper lang.l('notification_field_user_no_exists', 'users', lang_id) %}
+        </td>
+    </tr>
+    <tr>
+        <td style="padding-bottom:30px;">
+            {% helper lang.l('notification_field_registration_link', 'users', lang_id) %}: 
+            <a href='{{ site_url }}start/index/registration' style="text-decoration: none;">
+                {{ site_url }}
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding-bottom:30px;">
+            {% helper lang.l('notification_restore_is_error', 'users', lang_id) %}. 
+        </td>
+    </tr>
+</table>

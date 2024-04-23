@@ -1,0 +1,15 @@
+{% spaceless %}
+{% include 'header.twig' %}
+{% if content is iterable %}
+    {% for type, data in content %}
+        <h2>{% helper lang.l('inf_'~type, 'user_information') %}</h2>
+        <div>{{ data }}</div>
+    {% endfor %}
+{% else %}
+    <div>
+        <a class="btn_back" href="../index.html">&crarr; {% helper lang.l('btn_back', 'start') %}</a>
+    </div>
+    {{ content }}
+{% endif %}
+{% include 'footer.twig' %}
+{% endspaceless %}

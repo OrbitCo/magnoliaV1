@@ -1,0 +1,79 @@
+{% include '@app/header.twig' %}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                {% helper menu.get_admin_level1_menu('admin_virtual_gifts_menu') %}
+            </ul>
+        </div>
+        <div class="x_content">
+            <form method="post" enctype="multipart/form-data" data-parsley-validate
+                  class="form-horizontal form-label-left" name="save_form"
+                  action="{{ data.action }}">
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                      {% helper lang.l('gift_price_default', 'virtual_gifts') %} ({% helper start.currency_format_output(item.price) %}):</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" value="{{ data.price_default }}" name="price_default" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                      {% helper lang.l('admin_items_per_page', 'virtual_gifts') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" value="{{ data.admin_items_per_page }}" name="admin_items_per_page" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                      {% helper lang.l('user_items_per_page', 'virtual_gifts') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" value="{{ data.user_items_per_page }}" name="user_items_per_page" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-xs-12">
+                      {% helper lang.l('admin_payment_type', 'virtual_gifts') %}:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input class="flat" type="radio" name="payment_type" value="account" {% if data.payment_type == 'account' %}checked{% endif %}>{% helper lang.l('admin_payment_type_account', 'virtual_gifts') %}<br>
+                        <input class="flat" type="radio" name="payment_type" value="direct" {% if data.payment_type == 'direct' %}checked{% endif %}>{% helper lang.l('admin_payment_type_direct', 'virtual_gifts') %}<br>
+                        <input class="flat" type="radio" name="payment_type" value="account_and_direct" {% if data.payment_type == 'account_and_direct' %}checked{% endif %}>{% helper lang.l('admin_payment_type_both', 'virtual_gifts') %}
+                    </div>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="col-sm-9 col-xs-12 col-sm-offset-3">
+                        <input type="submit" name="btn_save" value="{% helper lang.l('save_settings', 'virtual_gifts') %}" class="btn btn-success">
+                        <a class="btn btn-default" href="{{ site_url }}admin/start/menu/add_ons_items">
+                          {% helper lang.l('btn_cancel', 'start') %}</a>
+                    </div>
+                </div>
+            </form>
+	</div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<script>
+$(function(){
+    guides_open = new loadingContent({
+        loadBlockWidth: '620px',
+        loadBlockLeftType: 'center',
+        loadBlockTopType: 'center',
+        loadBlockTopPoint: 100,
+        closeBtnClass: 'w'
+    }).update_css_styles({'z-index': 2000}).update_css_styles({'z-index': 2000}, 'bg');
+    $('#gid_shipping').unbind('click').click(function(){
+        $.ajax({
+            url: site_url + 'admin/store/ajax_gid_shipping',
+            cache: false,
+            success: function(data){
+                    guides_open.show_load_block(data);
+            }
+        });
+        return false;
+    });
+});
+</script>
+
+{% include '@app/footer.twig' %}

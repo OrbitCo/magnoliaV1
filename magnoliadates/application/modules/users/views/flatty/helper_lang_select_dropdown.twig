@@ -1,0 +1,30 @@
+<div class="dropdown">
+	<a id="dLang" data-target="#" href="javascript: void(0);" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+		{{ languages[current_lang].name }}
+		<span class="caret"></span>
+	</a>
+
+	<ul class="dropdown-menu" aria-labelledby="dLang">
+		{% for item in languages %}
+            {% if item.status == '1' %}
+	            <li {% if item.id == current_lang %}class="active"{% endif %} role="presentation" data-code="{{ item.code }}"
+	                data-id="{{ item.id }}">{{ item.name }}
+	            </li>
+            {% endif %}
+        {% endfor %}
+	</ul>
+</div>
+
+<script>
+    $(function() {
+        $('[aria-labelledby="dLang"] li').on('click touchstart', function(event){
+            event.stopPropagation();
+            event.preventDefault();
+
+            var lang_id = $(this).data('id');
+
+            console.log(site_url + 'users/change_language/' + lang_id);
+            location.href = site_url + 'users/change_language/' + lang_id;
+        });
+    });
+</script>

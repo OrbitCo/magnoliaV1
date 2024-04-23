@@ -1,0 +1,17 @@
+<picture>
+    {% if logo_params.thumbs_webp is not empty %}
+        <source data-srcset="{% for thumb in logo_params.thumbs_webp %}{% if loop.first == false  %}, {% endif%}{{ thumb.file_url }} {{ thumb.file_width }}w{% endfor %}" type="image/webp" media="(max-width: {{ logo_params.max_width }}px)">
+    {% endif %}
+    <source data-srcset="{% for thumb in logo_params.thumbs %}{% if loop.first == false  %}, {% endif%}{{ thumb.file_url }} {{ thumb.file_width }}w{% endfor %}" type="{{ logo_params.mime }}" media="(max-width: {{ logo_params.max_width }}px)">
+    <img src="{{site_root}}uploads/default/{{logo_params.size_name}}-default-user-logo.png"
+         data-src="{{ logo_params.src }}"
+         alt="{{ logo_params.alt }}"
+         title="{{ logo_params.title }}"
+         class="{% if logo_params.class %}{{ logo_params.class }} img-responsive{% endif %} lazyload lazy-{{logo_params.size_name}}"
+         data-size="{{logo_params.size_name}}"/>
+</picture>
+{% if logo_params.online_status %}
+    <div class="c-online-icon {{ logo_params.size_name }}  {% if logo_params.size_name == 'grand' %} logo {% endif %}" title="{% helper lang.l('status_online_1', 'users', '', 'button') %}">
+        <span>{% helper lang.l('status_online_1', 'users', '', 'button') %}</span>
+    </div>
+{% endif %}

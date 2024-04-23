@@ -1,0 +1,86 @@
+<div class="dashboard-visibility-btn" id="dashboard-visibility-btn">
+  <div class="dashboard-minimized-js">
+    <div>{% helper lang.l('header_dashboard', 'dashboard') %}</div>
+    <div><i class="fa fa-angle-double-left" aria-hidden="true"></i></div>
+  </div>
+</div>
+<div onclick="{% helper start.setAnalytics('dashboard', 'wall') %}" id="dashboard" class="dashboard">
+  <div class="dashboard-deployed-js dashboard-visibility-btn"><i class="fa fa-angle-double-right" aria-hidden="true"></i></div>
+  <div class="dashboard__content x_panel">
+    <div class="x_title row" data-action="top">
+      <h2>{% helper lang.l('header_dashboard', 'dashboard') %}</h2>
+    </div>
+    <div class="x_content">
+      <ul class="list">
+        {% for event in events %}
+          <li data-action="event" data-id="{{event.id}}" id="event-block-{{event.id}}">
+            <div class="panel panel-custom">
+              <div class="panel-heading">
+                <div class="dashboard__date">
+                  {% helper date_format.tpl_date_format(event.date_modified, date_format_st.date_literal) %}</div>
+                <h5 class="dashboard__title">
+                  <a href="{{ site_url }}{{ event.data.dashboard_action_link }}" target="_blank">
+                    {% if event.data.type.module is not empty %}
+                      {% set module = event.data.type.module %}
+                    {% else %}
+                      {% set module = event.module %}
+                    {% endif %}
+
+                    {% helper lang.l(event.data.dashboard_header, module) %}</a>
+                </h5>
+                <div class="clearfix"></div>
+              </div>
+              <div class="panel-body">
+                {{ event.data.content }}
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div id="scroll-top" class="dashboard__scroll-top">
+    <i class="fa fa-chevron-up pointer"></i>
+  </div>
+  {% helper utils.jscript('dashboard', 'dashboardAdmin.js') %}
+  <script>
+    $(function () {
+      new dashboardAdmin({
+        siteUrl: site_url,
+        cookiePath: '{{ cookie_site_path }}',
+        cookieDomain: '{{ cookie_site_server }}',
+        id: {
+          dashboard: '#dashboard',
+          topNav: '#top_nav',
+          scrollTop: '#scroll-top',
+          eventBlock: '#event-block-',
+          dashboardVisibilityBtn: '#dashboard-visibility-btn'
+        },
+        cssClass: {
+          dashboardAction: '.js-dashboard-action',
+          dashboardDeployed: '.dashboard-deployed-js',
+          dashboardMinimized: '.dashboard-minimized-js',
+          quickStats: '.quick-stats-js',
+          dashboardVisibilityBtn: '.dashboard-visibility-btn'
+        },
+        dataAction: {
+          event: '[data-action="event"]',
+          top: '[data-action="top"]'
+        },
+        langs: {
+          moderation:{
+            confirm: '{% helper lang.l('btn_confirm','media') %}',
+            headerReason: '{% helper lang.ld_header('rejection_reason', 'moderation') %}',
+            emptyReason: '{% helper lang.l('error_empty_reason','users') %}',
+            rejectionReason: {{ rejection_reason.option|json_encode() }}
+          },
+        },
+        trial: {% if TRIAL_MODE %}true{% else  %}false{% endif %},
+        contentObj: new loadingContent({
+          loadBlockWidth: '50%',
+          footerButtons: '<a class="btn btn-primary btn-moder-action-js" href="#">{% helper lang.l('btn_confirm','media') %}</a>'
+        })
+      });
+    });
+  </script>
+</div>

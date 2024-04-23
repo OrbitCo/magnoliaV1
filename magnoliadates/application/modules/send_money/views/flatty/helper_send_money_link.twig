@@ -1,0 +1,20 @@
+<span id="ajax_donate_link_menu_{{ rand }}">
+    <a href="javascript:void(0);" id="donate_link_send_money">
+        {% helper lang.l('send_money', 'send_money') %}
+    </a>
+</span>
+<script>
+    $(function() {
+        loadScripts(
+            "{% helper utils.jscript('send_money', 'SendMoney.js', 'path') %}",
+            function () {
+                send_money = new SendMoney({
+                    siteUrl: site_url,
+                    user_id: {{ user_id }}
+                });
+            },
+            ['send_money'],
+            {async: true}
+        );
+    });
+</script>

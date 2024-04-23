@@ -1,0 +1,16 @@
+<div class="form-group network-block" data-toggle="tooltip" data-placement="bottom" title="{% helper lang.l('text_user_register', 'network', '', 'html') %}">
+    <div class="col-xs-12 col-sm-6 col-md-offset-3">
+        {% helper lang.l('field_participate_network', 'network') %}:
+        <input type="checkbox" value="1" name="data[is_network]" id="network"
+               data-size="small"
+               data-field="network"
+               data-on-color="default"
+               data-wrapper-class="registration-block" checked>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<script>
+    $(function () {
+        $('[data-field="network"]').bootstrapSwitch();
+    })
+</script>

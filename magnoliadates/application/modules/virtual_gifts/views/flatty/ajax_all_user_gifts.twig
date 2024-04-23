@@ -1,0 +1,105 @@
+<div class="content-block load_content">
+	<h1>{% helper lang.l('user_gifts_header', 'virtual_gifts') %} {{user_name}}</h1>
+	<div class="modal-body scroll inside">
+		<input id="page-num" type="hidden" value="1">
+
+            <div class="gifts-list-block all-user-gifts_">
+                <div class="js-gifts-list row b-vgifts__list">
+                    {% for gift in gifts %}
+                        <div class="gift-thumb-popup-block_ col-xs-4 col-sm-3 col-md-3 col-md-2 b-vgifts__item" id="popup-gift_thumb-{{gift.id}}" gift-id="{{gift.id}}">
+                            <img class="img-responsive" src="{{gift.img_thumb}}">
+
+                            <div id="popup-gift-sender-block-{{ gift.id }}" class="b-vg-info user_gift_info_">
+                                {% if not gift.is_private or is_mine %}
+                                    <div class="b-vg-info__top clearfix">
+                                        <div class="b-vg-info__photo g-pic-border g-rounded-small">
+                                            <img class="img-responsive" src="{{ gift.sender.logo }}" style="">
+                                        </div>
+                                        <div class="b-vg-info__right">
+                                            <div><a class="b-vg-info__name" href="{{ site_url }}users/view/{{gift.fk_sender_id}}/wall">{{gift.sender.name}}</a>{% if gift.sender.age %}, {{gift.sender.age}}{% endif %}</div>
+                                            <div class="b-vg-info__location">{{gift.sender.city}}{{gift.is_mine}}</div>
+                                        </div>
+                                    </div>
+                                    {% if gift.comment %}
+                                        <div class="b-vg-info__txt">
+                                            {{gift.comment|nl2br}}
+                                        </div>
+                                    {% endif %}
+
+                                {% else %}
+                                    <div class="b-vg-info__private">
+                                        {% helper lang.l('private_gift', 'virtual_gifts') %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% for gift in all_gifts %}
+                        <script>
+                            $('.user_gift_info_').hide();
+                            $('.js-gifts-list').on('mouseenter', '#popup-gift_thumb-{{gift.id}}',function(e) {
+                                var position = this.getBoundingClientRect();
+                                $('div[id*=popup-gift-sender-block-]').hide();
+                                $('#popup-gift-sender-block-{{gift.id}}').show().css({
+                                    'position': 'absolute',
+                                    'top': '-80px',
+                                    'left': '-80px',
+                                    'z-index': 10000
+                                });
+
+                            }).on('mouseleave', '#popup-gift_thumb-{{gift.id}}',function(e){
+                                var delayHide = setTimeout(function(){$('#popup-gift-sender-block-{{gift.id}}').fadeOut()}, 500);
+                                $('#popup-gift-sender-block-{{gift.id}}').hover(function(){clearTimeout(delayHide)}, function(){
+                                    $('#popup-gift-sender-block-{{gift.id}}').delay(200).fadeOut();
+                                });
+
+                                //$('#popup-gift-sender-block-{{gift.id}}').fadeOut();
+                            });
+                        </script>
+                    {% endfor %}
+                </div>
+            </div>
+            {% if show_more_btn %}
+                <div class="form-group load-more-gifts">
+                    <button class="btn btn-primary-inverted" id="load-more-gifts">{% helper lang.l('user_load_more_gifts', 'virtual_gifts') %}</button>
+                </div>
+            {% endif %}
+	</div>
+</div>
+<script>
+    $('#load-more-gifts').off().on('click', function(){
+        var page = $('#page-num').val();
+        page = parseInt(page);
+        page = page + 1;
+        $.ajax({
+            url: site_url + "virtual_gifts/ajax_get_user_gifts",
+            method: "POST",
+            data: {"more_gifts":"1", "page":page, "user_id": {{user_id}}},
+            success: function(data){
+                var gifts = JSON.parse(data);
+                $('#page-num').val(page);
+                for (var key in gifts){
+                    if(gifts[key]["last"]){
+                        $('button.load-more-gifts-btn').hide();
+                    }
+                    var gift_html = '<div class="gift-thumb-popup-block_ col-xs-4 col-sm-3 col-md-3 col-md-2 b-vgifts__item" id="popup-gift_thumb-'+ gifts[key]["id"] +'" gift-id="'+ gifts[key]["id"] +'"><img class="img-responsive" src="{{site_root}}' + gifts[key]["img_thumb"] + '">';
+                    gift_html = gift_html + '<div id="popup-gift-sender-block-'+ gifts[key]["id"] +'" class="b-vg-info user_gift_info_">';
+                    if(gifts[key]["is_private"] == '0'){
+                        gift_html = gift_html + '<div class="b-vg-info__top clearfix">';
+                        gift_html = gift_html + '<div class="b-vg-info__photo g-pic-border g-rounded-small"><img class="img-responsive" src="'+ gifts[key]["sender"]["logo"];
+                        gift_html = gift_html +'"></div><div class="b-vg-info__right"><div><a class="b-vg-info__name" href="'+site_url;
+                        gift_html = gift_html +'users/view/'+ gifts[key]["fk_sender_id"] +'/wall">';
+                        gift_html = gift_html + gifts[key]["sender"]["name"] +'</a>' +', '+ gifts[key]["sender"]['age'] + '</div>';
+                        gift_html = gift_html + '<div  class="b-vg-info__location">'+ gifts[key]["sender"]['city'] +'</div></div></div>';
+                        gift_html = gift_html + '<div class="b-vg-info__txt">'+ gifts[key]["comment"] +'</div>';
+                    }else{
+                        gift_html = gift_html + '<div class="b-vg-info__private">{% helper lang.l('private_gift', 'virtual_gifts') %}</div></div>';
+                    }
+                    gift_html = gift_html + '</div>';
+
+                    $('.js-gifts-list').append(gift_html);
+                }
+            }
+        });
+    });
+</script>

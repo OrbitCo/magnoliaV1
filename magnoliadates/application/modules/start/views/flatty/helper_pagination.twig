@@ -1,0 +1,30 @@
+{% if page_type == 'cute' %}
+    <div class="pages">
+        <div class="inside">
+            <ins class="current">
+                {% helper lang.l('text_pages', 'start') %} {{ page_data.cur_page }}
+                {% helper lang.l('text_of', 'start') %} {{ page_data.total_pages }}
+            </ins>
+                &nbsp;
+                <a href="{{ page_data.base_url }}{{ page_data.prev_page }}" class="{% if page_data.prev_page == page_data.cur_page %}gray{% endif %}">
+                    {% if  _LANG.rtl == 'rtl' %}<i class="fa fa-caret-right"></i>{% else %}<i class="fa fa-caret-left"></i>{% endif %}
+                </a>
+                &nbsp;
+                <a href="{{ page_data.base_url }}{{ page_data.next_page }}" class="{% if page_data.next_page == page_data.cur_page %}gray{% endif %}">
+                    {% if  _LANG.rtl == 'rtl' %}<i class="fa fa-caret-left"></i>{% else %}<i class="fa fa-caret-right"></i>{% endif %}
+                </a>
+        </div>
+    </div>
+{% elseif page_type == 'full' and page_data.nav %}
+    <ul class="pagination">
+        {{ page_data.nav }}
+    </ul>
+{% elseif page_type == 'scroll' and page_items == 'next' %}
+        <div class="button-cont {% if page_data.cur_page == page_data.total_pages %}hide{% endif %} mt20">
+            <input data-action="show-more" class="btn btn-cancel form-control" type="button" value="{% helper lang.l('show_more', 'start', '', 'button') %}" />
+        </div>
+{% elseif page_type == 'scroll' and page_items == 'previous' %}
+        <div class="button-cont {% if page_data.cur_page == page_data.prev_page %}hide{% endif %} mt20">
+            <input data-action="show-previous" class="btn btn-cancel form-control" type="button" value="{% helper lang.l('show_previous', 'start', '', 'button') %}" />
+        </div>
+{% endif %}

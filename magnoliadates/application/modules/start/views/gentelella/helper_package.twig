@@ -1,0 +1,20 @@
+{% if packages_data.gids is not empty %}
+<h3><div class="btn-group">
+    {% for  gid in packages_data.gids %}
+        <span class="cursor-pointer ml10 label label-{{ packages_data.classes[gid] }}" data-toggle="popover" data-content="{{  packages_data.show_more }}">
+            {% helper lang.l('package_'~gid, 'start') %}
+        </span>
+    {% endfor %}
+</div></h3>
+
+<script type="text/javascript">
+    $(function () {
+        $('[data-toggle="popover"]').popover({placement: 'bottom', html: true});
+        $('[data-toggle="popover"]').on('show.bs.popover', function () {
+            {% for  package_data in packages_data.gids %}
+                {% helper start.setAnalytics('main', 'btn_package_' ~ package_data) %}
+            {% endfor %}
+        });
+    });
+</script>
+{% endif %}

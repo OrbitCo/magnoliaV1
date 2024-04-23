@@ -1,0 +1,33 @@
+{% include '@app/header.twig' %}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="x_panel">
+      <div class="x_content">
+          <div class="settings-block with-admin-modules-item">
+              <a href="{{ site_url }}admin/install/generate_module">
+                  <h6>Generate module</h6>
+              </a>
+              <div>
+                  Functionality for generating module structure
+              </div>
+          </div>
+          <div class="settings-block with-admin-modules-item">
+              <a href="{{ site_url }}admin/install/generate_crud">
+                  <h6>Generate CRUD</h6>
+              </a>
+              <div>
+                  The generator generates CRUD operations for the specified data model
+              </div>
+          </div>
+          <div class="settings-block with-admin-modules-item">
+              <a href="{{ site_url }}admin/install/generate_model">
+                  <h6>Generate model</h6>
+              </a>
+              <div>
+                  This generator creates a model for the specified database table
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% include '@app/footer.twig' %}

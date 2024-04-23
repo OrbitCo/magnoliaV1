@@ -1,0 +1,49 @@
+<div class="app-top-banner-js hide">
+    <div class="col-xs-1 first-col">
+        <div class="app-top-banner-js__close" data-action="close-app_banner"></div>
+    </div>
+    <div class="col-xs-9 second-col">
+        <a {% if app_android_url %}
+                  onclick="{% helper start.setAnalytics('index', 'btn_download_android_app') %}" href="{{ app_android_url }}"
+              {% elseif app_ios_url %} 
+                  onclick="{% helper start.setAnalytics('index', 'btn_download_ios_app') %}" href="{{ app_ios_url }}"
+              {% endif %} target="_blank">
+            <div class="app-top-banner-js__banner">
+                <div class="app-top-banner-js__link">
+                    <img class="img-responsive" src="{{ site_root }}application/views/flatty/img/app_logo.png">
+                </div>
+                <div class="app-top-banner-js__description">
+                    <div class="app-top-banner-js__title">{% helper lang.l('field_app_title', 'mobile') %}</div>
+                    <div class="app-top-banner-js__subtitle">{% helper lang.l('field_app_subtitle', 'mobile') %}</div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-xs-2 third-col">
+        <div class="app-top-banner-js__view">
+            <a href="{% if app_android_url %}{{ app_android_url }}{% else %}{{ app_ios_url }}{% endif %}" target="_blank" data-action="install-app" 
+            {% if app_android_url %}
+                data-tag="android"
+            {% elseif app_ios_url %} 
+                data-tag="ios"    
+            {% endif %}
+                >
+                {% helper lang.l('field_app_install', 'mobile') %}
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+    $(window).load(function() {
+        loadScripts(
+            [
+                "{% helper utils.jscript('mobile', 'App.js', 'path') %}"
+            ],
+            function () {
+                app_banner = new App;
+            },
+            ['app_banner'],
+            {async: true}
+        );
+    });
+</script>

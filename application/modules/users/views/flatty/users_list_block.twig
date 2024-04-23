@@ -1,0 +1,235 @@
+{% helper users = users.reFormatUsers({'users': users,'return': true}) %}
+{% helper banner_320_250 = banners.show_banner_place('banner-320x250') %}
+{% helper banner_320_75 = banners.show_banner_place('banner-320x75') %}
+{% helper banner_980_90 = banners.show_banner_place('banner-980x90') %}
+{% if page_data.cur_page > 1 %}
+    {% set add_loop = page_data.prev_page*page_data.per_page %}
+{% else %}
+    {% set add_loop = 0 %}
+{% endif %}
+{% if users is empty %}
+    <h2 class="text-center p10">
+        {% helper lang.l('header_users_found', 'users') %}: {{ page_data.total_rows }}
+    </h2>
+{% endif %}
+{% if users and hide_dir != 'previous' and page_data.type == 'scroll' %}
+    <div id="pages_block_1" class="tac">
+        {% set page_data = page_data|merge({'items': 'previous'}) %}
+        {% helper start.pagination(page_data) %}
+    </div>
+{% elseif users and page_data.type != 'scroll'  %}
+    {% if sort_data is not empty %}
+        <div class="sorter-block clearfix" id="sorter_block">
+            <div class="pull-left pl15">
+                {% helper start.sorter({
+                    'links': sort_data.links,
+                    'order': sort_data.order,
+                    'direction': sort_data.direction,
+                    'url': sort_data.url
+                }) %}
+            </div>
+            <div class="st-info">
+                <div class="lh30">
+                    {% helper lang.l('header_users_found', 'users') %}: {{ page_data.total_rows }}
+                </div>
+            </div>
+            <div class="pull-right pr15">
+                <div class="fright lh30 search-top-pager">
+                    {% set page_data = page_data|merge({'type': 'cute'}) %}
+                    {% helper start.pagination(page_data) %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}
+<div class="{% if page_data.view_type == 'gallery' %}row g-users-gallery{% else %}user-list{% endif %}" data-action="set-page" data-page="{{ page_data.cur_page }}">
+    {% for ukey, user in users %}
+        {% helper text_user_logo = lang.l('text_user_logo', 'users', '', 'button', user) %}
+        {% if page_data.view_type == 'gallery' %}
+            <div class="g-users-gallery__item col-xs-6 col-sm-3 col-md-3 col-lg-2 {% if user.is_highlight_in_search or user.leader_bid %}highlight{% endif %}">
+                <div class="g-users-gallery__content">
+                    <div class="g-users-gallery__photo">
+                        <a class="g-pic-border g-rounded"  onclick="sendAnalytics('', 'user_profile', 'view_user_search_block');"  href="{% helper seo.seolink('users', 'view', user) %}">
+                            {% helper users.formatAvatar({'user': user, 'size': 'great'}) %}
+                        </a>
+                    </div>
+                    <div class="g-users-gallery__info">
+                        <div class="text-overflow">
+                            {% helper users.userName({'format':'age', 'user': user, 'is_link': 1}) %}
+                        </div>
+                        {% if user.location %}
+                            <div class="text-overflow">
+                                {{ user.location }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% if ukey == 5  %}
+                {% if banner_980_90 %}
+                    <div class="col-sm-12 banner-unsupported">
+                        {{ banner_980_90 }}
+                    </div>
+                    <div class="clearfix"></div>
+                {% endif %}
+            {% endif %}
+            {% if (ukey == 11 and page_data.cur_page == 1) or ((loop.index+add_loop) is divisible by(36)) or (ukey == users_count - 1 and ukey < 11) %}
+                {% if banner_320_250 or banner_320_75 %}
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="banner-unsupported">
+                                    {{ banner_320_250 }}
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="banner-unsupported">
+                                    {{ banner_320_75 }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                {% endif %}
+            {% endif %}
+        {% else %}
+            {% if ukey == 0 %}
+                {% if banner_980_90 %}
+                    <div class="col-sm-12 banner-unsupported">
+                        {{ banner_980_90 }}
+                    </div>
+                    <div class="clearfix"></div>
+                {% endif %}
+            {% elseif ukey == 3 %}
+                {% if banner_320_250 or banner_320_75 %}
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="banner-unsupported">
+                                    {{ banner_320_250 }}
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="banner-unsupported">
+                                    {{ banner_320_75 }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                {% endif %}
+            {% endif %}
+            <div id="item-block-{{ user.id }}"
+                 class="user-list-item clearfix {% if user.is_highlight_in_search or
+                                        user.leader_bid or
+                                        (user.is_up_in_search and page_data.use_leader) %}highlight{% endif %}">
+                {% if user.leader_bid %}
+                    <div class="lift_up">
+                        {% helper lang.l('header_leader', 'users') %}
+                    </div>
+                {% endif %}
+
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 no-padding-left">
+                    <div class="image">
+                        <a class="g-pic-border g-rounded"  onclick="sendAnalytics('dp_user_view_user_search_block', 'user_profile', 'view_user_search_block');" href="{% helper seo.seolink('users', 'view', user) %}">
+                            {% helper users.formatAvatar({'user': user, 'size': 'small'}) %}
+                        </a>
+                    </div>
+                    <div class="descr-1">
+                        <div class="">
+                            <a href="{% helper seo.seolink('users', 'view', user) %}">{{ user.output_name }}</a>, {{ user.age }}
+                        </div>
+                        {% if user.location %}
+                            <div class="">
+                                <i class="fas fa-map-marker-alt g"></i>
+                                <span>{{ user.location }}</span>
+                            </div>
+                        {% endif %}
+
+                        {% if pm_installed %}
+                            <div class="">
+                                <span>
+                                    {% helper lang.l('field_looking_user_type', 'users') %}
+                                    {{ user.looking_user_type_str }}, {{ user.age_min }}-{{ user.age_max }}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="descr-2">
+                        <span class="italic">
+                            {% helper utils.truncate(user.fe_about_me, 100) %}
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 no-padding-right">
+                    <div class="descr-3">
+                        <div class="rating-ul-block fleft">
+                            {% helper ratings.get_rate_item({'object_id': user.id, 'type_gid': 'users_object'}) %}
+                        </div>
+                        <div class="fright">
+                            {% helper menu.buttonActionMenu({ 'user_id': user.id }) %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% if users and hide_dir != 'next' and page_data.type == 'scroll' %}
+    <div id="pages_block_2" class="tac">
+        {% set page_data = page_data|merge({'items': 'next'}) %}
+        {% helper start.pagination(page_data) %}
+    </div>
+{% elseif users and page_data.type != 'scroll'  %}
+    <div id="pages_block_2" class="tac">
+        {% set page_data = page_data|merge({'type': 'full'}) %}
+        {% helper start.pagination(page_data) %}
+    </div>
+{% endif %}
+
+<script>
+    {% if not show_list_buttons %}
+        $(".user-menu a").each(function () {
+            $(this).unbind('click').removeAttr('onclick').html('<span class="dislink">' + $(this).html() + '</span>');
+        });
+        $(".lider-link").each(function () {
+            $(this).html('<a href="javascript:void(0)" class="dislink">' + $(this).children().html() + '</a>');
+        });
+
+        $(".dislink").each(function () {
+            $(this).on('click', function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+                $.ajax({
+                    url: '{{ site_url }}' + 'users/prevent_view',
+                    success: function (data) {
+                        var list_view_request_window = new loadingContent({
+                            loadBlockWidth: '500px',
+                            linkerObjID: $(this).attr('id'),
+                            loadBlockLeftType: 'center',
+                            loadBlockTopType: 'center',
+                            closeBtnClass: 'w'
+                        });
+                        list_view_request_window.show_load_block(data);
+                    },
+                    dataType: 'html',
+                    type: 'POST'
+                });
+            });
+        });
+    {% endif %}
+
+        $('.user-gallery').not('.w-descr').find('.photo')
+                .off('mouseenter').on('mouseenter', function () {
+            $(this).find('.info').stop().slideDown(100);
+        }).off('mouseleave').on('mouseleave', function () {
+            $(this).find('.info').stop(true).delay(100).slideUp(100);
+        });
+
+        $('#main_page').click(function () {
+            $('.umb').hide();
+        });
+</script>

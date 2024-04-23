@@ -1,0 +1,45 @@
+<div class="menu-alerts-more-items" id="receipt_gifts_list_{{ rand }}" >
+    {% if gifts is not empty %}
+        {% for gift in gifts %}        
+        <li class="menu-alerts-more-item clearfix">            
+            <span class="hide summand">1</span>     
+            <a href="javascript:void(0);" gift-id="{{gift.id}}" class="receipt-gift">
+                <div class="message-image">
+                    <img src="{{ gift.sender_media.user_logo.thumbs.small }}" alt="{{gift.sender_name}}">
+                </div>
+                <div class="message-body">
+                    <div class="text">{% helper lang.l('gift_receipt_from_user', 'virtual_gifts') %} {{gift.sender_name}}</div>
+                </div>
+            </a>
+        </li>        
+        {% endfor %}
+    {% endif%}
+</div>
+<script>
+    $(function(){
+
+            loadScripts(
+                    "{% helper utils.jscript('virtual_gifts', 'receipt_gifts.js', 'path') %}",
+                    function(){
+                            receipt_gifts = new ReceiptGift({
+                                    siteUrl: site_url,
+                                    use_form: true,
+                                    btnForm: 'receipt-gift',
+                                    urlGetForm: 'virtual_gifts/ajax_get_receipt_gift',
+                                    urlSendForm: 'virtual_gifts/ajax_set_gifts/{{user_id}}',
+                                    dataType: 'html',
+                                    giftsListId: 'receipt_gifts_list_{{ rand }}'
+                            });
+                    },
+                    ['virtual_gifts','receipt_gifts'],
+                    {async: false}
+            );
+            {% if gift_opened == false %}
+                var gift_id = $('.receipt-gift:first').attr('gift-id');
+                if(receipt_gifts.properties.use_form && typeof(gift_id) !== 'undefined'){
+                    receipt_gifts.get_form(gift_id);
+                }
+            {% endif %}
+
+    });
+</script>

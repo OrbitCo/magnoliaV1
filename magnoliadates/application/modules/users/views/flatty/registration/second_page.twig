@@ -1,0 +1,70 @@
+<div data-block="pages" data-act="close" id="second-registration-page" class="hide">
+    {% helper social_button = users_connections.show_social_networking_login() %}
+    <div class="col-xs-12 
+        {% if social_button is not empty and data.is_auth == 0 %}
+        col-md-8 col-md-offset-2{% else %}col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3{% endif %}">
+            <div class="g-flatty-block">
+                <h3>{% helper lang.l('get_started', 'users') %}</h3>
+                <div class="col-xs-12 {% if social_button is not empty and data.is_auth == 0 %}col-md-6 first-block{% endif %}">
+                     <div class="form-group col-xs-12">
+                         <label for="email">{% helper lang.l('field_email', 'users') %} : </label>
+                         <div>
+                             <input data-action="validation" data-field="email" id="email" class="form-control" type="email" value="{{ user_data.email }}" name="data[email]" placeholder="example@gmail.com" autocomplete="new-email">
+                         </div>
+                     </div>
+                     <div class="form-group col-xs-12">
+                         <label for="password">{% helper lang.l('field_password', 'users') %}: </label>
+                         <div>
+                             <input data-action="validation" data-field="password" id="password" class="form-control" type="password" value="{{ user_data.password }}" name="data[password]" autocomplete="new-password" >
+                         </div>
+                    </div>
+                    {% helper referral_links.referral_get_code() %}
+                    <div class="form-group col-xs-12">
+                        <label for="">
+                            <div style="display: inline;">
+                            <input data-action="validation" data-field="confirmation" id="confirmation" type="checkbox" name="data[confirmation]" value="1" 
+                            {% if user_data.is_terms %} checked {% endif %}>
+                            {% helper legal_terms_link = content.get_page_link({'page_gid': 'legal-terms'}) %}
+                            {% helper privacy_link = content.get_page_link({'page_gid': 'privacy-and-security'}) %}
+                            {% helper lang.l('field_confirmation', 'users') %}
+                            </div>
+                            {% if legal_terms_link is not empty %}
+                                <a href="javascript:void(0);" data-href="{{ legal_terms_link }}" id="terms_and_conditions" data-gid="legal-terms">
+                                    {% helper lang.l('terms_and_conditions', 'users') %}
+                                </a>
+                            {% endif %}
+                            {% if privacy_link is not empty %}
+                                 {% helper lang.l('field_and_the', 'users') %} 
+                                <a href="javascript:void(0);" data-href="{{ privacy_link }}" id="privacy_and_security" data-gid="privacy-and-security">
+                                    {% helper lang.l('privacy_and_security', 'users') %}
+                                </a>
+                            {% endif %}
+
+                        </label>
+                        <span class="pginfo msg confirmation"></span>
+                    </div>
+                     <div class="form-group col-xs-12">
+                         <div>
+                             <button onclick="{% helper start.setAnalytics('index', 'btn_register_step2') %}" class="btn btn-primary btn-block btn-lg" data-action="next-page" data-page="2"  type="button" >{% helper lang.l('btn_next', 'start') %}</button>
+                         </div>
+                     </div>
+                </div>
+                {% if social_button is not empty and data.is_auth == 0 %}
+                    <div class="col-xs-12 col-md-6 second-block">
+                        <div>{% helper lang.l('login_or_signup', 'users') %}</div>
+                        <div class="social_networking">{% helper users_connections.show_social_networking_login() %}</div>
+                    </div>   
+                {% endif %}
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+    
+            <div class="sign_in-block center">
+                {% helper lang.l('field_have_account', 'users') %}
+                <a onclick="{% helper start.setAnalytics('index', 'btn_sign_in') %}"
+                href="{% helper seo.seolink('users', 'login_form') %}" data-bind="login">
+                    {% helper lang.l('btn_login', 'start') %}
+                </a>
+            </div>
+    </div>
+</div>

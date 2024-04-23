@@ -1,0 +1,74 @@
+<menu id="users-alerts-menu_links" class="menu-alerts"> 
+    {% if auth_type == 'user' %}
+        <div class="row">
+            <div class="col-xs-6 mb10">    
+                <div class="xs-menu-title">{% helper lang.l('xs_menu_home', 'users') %}</div>
+                {% helper is_module_installed = utils.depends('like_me') %}
+                {% if is_module_installed.like_me %}
+                    <div class="menu-alerts-item menu-item" id="menu_like_me_alerts">
+                        <a id="menu-like_me" href="{% helper seo.seolink('like_me', 'index') %}" onclick="{% helper start.setAnalytics('left_menu_user', 'like_me') %}">
+                            {% helper lang.l('header_main', 'like_me') %}
+                            <span class="badge summand like_me_count"></span>
+                        </a>
+                    </div>
+                {% endif %}        
+                <div class="menu-alerts-item menu-item">
+                    <a href="{% helper seo.seolink('users', 'search') %}" onclick="{% helper start.setAnalytics('left_menu_user', 'search_item') %}">
+                        {% helper lang.l('header_user_find', 'users') %}
+                    </a>
+                </div>  
+                <div class="menu-alerts-item menu-item menu-alerts-more-item" id="menu_chatbox_alerts" title="{% helper lang.l('field_alert_menu_new_msgs', 'menu') %}" >
+                    <a id="activities_chatbox_item_xs" href="{% helper seo.rewrite_link('chatbox', 'index') %}/" class="uam-top menu-messages-more" 
+                    onclick="{% helper start.setAnalytics('left_menu_user', 'chatbox_item') %}">
+                        {% helper lang.l('mobile_menu', 'chatbox') %}
+                       {#  <span class="badge sum"></span> #}
+                    </a>
+                    {# {% helper mailbox.new_messages({ template: 'header_xs' }) %} #}
+                </div>
+
+                {% helper is_module_installed = utils.depends('tickets') %}
+                {% if is_module_installed.tickets %}
+                    <div class="menu-alerts-item menu-item" id="menu_admin_alerts" title="{% helper lang.l('field_alert_menu_new_alerts', 'menu') %}">
+                        <a id="menu-messages-more" href="{% helper seo.rewrite_link('tickets', 'index') %}" class="uam-top menu-messages-more"
+                        onclick="{% helper start.setAnalytics('left_menu_user', 'tickets_advanced_item') %}">
+                            <i class="fa fa-bell fa-lg item hidden"></i>
+                            {% helper lang.l('xs_menu_home_tickets', 'users') %}
+                            <span class="badge sum"></span>
+                        </a>
+                        {% helper tickets.admin_new_messages({template: 'header_xs', is_admin: '1'}) %}                        
+                    </div>
+                {% endif %}   
+                <div class="mt10">
+                {% helper virtual_gifts.user_gifts_menu_notifier(user_session_data.user_id) %}
+                </div>
+            </div> 
+            <div class="col-xs-6 mb10">    
+                {% helper menu.getMenuItems('user_top_menu', 'user-menu-activities', 'helper_top_menu_items_xs') %}
+            </div>                
+        </div>                
+        <div class="row">                
+            <div class="col-xs-6 mb10">    
+                {% helper menu.getMenuItems('user_top_menu', 'user-menu-people', 'helper_top_menu_items_xs') %}
+            </div>                        
+            <div class="col-xs-6 mb10">
+                <div class="xs-menu-title">{% helper lang.l('xs_menu_home_account', 'users') %}</div>
+                {% helper users.auth_links({'template': 'helper_auth_links_xs'}) %}
+            </div> 
+        </div>    
+    {% endif %}
+</menu>
+<script type="text/javascript">
+$(function () {
+    loadScripts(
+            "{% helper theme.include_js('users', 'top-menu.js', 'path') %}",
+            function () {
+                new topMenu({
+                    siteUrl: site_url,
+                    parent: '.menu-alerts-item',
+                    summandsParent: '.menu-alerts-more-item'
+                });
+            }
+    );
+    
+});
+</script>

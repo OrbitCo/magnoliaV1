@@ -1,0 +1,57 @@
+{% helper data = statistics.visitsData() %}
+{% helper cloudflare_analytics = cloudflare.cloudflareAnalytics() %}
+
+{% if data is not empty and cloudflare_analytics.is_visible == 0 %}
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>{% helper lang.l('stat_visits', 'start') %}</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up cursor-pointer"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div id="chart_div" class="cursor-pointer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type='text/javascript'>
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                {% for item in data %}
+                [{{ item.date }}, {{ item.count }}],
+                {% endfor %}
+            ]);
+            var options = {
+                hAxis: {title: '{% helper lang.l('stats_field_name_visits_count', 'statistics') %}',  titleTextStyle: {color: '#333'}, direction: -1},
+                vAxis: {minValue: 0},
+                legend: {position: 'none'},
+                height: 250,
+                width: '100%',
+                chartArea:{left:40,right:15},
+                colors: ['#0089CF'],
+                dir: 'rtl'
+            };
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+            $('#chart_div').click(function(){
+                {% helper start.setAnalytics('dashboard', 'site_visits_graph') %}
+                {% if TRIAL_MODE %}
+                locationHref(site_url + 'admin/marketing/index');
+                {% endif %}
+            });
+            $(function(){
+                $('#chart_div>div>div').attr('dir', site_rtl_settings);
+            });
+        }
+    </script>
+{% else  %}
+    {{ cloudflare_analytics.content }}
+{% endif %}

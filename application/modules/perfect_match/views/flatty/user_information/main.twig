@@ -1,0 +1,15 @@
+<div class="content-page">
+    <div class="ui-title">{% helper lang.l('header_main', 'perfect_match') %}</div>
+    <div>
+        {% helper lang.l('field_usr_inf_description', 'perfect_match') %}
+    </div>
+    {% for link, name in pages %}
+        <div><a href="{{ link }}">{{ name }}</a></div>
+    {% else %}
+        {% if is_not_archive %}
+            <input type="checkbox" name="ui_perfect_match" data-module="perfect_match" value="1" class="ui_checkbox" data-action="ui_change" checked>
+        {% else %}
+            <div><i>{% helper lang.l('list_empty', 'perfect_match') %}</i></div>
+        {% endif %}
+    {% endfor %}
+</div>

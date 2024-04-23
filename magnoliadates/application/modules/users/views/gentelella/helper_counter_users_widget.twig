@@ -1,0 +1,45 @@
+<div class="col-sm-6 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>{% helper lang.l("field_ratio_user_types_site", "users") %}</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Settings 1</a>
+                        <a class="dropdown-item" href="#">Settings 2</a>
+                    </div>
+                </li>
+                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div id="users_counter"></div>
+        </div>
+    </div>
+</div>
+<script>
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['{% helper lang.l('user_type', 'users') %}', '%'],
+            {% for user_type, count in counter %}
+            ['{{ user_type }}', {{ count }}],
+            {% endfor %}
+        ]);
+
+        var options = {
+            pieHole: 0.1,
+            colors: ['#32B44A', '#1479B8', '#73879C', '#5A738E', '#ECF0F1']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('users_counter'));
+        chart.draw(data, options);
+    }
+</script>

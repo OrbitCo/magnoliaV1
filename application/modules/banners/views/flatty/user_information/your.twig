@@ -1,0 +1,22 @@
+<div class="content-page">
+    <div class="ui-title">{% helper lang.l('header_main', 'banners') %}</div>
+    <div class="ui-descr">
+        {% helper lang.l('field_usr_inf_description', 'banners') %}
+    </div>
+</div>
+{% for item in your %}
+    <div class="col-xs-12 content-page">
+        <div class="ui-title bb">{{ item.alt_text }}</div>
+        <div>
+            {% helper lang.l('field_link', 'banners') %}: {{ item.link }}
+        </div>
+        <div>
+            <a href="images/{{ item.media.banner_image.file_name }}">
+                <img  class="img-rounded img-responsive" src="images/{{ item.banner_image }}" alt="{{ item.alt_text }}">
+            </a>
+        </div>
+         {% if item.expiration_date_on == 1 %}
+            <div>{% helper lang.l('field_expiration_date', 'banners') %}: {{ item.expiration_date }}</div>
+        {% endif %}
+    </div>
+{% endfor %}

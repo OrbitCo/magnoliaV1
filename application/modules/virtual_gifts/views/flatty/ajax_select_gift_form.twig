@@ -1,0 +1,118 @@
+{# popup: select gift #}
+
+{% if type_of_form == 'full'%}
+    <div class="content-block load_content">
+        <h1>
+            {% helper lang.l('user_send_gift', 'virtual_gifts') %} {{user_name}}
+        </h1>
+        <div class="modal-body scroll inside select-gift-wrapper">
+            <input id="page-num" type="hidden" value="1">
+            {% if gifts|length > 0 %}
+                <div class="gifts-list-block">
+                    <div class="row b-vgifts__list js-gifts-list">
+                        {% for gift in gifts %}
+                            <div class="col-xs-4 col-sm-3 col-md-3 col-md-2 b-vgifts__item">
+                                <div href="{{ site_url }}virtual_gifts/send_gift/{{ user_id }}/{{ gift.id }}"
+                                     class="js-gift-choice b-vgifts__thumb b-vgifts__thumb_selectable" gift-id="{{ gift.id }}">
+                                    <img class="img-responsive" src="{{ gift.mediafile.thumbs_data.big.file_url }}">
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% if show_more_btn %}
+                    <div class="load-more-gifts">
+                        <button class="btn btn-primary-inverted" id="load-more-gifts">
+                            {% helper lang.l('user_load_more_gifts', 'virtual_gifts') %}
+                        </button>
+                    </div>
+                {% endif %}
+            {% else %}
+                {% helper lang.l('gifts_empty', 'virtual_gifts') %}
+            {% endif %}
+        </div>
+    </div>
+{% else %}
+    <div class="content-block load_content">
+        <div class="modal-body scroll inside select-gift-wrapper">
+            <input id="page-num" type="hidden" value="1">
+            {% if gifts|length > 0 %}
+                <div class="gifts-list-block">
+                    <div class="row b-vgifts__list js-gifts-list">
+                        {% for gift in gifts %}
+                            <div class="col-xs-4 col-sm-3 col-md-3 col-md-2 b-vgifts__item">
+                                <div href="{{ site_url }}virtual_gifts/send_gift/{{ user_id }}/{{ gift.id }}"
+                                     class="js-gift-choice b-vgifts__thumb b-vgifts__thumb_selectable" gift-id="{{ gift.id }}">
+                                    <img class="img-responsive" src="{{ gift.mediafile.thumbs_data.big.file_url }}">
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% if show_more_btn %}
+                    <div class="load-more-gifts">
+                        <button class="btn btn-primary-inverted" id="load-more-gifts">
+                            {% helper lang.l('user_load_more_gifts', 'virtual_gifts') %}
+                        </button>
+                    </div>
+                {% endif %}
+            {% else %}
+                {% helper lang.l('gifts_empty', 'virtual_gifts') %}
+            {% endif %}
+        </div>
+    </div>
+{% endif %}
+
+<script>
+    $(function () {
+        loadScripts(
+                "{% helper utils.jscript('virtual_gifts', 'send_gift.js', 'path') %}",
+                function () {
+                    virtual_gifts = new SendGift({
+                        siteUrl: site_url,
+                        use_form: true,
+                        btnForm: 'btn-virtual_gift-{{ virtual_gifts_button_rand }}',
+                        urlGetForm: 'virtual_gifts/ajax_get_gifts_form/{{ user_id }}',
+                        urlSendForm: 'virtual_gifts/ajax_set_gifts/{{ user_id }}',
+                        dataType: 'html'
+                    });
+                },
+                ['virtual_gifts'],
+                {async: false}
+        );
+
+    });
+    $('.js-gifts-list').on('click', '.js-gift-choice', function () {
+        var gift_id = $(this).attr('gift-id');
+        $('button#load-more-gifts').hide();
+        $.ajax({
+            url: site_url + "virtual_gifts/ajax_get_gift_data",
+            method: "POST",
+            data: {"id": gift_id, "user_id": "{{ user_id }}"},
+            success: function (data) {
+                $('.js-gifts-list').html(data);
+            }
+        });
+    });
+    $('button#load-more-gifts').on('click', function () {
+        var page = $('#page-num').val();
+        page = parseInt(page);
+        page = page + 1;
+        $.ajax({
+            url: site_url + "virtual_gifts/ajax_get_gifts_form",
+            method: "POST",
+            data: {"more_gifts": "1", "page": page},
+            dataType: 'json',
+            success: function (data) {
+                var gifts = data.gifts;
+                $('#page-num').val(page);
+                for (var key in gifts) {
+                    if (gifts[key]["last"]) {
+                        $('button#load-more-gifts').hide();
+                    }
+                    $('.js-gifts-list').append('<div class="col-xs-4 col-sm-3 col-md-3 col-md-2 b-vgifts__item"><div class="js-gift-choice b-vgifts__thumb b-vgifts__thumb_selectable" gift-id="' + gifts[key]["id"] + '"><img class="img-responsive" src="' + gifts[key]["mediafile"]["thumbs_data"]["big"]["file_url"] + '"></div></div>');
+                }
+            }
+        });
+    });
+</script>

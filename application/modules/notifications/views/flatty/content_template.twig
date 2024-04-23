@@ -1,0 +1,26 @@
+<table align="center" bgcolor="#e3e3e3" border="0" cellpadding="0" cellspacing="0" style="margin:0;padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px;" width="100%">
+    <tr>
+        <td height="100%"  bgcolor="#e3e3e3">
+            <table  bgcolor="#ffffff" align="center" cellspacing="0" cellpadding="0" border="0" width="600" style="border:0;padding:0">
+                <tr>
+                    <td colspan="2" style="padding:20px;font-family:Helvetica,sans-serif;font-weight:300;font-size:18px;color:#373737;line-height:1.5">
+                        {{ content }}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-top:1px solid #e3e3e3;padding: 20px;">
+                        <span style="font-family:Helvetica,sans-serif;font-weight:300;font-size:14px;color:#373737;line-height:1.5">
+                            {% helper lang.l('notification_best_regards', 'notifications', lang_id) %},<br>
+                            {{ data.mail_from_name }}
+                        </span>
+                    </td>
+                    <td style="border-top:1px solid #e3e3e3;padding: 20px;text-align:right;">
+                        <a href="{{ site_url }}" style="text-decoration:none;text-align:right;">
+                            <img src="{{ site_url }}application/views/{{ theme }}/logo/mini_logo_red.png">
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>

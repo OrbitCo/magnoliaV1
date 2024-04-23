@@ -1,0 +1,177 @@
+{% helper default_select_lang = lang.l('select_default', 'users') %}
+{% helper all_select_lang = lang.l('filter_all', 'users') %}
+{% helper location_lang = lang.l('field_search_country', 'users') %}
+<form action="{{ form_settings.action }}" method="POST" id="main_search_form_{{ form_settings.form_id }}">
+    <input type="hidden" name="main_search_form" value="1">
+    <div class="{{ form_settings.type }}">
+        {% if form_settings.type == 'line' %}
+        <div class="inside">
+            <div id="line-search-form_{{ form_settings.form_id }}">
+                <input type="text" name="search" placeholder="{% helper lang.l('search_people', 'start') %}" />
+                <button type="submit" id="main_search_button_{{ form_settings.form_id }}" class="search"><i class="fa-search w"></i></button>
+            </div>
+        </div>
+        {% elseif form_settings.type == 'index' %}
+        <div class="fields-block aligned-fields">
+            <div id="short-search-form_{{ form_settings.form_id }}">
+                <div>
+                    {hlbox input='user_type' id='looking_user_type' value=$looking_user_types.option multiselect=true selected=$data.user_type}
+                </div>
+                <div class="table">
+                    <div class="search-fields">
+                        <div class="search-field age">
+                            <span class="inline vmiddle">{% helper lang.l('field_age', 'users') %}&nbsp;</span>
+                            <div class="ib vmiddle">
+                                {% helper start.selectbox({
+                                    'input': 'age_min',
+                                    'id': 'age_min',
+                                    'value': age_range,
+                                    'selected': data.age_min
+                                }) %}
+                            </div>
+                            &nbsp;-&nbsp;
+                            <div class="ib vmiddle">
+                                {% helper start.selectbox({
+                                    'input': 'age_max',
+                                    'id': 'age_max',
+                                    'value': age_range,
+                                    'selected': data.age_max
+                                }) %}
+                            </div>
+                        </div>
+                        <div class="search-field country">
+                            {% helper countries.location_select({
+                                'select_type': 'city',
+                                'placeholder': location_lang,
+                                'id_country': data.looking_id_country,
+                                'id_region': data.looking_id_region,
+                                'id_city': data.looking_id_city
+                            }) %}
+                        </div>
+                        <div class="search-field search-btn righted">
+                            <button type="submit" id="main_search_button_{{ form_settings.form_id }}" name="search_button">{% helper lang.l('btn_search', 'start') %}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clr"></div>
+        </div>
+        {% else %}
+        <div class="search-block clearfix">
+            <div class="f-title">
+                {% filter upper %}{% helper lang.l('field_gender', 'users') %}{% endfilter %}
+            </div>
+            <div class="f-block">
+                {% helper start.selectbox({
+                        'input': 'user_type',
+                        'id': 'looking_user_type',
+                        'value': looking_user_types.option,
+                        'selected': data.user_type,
+                        'default': all_select_lang
+                    }) %}
+            </div>
+        </div>
+        <div class="search-block looking_ages-search_block clearfix">
+            <div class="f-title">
+                {% filter upper %}{% helper lang.l('field_ages', 'users') %}{% endfilter %}
+            </div>
+            <div class="f-block clearfix looking-age_block">
+                <div class="">
+                    {% helper start.selectbox({
+                            'input': 'age_min',
+                            'id': 'age_min',
+                            'value': age_range,
+                            'selected': data.age_min
+                        }) %}
+                </div>
+                <div class="looking-age_center">-</div>
+                <div class="">
+                    {% helper start.selectbox({
+                            'input': 'age_max',
+                            'id': 'age_max',
+                            'value': age_range,
+                            'selected': data.age_max
+                        }) %}
+                </div>
+            </div>
+        </div>
+        <div class="search-block clearfix">
+            <div class="f-title">
+                {% filter upper %}{% helper lang.l('field_location', 'users') %}{% endfilter %}
+            </div>
+            <div class="f-block">
+                <div>
+                    {% helper countries.location_select({
+                        'select_type': 'city',
+                        'placeholder': location_lang,
+                        'id_country': data.looking_id_country,
+                        'id_region': data.looking_id_region,
+                        'id_city': data.looking_id_city
+                    }) %}
+                </div>
+            </div>
+        </div>
+        <div id="full-search-form_{{ form_settings.form_id }}" {% if form_settings.type == 'short' %}class="hide"{% endif %}>
+            {% if form_settings.use_advanced %}
+                <div class="clr"></div>
+                {% for item in advanced_form %}
+                    {% if item.type == 'section' %}
+                        {% for field in item.section.fields %}
+                            <div class="search-field custom {{ field.field.type }} {{ field.settings.search_type }}">
+                                <p>{{ field.field_content.name }}</p>
+                                {% include 'helper_search_field_block.twig' with {
+                                                'field': field,
+                                                'field_name': field.field_content.field_name
+                                            }  %}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="search-field custom {{ item.field.type }} {{ item.settings.search_type }}">
+                            <p>{{ item.field_content.name }}</p>
+                            {% include 'helper_search_field_block.twig' with {
+                                'field': item,
+                                'field_name': item.field_content.field_name
+                            }  %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="search-block clearfix">
+            <div class="f-title">{% filter upper %}{% helper lang.l('online_now', 'users') %}{% endfilter %}</div>
+            <div class="f-block">
+                <input type="checkbox" name="online_status" class="hide" id="online_status">
+                <script>
+                    $(function () {
+                        if ($('.bootstrap-switch-container').find('input').is('#online_status') === false) {
+                            if (typeof $.fn.bootstrapSwitch == "undefined") {
+                                loadScripts([
+                                    "{{ site_url}}application/js/bootstrap/bootstrap.min.js",
+                                    "{{ site_url}}application/js/bootstrap-switch/dist/js/bootstrap-switch.min.js"
+                                ]);
+                            }
+                            var load_script = setInterval(function() {
+                                if (typeof $.fn.bootstrapSwitch !== "undefined") {
+                                    $("#online_status").bootstrapSwitch().show();
+                                    clearInterval(load_script);
+                                }
+                            }, 300);
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="search-block clearfix">
+            <input name="main_search_button" type="button" id="main_search_button_{{ form_settings.form_id }}" class="btn btn-primary" value="{% helper lang.l('btn_search', 'start') %}">
+            {% if form_settings.use_advanced %}
+                <span class="collapse-links ml10">
+                    <a href="#" class="hide" id="more-options-link_{{ form_settings.form_id }}">{% helper lang.l('link_more_options', 'start') %}&nbsp;<i class="fa fa-caret-down icon-big text-icon"></i></a>
+                    <a href="#" class="hide" id="less-options-link_{{ form_settings.form_id }}">{% helper lang.l('link_less_options', 'start') %}&nbsp;<i class="fa fa-caret-up icon-big text-icon"></i></a>
+                </span>
+                &nbsp;&nbsp;&nbsp;
+            {% endif %}
+        </div>
+        {% endif %}
+    <div class="clearfix"></div>
+    </div>
+</form>

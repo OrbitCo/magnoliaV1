@@ -1,0 +1,262 @@
+{% extends '@app/header_lite.twig' %}
+ {% block bodyclass %}index-pleasure{% endblock bodyclass %}
+
+ {% block container %}
+    <div id="error_block" class="hide">{% for item in _PREDEFINED.error %}{% if item.text %}{{ item.text }}<br>{% endif %}{% endfor %}</div>
+    <div id="info_block" class="hide">{% for item in _PREDEFINED.info %}{% if item.text %}{{ item.text }}<br>{% endif %}{% endfor %}</div>
+    <div id="success_block" class="hide">{% for item in _PREDEFINED.success %}{% if item.text %}{{ item.text }}<br>{% endif %}{% endfor %}</div>
+
+
+    <div class="bg-black">
+        <img  id="dendrobium-header" src="{{ site_root }}uploads/themes-fixed/dendrobium/images/bg_img.jpg" alt="" class="img-responsive">
+        <section class="container row">
+            <a href="{{ site_url }}">
+                {% helper start.logo({type: 'user', settings: logo_settings}) %}
+            </a>
+            <section class="navnav">
+                <nav class="navbar" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            {% helper reglang = lang.l('join_now', 'start') %}
+                            {% helper users.usersRegistration({'is_link': 1, 'page': 1, 'lang': reglang}) %}
+                        </li>
+                        <li style="color: #ffffff; margin-top: 12px;">/</li>
+                        <li>
+                            <a onclick="{% helper start.setAnalytics('index', 'btn_sign_in') %}"
+                               href="{% helper seo.seolink('users', 'login_form') %}">
+                                {% helper lang.l('btn_login', 'start') %}
+                            </a>
+                        </li>
+                        <li class="b-lang">
+                            {% helper users.users_lang_select({type: 'menu', template: 'dropdown'}) %}
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+        </section>
+    </div>
+    <main class="container-fluid">
+        <div class="row" id="cian_background">
+            <section id="block3" class="col-md-4 col-sm-6">
+                <div class="col-md-12">
+                    <div class="capt">
+                        <h2 data-bind="block3">46% / 54%</h2>
+                        <p data-bind="block3_comment">{% helper lang.l('malefemale_dist', 'start') %}</p>
+                    </div>
+                    <div class="thumbnail th-set__html_bg">
+                        <img src="{{ site_root }}uploads/themes-fixed/dendrobium/images/feature-1.jpg" alt="header photo 1" class="img-responsive">
+                        <div class="caption text-justify" data-bind="block3_text">{% helper lang.l('malefemale_dist_txt', 'start') %}</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="block5" class="col-md-4 col-sm-6">
+                <div class="col-md-12">
+                    <div class="capt">
+                        <h2 data-bind="block5">{% helper lang.l('stay_safe', 'start') %}</h2>
+                        <p data-bind="block5_comment">{% helper lang.l('online_comm', 'start') %}</p>
+                    </div>
+                    <div class="thumbnail th-set__html_bg">
+                        <img src="{{ site_root }}uploads/themes-fixed/dendrobium/images/feature-2.jpg" alt="header photo 1" class="img-responsive">
+                        <div class="caption text-justify" data-bind="block5_text">{% helper lang.l('disclose_details', 'start') %}</div>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="col-md-4 col-sm-12 b-welcome th-set__main_bg th-set__index_promo_text_main">
+                <div>
+                    <h2 data-bind="block4">{% helper lang.l('welcome_to_site', 'start') %}</h2>
+                </div>
+                <p data-bind="block4_text">{% helper lang.l('find_match_txt', 'start') %}{% helper lang.l('singles_online_txt', 'start') %}</p>
+                {% helper reglang = lang.l('join_now', 'start') %}
+                {% helper users.usersRegistration({'is_link': 1, 'page': 1, 'lang': reglang}) %}
+            </aside>
+        </div>
+
+        <div class="row" id="gray_background">
+            <section class="col-md-8" id="zero_padding">
+                <div id="news">
+                    <div class="col-md-12 th-set__contrast_color">
+                        {% helper news.newsBlock(3, 30) %}
+                    </div>
+                </div>
+            </section>
+            <aside id="block2" class="col-md-4 b-mobile">
+                <div>
+                    <h2 data-bind="block2">{% helper lang.l('mobile_app_title_v2', 'start') %}</h2>
+                </div>
+                <p data-bind="block2_text">{% helper lang.l('mobile_app_txt_v2', 'start') %}</p>
+                <div>
+                    {% helper mobile.mobileAppLinks({'viewtype': 'btnsBlack'}) %}
+                    <div>
+            </aside>
+        </div>
+
+        <div class="row b-reasons" id="parallax-bg1">
+            <section class="pad30">
+                <div class="capt">
+                    <h2 data-bind="block1">{% helper lang.l('reasons', 'start') %}</h2>
+                    <p class="text-uppercase" data-bind="block1_comment">{% helper lang.l('to_start', 'start') %}</p>
+                </div>
+                <p data-bind="block1_text" id="white_color">{% helper lang.l('reasons_txt', 'start') %}<br>{% helper lang.l('is_fun', 'start') %}</p>
+                {% helper reglang = lang.l('join_now', 'start') %}
+                {% helper users.usersRegistration({'is_link': 1, 'page': 1, 'lang': reglang}) %}
+            </section>
+        </div>
+
+        <section class="featured_stars padding_40">
+            <div class="col-md-12">
+                <h2 data-bind="users" id="white_color">{% helper lang.l('featured_members', 'start') %}</h2>
+            </div>
+            <!-- users block -->
+            <div class="featured_stars__list" id="users">
+                {% helper users.featuredUsers(false, {'template':'luisia', 'count': 6, 'size': 'great'}) %}
+            </div>
+            <!-- users block -->
+        </section>
+        <section id="map">
+
+        </section>
+    </main>
+    <footer class="th-set__index_footer_bg text-color-white">
+        <div class="container-fluid padding_40">
+            <div>
+                <ul>
+                    <li class="col-sm-4 col-md-3">
+                        <p data-bind="help">{% helper lang.l('help', 'start') %}</p>
+                        <ul>
+                            <li>
+                                <a href="{{ site_url }}contact_us">{% helper lang.l('contact_us', 'start') %}</a>
+                            </li>
+                            <li>
+                                <a href="{{ site_url }}site_map">{% helper lang.l('sitemap', 'start') %}</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="col-sm-4 col-md-3">
+                        <p data-bind="about">{% helper lang.l('about_us', 'start') %}</p>
+                        <ul>
+                            <li>
+                                <a href="{{ site_url }}content/view/about-us">{% helper lang.l('about_us', 'start') %}</a>
+                            </li>
+                            <li>
+                                <a href="{{ site_url }}news/index">{% helper lang.l('header_news', 'news') %}</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="col-sm-4 col-md-3">
+                        <p data-bind="privacy">{% helper lang.l('privacy', 'start') %}</p>
+                        <ul>
+                            <li>
+                                <a href="{{ site_url }}content/view/privacy-and-security">{% helper lang.l('privacy', 'start') %}</a>
+                            </li>
+                            <li>
+                                <a href="{{ site_url }}content/view/legal-terms">{% helper lang.l('terms', 'start') %}</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="col-sm-4 col-md-3">
+                        <p data-bind="follow_us">Follow us</p>
+                        <button class="social" id="facebook"><i class="fab fa-facebook-f fa-lg"></i></button>
+                        <button class="social" id="twitter"><i class="fab fa-twitter fa-lg"></i></button>
+                        <button class="social" id="google"><i class="fab fa-google fa-lg"></i></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <section id="copyright" class="col-md-12 copyright" class="container-fluid">
+            {% helper start.getCopyright('index_page') %}
+        </section>
+    </footer>
+
+    <script type="text/javascript">
+        $(function(){
+            blockResize();
+            $(window).resize(function () {
+                blockResize();
+            });
+
+        });
+
+        $(window).on('scroll', function (e) {
+            parallaxScroll();
+        });
+        function parallaxScroll() {
+            var scrolled = $(window).scrollTop();
+            $('#parallax-bg1').css('background-position', '0px ' + (0 - (scrolled * .2)) + 'px');
+        }
+        var blockResize = function () {
+            var heightBlock3 = $('#block3').height();
+            var heightBlock5 = $('#block5').height();
+            if (heightBlock3 > heightBlock3) {
+                $('#block5').height(heightBlock3);
+                $('#block3').height(heightBlock3);
+            } else {
+                $('#block3').height(heightBlock5);
+                $('#block5').height(heightBlock5);
+            }
+        };
+    </script>
+</div>
+{% if not is_pjax %}
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="{{ site_root }}uploads/themes-fixed/dendrobium/styles/bootstrap-{{ _LANG.rtl }}.css" type="text/css" />
+    <link rel="stylesheet" href="{{ site_root }}uploads/themes-fixed/dendrobium/styles/font-awesome.css" type="text/css" />
+    <link rel="stylesheet" href="{{ site_root }}application/views/flatty/css/fontawesome/css/fontawesome-all.min.css" type="text/css" />
+    <link rel="stylesheet" href="{{ site_root }}uploads/themes-fixed/dendrobium/styles/style-{{ _LANG.rtl }}.css" type="text/css" />
+    {% helper theme.include_css('style', 'screen') %}
+    {% helper theme.css(load_type) %}
+{% endif %}
+   <script>
+     $(document).ready(function () {
+       let headerImg = {{ header_style|json_encode() }};
+       if (headerImg !== null) {
+         $(window).on('resize', setHeartImage)
+         let container = $('#b-header')
+         let imgContainer = $('.custom-header')
+
+         function setHeartImage () {
+           let widthW = document.body.clientWidth
+           let mobileWidth = 768
+           if (widthW > mobileWidth) {
+             if (typeof headerImg.image_url !== 'undefined') {
+               container.addClass('custom-header_without_img')
+               container.css({ 'background-image': 'url(' + headerImg.base_path + '/' + headerImg.image_url + ')' })
+             } else {
+               container.removeClass('custom-header_without_img')
+             }
+           } else if (widthW < mobileWidth) {
+             if (typeof headerImg.image_mobile_url !== 'undefined') {
+               container.addClass('custom-header_without_img')
+               container.css({ 'background-image': 'url(' + headerImg.base_path + '/' + headerImg.image_mobile_url + ')' })
+             } else {
+               container.removeClass('custom-header_without_img')
+             }
+           }
+         }
+
+         setHeartImage()
+       }
+     })
+   </script>
+
+   <script src="{{ site_root }}uploads/themes-fixed/pleasure/js/controls.js"></script>
+
+   {# TODO перенести в сборщик webpack (flatty/js/main.js) #}
+   {% helper utils.jscript('', 'twigjs/twig.js') %}
+   {% helper themes.load({'name': 'modules', 'ext': 'js'}) %}
+   {% helper themes.load({'name': 'modules_multi_request', 'ext': 'js'}) %}
+
+
+   {% helper cookie_policy.cookie_policy_block() %}
+   {% helper languages.lang_editor() %}
+   {% helper seo_advanced.seo_traker('footer') %}
+
+   <script>
+     $(function () {
+       $.datepicker.setDefaults($.datepicker.regional["{{ _LANG.code }}"])
+     })
+   </script>
+</body>
+</html>
+ {% endblock container %}

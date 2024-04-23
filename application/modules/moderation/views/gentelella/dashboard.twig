@@ -1,0 +1,43 @@
+{% if data.html  %}
+    {{ data.html }}
+{% else %}
+    {% if data.user.fname or  data.user.sname %}
+        <label>{% helper lang.l('field_name', 'users') %}:</label>
+        {% if data.user.is_deleted %}
+            {{ data.user.output_name }}
+        {% else %}
+            <a href="{{ site_url }}admin/users/edit/personal/{{ data.user.id }}" target="_blank" >{{ data.user.output_name }}</a>
+        {% endif %}<br>
+    {% endif %}
+    {% if data.user.nickname %}
+        <label>{% helper lang.l('field_nickname', 'users') %}:</label>
+        <a href="{{ site_url }}admin/users/edit/personal/{{ data.user.id }}" target="_blank">
+            {{ data.user.nickname }}
+        </a>
+        <br/>
+    {% endif %}
+    {% if data.comment %}
+        <label>{% helper lang.l('field_g_comment', 'users') %}:</label> {{ data.comment }}<br />
+    {% endif %}
+{% endif %}
+{% if data.dashboard_status != 'added' %}
+    <label>{% helper lang.l('text_status', 'start') %}:</label> {% helper lang.l('status_' ~ data.type_name ~ '_' ~ data.dashboard_status, data.type.module) %}
+{% endif %}
+<div class="form-group">
+    {% if data.dashboard_status == 'added' %}
+        <a data-type="{{ data.type_name }}" class="btn btn-success-ghost js-dashboard-action" href="{{ site_url }}admin/moderation/approve/{{ data.id }}">
+            <i class="fa fa-check" aria-hidden="true"></i>  {% helper lang.l('approve_object','moderation') %}
+        </a>
+        <a data-type="{{ data.type_name }}" data-moderation="decline"  data-title="{% helper lang.l('decline_object','moderation') %}" data-href="{{ site_url }}admin/moderation/decline/{{ data.id }}/" class="btn btn-danger-ghost js-dashboard-action" href="{{ site_url }}admin/moderation/decline/{{ data.id }}/">
+            <i class="fa fa-ban" aria-hidden="true"></i>  {% helper lang.l('decline_object','moderation') %}
+        </a>
+    {% endif %}
+    {% if data.dashboard_status != 'deleted' %}
+        <div class="mtb10">
+            <a href="{{ site_url }}{{ data.dashboard_action_link }}" target="_blank" >
+                {% helper lang.l('link_section_action', data.type.module) %}
+            </a>
+        </div>
+        <div class="clearfix"></div>
+    {% endif %}
+</div>

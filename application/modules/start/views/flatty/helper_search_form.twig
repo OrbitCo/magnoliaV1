@@ -1,0 +1,41 @@
+<script>
+    selects = [];
+    checkboxes = [];
+    hlboxes = [];
+    selectbox = [];
+    radios = [];
+    multiselects = [];
+</script>
+<div class="search-box {{ form_settings.type }}">
+    <div id="search-form-block_{{ form_settings.form_id }}">
+        {{ form_block }}
+    </div>
+</div>
+<script type="text/javascript">
+    $(function() {
+        loadScripts(
+                [
+                    "{% helper utils.jscript('start', 'search.js', 'path') %}",
+                    "{% helper utils.jscript('start', 'selectbox.js', 'path') %}",
+                    "{% helper utils.jscript('start', 'checkbox.js', 'path') %}",
+                    "{% helper utils.jscript('start', 'hlbox.js', 'path') %}",
+                    "{% helper utils.jscript('start', 'radio.js', 'path') %}",
+                    "{% helper utils.jscript('start', 'multiselect.js', 'path') %}"
+                ],
+                function () {
+                    window.{{ form_settings.object }}{{ form_settings.type }} = new search({
+                        siteUrl: '{{ site_url }}',
+                        currentForm: '{{ form_settings.object }}',
+                        currentFormType: '{{ form_settings.type }}',
+                        hide_popup: {% if form_settings.hide_popup %}true{% else %}false{% endif %},
+                        view_type: '{{ form_settings.view }}',
+                        popup_autoposition: {% if form_settings.popup_autoposition %}true{% else %}false{% endif %},
+                        userSearchUrl:  '{{ form_settings.search_url }}',
+                    });
+                },
+                '{{ form_settings.object }}{{ form_settings.type }}',
+                {async: false}
+        );
+    });
+</script>
+

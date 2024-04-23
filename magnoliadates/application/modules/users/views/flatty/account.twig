@@ -1,0 +1,61 @@
+{% include '@app/header.twig' %}
+<div class="col-xs-12">
+    <h1>
+        {% helper seo.seo_tags('header_text') %}
+    </h1>
+</div>
+{% include 'account_menu_line.twig' %}
+<div class="col-xs-12 services-list">
+    <div class="row">
+        <div class="col-md-12">
+            {% if action == 'services' or action == 'banners' or action == 'donate' %}
+                <div class="services-list-block">
+                    {# include Tabs menu #}
+                    {% include 'account_menu.twig' %}
+                    {# Tabs content #}
+                    <div id="all_services" class='b-tabs__block' style="display: none;">
+                        {% helper services.servicesBuyList() %}
+                    </div>
+                    <div id='donate' class='b-tabs__block' style="display: none;">
+                        {% helper start.donateViewBlock('account') %}
+                    </div>
+                    <div id='banners' class='b-tabs__block' style="display: none;">
+                        {% helper banners.myBanners({'page':page, 'base_url':base_url}) %}
+                    </div>
+                </div>
+            {% elseif action == 'update' %}
+                {% helper users_payments.update_account_block() %}
+            {% elseif action == 'payments_history' %}
+                {% helper back_link = seo.seolink('users', 'account') %}
+                {% helper back_link_text = lang.l('link_back_to_my_account', 'users') %}
+                {% helper payments.user_payments_history({'id_user':user_id, 'page':page, 'base_url':base_url,
+                        'back_link':back_link , 'back_link_text':back_link_text }) %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="account-banners">
+    <div class="col-xs-12 block-banners-big">
+        <div>
+            {% helper banners.show_banner_place('banner-980x90') %}
+        </div>
+    </div>
+    <div class="col-md-5 block-banners-small">
+        <div class="col-sm-6">
+            {% helper banners.show_banner_place('banner-185x155') %}
+        </div>
+        <div class="col-sm-6">
+            {% helper banners.show_banner_place('banner-185x75') %}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-7 block-banners-middle">
+        <div class="col-xs-12 col-sm-6">
+            {% helper banners.show_banner_place('banner-320x250') %}
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            {% helper banners.show_banner_place('banner-320x75') %}
+        </div>
+    </div>
+</div>
+{% include '@app/footer.twig' %}

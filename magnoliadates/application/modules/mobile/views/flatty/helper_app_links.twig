@@ -1,0 +1,8 @@
+{%if android_url or ios_url %}
+    {%if android_url %}
+        <a onclick="{% helper start.setAnalytics('index', 'btn_download_android_app') %}" href="{{ android_url }}" class="android_app" target="_blank">Android app</a>
+    {% endif %}
+    {%if ios_url %}
+        <a onclick="{% helper start.setAnalytics('index', 'btn_download_ios_app') %}" href="{{ ios_url }}" class="ios_app" target="_blank">iOS app</a>
+    {% endif %}
+{% endif %}

@@ -1,0 +1,11 @@
+<div class="user-short-inf">
+    <div class="user-short-inf__user">
+        <div class="user-short-inf__name">
+            <a onclick="{% helper start.setAnalytics('left_menu_user', 'username') %}" href="{% helper seo.seolink('users', 'profile') %}">
+                {{ user_short.output_name }}
+            </a>
+        </div>
+    </div>
+
+    <div class="user-short-inf__account">{% helper users.onUserAccount() %}</div>
+</div>

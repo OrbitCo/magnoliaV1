@@ -1,0 +1,25 @@
+{%if android_url or ios_url %}
+{% if params.show_xs_menu_title %}
+    <div class="xs-menu-title">{% helper lang.l('xs_menu_home_get_app', 'users') %}</div>
+{% endif %}
+<div class="download">
+    <div class="mobile-apps clearfix">
+        <div class="mobile-apps__item">
+            {%if android_url %}
+                <a onclick="{% helper start.setAnalytics('index', 'btn_download_android_app') %}" href="{{ android_url }}" class="android_app" target="_blank">
+                    <img class="img-responsive app-black-btns" src="{{ site_root }}application/views/flatty/img/android.svg">
+                </a>
+            {% endif %}
+        </div>
+        <div class="mobile-apps__item">
+            {%if ios_url %}
+                <a onclick="{% helper start.setAnalytics('index', 'btn_download_ios_app') %}" href="{{ ios_url }}" class="ios_app" target="_blank">
+                    <img class="img-responsive app-black-btns" src="{{ site_root }}application/views/flatty/img/appstore.svg">
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+{% endif %}

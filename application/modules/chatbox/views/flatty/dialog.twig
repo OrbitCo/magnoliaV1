@@ -1,0 +1,311 @@
+<div class="chatbox-dialog__header">
+    <div class="chatbox-dialog__h-user">
+        {% if contact.id != user.id %}
+        <a href="{% helper seo.seolink('users', 'view', contact) %}"><img class="chatbox-dialog__h-user-image" src="{{ contact.media.user_logo.thumbs.small }}" /></a>
+        {% else %}
+            <span class="chatbox-messages__sitelogo">
+            {% if is_mini_logo %}
+                <img src="{{ site_root }}{{ mini_logo_settings.path }}?{{random()}}" border="0"
+                alt="{% helper seo.seo_tags_default('header_text') %}"
+                width="{{ mini_logo_settings.width }}"
+                height="{{ mini_logo_settings.height }}" id="logo">
+            {% else %}
+                {% helper start.logo({type: 'user', settings: logo_settings}) %}
+            {% endif %}
+            </span>
+        {% endif %}
+        <span class="chatbox-dialog__h-user-name">
+            {% if contact.id != user.id %}
+            <a href="{% helper seo.seolink('users', 'view', contact) %}"> {{ contact.output_name }}</a>
+            {% else %}
+                ♡ {% helper lang.l('site_notification', 'chatbox') %}
+            {% endif %}
+        </span>
+        <span class="chatbox-dialog__h-user-status">
+            {% if contact.id != user.id %}
+            {% if contact.online_status %}
+                {% helper lang.l('status_online_1', 'users') %}
+            {% else %}
+                {% helper lang.l('text_user_last_active', 'chatbox') %}&nbsp;
+                {% helper date_format.tpl_date_format(contact.date_last_activity, date_format_st.date_time_literal) %}
+            {% endif %}
+            {% endif %}
+        </span>
+
+        {% helper is_module_installed = utils.depends('twilio_chat') %}
+        {% if is_module_installed.twilio_chat and contact.id != user.id%}
+            <span user-id="{{ contact.id }}" data-action="set-user_menu_actions">{% helper twilio_chat.videoButton({'id_user': contact.id, 'view_type': 'icon'}) %}</span>
+        {% endif %}
+
+    </div>
+    <div class="chatbox-dialog__h-close" data-toggle="tooltip" data-placement="left" title="{% helper lang.l('link_close_dialog', 'chatbox') %}" id="chb_close_dialog">
+        <i class="fas fa-arrow-left"></i>
+    </div>
+    <div class="chatbox-mobile-msg-counter"></div>
+</div>
+<div class="chatbox-dialog__messages" gallery="contact_{{ contact.id }}">
+    <div class="chatbox-dialog__messages-empty" {% if messages is not empty %}style="display:none;"{% endif %}>{% helper lang.l('empty_messages', 'chatbox') %}</div>
+    <ul>
+        {% include 'messages.twig' %}
+    </ul>
+</div>
+<div class="chatbox-dialog__footer">
+    <div class="chatbox-counter"><span class="max-char-input" data-max="{{ message_max_chars }}">{{ message_max_chars }}</span></div>
+    <form id="chatbox_message_form" onsubmit="javascript: return false;" method="post" enctype="multipart/form-data" name="chatbox_message_form">
+        <input type="hidden" name="id" value="0" />
+        <input type="hidden" name="contact_id" value="{{ contact.id }}" />
+        <div class="chatbox-dialog__footer-msgbox">
+            <textarea class="form-control" name="message" placeholder="{% helper lang.l('placeholder_enter_message', 'chatbox') %}" id="chb_message" data-emojiable="true" data-emoji-input="unicode"></textarea>
+        </div>
+        <div class="chatbox-attaches-block col-xs-12 col-md-10" id="chb_attaches">
+            <div id="dnd_upload" class="drag">
+                <div id="chatbox_attachbox" class="drag-area">
+                    <div class="drag">
+                        <p>{% helper lang.l('text_drag_files', 'chatbox') %}</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="upload-btn">
+                    <span data-role="filebutton">
+                        <s>{% helper lang.l('btn_choose_file', 'start') %}</s>
+                        <input type="file" name="attach" id="chatbox_attach" accept="image/*" multiple />
+                    </span>
+                    {% if attach_settings.max_size > 0 %}&nbsp;({% helper lang.l('max', 'start') %} {% helper utils.bytesFormat(attach_settings.max_size) %}){% endif %}
+                </div>
+                &nbsp;<span id="attach-input-error"></span>
+                <div id="attach-input-warning"></div>
+            </div>
+        </div>
+       <div class="chatbox-dialog__footer-actions hide">
+           {% helper is_module_installed = utils.depends('chats') %}
+           {% if is_module_installed.chats %}
+               <span id="go_to_chat_btn">
+               {% helper chats.helperBtnChat({'user_id': contact.id, 'view_type': 'button', 'class': 'btn btn-primary btn-rounded'}) %}
+               </span>
+           {% endif %}
+            <button type="button" data-toggle="tooltip" data-placement="top" disabled class="btn btn-primary" id="chb_send_msg_btn" title="{% helper lang.l('button_send_message', 'chatbox') %}"><i class="fas fa-paper-plane"></i></button>
+            <button class="btn btn-primary" onclick="$('#chb_attaches').stop().slideToggle(); return false;">{% helper lang.l('btn_show_attach_form', 'chatbox') %}</button>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        let allowed_mimes = {{ attach_settings.allowed_mimes|json_encode() }};
+        $('#chb_send_msg_btn').tooltip({ trigger: "hover" });
+
+        let i;
+        if ($('.chatbox').length) {
+            $('.chatbox-dialog__footer-actions #go_to_chat_btn').appendTo($('.chatbox-dialog__footer .chatbox-dialog__footer-msgbox'));
+            $('.chatbox-dialog__footer-actions #chb_send_msg_btn').appendTo($('.chatbox-dialog__footer .chatbox-dialog__footer-msgbox'));
+            const checkText = function () {
+                let text_length = $('.emoji-wysiwyg-editor').text().length;
+                let left_char = $('.max-char-input').data('max') - text_length;
+
+                if (left_char < 0) {
+                    left_char = 0;
+                }
+                $('.max-char-input').text(left_char);
+
+                if (text_length == 0) {
+                    text_length = $('#chb_message').val().length;
+                }
+
+                if (text_length > $('.max-char-input').data('max')) {
+                    $('#chb_send_msg_btn').prop('disabled', true);
+                } else {
+                    let html = $('.chatbox .emoji-wysiwyg-editor').html();
+
+                    if (html) {
+                        if (html.length) {
+                            $('#chb_send_msg_btn').prop('disabled', false);
+                        } else {
+                            if (!$('.chatbox .filebar img').length) {
+                                $('#chb_send_msg_btn').prop('disabled', true);
+                            }
+                        }
+                    } else {
+                        if ($('#chb_message').val().length) {
+                            $('#chb_send_msg_btn').prop('disabled', false);
+                        } else {
+                            if (!$('.chatbox .filebar img').length) {
+                                $('#chb_send_msg_btn').prop('disabled', true);
+                            }
+                        }
+                    }
+                }
+            };
+
+            i = 0;
+            const find_editor = setInterval(function () {
+                i++;
+
+                if ($('.chatbox .emoji-wysiwyg-editor').length || i == 8) {
+                    $('#chatbox_message_form .emoji-wysiwyg-editor').after($('.chatbox-counter'));
+                    $('.chatbox-counter').show();
+                    $('.chatbox .emoji-wysiwyg-editor').on('change keydown keyup paste', function () {
+                        checkText();
+                    });
+
+                    $('#chb_message').on('change keydown keyup paste', function () {
+                        checkText();
+                    });
+
+                    clearInterval(find_editor);
+                }
+            }, 500);
+
+            const check_files = setInterval(function () {
+                if ($('.chatbox').length && $('.chatbox .emoji-wysiwyg-editor').length) {
+                    if (!$('.chatbox .emoji-wysiwyg-editor').html() ||
+                        $('.chatbox .emoji-wysiwyg-editor').html() == '<br>' ||
+                        $('.chatbox .emoji-wysiwyg-editor').html() == '<div><br></div>') {
+                        $('.chatbox .emoji-wysiwyg-editor').css('height', 'auto')
+                    }
+
+                    if (!$('.chatbox .filebar img').length &&
+                        (!$('.chatbox .emoji-wysiwyg-editor').html().length ||
+                            $('.chatbox .emoji-wysiwyg-editor').html() == '<br>' ||
+                            $('.chatbox .emoji-wysiwyg-editor').html() == '<div><br></div>')) {
+                        $('#chb_send_msg_btn').prop('disabled', true);
+                    } else {
+                        let text_length = $('#chb_message').val().length;
+                        if (text_length < $('.max-char-input').data('max')) {
+                            $('#chb_send_msg_btn').prop('disabled', false);
+                        }
+
+                    }
+                }
+            }, 200);
+        }
+
+        loadScripts(
+            [
+                "{% helper utils.jscript('', 'uploader.js', 'path') %}",
+            ],
+            function() {
+                chatboxUpload = new uploader({
+                    siteUrl: site_url,
+                    uploadUrl: 'chatbox/post_upload',
+                    zoneId: 'chatbox_attachbox',
+                    fileId: 'chatbox_attach',
+                    formId: 'chatbox_message_form',
+                    sendType: 'file',
+                    sendId: 'chb_send_msg_btn',
+                    filebarId: 'filebar',
+                    messageId: 'attach-input-error',
+                    warningId: 'attach-input-warning',
+                    maxFileSize: '{{ attach_settings.max_size }}',
+                    mimeType: allowed_mimes,
+                    allowEmptyFile: true,
+                    isChat: true,
+                    cbOnSend: function (resp) {
+                        $('#chb_send_msg_btn').tooltip('hide');
+                        if (typeof window.chatbox.properties.emojiPicker !== 'undefined') {
+                            var editor = $('.emoji-wysiwyg-editor').clone();
+                            $('.emoji-wysiwyg-editor').html('');
+                            $('.max-char-input').text($('.max-char-input').data('max'));
+                            editor.find('img').each(function(){
+                                var alt = $(this).attr('alt');
+                                $(this).replaceWith(alt);
+                            });
+
+                            let message = editor.html();
+                            //let message = editor.text();
+
+                            if (!message) {
+                                message = $('#chb_message').val();
+                            }
+
+                            message = window.chatbox.getMessageText(message);
+
+                            $('#' + window.chatbox.properties.sendMsgId).val(message);
+                        }
+                        if (resp == true) {
+                            chatboxUpload.sendNoFileApi();
+                        } else {
+                            chatboxUpload.send();
+                        }
+                        $('#chb_send_msg_btn').prop('disabled', true);
+                        $('#chb_send_msg_btn').blur();
+                        $('[data-toggle="tooltip"]').tooltip();
+                    },
+                    cbOnComplete: function(resp) {
+                        window.chatbox.properties.uploaded = true;
+                        setTimeout(function () {
+                            $('.chatbox-dialog__messages').animate({ scrollTop: $('.chatbox-dialog__messages ul').height() }, "fast");
+                        }, 1000);
+                        if (resp.message_id) {
+                            $('#chatbox_message_form').find('input[name="id"]').val(resp.message_id);
+                        }
+                        $('#chb_send_msg_btn').prop('disabled', true);
+                        $('#chb_send_msg_btn').blur();
+                    },
+                    cbOnQueueComplete: function(resp) {
+                        var complete_id = $('#chatbox_message_form').find('input[name="id"]').val();
+                        $('#chatbox_message_form').find('input[name="id"]').val('0');
+                        if (!window.chatbox.properties.uploaded) {
+                            window.chatbox.sendMessage();
+                        } else {
+                            $('#' + window.chatbox.properties.sendMsgId).val('');
+                            $('#' + window.chatbox.properties.sendMsgId).css('height', 'auto');
+                            if(typeof window.chatbox.properties.emojiPicker !== 'undefined') {
+                                window.chatbox.properties.emojiPicker.clearTextarea('.emoji-wysiwyg-editor');
+                            }
+                            $('#' + window.chatbox.properties.sendMsgId).parent().find('.emoji-wysiwyg-editor').css('height', 'auto');
+
+                            window.chatbox.getMessages();
+
+                            $('#chb_attaches').stop().slideUp();
+
+                        }
+
+                        setTimeout(function () {
+                            $('.chatbox-dialog__messages').animate({ scrollTop: $('.chatbox-dialog__messages ul').height() }, "fast");
+                        }, 1000);
+
+                        $.ajax({
+                            url: site_url + 'chatbox/post_upload_complete',
+                            type: 'POST',
+                            data: {
+                                complete_id: complete_id
+                            },
+                            dataType: 'json',
+                            cache: false,
+                            success: function (resp) {
+                                setTimeout(function () {
+                                    $('.chatbox-dialog__messages').animate({ scrollTop: $('.chatbox-dialog__messages ul').height() }, "fast");
+                                }, 1000);
+                            }
+                        });
+                        window.chatbox.properties.uploaded = false;
+                        $('#chb_send_msg_btn').prop('disabled', true);
+                        $('#chb_send_msg_btn').blur();
+                        return false;
+                    },
+                    cbOnError: function(resp) {
+                        if (resp.errors.length){
+                            error_object.show_error_block(resp.errors, 'error');
+                        }
+                    },
+                    cbOnProcessError: function(resp) {
+                        error_object.show_error_block(resp, 'error');
+                    },
+                    createThumb: true,
+                    thumbWidth: 60,
+                    thumbHeight: 60,
+                    thumbCrop: true,
+                    thumbJpeg: false,
+                    thumbBg: 'transparent',
+                    fileListInZone: true,
+                    filebarHeight: 200,
+                    jqueryFormPluginUrl: "{% helper utils.jscript('', 'jquery.form.min.js', 'path') %}",
+                });
+            },
+            [],
+            {async: true}
+        );
+    });
+
+</script>

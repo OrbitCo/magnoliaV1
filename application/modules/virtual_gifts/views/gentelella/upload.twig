@@ -1,0 +1,143 @@
+{% include '@app/header.twig' %}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_content">
+            <form method="post" enctype="multipart/form-data" data-parsley-validate
+                  class="form-horizontal form-label-left" name="save_form"
+                  action="{{ data.action }}" id="item_form">
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('uploaded_gifts_price', 'virtual_gifts') %} ({% helper start.currency_format_output() %}):</label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input type="number" name="price_reduced" value="{{ price_default|escape }}" class="form-control" step="0.5" min="0.5" requared>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('upload_images', 'virtual_gifts') %}:</label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('upload_max_image_size', 'virtual_gifts') %}:</label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        {% if photo_config.max_size %}{% helper lang.l('max', 'start') %}{% helper utils.bytes_format(photo_config.max_size) %}{% endif %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('upload_max_width_height', 'virtual_gifts') %}:</label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                         {{ photo_config.max_width }}x{{ photo_config.max_height }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        {% helper lang.l('upload_file_formats', 'virtual_gifts') %}:</label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        {{ photo_config.file_formats_str }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                      {% helper lang.l('admin_upload', 'virtual_gifts') %}</label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div id="dnd_upload" class="drag">
+                            <div id="dndfiles" class="drag-area">
+                                <div class="drag">
+                                    <i>{% helper lang.l('upload_drag_area', 'virtual_gifts') %}</i>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="upload-btn">
+                                <span data-role="filebutton">
+                                    <input type="file" name="multiUpload" id="multiUpload" multiple class="form-control">
+                                </span>
+                            </div>
+                            &nbsp;<span id="attach-input-error"></span>
+                            <div id="attach-input-warning"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="col-md-9 col-sm-9 col-xs-12 col-sm-offset-3">
+                        <button class="btn btn-success" type="button" value="1" name="btn_save" id="btn_mupload">
+                            {% helper lang.l('btn_upload', 'start') %}</button>
+                        <a class="btn btn-default" href="{{ back_url }}">
+                            {% helper lang.l('btn_cancel', 'start') %}</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<script type='text/javascript'>
+$(function(){
+    loadScripts(
+        "{% helper utils.jscript('', 'uploader.js', 'path') %}",
+        function(){
+            var photo_mimes = {{ photo_config.allowed_mimes|json_encode }};
+            var product_id = 1;
+            var lang_data = {
+                    errors: {
+                        file_missing: "{% helper lang.l('error_file_missing', 'uploads') %}",
+                        price_err: "{% helper lang.l('error_price', 'virtual_gifts') %}"
+                    }
+                };
+            mu = new uploader({
+                Accept: 'application/json',
+                siteUrl: site_url,
+                uploadUrl: 'admin/virtual_gifts/ajax_save_gift_media/images/'+product_id,
+                zoneId: 'dndfiles',
+                fileId: 'multiUpload',
+                formId: 'item_form',
+                sendType: 'file',
+                sendId: 'btn_mupload',
+                messageId: 'attach-input-error',
+                warningId: 'attach-input-warning',
+                maxFileSize: '{{ photo_config.max_size }}',
+                mimeType:  photo_mimes,
+                lang: lang_data,
+                langs: {
+                        exceeded: "{% helper lang.l('exceeded', 'media') %}",
+                        mime: "{% helper lang.l('mime', 'media') %}"
+                    },
+                cbOnSend: function(){
+                    var price = parseInt($('input[name=price_reduced]').val());
+                    if (price <= 0) {
+                        error_object.show_error_block(lang_data.errors.price_err, 'error');
+                        return false;
+                    } else {
+                        mu.send();
+                    }
+                },
+                cbOnQueueComplete: function(data) {
+                    if (data.errors) {
+                        error_object.show_error_block(data.errors, 'error');
+                    } else {
+                        window.location.replace(site_url + 'admin/virtual_gifts');
+                    }
+                },
+                createThumb: true,
+                thumbWidth: 60,
+                thumbHeight: 60,
+                thumbCrop: true,
+                thumbJpeg: false,
+                thumbBg: 'transparent',
+                fileListInZone: true,
+                filebarHeight: 200,
+                jqueryFormPluginUrl: "{% helper utils.jscript('', 'jquery.form.min.js', 'path') %}"
+            });
+        },
+        ['mu'],
+        {async: false}
+    );
+});
+</script>
+
+{% include '@app/footer.twig' %}

@@ -1,0 +1,10 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class='iframe-container'>
+            <iframe src="{{ url|e }}" width="{{ width }}" scrolling="auto" id="adminPage" onLoad="setTimeout(function() {autoResize('adminPage')}, 300)" style="border: none;"></iframe>
+        </div>
+        <a class="btn btn-default" href="{{ site_url }}admin/chats">
+            {% helper lang.l('btn_ok', 'start') %}
+        </a>
+    </div>
+</div>

@@ -1,0 +1,160 @@
+<div class="user_preview-js">
+    {% helper is_module_installed = utils.depends('access_permissions', 'chatbox') %}
+    {% if is_owner and sidebar == 'main' %}
+        <div class="sidebar-block g-col">
+            <div class="preview-block">
+                <div class="col-md-3 col-lg-3 no-padding-left">
+                    <div class="image">
+                        {% helper users.formatAvatar({'user': data, 'size': 'small', 'class': 'img-rounded img-responsive'}) %}
+                    </div>
+                </div>
+                <div class="col-md-9 col-lg-9">
+                    <div class="user-description">
+                        <div class="strong-username">{{ data.output_name }},&nbsp;{{ data.age }}</div>
+                        {% if data.location %}<div><i class="fas fa-map-marker-alt"></i>&nbsp;{{ data.city }}</div>{% endif %}
+                        <div>
+                            <a class="link-r-margin" title="{% helper lang.l('edit_my_profile', 'start', '', 'button') %}" href="{% helper seo.seolink('users', 'profile', {'section-code': 'personal', 'section-name': personal_section_name}) %}">
+                                <i class="fas fa-pencil-alt"></i>&nbsp;{% helper lang.l('edit_my_profile', 'start') %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="user-homapage-menu">
+                {% helper menu.get_menu('user_homepage_menu', 'user_homepage_menu') %}
+            </div>
+        </div>
+    {% else %}
+        <div class="media pg-media g-col fix-overflow-js">
+
+            <div class="g-users-gallery__content">
+                <a id="user_photo" class="g-rounded g-pic-border full-width">
+                    {% helper users.formatAvatar({'user': data, 'size': 'great', 'class': 'img-rounded img-responsive full-width'}) %}
+                </a>
+                {% if is_owner %}
+                    <div class="change-photo-button photo-action-js owner-change-photo">
+                        {% helper lang.l('btn_change_photo', 'media') %}
+                    </div>
+                {% endif %}
+                <div class="view-photo-button photo-action-js">
+                    {% helper lang.l('btn_view_photo', 'media') %}
+                </div>
+            </div>
+
+
+
+            <div class="pg-media-body user-all-description">
+                <h1>{{ data.output_name }}
+                    {% if is_owner %}
+                        <span class="ml10 pg-dl-icons">
+                            <a class="link-r-margin" title="{% helper lang.l('edit_my_profile', 'start', '', 'button') %}"
+                               href="{% helper seo.seolink('users', 'profile', 'view') %}">
+                                <i class="fas fa-pencil-alt hover"></i>
+                            </a>
+                        </span>
+                    {% endif %}
+                </h1>
+                <div class="user-description mb10">
+                    <div class="mb10  js-user-status">
+                        <div class="online hide">
+                            <i class="far fa-clock"></i>&nbsp;{% helper lang.l('status_online_1', 'users') %}
+                        </div>
+                        <div class="offline hide">
+                            <div class="last_activity">
+                            </div>
+                            <div class="status">
+                                <i class="far fa-clock"></i>&nbsp;{% helper lang.l('status_online_0', 'users') %}
+                            </div>
+                        </div>
+                        <div class="status-page">
+                            {% if data.online_status == 0 %}
+                                {% helper lang.l('field_last_seen', 'users') %} {% helper date_format.tpl_date_format(data.date_last_activity, date_format_st.date_time_literal) %}
+                            {% else %}
+                                <i class="far fa-clock"></i>&nbsp;{{ data.statuses.online_status_lang }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="clearfix"><span class="pull-left">{{ data.age }} {% helper lang.l('text_age', 'users') %}</span> {% helper horoscope.getSignHoroscope({'user': data}) %}</div>
+
+                    <div>
+                        <span {% if is_owner %}class="border-b-dashed pointer" data-change="location"{% endif %}>
+                            <i class="fas fa-map-marker-alt"></i>&nbsp;
+                            {% if data.location %}
+                                {{ data.location }}
+                            {% else %}
+                                {% helper lang.l('link_select_region', 'countries') %}
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    {% if is_owner %}
+                        {% helper users.servicesButton({data: data}) %}
+                    {% else %}
+                        <div class="services-owner-menu {% if is_module_installed.chatbox %}short{% else %}long{% endif %}">
+                            {% if is_module_installed.chatbox %}
+                                <span class="col-xs-10 col-sm-9">
+                                    {% helper chatbox.send_message_chatbox({'id_user': data.id, 'view_type': 'button', 'text_type': 'chat', 'class': 'btn btn-primary ellipsis'}) %}
+                                </span>
+                                <span class="col-xs-2 col-sm-3">
+                                    <button id="services-menu" type="button" class="btn btn-default btn-block" onclick="sendAnalytics('dp_user_view_profile_btn_services_menu', 'user_profile', 'btn_services_menu');" data-toggle="dropdown">
+                                        <i class="fa fa-ellipsis-h"></i>
+                                    </button>
+                                </span>
+                            {% else %}
+                                <button id="services-menu" type="button" class="btn btn-default btn-block" onclick="sendAnalytics('dp_user_view_profile_btn_services_menu', 'user_profile', 'btn_services_menu');" data-toggle="dropdown">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </button>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    <div class="hide service-menu-view" id="services-menu_template" class="services-menu_content">
+                        <div class="arrow_box"></div>
+                        {% include 'view_actions.twig' with {is_owner: is_owner}  %}
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(document).mouseup(function (e){
+                        var div = $("#services-menu");
+                        if (!div.is(e.target)
+                            && div.has(e.target).length === 0) {
+                            $('#services-menu_template').addClass('hide');
+                        }
+                    });
+                </script>
+                {% if is_owner %}
+                    <div class="dl-horizontal pg-dl-icons menu-actions pb20">
+                        {% helper referral_links.referral_link({'user_id': data.id, 'view_type': 'link_icon'}) %}
+                    </div>
+                {% endif %}
+                <script>
+                    $(function () {
+                        loadScripts(
+                            ["{% helper utils.jscript('users', '../views/flatty/js/users-avatar.js', 'path') %}",
+                                "{% helper utils.jscript('users', 'users-settings.js', 'path') %}"],
+                            function () {
+                                user_avatar = new UsersAvatar({
+                                    site_url: site_url,
+                                    id_user:{{ data.id }} ,
+                                    saveAfterSelect: false,
+                                    haveAvatar: '{{ data.have_avatar }}',
+                                    callback: function () {
+                                        (new usersSettings({siteUrl: site_url})).rebuild('user_logo');
+                                    }
+                                });
+                                changeLocation = new usersSettings({
+                                    siteUrl: site_url,
+                                    langs: {
+                                        link_select_region: "{% helper lang.l('link_select_region', 'countries') %}"
+                                    }
+                                });
+                            },
+                            ['user_avatar', 'changeLocation'],
+                            {async: false}
+                        );
+                    });
+                </script>
+            </div>
+        </div>
+    {% endif %}
+</div>

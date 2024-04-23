@@ -1,0 +1,21 @@
+<h1>{% helper lang.l('field_notify_desktop', 'start') %}</h1>
+<h3>{% helper lang.l('field_notify_desktop_subtitle', 'start') %}</h3>
+<div>
+    <form action="" method="post" class="form-horizontal">
+        <div class="form-group">
+            <div class="col-xs-12">
+                {% for notification in notifications_list %}
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="{{ notification.gid }}" name="desktop_notification[]" 
+                                      {% if notification.gid in desktop_notifications_gids %}checked{% endif %}>{{ notification.name }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12">
+                <input class="btn btn-primary" type="submit" value="{% helper lang.l('btn_save', 'start', '', 'button') %}" name="btn_save_desctop">
+            </div>
+        </div>
+    </form>
+</div>

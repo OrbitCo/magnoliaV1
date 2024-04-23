@@ -1,0 +1,137 @@
+{% if is_owner %}
+    <dl class="dl-horizontal pg-dl-icons menu-actions">
+        {% if data.services_status.highlight_in_search.status %}
+            <dd>
+                <a onclick="{% helper start.setAnalytics('my_profile', 'btn_highlight') %} highlight_in_search_available_view.check_available();" class="link-r-margin" title="{{ data.services_status.highlight_in_search.name|e }}">
+                    {{ data.services_status.highlight_in_search.name }}
+                </a>
+            </dd>
+        {% endif %}
+        {% if data.services_status.up_in_search.status %}
+            <dd>
+                <a onclick="{% helper start.setAnalytics('my_profile', 'btn_lift_up') %} up_in_search_available_view.check_available();" class="link-r-margin" title="{{ data.services_status.up_in_search.name|e }}">
+                    {{ data.services_status.up_in_search.name }}
+                </a>
+            </dd>
+        {% endif %}
+        {% if data.services_status.hide_on_site.status %}
+            <dd>
+                <a onclick="{% helper start.setAnalytics('my_profile', 'btn_stealth') %} hide_on_site_available_view.check_available();" class="link-r-margin" title="{{ data.services_status.hide_on_site.name|e }}">
+                    {{ data.services_status.hide_on_site.name }}
+                </a>
+            </dd>
+        {% endif %}
+        <script type="text/javascript">
+            $(function () {
+                loadScripts(
+                        [
+                            "{% helper utils.jscript('', 'available_view.js', 'path') %}",
+                        ],
+                        function () {
+                            highlight_in_search_available_view = new available_view({
+                                siteUrl: site_url,
+                                checkAvailableAjaxUrl: 'users/ajax_available_highlight_in_search/',
+                                buyAbilityAjaxUrl: 'users/ajax_activate_highlight_in_search/',
+                                buyAbilityFormId: 'ability_form',
+                                buyAbilitySubmitId: 'ability_form_submit',
+                                success_request: function (message) {
+                                    error_object.show_error_block(message, 'success');
+                                    locationHref('');
+                                },
+                                fail_request: function (message) {
+                                    error_object.show_error_block(message, 'error');
+                                },
+                            });
+                            up_in_search_available_view = new available_view({
+                                siteUrl: site_url,
+                                checkAvailableAjaxUrl: 'users/ajax_available_up_in_search/',
+                                buyAbilityAjaxUrl: 'users/ajax_activate_up_in_search/',
+                                buyAbilityFormId: 'ability_form',
+                                buyAbilitySubmitId: 'ability_form_submit',
+                                success_request: function (message) {
+                                    error_object.show_error_block(message, 'success');
+                                    locationHref('');
+                                },
+                                fail_request: function (message) {
+                                    error_object.show_error_block(message, 'error');
+                                },
+                            });
+                            hide_on_site_available_view = new available_view({
+                                siteUrl: site_url,
+                                checkAvailableAjaxUrl: 'users/ajax_available_hide_on_site/',
+                                buyAbilityAjaxUrl: 'users/ajax_activate_hide_on_site/',
+                                buyAbilityFormId: 'ability_form',
+                                buyAbilitySubmitId: 'ability_form_submit',
+                                success_request: function (message) {
+                                    error_object.show_error_block(message, 'success');
+                                    locationHref('');
+                                },
+                                fail_request: function (message) {
+                                    error_object.show_error_block(message, 'error');
+                                },
+                            });
+                        },
+                        ['highlight_in_search_available_view', 'up_in_search_available_view', 'hide_on_site_available_view'],
+                        {async: false}
+                );
+            });
+        </script>
+    </dl>
+{% else %}
+{% helper is_module_installed = utils.depends('friendlist',
+                                              'favorites',
+                                              'mailbox',
+                                              'chats',
+                                              'winks',
+                                              'kisses',
+                                              'associations',
+                                              'questions',
+                                              'send_money',
+                                              'send_vip',
+                                              'virtual_gifts',
+                                              'blacklist',
+                                              'twilio_chat',
+                                              'spam') %}
+    <div id="user_menu_actions" class="dl-horizontal pg-dl-icons menu-actions">
+        {% if is_module_installed.twilio_chat %}
+            <span data-action="set-user_menu_actions">{% helper twilio_chat.videoButton({'id_user': data.id, 'view_type': 'link'}) %}</span>
+        {% endif %}
+        {% if is_module_installed.friendlist %}
+            <span data-action="set-user_menu_actions">{% helper friendlist.friendlist_links({'id_user': data.id, 'view_type': 'link'}) %}</span>
+        {% endif %}
+        {% if is_module_installed.favorites %}
+            <span data-action="set-user_menu_actions">{% helper favorites.favorites_button({'id_user': data.id, 'view_type': 'link'}) %}</span>
+        {% endif %}
+        {% if is_module_installed.chats %}
+            <span data-action="set-user_menu_actions">{% helper chats.helper_btn_chat({user_id: data.id, 'view_type': 'link'}) %}</span>
+        {% endif %}
+        {% if is_module_installed.winks %}
+            <span data-action="set-user_menu_actions">{% helper winks.wink({'user_id': data.id, 'view_type': 'link'}) %}</span>
+        {% endif %}
+        {% if is_module_installed.kisses %}
+            <span data-action="set-user_menu_actions">{% helper kisses.kisses_list({'user_id': data.id, 'view_type': 'link'}) %}</span>
+        {% endif %}
+        {% if is_module_installed.associations %}
+            <span data-action="set-user_menu_actions">{% helper associations.associationsQuickButton({'id_user': data.id, 'view_type': 'link'}) %}</span>
+        {% endif %}
+        {% if is_module_installed.questions %}
+            <span data-action="set-user_menu_actions">{% helper questions.questions_list({'user_id': data.id, 'view_type': 'link'}) %}</span>
+        {% endif %}
+        {% if is_module_installed.send_money %}
+            <span data-action="set-user_menu_actions">{% helper send_money.sendMoneyLink({'id_user': data.id, 'view_type': 'link'}) %}</span>
+        {% endif %}
+        {% if is_module_installed.send_vip %}
+            <span data-action="set-user_menu_actions">{% helper send_vip.sendVipLink({'id_user': data.id, 'view_type': 'link'}) %}</span>
+        {% endif %}
+        {% if is_module_installed.virtual_gifts %}
+            <span data-action="set-user_menu_actions">{% helper virtual_gifts.send_gift({'user_id': data.id, 'view_type': 'link', 'is_main_menu_actions': 1}) %}</span>
+        {% endif %}
+        <hr align="center" width="100%" style="background: #ccc; margin-top: 10px; margin-bottom: 10px;" />
+        {% if is_module_installed.blacklist %}
+            <span data-action="set-user_menu_actions">{% helper blacklist.blacklist_button({'id_user': data.id, 'view_type': 'link'}) %}</span>
+        {% endif %}
+        {% if is_module_installed.spam %}
+            <span data-action="set-user_menu_actions">{% helper spam.mark_as_spam_block({'object_id': data.id, 'type_gid': 'users_object', 'view_type': 'link'}) %}</span>
+        {% endif %}
+    </div>
+{% endif %}

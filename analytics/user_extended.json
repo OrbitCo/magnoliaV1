@@ -1,0 +1,176 @@
+{
+    "h" : {
+        "btn_find_people" : "dp_user_h_btn_find_people",
+        "notify_envelope" : "dp_user_h_notify_envelope",
+        "notify_bell" : "dp_user_h_notify_bell",
+        "notify_people" : "dp_user_h_notify_people"
+    },
+    "f" : {
+        "language_switch" : "dp_user_f_language_switch",
+        "footer-menu-mobile-item" : "dp_user_f_mobile_version",
+        "footer-menu-contact-item" : "dp_user_f_contact_us",
+        "footer-menu-tickets-item" : "dp_user_f_tickets",
+        "footer-menu-map-item" : "dp_user_f_sitemap",
+        "footer-menu-about-us-item" : "dp_user_f_about_us",
+        "footer-menu-news-item" : "dp_user_f_news",
+        "footer-menu-horoscope-item" : "dp_user_f_horoscope",
+        "footer-menu-privacy-item" : "dp_user_f_privacy",
+        "footer-menu-terms-item" : "dp_user_f_terms",
+        "footer-menu-polls-item" : "dp_user_f_polls",
+        "footer-menu-media_gallery-item" : "dp_user_f_media_gallery",
+        "user_store_main_item" : "dp_user_f_store_main",
+        "user_store_orders_item" : "dp_user_f_store_my_orders"
+    },
+    "main" : {
+        "banner_click" : "dp_user_banner_click",
+        "profile_visit" : "dp_user_profile_visit",
+        "registration" : "dp_user_registration",
+        "profile_photo_upload" : "dp_user_profile_photo_upload"
+    },
+    "index" : {
+        "btn_register" : "dp_user_index_btn_register",
+        "btn_register_step2" : "dp_user_index_btn_register_step2",
+        "btn_register_step3" : "dp_user_index_btn_register_step3",
+        "btn_register_step4" : "dp_user_index_btn_register_step4",
+        "btn_sign_in" : "dp_user_index_btn_sign_in",
+        "btn_download_ios_app" : "dp_user_index_btn_download_ios_app",
+        "btn_download_android_app" : "dp_user_index_btn_download_android_app"
+    },
+    "left_menu_guest" : {
+        "main-menu-home-item" : "dp_user_lmenu_home",
+        "main-menu-registration-item" : "dp_user_lmenu_signup",
+        "main-menu-login-item" : "dp_user_lmenu_login",
+        "main-menu-news-item" : "dp_user_lmenu_news",
+        "guest-main-polls-item" : "dp_user_lmenu_polls"
+    },
+    "left_menu_user" : {
+        "input_find_people" : "dp_user_lmenu_input_find_people",
+        "username" : "dp_user_lmenu_username",
+        "add_funds" : "dp_user_lmenu_add_funds",
+        "user-menu-homepage" : "dp_user_lmenu_home",
+        "search_item" : "dp_user_lmenu_find_people",
+        "friendlist_item" : "dp_user_lmenu_my_friends",
+        "blacklist_item" : "dp_user_lmenu_my_blacklist",
+        "favorites_item" : "dp_user_lmenu_my_favorites",
+        "perfectmatch_item" : "dp_user_lmenu_my_matches",
+        "guests_item" : "dp_user_lmenu_my_guests",
+        "top_users_item" : "dp_user_lmenu_top_members",
+        "nearest_users_item" : "dp_user_lmenu_people_near_me",
+        "questions_item" : "dp_user_lmenu_questions",
+        "mailbox_item" : "dp_user_lmenu_mailbox",
+        "winks_item" : "dp_user_lmenu_winks",
+        "kisses_item" : "dp_user_lmenu_kisses",
+        "chat_item" : "dp_user_lmenu_chat",
+        "mailbox_write_item" : "dp_user_lmenu_write_a_message",
+        "media_gallery_item" : "dp_user_lmenu_media_gallery",
+        "user_main_polls_item" : "dp_user_lmenu_polls",
+        "like_me" : "dp_user_lmenu_likeme",
+        "prolong" : "dp_user_lmenu_prolong",
+        "upgrade" : "dp_user_lmenu_upgrade",
+        "user_associations_item" : "dp_user_lmenu_associations",
+        "user_events_item" : "dp_user_lmenu_events",
+        "user_companions_item" : "dp_user_lmenu_companions",
+        "user_store_main_item" : "dp_user_lmenu_store_main",
+        "user_store_orders_item" : "dp_user_lmenu_store_my_orders",
+        "settings_advanced_item" : "dp_user_lmenu_settings",
+        "account_advanced_item" : "dp_user_lmenu_account",
+        "tickets_advanced_item" : "dp_user_lmenu_tickets",
+        "my_services" : "dp_user_lmenu_my_services",
+        "sign_out" : "dp_user_lmenu_sign_out"
+    },
+    "right_top_menu" : {
+        "settings-menu-home" : "dp_user_rmenu_recent_activity",
+        "my-profile-item" : "dp_user_rmenu_my_profile",
+        "account-item" : "dp_user_rmenu_account",
+        "settings-item" : "dp_user_rmenu_settings",
+        "logout-item" : "dp_user_rmenu_log_out",
+        "language_switch" : "dp_user_rmenu_language_switch"
+    },
+    "home_wall" : {
+        "post_send" : "dp_user_wall_post_send",
+        "like" : "dp_user_wall_like",
+        "comment_send" : "dp_user_wall_comment_send",
+        "post_report" : "dp_user_wall_post_report",
+        "comment_report" : "dp_user_wall_comment_report",
+        "btn_exchange" : "dp_user_home_bonuses_btn_exchange"
+    },
+    "my_profile" : {
+        "btn_edit_field" : "dp_user_profile_btn_edit_field",
+        "btn_edit" : "dp_user_profile_btn_edit",
+        "btn_highlight" : "dp_user_profile_btn_highlight",
+        "btn_lift_up" : "dp_user_profile_btn_lift_up",
+        "btn_stealth" : "dp_user_profile_btn_stealth",
+        "btn_invite" : "dp_user_profile_btn_invite",
+        "upload_photo" : "dp_user_profile_upload_photo",
+        "upload_audio" : "dp_user_profile_upload_audio",
+        "upload_video" : "dp_user_profile_upload_video"
+    },
+    "user_profile" : {
+        "btn_send_message" : "dp_user_view_profile_btn_send_message",
+        "btn_request_friendship" : "dp_user_view_profile_btn_request_friendship",
+        "btn_add_to_favorites" : "dp_user_view_profile_btn_add_to_favorites",
+        "btn_add_to_blacklist" : "dp_user_view_profile_btn_add_to_blacklist",
+        "btn_im_chat" : "dp_user_view_profile_btn_im_chat",
+        "btn_video_chat" : "dp_user_view_profile_btn_video_chat",
+        "btn_wink" : "dp_user_view_profile_btn_wink",
+        "btn_kiss" : "dp_user_view_profile_btn_kiss",
+        "btn_association" : "dp_user_view_profile_btn_association",
+        "btn_question" : "dp_user_view_profile_btn_question",
+        "btn_report" : "dp_user_view_profile_btn_report",
+        "btn_services_menu" : "dp_user_view_profile_btn_services_menu",
+        "view_user_search_block" : "dp_user_view_user_search_block"
+    },
+    "payments" : {
+        "user_activate_in_search" : "dp_user_payments_purchase_service_active_search",
+        "admin_approve" : "dp_user_payments_purchase_service_approval",
+        "users_featured" : "dp_user_payments_purchase_service_featured",
+        "highlight_in_search" : "dp_user_payments_purchase_service_highlight",
+        "im" : "dp_user_payments_purchase_service_im",
+        "up_in_search" : "dp_user_payments_purchase_service_lift_up",
+        "ability_delete" : "dp_user_payments_purchase_service_delete_profile",
+        "read_message_service" : "dp_user_payments_purchase_service_read",
+        "send_message_service" : "dp_user_payments_purchase_service_send",
+        "hide_on_site" : "dp_user_payments_purchase_service_stealth",
+        "packages" : "dp_user_payments_purchase_package",
+        "access_permissions" : "dp_user_payments_purchase_membership",
+        "purchase_attempt" : "dp_user_payments_purchase_attempt",
+        "purchase_success" : "dp_user_payment_purchase_success",
+        "purchase_fail" : "dp_user_payment_purchase_fail",
+        "purchase_recurring_first" : "dp_user_payments_purchase_recurring_first",
+        "purchase_virtual_gift" : "dp_user_payments_purchase_virtual_gift"
+    },
+    "secret_gifts" : {
+        "btn_send_gift" : "dp_user_secret_gifts_btn_send_gift",
+        "btn_buy_package" : "dp_user_secret_gifts_btn_buy_package",
+        "btn_take_a_guess" : "dp_user_secret_gifts_btn_take_a_guess"
+    },
+    "tutorial": {
+        "user_end_tutorial": "dp_user_end_tutorial"
+    },
+    "registration": {
+        "profile_complete": "dp_user_registration_profile_complete",
+        "email": "dp_user_registration_email",
+        "social_connection": "dp_user_registration_social_connection",
+        "verified": "dp_user_registration_verified"
+    },
+    "like_me": {
+        "engaged": "dp_user_like_me_engaged",
+        "engaged_matched": "dp_user_like_me_engaged_matched"
+    },
+    "nearest_users": {
+        "engaged": "dp_user_nearest_users_engaged"
+    },
+    "chatbox": {
+        "engaged": "dp_user_chatbox_engaged"
+    },
+    "winks": {
+        "engaged": "dp_user_winks_engaged",
+        "engaged_back": "dp_user_winks_engaged_back"
+    },
+    "kisses": {
+        "engaged": "dp_user_kisses_engaged"
+    },
+    "virtual_gifts": {
+        "engaged": "dp_user_virtual_gifts_engaged"
+    }
+}

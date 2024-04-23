@@ -1,0 +1,66 @@
+<nav class="navbar navbar-flatty">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            {% if mini_logo_settings.text_logo_mini %}
+                <a class="navbar-brand logo" href="{{ site_url }}">
+                    <span>{{mini_logo_settings.text_logo_mini}}</span>
+                </a>
+            {% else %}
+                <a class="navbar-brand logo" href="{{ site_url }}">
+                <img src="{{ site_root }}{{ mini_logo_settings.path }}?{{random()}}" border="0"
+                alt="{% helper seo.seo_tags_default('header_text') %}"
+                width="{{ mini_logo_settings.width }}"
+                height="{{ mini_logo_settings.height }}" id="logo">
+                </a>
+            {% endif %}
+            <div class="navbar-ava-xs">{% helper users.auth_links({is_mobile: 1}) %}</div>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                aria-expanded="false">
+            </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse header-navigation" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav hidden-xs">
+                {#% helper menu.get_menu('users_main_links', 'simple') %#}
+                <li>{% helper users.top_menu({type: 'links'}) %}</li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right hidden-xs">
+                {% if auth_type == 'user' %}
+                    <li>
+                        <div class="menu-top-right-block">
+                            {#% helper start.guide() %#}
+                        </div>
+                    </li>
+                {% endif %}
+                <li>{% helper users.top_menu({type: 'icons'}) %}</li>
+                <li>
+                    {% helper users.auth_links() %}
+                </li>
+            </ul>
+            <ul class="nav navbar-nav visible-xs-block">
+                <li>{% helper users.top_menu({type: 'xs'}) %}</li>
+                {% if auth_type == 'user' %}
+                    <li>
+                        <div class="menu-top-right-block">
+                            {% helper start.guide() %}
+                        </div>
+                    </li>
+                    <hr>
+                        <li>{% helper users.top_menu({type: 'payments_xs'}) %}</li>
+                    <hr>
+                {% endif %}
+                <li>
+                    {% helper mobile.mobile_app_links({'show_xs_menu_title': true}) %}
+                </li>
+                <li>
+                    {% helper languages.langSelect({'template': 'helper_lang_select_xs'}) %}
+                </li>
+            </ul>
+            <div style="height: 50px;">&nbsp;</div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>

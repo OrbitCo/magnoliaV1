@@ -1,0 +1,18 @@
+    <div class="col-md-12">
+        <div class="row">
+            {% for item in helper_featured_users_data.users %}
+                <div class="col-sm-6 col-md-3 text-center">
+                    <a href="{% helper seo.seolink('users', 'view', item) %}">
+                        {% helper users.formatAvatar({'user': item, 'size': thumb_name}) %}
+                    </a>
+                    <div class="caption">
+                        <a href=" {{ item.link }} " title="{{ item.output_name }}">
+                            <h4 class="text-bold">{% if item.fname is not empty %}{{ item.fname }}{% else %}{{ item.output_name }}{% endif %}, {{ item.age }}</h4>
+                        </a>
+                        <p>{{ item.city }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+

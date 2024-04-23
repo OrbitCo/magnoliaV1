@@ -1,0 +1,21 @@
+.ui-modules_list {
+    .content-page {
+        position: relative;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid $delimiter_color;
+        &:last-child {
+            border-bottom: 0;
+        }
+        .ui_checkbox {
+            position: absolute;
+            #{$right}: 0;
+            top: 0;
+        }
+    }
+}
+#ui-description_block {
+    .ui-icon_block {
+        border-#{$right}: 1px solid $delimiter_color;
+    }
+}

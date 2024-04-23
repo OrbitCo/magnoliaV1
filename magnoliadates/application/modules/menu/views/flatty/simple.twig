@@ -1,0 +1,33 @@
+	{% for key, item in menu %}
+		{% if item.sub is empty %}
+			<li class="{% if item.active is not empty or item.in_chain is not empty %}active{% endif %}">
+				<a id="user_{{ item.gid }}" href="{{ item.link }}">
+					<span class="a">
+						{{ item.value }}{% if item.indicator %}<span class="num">{{ item.indicator }}</span>{% endif %}
+					</span>
+					{% if item.active is not empty or item.in_chain is not empty %}<span class="sr-only">(current)</span>{% endif %}
+				</a>
+			</li>
+		{% else %}
+			<li class="{% if item.active is not empty or item.in_chain is not empty %}active{% endif %} drpdwn">
+				<a id="user_{{ item.gid }}" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<span class="a">
+						{{ item.value }}{% if item.indicator %}<span class="num">{{ item.indicator }}</span>{% endif %}
+					</span>
+					{% if item.active is not empty or item.in_chain is not empty %}<span class="sr-only">(current)</span>{% endif %}
+					<span class="caret"></span>
+				</a>
+				{% if item.sub is not empty %}
+					<ul class="dropdown-menu noPrint">
+						{% for key, s in item.sub %}
+							<li {% if s.active %}class="active"{% endif %}>
+								<a id="user_{{ item.gid }}_{{ s.gid }}" href="{{ s.link }}">
+									{{ s.value }}{% if s.indicator %}<span class="num">{{ s.indicator }}</span>{% endif %}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</li>
+		{% endif %}
+	{% endfor %}

@@ -1,0 +1,17 @@
+{% spaceless %}
+    <div class="form-group">
+        <div class="pt20">
+            {% helper users.formatAvatar({'user': data, 'size': 'big'}) %}
+        </div>
+        <div class="pt20">
+            <label>{% helper lang.l('field_name', 'users') %}:</label> {% helper users.userName({'format':'age', 'user': data}) %}
+        </div>
+        <div class="pt20">
+            {% if data.location %}
+                <div class="text-overflow">
+                    {{ data.location }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endspaceless %}

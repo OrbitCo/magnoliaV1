@@ -1,0 +1,13 @@
+/*! jCarousel - v0.3.1 - 2014-04-26
+* http://sorgalla.com/jcarousel
+* Copyright (c) 2014 Jan Sorgalla; Licensed MIT */
+
+/**
+ * @fileOverview Webkit Notification API jQuery Wrapper
+ *
+ * @see http://www.chromium.org/developers/design-documents/desktop-notifications/api-specification
+ * @see http://www.html5rocks.com/en/tutorials/notifications/quick/
+ *
+ * @author azproduction
+ * @licence MIT (c) azproduction 2011
+ */

@@ -1,0 +1,250 @@
+{% include '@app/header.twig' %}
+
+{% if product_name == 'dating' %}
+
+    <!-- </div></div> -->
+    <div class="landing">
+        <div class="landing__form">
+            <div class="landing__form-content">
+            <div class="login-form">
+                <div class="landing__logo">
+                    <a href="{{ site_url }}admin/">
+                        <img src="{{ site_root }}{{ logo_settings.path }}" border="0" alt="logo"
+                             width="{{ logo_settings.width }}" height="{{ logo_settings.height }}">
+                    </a>
+                </div>
+
+                <form method="post" action="{{ data.action }}" class="form-horizontal form-label-left">
+                    <div class="form">
+                        <h2>{% helper lang.l('admin_header_login', 'ausers') %}</h2>
+                        <div class="form-group">
+                            <label class="control-label">
+                                {% helper lang.l('field_nickname', 'ausers') %}:</label>
+                            <div>
+                                {% set nickname_value %}{% spaceless %}
+                                        {% if empty(data.nickname) %}
+                                            {% if DEMO_MODE %}
+                                                {{ demo_login_settings.admin.login }}
+                                            {% endif %}
+                                        {% else %}
+                                            {{ data.nickname }}
+                                        {% endif %}
+                                {% endspaceless %}{% endset %}
+                                <input class="form-control" type="text"
+                                       value="{{- nickname_value|e -}}" name="nickname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                {% helper lang.l('field_password', 'ausers') %}:</label>
+                            <div>
+                                {% set password_value %}{% spaceless %}
+                                        {% if DEMO_MODE %}
+                                            {{ demo_login_settings.admin.password }}
+                                        {% endif %}
+                                {% endspaceless %}{% endset %}
+                                <input class="form-control" type="password"
+                                       value="{{- password_value|e -}}" name="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success" type="submit" name="btn_login" value="1">
+                                {% helper lang.l('btn_login', 'start') %}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {% helper start.demoPromoBlock({'page': 'login'}) %}
+                </div>
+        </div>
+
+        <div class="landing__right clearfix">
+            <div class="row-welcome">
+                <div class="row-welcome__content">
+                    <a href="{{ site_url }}">
+                        <img src="{{ site_root }}{{ logo_settings.path }}" border="0" alt="logo"
+                             width="{{ logo_settings.width }}" height="{{ logo_settings.height }}">
+                    </a>
+                    {% if DEMO_MODE or TRIAL_MODE %}
+                        <div class="row-welcome__txt">100% ready professional dating site and mobile apps for business in 1 day, open code, with ready member profiles.{# {% helper lang.l('admin_welcome_text', 'ausers') %} #}</div>
+                        <div class="row-welcome__btn">
+                            <a onclick="{% helper start.setAnalytics('ausers', 'login_buy_now') %}" class="btn btn-white" href="https://www.datingpro.com/dating-software/pricing/" target="_blank">{% helper lang.l('btn_buynow', 'ausers') %}</a>
+                            <a onclick="{% helper start.setAnalytics('ausers', 'login_ios_app') %}" class="btn btn-ghost hide" href="https://itunes.apple.com/us/app/soulcompanion.net-mobile/id784390992" target="_blank"><i class="fab fa-apple" aria-hidden="true"></i>  {% helper lang.l('btn_iosapp', 'ausers') %}</a>
+                            <a onclick="{% helper start.setAnalytics('ausers', 'login_android_app') %}" class="btn btn-ghost hide" href="https://play.google.com/store/apps/details?id=pgdating.pilotgroup.datingpro" target="_blank"><i class="fab fa-android" aria-hidden="true"></i>  {% helper lang.l('btn_androidapp', 'ausers') %}</a>
+                            {#<a onclick="{% helper start.setAnalytics('ausers', 'login_free_trial') %}" class="btn btn-ghost" href="https://datingpro.com/datingpro_setup.exe" target="_blank"><i class="fa fa-download" aria-hidden="true"></i>  {% helper lang.l('btn_freetrial', 'ausers') %}</a>#}
+                        </div>
+                    {% else %}
+                        <div class="row-welcome__useful">
+                            <a class="btn btn-ghost" href="https://marketplace.datingpro.com/" target="_blank"><div><i class="fa fa-shopping-bag" aria-hidden="true"></i></div>{% helper lang.l('btn_marketplace', 'ausers') %}</a>
+                            <a class="btn btn-ghost" href="https://datingpro.com/academy/" target="_blank"><div><i class="fa fa-graduation-cap" aria-hidden="true"></i></div>{% helper lang.l('btn_academy', 'ausers') %}</a>
+                        </div>
+                    {% endif %}
+                </div>
+                {% if DEMO_MODE or TRIAL_MODE %}<div class="row-welcome__scroll" id="welcomeScroll"><i class="fa fa-angle-down" aria-hidden="true"></i></div>{% endif %}
+            </div>
+
+            {% if DEMO_MODE or TRIAL_MODE %}
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="landing__clients" id="scrollTo">
+                        <h2>{% helper lang.l('clients', 'ausers') %}</h2>
+                        <div class="clients clearfix">
+                            <div class="clients__col-review">
+                                <div class="clients__review">
+                                    <div id="landingReview"></div>
+                                </div>
+                                <div class="clients__rev-more"><a onclick="{% helper start.setAnalytics('ausers', 'login_other_reviews') %}" href="https://www.datingpro.com/academy/feedback/" target="_blank">{% helper lang.l('btn_morereviews', 'ausers') %}</a></div>
+                            </div>
+
+                            <div class="clients__col-works">
+                                <div class="clients__works">
+                                    <div class="clearfix">
+                                        <div class="clients__half">
+                                            <div class="rect23">
+                                                <a href="https://marketplace.datingpro.com/portfolio/" target="_blank"><img src="https://www.datingpro.com/wordpress/wp-content/uploads/2016/02/FireShot-Capture-67-Affairsbox-http___affairsbox.com_en_.jpg" /></a>
+                                            </div>
+                                        </div>
+                                        <div class="clients__half">
+                                            <div class="rect23">
+                                                <a href="https://marketplace.datingpro.com/portfolio/" target="_blank"><img src="https://www.datingpro.com/wordpress/wp-content/uploads/2015/08/europrincess_com-1000.jpg" /></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="clients__half">
+                                            <div class="rect23">
+                                                <a href="https://marketplace.datingpro.com/portfolio/" target="_blank"><img src="https://www.datingpro.com/wordpress/wp-content/uploads/2015/06/strelkiss_com-500.jpg" />
+                                            </div>
+                                        </div>
+                                        <div class="clients__half">
+                                            <div class="rect23">
+                                                <a href="https://marketplace.datingpro.com/portfolio/" target="_blank"><img src="https://www.datingpro.com/wordpress/wp-content/uploads/2015/01/friendite-com-380.png" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="rect23">
+                                            <a onclick="{% helper start.setAnalytics('ausers', 'login_cases') %}" class="clients__morecases" href="https://marketplace.datingpro.com/portfolio/" target="_blank"><span class="clients__morecases-txt">{% helper lang.l('btn_morecases', 'ausers') %}</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clients__col-list">
+                                <div><img src="{{ site_root }}{{ img_folder }}clientLogos_v2_rc2_zipped.png" alt=""></div>
+                                <div>{% helper lang.l('owners', 'ausers') %}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <script>
+        $("#welcomeScroll").on("click", function () {
+            $('html, body').animate({
+                scrollTop: $("#scrollTo").offset().top
+            }, 500);
+        })
+
+        $(function () {
+            var landReviews = [
+                '<p><b>Mauro C. Fileto</b></p><p>Thanks for all your effort on this Project… I will be recommending you to partners and friends asking for software development services.</p><p>You were great professionals…</p><p>Sincerely, Mauro C. Fileto</p>',
+                '<p><b>Jack Gerbehy</b></p><p>I can see all the hard work you put in and I thank you very much for what you have done… GREAT JOB please thank all that worked on the project.</p><p>Just wanted to tell what a great job your doing…. I know I am not easy to deal with most of the time…. yet you always take good care of me.</p><p>I just want to thank everone on the staff, at this point I’m sure I have worked with everyone! Top Notch, outstanding customer service.</p>',
+                '<p><b>Nick Burnham</b></p><p>Support team were really good in getting some of the critical elements of my site back online yesterday which was most appreciated – they did enough for the site to be functioning for paid members which is great :) I was extremely thankful for their efforts, as a company you have always have provided such a great support service when I am suffering from major problems and I would like to congratulate you for that. </p>',
+                '<p><b>Nick Stevenson</b></p><p>We open-heartedly recommend the Ready Dating Site solution to anyone seriously considering starting an online dating service. You should not delay. Thanks to Pilot Group Ltd. and the Ready Dating Site solution; we are expecting to be a contender in the online dating service in a very short time.</p>',
+                '<p><b>Sebastien Menut</b></p><p>"Good team, Responsive and knowledgeable and always available! Thank you, pleasure to works with you!"</p>',
+                '<p><b>Narinder Dhiensa</b></p><p>I just wanted to tell you how hard Irina, Ida and the developer worked to get my last problem solved.</p><p>I really appreciate how they worked and how pleasantly they chat on-line. I would like the boss to know my feelings.</p><p>I usually complain about people but rarely do I compliment workers, so they have done very well.</p><p>Keep up the good work.</p><p>Regards</p>',
+                '<p><b>Andy James</b></p><p>"Brilliant. Marvelous. Fantastic. Thank you so much!</p><p>Please, thank developer for me."</p>',
+                '<p><b>Craig Amanti</b></p><p>I just wanted to email you to say “Thank You” for your quick response and fixing the link issue on the site. My client came in and seems to be very happy with the site.</p><p>I mentioned I have very good developers working with me, so Thank You very much!</p>',
+                '<p><b>Mandie</b></p><p>It’s perfect, I downloaded the trial to show my boss the program and he loved it too, we’ve ordered and set up the site already.</p><p>The only fault I’ve found was some very small language problems but the interface to change them is so simple – it’s great :)</p><p>Thank you!</p>',
+                '<p><b>Tomislav Majnaric</b></p><p>Definitely, your dating software is THE BEST! :-) I wish you all the best!</p><p>I’m very happy because I bought dating pro software from you. I’ve been working a few years with other service like affiliate, and, after so many years decided – it’s time to start my own business!</p><p>I spent a few months for a research – what dating script will be the best for me?</p><p>And, finally, found your dating pro script which is wonderful! In my opinion – definitely the best in whole world! Maybe little expensive, but, what you get for this money, really, it is not expensive! I give advice to anyone who plan to buy this software, just buy, you will not feel sorry!</p>'
+            ];
+
+            function getRandomInt(min, max)
+            {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+            $("#landingReview").html(landReviews[getRandomInt(0, 9)]);
+        });
+    </script>
+
+    <!-- <div><div class="row"> -->
+
+{% else %}
+
+    <div {% if product_name != 'social' %}class="col-md-3 col-sm-12"{% endif %}>
+        <div class="landing">
+            <div class="landing__form">
+                {% if product_name == 'social' %}
+                    <div class="landing__logo">
+                        <a href="{{ site_url }}admin/">
+                            <img src="{{ site_root }}{{ logo_settings.path }}" border="0" alt="logo"
+                                 width="{{ logo_settings.width }}" height="{{ logo_settings.height }}">
+                        </a>
+                    </div>
+                {% endif %}
+                <form method="post" action="{{ data.action }}" class="form-horizontal form-label-left">
+                    <div class="form">
+                        <h2>{% helper lang.l('admin_header_login', 'ausers') %}</h2>
+                        <div class="form-group">
+                            <label class="control-label">
+                                {% helper lang.l('field_nickname', 'ausers') %}:</label>
+                            <div>
+                                {% set nickname_value %}{% spaceless %}
+                                        {% if empty(data.nickname) %}
+                                            {% if DEMO_MODE %}
+                                                {{ demo_login_settings.admin.login }}
+                                            {% endif %}
+                                        {% else %}
+                                            {{ data.nickname }}
+                                        {% endif %}
+                                {% endspaceless %}{% endset %}
+                                <input class="form-control" type="text"
+                                       value="{{- nickname_value|e -}}" name="nickname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                {% helper lang.l('field_password', 'ausers') %}:</label>
+                            <div>
+                                {% set password_value %}{% spaceless %}
+                                        {% if DEMO_MODE %}
+                                            {{ demo_login_settings.admin.password }}
+                                        {% endif %}
+                                {% endspaceless %}{% endset %}
+                                <input class="form-control" type="password"
+                                       value="{{- password_value|e -}}" name="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success" type="submit" name="btn_login" value="1">
+                                {% helper lang.l('btn_login', 'start') %}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {% if product_name == 'social' %}
+                <div class="landing__right clearfix">
+                    <div class="row-welcome index-social-bg">
+                        <div class="img-overlay">
+                            <div class="row-welcome__content">
+                                <a href="{{ site_url }}">
+                                    <img src="{{ site_root }}{{ logo_settings.path }}" border="0" alt="logo"
+                                         width="{{ logo_settings.width }}" height="{{ logo_settings.height }}">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endif %}
+
+{% include '@app/footer.twig' %}

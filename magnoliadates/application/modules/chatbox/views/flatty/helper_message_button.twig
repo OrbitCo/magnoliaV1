@@ -1,0 +1,7 @@
+<a class="{% if class %}{{class}}{% else %}btn btn-secondary{% endif %}  chatbox-start-dialog-btn" {% if new_tab %}target="_blank"{% endif %} href="{{ site_url }}chatbox/chat/{{ user_id }}"  data-user-id="{{ user_id }}">
+	{% if text_type == 'chat' %}
+	{% helper lang.l('chat_now', 'chatbox') %}	
+	{% else %}	
+    {% helper lang.l('link_message_send', 'chatbox') %}
+   	{% endif %}
+</a>

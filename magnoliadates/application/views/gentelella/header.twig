@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html dir="{{ _LANG.rtl }}" lang="{{ _LANG.code }}">
+    
+    <head>
+        
+        <meta http-equiv="X-UA-Compatible">
+           
+        <meta http-equiv="X-UA-Compatible">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="expires" content="0">
+        <meta http-equiv="pragma" content="no-cache">
+        <meta name="revisit-after" content="3 days">
+        <meta name="robot" content="All">
+        {% helper seo.seo_tags('title|description|keyword|canonical|og_title|og_type|og_url|og_image|og_site_name|og_description') %}
+        <script src="{{ site_root }}application/views/gentelella/js/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ site_root }}application/views/gentelella/js/loading_content.js"></script>
+
+        <!-- Bootstrap core CSS -->
+        <link href="{{ site_root }}application/views/gentelella/css/bootstrap.min.css" rel="stylesheet">
+
+{#        <link href="{{ site_root }}application/views/gentelella/css/font-awesome.min.css" rel="stylesheet">#}
+        <link href="{{ site_root }}application/views/gentelella/css/fontawesome/css/all.min.css" rel="stylesheet">
+        <link href="{{ site_root }}application/views/gentelella/css/animate.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        {% helper theme.js(load_type) %}
+        {% helper theme.css(load_type) %}
+        <script type="text/javascript">
+            var site_url = '{{ site_url }}';
+            var site_rtl_settings = '{{ _LANG.rtl }}';
+            var site_error_position = {% if  _LANG.rtl == 'ltr' %}"left"{% else %}"right"{% endif %};
+            var auth_type = {% if user_session_data.auth_type %}'{{ user_session_data.auth_type }}'{% else %}'guest'{% endif %};
+            var is_webpack = false;
+        </script>
+
+        {% helper start.favicon({'type': 'admin'}) %}
+
+        <!-- Custom styling plus plugins -->
+        <link href="{{ site_root }}application/views/gentelella/css/icheck/flat/green.css" rel="stylesheet"/>
+        <link href="{{ site_root }}application/views/gentelella/css/floatexamples.css" rel="stylesheet" type="text/css"/>
+
+        <script type="text/javascript">
+            var jQueryShow = $.fn.show;
+            $.fn.show = function () {
+                jQueryShow.apply(this);
+                this.removeClass('hide');
+                return this;
+            };
+        </script>
+        {% helper start.analytics() %}
+        {% helper utils.jscript('', 'easyTooltip.min.js') %}
+        {% helper seo_advanced.seo_traker('top', true) %}
+    </head>
+
+    <body class="nav-md">
+        {% helper start.demo_panel({type: 'admin', place: 'top'}) %}
+        <div id="error_block">
+            {% for item in _PREDEFINED.error %}
+                {% if item.text %}
+                    {{ item.text }}<br>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div id="info_block">
+            {% for item in _PREDEFINED.info %}
+                {% if item.text %}
+                    {{ item.text }}<br>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div id="success_block">
+            {% for item in _PREDEFINED.success %}
+                {% if item.text %}
+                    {{ item.text }}<br>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="container body {% if (login_page) %} container_loginpage {% endif %}">
+            <div
+                class="main_container">
+
+                <!-- Left column -->
+                <div class="left-sidebar" id="left_col">
+                    <div class="left_col scroll-view">
+                        <div class="navbar nav_title">
+                            <a class="site_title" href="{{ site_url }}admin/">
+                                <img src="{{ site_root }}{{ logo_settings.path }}?{{random()}}" border="0" alt="logo" width="{{ logo_settings.width }}" height="{{ logo_settings.height }}" class="site-logo">
+                                <img src="{{ site_root }}{{ mini_logo_settings.path }}?{{random()}}" border="0" alt="logo" width="{{ mini_logo_settings.width }}" height="{{ mini_logo_settings.height }}" class="site-mini-logo">
+                            </a>
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <div
+                            id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                            <!-- Menu -->
+                            {% if initial_setup %}
+                                {% helper install.get_initial_setup_menu(step) %}
+                            {% elseif modules_setup %}
+                                {% helper install.get_modules_setup_menu(step) %}
+                            {% elseif product_setup %}
+                                {% helper install.get_product_setup_menu(step) %}
+                            {% else %}
+                                {% if auth_type == 'admin' %}
+                                    {% helper fast_navigation.fast_navigation_helper() %}
+                                {% endif %}
+                                {% helper menu.get_admin_main_menu() %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right column -->
+                {#<div class="right-sidebar">#}
+                {% if not(login_page) %}
+                    <div id="top_nav" class="top_nav">
+                        <div class="nav_menu {% if menu_disabled %}hide{% endif %}">
+
+                            <nav role="navigation">
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-6 col-xs-6">
+                                        <div class="nav toggle">
+                                            <a id="menu_toggle">
+                                                <i class="fa fa-bars"></i>
+                                            </a>
+                                        </div>
+                                        <div class="nav navbar-nav nav-left version">
+                                            <span class="sm-hide">{% helper start.product_version() %}</span>
+                                            {#% helper start.upgradePackage({packages: ['start', 'business']}) %#}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 col-xs-6">
+
+                                        {% if auth_type == 'admin' %}
+                                            <ul class="nav navbar-nav navbar-right">
+
+                                                <li>
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            {% if not empty(modules_setup) %}
+                                                                <a href="{{ site_url }}admin/install/logoff" class="logoff">
+                                                                    {% helper lang.l('btn_logoff', 'start') %}
+                                                                </a>
+                                                            {% elseif not empty(initial_setup) or not empty(product_setup) %}
+
+                                                            {% elseif auth_type == 'admin' %}
+                                                                {% helper ausers.logOff() %}
+                                                            {% endif %}
+                                                        </li>
+                                                        {% if empty(initial_setup) and empty(modules_setup) and empty(product_setup) %}
+                                                            <li>
+                                                                {% helper users.users_lang_select() %}
+                                                            </li>
+                                                            {#% helper start.guide() %#}
+                                                        {% endif %}
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                        <script src="{{ site_root }}application/views/gentelella/js/menu.js"></script>
+                    </div>
+                {% endif %}
+                <div class="right_col" role="main">
+                    <div class="right-sidebar">
+                        <div class="page-title {% if login_page %}hide{% endif %}">
+                          {% if _PREDEFINED.back_link %}
+                            <div class="quest-block back-link">
+                              <a href="{{ _PREDEFINED.back_link }}" class="back">
+                                {% helper lang.l('btn_back', 'start') %}</a>&nbsp;
+                            </div>
+                          {% endif %}
+                          <div class="title_left">
+                            <h3>{{ _PREDEFINED.header }}</h3>
+                          </div>
+                          {% helper start.moduleInstructions() %}
+                          {# {% helper start.modulePackage({auth_type: 'admin'}) %} #}
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row">

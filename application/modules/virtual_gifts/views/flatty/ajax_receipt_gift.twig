@@ -1,0 +1,53 @@
+<div class="content-block ajax-receipt-gift">
+    <h1>{% helper lang.l('gift_receipt_notify_header', 'virtual_gifts') %}</h1>
+    <div>
+        <div align="center" class="receipt-gift-img">
+            <img id="gift_thumb-{{gift_data.id}}" src="{{gift_data.img_thumb}}" />
+        </div>
+        <div class="receipt-gift-data">
+            {% if gift_data.is_private == '1' %}
+                <p class="receipt-gift-private">{% helper lang.l('receipt_gift_private', 'virtual_gifts') %}</p>
+            {% endif %}
+
+            <div class="media media_msg">
+                <div class="media-left">
+                    <a class="g-pic-border g-rounded" href="{% helper seo.seolink('users', 'view', gift_data.sender_data) %}">
+                        <img class="media-object" src="{{gift_data.sender_data.user_logo}}" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <div class="media-body__message">
+                        <h4 class="media-heading">{{gift_data.sender_data.name}}</h4>
+                        {% if gift_data.comment is not empty %}
+                            <div>{{gift_data.comment|nl2br }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="receipt-gift-date">{{gift_data.receipt_date}}</div>
+                    <div class="receipt-gift-btns">
+                        <button data-href="{{site_url}}virtual_gifts/user_gift_status/{{gift_data.id}}/{{gift_data.fk_user_id}}/approved" class="btn btn-primary">{% helper lang.l('gift_receipt_accept', 'virtual_gifts') %}</button>
+                        <button data-href="{{site_url}}virtual_gifts/user_gift_status/{{gift_data.id}}/{{gift_data.fk_user_id}}/decline" class="btn btn-cancel">{% helper lang.l('gift_receipt_decline', 'virtual_gifts') %}</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="receipt-gift-status-btn">
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('.receipt-gift-btns button').click(function (e) {
+            var href = $(this).data('href');
+            e.preventDefault();
+            if (typeof receipt_gifts === 'object') {
+                receipt_gifts.delCloseCookie();
+                receipt_gifts.properties.contentObj.properties.onClose = function () {};
+            }
+            document.location.href = href;
+        });
+    });
+</script>

@@ -1,0 +1,341 @@
+	273	Mona	39.8160700	-111.8554900	US	UT	0	0	Mona	Mona
+	273	Aneth	37.2161100	-109.1870600	US	UT	0	0	Aneth	Aneth
+	273	Annabella	38.7091400	-112.0599200	US	UT	0	0	Annabella	Annabella
+	273	Antimony	38.1169300	-111.9996400	US	UT	0	0	Antimony	Antimony
+	273	Apple Valley	37.0897100	-113.1243900	US	UT	0	0	Apple Valley	Apple Valley
+	273	Aurora	38.9221900	-111.9340900	US	UT	0	0	Aurora	Аврора
+	273	Beaver	38.2769100	-112.6410500	US	UT	0	0	Beaver	Beaver
+	273	Beryl Junction	37.7094200	-113.6560800	US	UT	0	0	Beryl Junction	Beryl Junction
+	273	Bicknell	38.3408100	-111.5440700	US	UT	0	0	Bicknell	Bicknell
+	273	Big Water	37.0824900	-111.6643300	US	UT	0	0	Big Water	Big Water
+	273	Blanding	37.6243300	-109.4796600	US	UT	0	0	Blanding	Blanding
+	273	Bluff	37.2844400	-109.5517900	US	UT	0	0	Bluff	Bluff
+	273	Boulder Town	37.9083200	-111.4229500	US	UT	0	0	Boulder Town	Boulder Town
+	273	Brian Head	37.6927600	-112.8507800	US	UT	0	0	Brian Head	Brian Head
+	273	Cannonville	37.5669300	-112.0538000	US	UT	0	0	Cannonville	Cannonville
+	273	Carbonville	39.6199600	-110.8343300	US	UT	0	0	Carbonville	Carbonville
+	273	Castle Dale	39.2121900	-111.0196100	US	UT	0	0	Castle Dale	Castle Dale
+	273	Castle Valley	38.6394300	-109.4090100	US	UT	0	0	Castle Valley	Castle Valley
+	273	Cedar City	37.6774800	-113.0618900	US	UT	0	0	Cedar City	Cedar City
+	273	Central	37.4166500	-113.6244100	US	UT	0	0	Central	Central
+	273	Central Valley	38.7038600	-112.0988100	US	UT	0	0	Central Valley	Central Valley
+	273	Circleville	38.1716400	-112.2704800	US	UT	0	0	Circleville	Circleville
+	273	Clawson	39.1330300	-111.0971100	US	UT	0	0	Clawson	Clawson
+	273	Clear Creek	39.6458000	-111.1523900	US	UT	0	0	Clear Creek	Clear Creek
+	273	Cleveland	39.3488600	-110.8515500	US	UT	0	0	Cleveland	Кливленд
+	273	Delta	39.3521800	-112.5771700	US	UT	0	0	Delta	Delta
+	273	Deseret	39.2869000	-112.6527300	US	UT	0	0	Deseret	Deseret
+	273	East Carbon City	39.5477400	-110.4148800	US	UT	0	0	East Carbon City	East Carbon City
+	273	Mount Nebo	39.9527300	-111.9563300	US	UT	0	0	Mount Nebo	Mount Nebo
+	273	Elmo	39.3896900	-110.8151600	US	UT	0	0	Elmo	Elmo
+	273	Elsinore	38.6827500	-112.1482600	US	UT	0	0	Elsinore	Elsinore
+	273	Emery	38.9230300	-111.2487800	US	UT	0	0	Emery	Emery
+	273	Enoch	37.7733100	-113.0243900	US	UT	0	0	Enoch	Enoch
+	273	Ephraim	39.3596800	-111.5863100	US	UT	0	0	Ephraim	Ephraim
+	273	Enterprise	37.5735900	-113.7191300	US	UT	0	0	Enterprise	Enterprise
+	273	Escalante	37.7702700	-111.6021200	US	UT	0	0	Escalante	Escalante
+	273	Eureka	39.9541200	-112.1202200	US	UT	0	0	Eureka	Эврика
+	273	Fairview	39.6263500	-111.4396300	US	UT	0	0	Fairview	Fairview
+	273	Fayette	39.2252400	-111.8565900	US	UT	0	0	Fayette	Fayette
+	273	Ferron	39.0935800	-111.1332200	US	UT	0	0	Ferron	Ferron
+	273	Fillmore	38.9688500	-112.3235500	US	UT	0	0	Fillmore	Fillmore
+	273	Fountain Green	39.6299600	-111.6352000	US	UT	0	0	Fountain Green	Fountain Green
+	273	Fremont	38.4574800	-111.6196300	US	UT	0	0	Fremont	Fremont
+	273	Genola	39.9963400	-111.8432700	US	UT	0	0	Genola	Genola
+	273	Glendale	37.3177600	-112.5971500	US	UT	0	0	Glendale	Глендейл
+	273	Glenwood	38.7633000	-111.9902000	US	UT	0	0	Glenwood	Glenwood
+	273	Goshen	39.9530100	-111.9007700	US	UT	0	0	Goshen	Гошен
+	273	Green River	38.9952500	-110.1618000	US	UT	0	0	Green River	Green River
+	273	Gunnison	39.1552400	-111.8182600	US	UT	0	0	Gunnison	Gunnison
+	273	Halchita	37.1258400	-109.8884600	US	UT	0	0	Halchita	Halchita
+	273	Halls Crossing	37.4569400	-110.7129200	US	UT	0	0	Halls Crossing	Halls Crossing
+	273	Hanksville	38.3730400	-110.7140400	US	UT	0	0	Hanksville	Hanksville
+	273	Hatch	37.6497000	-112.4343700	US	UT	0	0	Hatch	Hatch
+	273	Helper	39.6841300	-110.8546100	US	UT	0	0	Helper	Helper
+	273	Henrieville	37.5627600	-111.9943500	US	UT	0	0	Henrieville	Henrieville
+	273	Hiawatha	39.4844100	-111.0115600	US	UT	0	0	Hiawatha	Hiawatha
+	273	Hildale	37.0036000	-112.9668800	US	UT	0	0	Hildale	Hildale
+	273	Hinckley	39.3249600	-112.6710600	US	UT	0	0	Hinckley	Hinckley
+	273	Holden	39.0988500	-112.2707700	US	UT	0	0	Holden	Holden
+	273	Huntington	39.3266400	-110.9646100	US	UT	0	0	Huntington	Хантингтон
+	273	Hurricane	37.1752600	-113.2899500	US	UT	0	0	Hurricane	Hurricane
+	273	Ivins	37.1685900	-113.6794100	US	UT	0	0	Ivins	Ivins
+	273	Joseph	38.6263600	-112.2171500	US	UT	0	0	Joseph	Joseph
+	273	Junction	38.2374800	-112.2199300	US	UT	0	0	Junction	Junction
+	273	Kanab	37.0474900	-112.5263100	US	UT	0	0	Kanab	Kanab
+	273	Kanarraville	37.5388700	-113.1841200	US	UT	0	0	Kanarraville	Kanarraville
+	273	Kanosh	38.8013600	-112.4374400	US	UT	0	0	Kanosh	Kanosh
+	273	Kenilworth	39.6883000	-110.8057100	US	UT	0	0	Kenilworth	Kenilworth
+	273	Kingston	38.2083100	-112.1877000	US	UT	0	0	Kingston	Кингстон
+	273	Koosharem	38.5102600	-111.8813000	US	UT	0	0	Koosharem	Koosharem
+	273	La Sal	38.3122100	-109.2481700	US	UT	0	0	La Sal	La Sal
+	273	LaVerkin	37.2010900	-113.2696700	US	UT	0	0	LaVerkin	LaVerkin
+	273	Leamington	39.5346700	-112.2835500	US	UT	0	0	Leamington	Leamington
+	273	Leeds	37.2385900	-113.3591200	US	UT	0	0	Leeds	Leeds
+	273	Levan	39.5585700	-111.8618700	US	UT	0	0	Levan	Levan
+	273	Loa	38.4027600	-111.6429600	US	UT	0	0	Loa	Loa
+	273	Lyman	38.3969200	-111.5896300	US	UT	0	0	Lyman	Lyman
+	273	Lynndyl	39.5191200	-112.3757800	US	UT	0	0	Lynndyl	Lynndyl
+	273	Manti	39.2683000	-111.6368600	US	UT	0	0	Manti	Manti
+	273	Marysvale	38.4494200	-112.2302000	US	UT	0	0	Marysvale	Marysvale
+	273	Mayfield	39.1141300	-111.7107500	US	UT	0	0	Mayfield	Mayfield
+	273	Meadow	38.8858000	-112.4104900	US	UT	0	0	Meadow	Meadow
+	273	Mexican Hat	37.1519500	-109.8670700	US	UT	0	0	Mexican Hat	Mexican Hat
+	273	Milford	38.3969100	-113.0107900	US	UT	0	0	Milford	Милфорд
+	273	Minersville	38.2141400	-112.9235600	US	UT	0	0	Minersville	Minersville
+	273	Moab	38.5733200	-109.5498400	US	UT	0	0	Moab	Моаб
+	273	Monroe	38.6299700	-112.1207600	US	UT	0	0	Monroe	Монро
+	273	Montezuma Creek	37.2700000	-109.3206700	US	UT	0	0	Montezuma Creek	Montezuma Creek
+	273	Monticello	37.8713800	-109.3428900	US	UT	0	0	Monticello	Monticello
+	273	Moroni	39.5249600	-111.5904700	US	UT	0	0	Moroni	Moroni
+	273	Mount Pleasant	39.5469100	-111.4554700	US	UT	0	0	Mount Pleasant	Mount Pleasant
+	273	Navajo Mountain	37.0194400	-110.7912500	US	UT	0	0	Navajo Mountain	Navajo Mountain
+	273	Nephi	39.7102300	-111.8363200	US	UT	0	0	Nephi	Nephi
+	273	New Harmony	37.4794200	-113.3096700	US	UT	0	0	New Harmony	New Harmony
+	273	Newcastle	37.6666400	-113.5494100	US	UT	0	0	Newcastle	Newcastle
+	273	Oak City	39.3749600	-112.3355000	US	UT	0	0	Oak City	Oak City
+	273	Oasis	39.2938500	-112.6282800	US	UT	0	0	Oasis	Oasis
+	273	Orangeville	39.2271900	-111.0535000	US	UT	0	0	Orangeville	Orangeville
+	273	Orderville	37.2758200	-112.6377100	US	UT	0	0	Orderville	Orderville
+	273	Panguitch	37.8227600	-112.4357600	US	UT	0	0	Panguitch	Panguitch
+	273	Paragonah	37.8858100	-112.7752200	US	UT	0	0	Paragonah	Paragonah
+	273	Parowan	37.8422000	-112.8280000	US	UT	0	0	Parowan	Parowan
+	273	Pine Valley	37.3910900	-113.5141200	US	UT	0	0	Pine Valley	Pine Valley
+	273	Price	39.5994100	-110.8107100	US	UT	0	0	Price	Price
+	273	Redmond	39.0060700	-111.8618700	US	UT	0	0	Redmond	Редмонд
+	273	Richfield	38.7724700	-112.0840900	US	UT	0	0	Richfield	Ричфилд
+	273	Rockville	37.1610900	-113.0382700	US	UT	0	0	Rockville	Роквилл
+	273	Rocky Ridge	39.9249500	-111.8271600	US	UT	0	0	Rocky Ridge	Rocky Ridge
+	273	Saint George	37.1041500	-113.5841200	US	UT	0	0	Saint George	Saint George
+	273	Salina	38.9577400	-111.8599300	US	UT	0	0	Salina	Салина
+	273	Santa Clara	37.1330400	-113.6541300	US	UT	0	0	Santa Clara	Санта Клара
+	273	Santaquin	39.9755100	-111.7852100	US	UT	0	0	Santaquin	Santaquin
+	273	Scipio	39.2449600	-112.1041000	US	UT	0	0	Scipio	Scipio
+	273	Scofield	39.7241300	-111.1607300	US	UT	0	0	Scofield	Scofield
+	273	Sigurd	38.8405200	-111.9677000	US	UT	0	0	Sigurd	Sigurd
+	273	Spanish Valley	38.4933200	-109.4584500	US	UT	0	0	Spanish Valley	Spanish Valley
+	273	Spring City	39.4824600	-111.4960200	US	UT	0	0	Spring City	Spring City
+	273	Spring Glen	39.6594100	-110.8534900	US	UT	0	0	Spring Glen	Spring Glen
+	273	Springdale	37.1888700	-112.9985500	US	UT	0	0	Springdale	Springdale
+	273	Sterling	39.1935700	-111.6924200	US	UT	0	0	Sterling	Стерлинг
+	273	Summit	37.8010900	-112.9363400	US	UT	0	0	Summit	Summit
+	273	Sunnyside	39.5513600	-110.3879300	US	UT	0	0	Sunnyside	Sunnyside
+	273	Sutherland	39.3888400	-112.6335600	US	UT	0	0	Sutherland	Sutherland
+	273	Teasdale	38.2860900	-111.4774000	US	UT	0	0	Teasdale	Teasdale
+	273	Thompson Springs	38.9710800	-109.7137400	US	UT	0	0	Thompson Springs	Thompson Springs
+	273	Torrey	38.2988700	-111.4190700	US	UT	0	0	Torrey	Torrey
+	273	Toquerville	37.2533200	-113.2846700	US	UT	0	0	Toquerville	Toquerville
+	273	Tropic	37.6252600	-112.0821400	US	UT	0	0	Tropic	Tropic
+	273	Tselakai Dezza	37.2030600	-109.6065100	US	UT	0	0	Tselakai Dezza	Tselakai Dezza
+	273	Veyo	37.3380300	-113.6930200	US	UT	0	0	Veyo	Veyo
+	273	Virgin	37.2083200	-113.1882800	US	UT	0	0	Virgin	Virgin
+	273	Wales	39.4869100	-111.6352000	US	UT	0	0	Wales	Wales
+	273	Washington	37.1305400	-113.5082900	US	UT	0	0	Washington	Вашингтон
+	273	Wellington	39.5424700	-110.7354300	US	UT	0	0	Wellington	Веллингтон
+	273	White Mesa	37.4658300	-109.4676200	US	UT	0	0	White Mesa	White Mesa
+	273	Centerfield	39.1252400	-111.8190900	US	UT	0	0	Centerfield	Centerfield
+	273	Alton	37.4377600	-112.4827100	US	UT	0	0	Alton	Alton
+	273	Little Cottonwood Creek Valley	40.6043900	-111.8293800	US	UT	0	0	Little Cottonwood Creek Valley	Little Cottonwood Creek Valley
+	273	Salem	40.0530100	-111.6735400	US	UT	0	0	Salem	Сейлем
+	273	Wellsville	41.6385400	-111.9338300	US	UT	0	0	Wellsville	Wellsville
+	273	Alta	40.5888400	-111.6379800	US	UT	0	0	Alta	Alta
+	273	Altamont	40.3594000	-110.2862700	US	UT	0	0	Altamont	Altamont
+	273	Amalga	41.8610400	-111.8957800	US	UT	0	0	Amalga	Amalga
+	273	Alpine	40.4532800	-111.7779900	US	UT	0	0	Alpine	Alpine
+	273	Avon	41.5329900	-111.8132700	US	UT	0	0	Avon	Avon
+	273	Ballard	40.2894000	-109.9432000	US	UT	0	0	Ballard	Ballard
+	273	Bear River City	41.6146500	-112.1266200	US	UT	0	0	Bear River City	Bear River City
+	273	Benjamin	40.0982900	-111.7313200	US	UT	0	0	Benjamin	Benjamin
+	273	Benson	41.7874300	-111.9302200	US	UT	0	0	Benson	Benson
+	273	Bluebell	40.3594000	-110.2173800	US	UT	0	0	Bluebell	Bluebell
+	273	Bluffdale	40.4896700	-111.9388200	US	UT	0	0	Bluffdale	Bluffdale
+	273	Bonanza	40.0210800	-109.1773400	US	UT	0	0	Bonanza	Bonanza
+	273	Bountiful	40.8893900	-111.8807700	US	UT	0	0	Bountiful	Bountiful
+	273	Brigham City	41.5102100	-112.0155000	US	UT	0	0	Brigham City	Brigham City
+	273	Canyon Rim	40.7066100	-111.8218800	US	UT	0	0	Canyon Rim	Canyon Rim
+	273	Cedar Hills	40.4141200	-111.7585400	US	UT	0	0	Cedar Hills	Cedar Hills
+	273	Cedar Fort	40.3271700	-112.1043900	US	UT	0	0	Cedar Fort	Cedar Fort
+	273	Centerfield	40.6913400	-111.8979900	US	UT	0	0	Centerfield	Centerfield
+	273	Centerville	40.9180000	-111.8721600	US	UT	0	0	Centerville	Centerville
+	273	Charleston	40.4663400	-111.4699100	US	UT	0	0	Charleston	Чарлстон
+	273	Clarkston	41.9202000	-112.0499500	US	UT	0	0	Clarkston	Clarkston
+	273	Clearfield	41.1107800	-112.0260500	US	UT	0	0	Clearfield	Clearfield
+	273	Clinton	41.1396700	-112.0505000	US	UT	0	0	Clinton	Клинтон
+	273	Coalville	40.9177300	-111.3993600	US	UT	0	0	Coalville	Coalville
+	273	Copperton	40.5646700	-112.0974400	US	UT	0	0	Copperton	Copperton
+	273	Corinne	41.5510400	-112.1102300	US	UT	0	0	Corinne	Corinne
+	273	Cornish	41.9754800	-111.9532800	US	UT	0	0	Cornish	Cornish
+	273	Cottonwood Heights	40.6196700	-111.8102100	US	UT	0	0	Cottonwood Heights	Cottonwood Heights
+	273	Cove	41.9635400	-111.8060600	US	UT	0	0	Cove	Cove
+	273	Daniel	40.4707900	-111.4146300	US	UT	0	0	Daniel	Daniel
+	273	Deweyville	41.7104800	-112.0902300	US	UT	0	0	Deweyville	Deweyville
+	273	Draper	40.5246700	-111.8638200	US	UT	0	0	Draper	Draper
+	273	Duchesne	40.1632900	-110.4029300	US	UT	0	0	Duchesne	Duchesne
+	273	Dugway	40.2210500	-112.7444100	US	UT	0	0	Dugway	Dugway
+	273	Dutch John	40.9291300	-109.3909700	US	UT	0	0	Dutch John	Dutch John
+	273	Eagle Mountain	40.3141200	-112.0068800	US	UT	0	0	Eagle Mountain	Eagle Mountain
+	273	East Millcreek	40.6999500	-111.8104900	US	UT	0	0	East Millcreek	East Millcreek
+	273	Echo	40.9777200	-111.4432600	US	UT	0	0	Echo	Echo
+	273	Eden	41.3005000	-111.8121600	US	UT	0	0	Eden	Eden
+	273	Elk Ridge	40.0113400	-111.6768700	US	UT	0	0	Elk Ridge	Elk Ridge
+	273	Elwood	41.6904800	-112.1410600	US	UT	0	0	Elwood	Elwood
+	273	Enterprise	41.0996700	-111.7363200	US	UT	0	0	Enterprise	Enterprise
+	273	Erda	40.6127200	-112.3043900	US	UT	0	0	Erda	Erda
+	273	Fairfield	40.2621700	-112.0930000	US	UT	0	0	Fairfield	Fairfield
+	273	Farmington	40.9805000	-111.8874400	US	UT	0	0	Farmington	Фармингтон
+	273	Farr West	41.2971700	-112.0277200	US	UT	0	0	Farr West	Farr West
+	273	Fielding	41.8146500	-112.1160600	US	UT	0	0	Fielding	Fielding
+	273	Fort Duchesne	40.2880200	-109.8545900	US	UT	0	0	Fort Duchesne	Fort Duchesne
+	273	Francis	40.6105100	-111.2807400	US	UT	0	0	Francis	Francis
+	273	Fruit Heights	41.0321700	-111.9021600	US	UT	0	0	Fruit Heights	Fruit Heights
+	273	Garden	41.8891000	-111.3857600	US	UT	0	0	Garden	Garden
+	273	Garden City	41.9468800	-111.3935400	US	UT	0	0	Garden City	Гарден Сити
+	273	Garland	41.7410400	-112.1616200	US	UT	0	0	Garland	Гирлянда
+	273	Granite	40.5730000	-111.8060400	US	UT	0	0	Granite	Granite
+	273	Grantsville	40.5999400	-112.4644000	US	UT	0	0	Grantsville	Grantsville
+	273	Harrisville	41.2813300	-111.9882800	US	UT	0	0	Harrisville	Harrisville
+	273	Heber City	40.5069000	-111.4132400	US	UT	0	0	Heber City	Heber City
+	273	Henefer	41.0166100	-111.4982600	US	UT	0	0	Henefer	Henefer
+	273	Herriman	40.5141100	-112.0329900	US	UT	0	0	Herriman	Herriman
+	273	Highland	40.4254800	-111.7944700	US	UT	0	0	Highland	Highland
+	273	Holladay	40.6688400	-111.8246600	US	UT	0	0	Holladay	Holladay
+	273	Honeyville	41.6385400	-112.0793900	US	UT	0	0	Honeyville	Honeyville
+	273	Hooper	41.1638300	-112.1224400	US	UT	0	0	Hooper	Hooper
+	273	Howell	41.7960400	-112.4444100	US	UT	0	0	Howell	Howell
+	273	Hoytsville	40.8743900	-111.3804700	US	UT	0	0	Hoytsville	Hoytsville
+	273	Huntsville	41.2607700	-111.7699400	US	UT	0	0	Huntsville	Хантсвилл
+	273	Hyde Park	41.7988200	-111.8191100	US	UT	0	0	Hyde Park	Hyde Park
+	273	Hyrum	41.6341000	-111.8521700	US	UT	0	0	Hyrum	Hyrum
+	273	Jensen	40.3696800	-109.3348500	US	UT	0	0	Jensen	Jensen
+	273	Kamas	40.6430100	-111.2807400	US	UT	0	0	Kamas	Kamas
+	273	Kaysville	41.0352200	-111.9385500	US	UT	0	0	Kaysville	Kaysville
+	273	Kearns	40.6599500	-111.9963300	US	UT	0	0	Kearns	Кернс
+	273	Lake Shore	40.1219000	-111.7304800	US	UT	0	0	Lake Shore	Lake Shore
+	273	Laketown	41.8254900	-111.3224300	US	UT	0	0	Laketown	Laketown
+	273	Layton	41.0602200	-111.9710500	US	UT	0	0	Layton	Лейтон
+	273	Lehi	40.3916200	-111.8507700	US	UT	0	0	Lehi	Лехе
+	273	Lewiston	41.9757600	-111.8563400	US	UT	0	0	Lewiston	Льюистон
+	273	Liberty	41.3335500	-111.8635500	US	UT	0	0	Liberty	Liberty
+	273	Lindon	40.3432900	-111.7207600	US	UT	0	0	Lindon	Lindon
+	273	Logan	41.7354900	-111.8343900	US	UT	0	0	Logan	Logan
+	273	Maeser	40.4771800	-109.5868100	US	UT	0	0	Maeser	Maeser
+	273	Magna	40.7091100	-112.1016100	US	UT	0	0	Magna	Magna
+	273	Manila	40.9880100	-109.7226500	US	UT	0	0	Manila	Manila
+	273	Mantua	41.4957700	-111.9438300	US	UT	0	0	Mantua	Mantua
+	273	Mapleton	40.1302300	-111.5785300	US	UT	0	0	Mapleton	Mapleton
+	273	Marion	40.6774500	-111.2810200	US	UT	0	0	Marion	Marion
+	273	Marriott-Slaterville	41.2516100	-112.0255000	US	UT	0	0	Marriott-Slaterville	Marriott-Slaterville
+	273	Mendon	41.7099300	-111.9777300	US	UT	0	0	Mendon	Mendon
+	273	Midvale	40.6110600	-111.8999400	US	UT	0	0	Midvale	Midvale
+	273	Midway	40.5121800	-111.4743500	US	UT	0	0	Midway	Midway
+	273	Millcreek	40.6868900	-111.8754900	US	UT	0	0	Millcreek	Millcreek
+	273	Millville	41.6816000	-111.8230000	US	UT	0	0	Millville	Millville
+	273	Morgan	41.0360600	-111.6768800	US	UT	0	0	Morgan	Morgan
+	273	Mount Olympus	40.6855000	-111.7885400	US	UT	0	0	Mount Olympus	Mount Olympus
+	273	Mountain Green	41.1430000	-111.7916000	US	UT	0	0	Mountain Green	Mountain Green
+	273	Murray	40.6668900	-111.8879900	US	UT	0	0	Murray	Мюррей
+	273	Myton	40.1944000	-110.0618200	US	UT	0	0	Myton	Myton
+	273	Naples	40.4269100	-109.4993000	US	UT	0	0	Naples	Неаполь
+	273	Neola	40.4332900	-110.0298800	US	UT	0	0	Neola	Neola
+	273	Newton	41.8627000	-111.9907800	US	UT	0	0	Newton	Ньютон
+	273	Nibley	41.6743800	-111.8330000	US	UT	0	0	Nibley	Nibley
+	273	North Logan	41.7693700	-111.8046700	US	UT	0	0	North Logan	North Logan
+	273	North Ogden	41.3071600	-111.9602200	US	UT	0	0	North Ogden	North Ogden
+	273	North Salt Lake	40.8485600	-111.9068800	US	UT	0	0	North Salt Lake	North Salt Lake
+	273	Oakley	40.7146700	-111.3007400	US	UT	0	0	Oakley	Oakley
+	273	Ogden	41.2230000	-111.9738300	US	UT	0	0	Ogden	Огден
+	273	Ophir	40.3693900	-112.2585600	US	UT	0	0	Ophir	Ophir
+	273	Oquirrh	40.6305000	-112.0338300	US	UT	0	0	Oquirrh	Oquirrh
+	273	Orem	40.2969000	-111.6946500	US	UT	0	0	Orem	Орем
+	273	Palmyra	40.1402300	-111.6988200	US	UT	0	0	Palmyra	Palmyra
+	273	Paradise	41.5688200	-111.8380000	US	UT	0	0	Paradise	Paradise
+	273	Park City	40.6460600	-111.4979700	US	UT	0	0	Park City	Парк-Сити
+	273	Payson	40.0444000	-111.7321500	US	UT	0	0	Payson	Payson
+	273	Peoa	40.7246700	-111.3418600	US	UT	0	0	Peoa	Peoa
+	273	Perry	41.4649400	-112.0324500	US	UT	0	0	Perry	Perry
+	273	Plain City	41.2980000	-112.0860500	US	UT	0	0	Plain City	Plain City
+	273	Pleasant Grove	40.3641200	-111.7385400	US	UT	0	0	Pleasant Grove	Pleasant Grove
+	273	Pleasant View	41.3182800	-111.9921600	US	UT	0	0	Pleasant View	Pleasant View
+	273	Plymouth	41.8754800	-112.1441200	US	UT	0	0	Plymouth	Плимут
+	273	Portage	41.9756600	-112.2383900	US	UT	0	0	Portage	Portage
+	273	Providence	41.7063200	-111.8171700	US	UT	0	0	Providence	Провиденс
+	273	Provo	40.2338400	-111.6585300	US	UT	0	0	Provo	Прово
+	273	Randlett	40.2327400	-109.8076400	US	UT	0	0	Randlett	Randlett
+	273	Randolph	41.6657800	-111.1821400	US	UT	0	0	Randolph	Рандольф
+	273	Richmond	41.9227100	-111.8135600	US	UT	0	0	Richmond	Ричмонд
+	273	River Heights	41.7216000	-111.8213300	US	UT	0	0	River Heights	River Heights
+	273	Riverdale	41.1768900	-112.0038300	US	UT	0	0	Riverdale	Riverdale
+	273	Riverside	41.7888200	-112.1488400	US	UT	0	0	Riverside	Риверсайд
+	273	Riverton	40.5218900	-111.9391000	US	UT	0	0	Riverton	Ривертон
+	273	Roosevelt	40.2994000	-109.9887600	US	UT	0	0	Roosevelt	Roosevelt
+	273	Roy	41.1616100	-112.0263300	US	UT	0	0	Roy	Рой
+	273	Rush Valley	40.3630000	-112.4505100	US	UT	0	0	Rush Valley	Rush Valley
+	273	Salt Lake City	40.7607800	-111.8910500	US	UT	0	0	Salt Lake City	Солт-Лейк-Сити
+	273	Samak	40.6174500	-111.2137900	US	UT	0	0	Samak	Samak
+	273	Sandy	40.5916100	-111.8841000	US	UT	0	0	Sandy	Sandy
+	273	Sandy Hills	40.5810600	-111.8507700	US	UT	0	0	Sandy Hills	Sandy Hills
+	273	Saratoga Springs	40.3491200	-111.9046600	US	UT	0	0	Saratoga Springs	Саратога-Спрингс
+	273	Smithfield	41.8382600	-111.8327200	US	UT	0	0	Smithfield	Smithfield
+	273	Snyderville	40.6943900	-111.5438100	US	UT	0	0	Snyderville	Snyderville
+	273	Snowville	41.9654800	-112.7097000	US	UT	0	0	Snowville	Snowville
+	273	South Jordan Heights	40.5638400	-111.9493800	US	UT	0	0	South Jordan Heights	South Jordan Heights
+	273	South Jordan	40.5621700	-111.9296600	US	UT	0	0	South Jordan	South Jordan
+	273	South Ogden	41.1918900	-111.9713300	US	UT	0	0	South Ogden	South Ogden
+	273	South Salt Lake	40.7188400	-111.8882700	US	UT	0	0	South Salt Lake	South Salt Lake
+	273	South Weber	41.1324400	-111.9302200	US	UT	0	0	South Weber	South Weber
+	273	South Willard	41.3632700	-112.0357800	US	UT	0	0	South Willard	South Willard
+	273	Spanish Fork	40.1149600	-111.6549200	US	UT	0	0	Spanish Fork	Spanish Fork
+	273	Spring Lake	40.0010700	-111.7463200	US	UT	0	0	Spring Lake	Spring Lake
+	273	Springville	40.1652300	-111.6107500	US	UT	0	0	Springville	Springville
+	273	Stansbury park	40.6377200	-112.2960600	US	UT	0	0	Stansbury park	Stansbury park
+	273	Stockton	40.4527200	-112.3607800	US	UT	0	0	Stockton	Стоктън
+	273	Summit Park	40.7457800	-111.6115900	US	UT	0	0	Summit Park	Summit Park
+	273	Sunset	41.1363300	-112.0310500	US	UT	0	0	Sunset	Sunset
+	273	Syracuse	41.0893900	-112.0646700	US	UT	0	0	Syracuse	Syracuse
+	273	Tabiona	40.3544400	-110.7100800	US	UT	0	0	Tabiona	Tabiona
+	273	Taylorsville	40.6677200	-111.9388300	US	UT	0	0	Taylorsville	Тэйлорсвилл
+	273	Thatcher	41.6938200	-112.2941200	US	UT	0	0	Thatcher	Thatcher
+	273	Timber Lakes	40.4732900	-111.2476700	US	UT	0	0	Timber Lakes	Timber Lakes
+	273	Tooele	40.5307800	-112.2982800	US	UT	0	0	Tooele	Tooele
+	273	Tremonton	41.7118700	-112.1655100	US	UT	0	0	Tremonton	Tremonton
+	273	Trenton	41.9177000	-111.9424500	US	UT	0	0	Trenton	Трентон
+	273	Uintah	41.1441100	-111.9232700	US	UT	0	0	Uintah	Uintah
+	273	Vernal	40.4555200	-109.5287500	US	UT	0	0	Vernal	Vernal
+	273	Vernon	40.0921700	-112.4335600	US	UT	0	0	Vernon	Vernon
+	273	Wallsburg	40.3877300	-111.4224100	US	UT	0	0	Wallsburg	Wallsburg
+	273	Wanship	40.8118900	-111.4074200	US	UT	0	0	Wanship	Wanship
+	273	Washington Terrace	41.1727200	-111.9766100	US	UT	0	0	Washington Terrace	Washington Terrace
+	273	Wendover	40.7371500	-114.0375100	US	UT	0	0	Wendover	Wendover
+	273	West Bountiful	40.8938300	-111.9018800	US	UT	0	0	West Bountiful	West Bountiful
+	273	West Haven	41.2030000	-112.0510500	US	UT	0	0	West Haven	West Haven
+	273	West Jordan	40.6096700	-111.9391000	US	UT	0	0	West Jordan	Уэст-Джордан
+	273	West Mountain	40.0607900	-111.7882700	US	UT	0	0	West Mountain	West Mountain
+	273	West Point	41.1182800	-112.0841100	US	UT	0	0	West Point	West Point
+	273	West Valley City	40.6916100	-112.0010500	US	UT	0	0	West Valley City	Вест-Вэлли-Сити
+	273	White City	40.5657800	-111.8643800	US	UT	0	0	White City	White City
+	273	Whiterocks	40.4680100	-109.9307100	US	UT	0	0	Whiterocks	Whiterocks
+	273	Willard	41.4091100	-112.0360600	US	UT	0	0	Willard	Willard
+	273	Willard	40.7063400	-111.8374300	US	UT	0	0	Willard	Willard
+	273	Wolf Creek	41.3332700	-111.8271600	US	UT	0	0	Wolf Creek	Wolf Creek
+	273	Woodland	40.5813400	-111.2271200	US	UT	0	0	Woodland	Woodland
+	273	Woodland Hills	40.0153200	-111.6486800	US	UT	0	0	Woodland Hills	Woodland Hills
+	273	Woodruff	41.5218900	-111.1624200	US	UT	0	0	Woodruff	Woodruff
+	273	Woods Cross	40.8716100	-111.8921600	US	UT	0	0	Woods Cross	Woods Cross
+	273	Vineyard	40.2970400	-111.7467000	US	UT	0	0	Vineyard	Vineyard
+	273	American Fork	40.3769000	-111.7957600	US	UT	0	0	American Fork	American Fork
+	273	Bryce Canyon City	37.6738900	-112.1569400	US	UT	0	0	Bryce Canyon City	Bryce Canyon City
+	273	Dammeron Valley	37.3052600	-113.6705600	US	UT	0	0	Dammeron Valley	Dammeron Valley
+	273	Hideout	40.6380400	-111.4107600	US	UT	0	0	Hideout	Hideout
+	273	Independence	40.3029100	-111.2568900	US	UT	0	0	Independence	Independence
+	273	Cache	41.8308200	-112.0051100	US	UT	0	0	Cache	Cache
+	273	Elberta	39.9738900	-111.9553800	US	UT	0	0	Elberta	Elberta
+	273	East Millcreek	40.6908100	-111.8184200	US	UT	0	0	East Millcreek	East Millcreek
+	273	Oljato-Monument Valley	37.0305800	-110.2514300	US	UT	0	0	Oljato-Monument Valley	Oljato-Monument Valley
+	273	Peter	41.7717200	-111.9861100	US	UT	0	0	Peter	Peter
+	273	Silver Summit	40.7414400	-111.4877500	US	UT	0	0	Silver Summit	Silver Summit
+	273	West Wood	39.6051900	-110.8424300	US	UT	0	0	West Wood	West Wood
+	273	Snowbird	40.5816900	-111.6559000	US	UT	0	0	Snowbird	Snowbird
+	273	Bingham Canyon	40.5583300	-112.1305600	US	UT	0	0	Bingham Canyon	Bingham Canyon
+	273	Cedar Valley	40.3332000	-112.0811500	US	UT	0	0	Cedar Valley	Cedar Valley
+	273	Lake Powell	37.0365400	-111.3533000	US	UT	0	0	Lake Powell	Lake Powell
+	273	Hill Air Force Base	41.1111800	-111.9771200	US	UT	0	0	Hill Air Force Base	Hill Air Force Base
