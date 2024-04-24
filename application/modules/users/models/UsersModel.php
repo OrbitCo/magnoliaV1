@@ -4921,6 +4921,12 @@ class UsersModel extends \Model
             $this->ci->load->model('Access_permissions_model');
             $group = $this->ci->Groups_model->getTrialGroup();
             $this->ci->Access_permissions_model->applyGroup($group, $user_id);
+
+            /*print_r($group); exit;*/
+            $user_service['date_expired'] = $this->serviceSetHideOnSite(
+                $user_id,
+                10
+            );
         }
         $this->setGroupServices($user_id);
         $this->addToNetwork($user_id, $data['net_user_decision'] ?? 'unknown');

@@ -1,38 +1,10 @@
 *It is the largest free online dating site for singles to meet other singles on the net, it is also best referred to as a place where meeting people online can be a fun and exciting experience.*
 
-------------------------------
-SYSTEM REQUIREMENTS
-------------------------------
-
-### This is the link to the list of system requirements in the Dating Pro Academy:
-[SYSTEM REQUIREMENTS](https://help.datingpro.com/en/articles/5580072-system-requirements)
-
-* PHP 7.2 or higher (PHP 7.2 or below for encoded version)
-* gd2, iconv, mbstring extensions for PHP
-* PHP database extensions: pdo/mysqli/mysql
-* MySQL 5.1 or higher
-* XML Support
-* ionCube PHP Loader v4.0.12 and above enabled on your server (for encoded version)
-* mod_rewrite library and support of .htaccess files with RewriteRule attribute
-* Cronjobs/scheduler support
-* ffmpeg-php extension should be installed (required for video thumbs, video duration, etc.)
-* shell_exec should be allowed
-* Server OS: Unix, Windows
-* IIS is not supported
-* Android: 4.0 and above; iOS: 6.0 and above
-
-### System requirements for Dating Pro Network:
-* pcntl and posix extensions for PHP
-
-*Note: We can also send you a base image for a Docker container. Please email sales@pilotgroup.net or contact us in live chat for more info: https://www.datingpro.com/*
 
 
 ------------------------------
 INSTALLATION INSTRUCTIONS
 ------------------------------
-
-### View illustrated installation instruction here:
-[Installation instructions](https://help.datingpro.com/en/articles/5580088-installation-instructions) or watch this [video](https://www.youtube.com/watch?v=7ddx1LgEe9s)
 
 1. Download the ZIP archive with the software files, extract the files and upload them to your server. Any FTP client will do, or, you can upload the archive to the server and decompress it there.
 *Note: Make sure to use Binary transfer mode during upload.*
@@ -110,7 +82,6 @@ Test user access: walter@mail.com / 123456
 Your site's admin mode is available under http://www.yourdomain.com/admin.
 Admin access: what you have input during step 9.2. as described above.
 
-*View the Dating Pro Academy for tips of the site configuration and management:* [Academy](https://help.datingpro.com/)
 
 
 ------------------------------
@@ -166,6 +137,28 @@ Try editing .htaccess file by commenting all lines except the line with RewriteR
 In file /application/config/config.php replace 'AUTO' with 'REQUEST_URI' in line:
 ` ` `$config['uri_protocol']    = 'REQUEST_URI';` ` `
 
+------------------------------
+SYSTEM REQUIREMENTS
+------------------------------
 
+### This is the link to the list of system requirements in the Dating Pro Academy:
+[SYSTEM REQUIREMENTS](https://help.datingpro.com/en/articles/5580072-system-requirements)
 
-##### If everything else fails, you know where to find us: https://www.datingpro.com/ (chat opens in the bottom right corner).
+* PHP 7.2 or higher (PHP 7.2 or below for encoded version)
+* gd2, iconv, mbstring extensions for PHP
+* PHP database extensions: pdo/mysqli/mysql
+* MySQL 5.1 or higher
+* XML Support
+* ionCube PHP Loader v4.0.12 and above enabled on your server (for encoded version)
+* mod_rewrite library and support of .htaccess files with RewriteRule attribute
+* Cronjobs/scheduler support
+* ffmpeg-php extension should be installed (required for video thumbs, video duration, etc.)
+* shell_exec should be allowed
+* Server OS: Unix, Windows
+* IIS is not supported
+* Android: 4.0 and above; iOS: 6.0 and above
+
+### System requirements for Dating Pro Network:
+* pcntl and posix extensions for PHP
+
+*Note: We can also send you a base image for a Docker container. Please email sales@pilotgroup.net or contact us in live chat for more info: https://www.datingpro.com/*
