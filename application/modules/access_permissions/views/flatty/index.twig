@@ -15,7 +15,7 @@
             <div>
                 <div class="access-list">
                 {% for key, group in groups %}
-                    {% if (group.is_default != 1 and group.periods is not empty)  or group.is_default   or (group.is_trial and group.trial_period_left.count > 0) %}
+                    {% if (group.is_default != 1 and group.periods is not empty)  or group.is_default   or (group.is_trial ) %}
                         <div class="item-group">
                             <div class="g-flatty-block group-block active well" id="{{ group.gid }}-block">
                                 <div class="title-block center">{{ group.current_name }}</div>

@@ -83,7 +83,7 @@ $dotenv->load();
 | PHP ERROR REPORTING LEVEL
 |---------------------------------------------------------------
 */
-ini_set("display_errors", $_ENV['DISPLAY_ERRORS']);
+ini_set("display_errors", FALSE);
 error_reporting($_ENV['DISPLAY_ERRORS'] ? E_ALL : ~E_ALL);
 
 /*

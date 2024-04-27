@@ -66,7 +66,7 @@ class AccessPermissions extends \Controller
             )->getPriceGroups($this->session->userdata['user_type']);
 
             $format_groups = $this->Access_permissions_model->formatGroups($groups, $periods);
-
+           //echo "<pre>"; print_r($format_groups); exit;
             $billing_systems = $this->Payment_systems_model->getActiveSystemList();
             $this->view->assign('billing_systems', $billing_systems);
             $this->view->assign('groups', $format_groups);

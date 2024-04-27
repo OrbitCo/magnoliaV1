@@ -82,7 +82,12 @@ Test user access: walter@mail.com / 123456
 Your site's admin mode is available under http://www.yourdomain.com/admin.
 Admin access: what you have input during step 9.2. as described above.
 
-
+------------------------------
+Installing the Database
+------------------------------
+1. Login into PhpMyadmin
+2. Import the SQL files present in the root directory
+3. Connect the database from config.php file in the root directory
 
 ------------------------------
 SETTING UP CRONJOBS VIA SSH
